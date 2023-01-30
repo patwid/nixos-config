@@ -1,102 +1,263 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
+let
+  user = "patwid";
+in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
   
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  
+  networking.hostName = "laptop";
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
+  
+  time.timeZone = "Europe/Zurich";
+  
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "de_CH.UTF-8";
+    LC_IDENTIFICATION = "de_CH.UTF-8";
+    LC_MEASUREMENT = "de_CH.UTF-8";
+    LC_MONETARY = "de_CH.UTF-8";
+    LC_NAME = "de_CH.UTF-8";
+    LC_NUMERIC = "de_CH.UTF-8";
+    LC_PAPER = "de_CH.UTF-8";
+    LC_TELEPHONE = "de_CH.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
+  };
+  
+  console.keyMap = "us";
+  
+  users.users.${user} = {
+    isNormalUser = true;
+    description = "${user}";
+    extraGroups = [ "docker" "networkmanager" "video" "audio" "wheel" ];
+    packages = with pkgs; [];
+  };
 
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
+  nixpkgs.config.allowUnfree = true;
+
+  environment.systemPackages = with pkgs; [
+    aerc
+    chromium
+    curl
+    dbeaver
+    direnv
+    docker-compose
+    fzf
+    imagemagick
+    jetbrains.idea-community
+    jq
+    libreoffice
+    mpv
+    networkmanager-openvpn
+    # nix-direnv
+    pass
+    pavucontrol
+    pinentry-gnome
+    qutebrowser
+    ripgrep
+    unzip
+    wget
+    xdg-user-dirs
+    xdg-utils
+    yt-dlp
+    zathura
+    zip
+  ];
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    roboto-mono
+    font-awesome
+  ];
+
+  fonts.fontconfig = {
+    defaultFonts = {
+      emoji = [ "Noto Emoji" "Font Awesome" ];
+      monospace = [ "Roboto Mono" ];
+      sansSerif = [ "Noto Sans" ];
+      serif = [ "Noto Serif" ];
+    };
+  };
+
+  environment.etc."xdg/user-dirs.defaults".text = ''
+    DESKTOP=desktop
+    DOCUMENTS=documents
+    DOWNLOAD=downloads
+    MUSIC=music
+    PICTURES=pictures
+    PUBLICSHARE=public
+    TEMPLATES=templates
+    VIDEOS=videos
+  '';
+
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
+  # nix.settings = {
+  #   keep-outputs = true;
+  #   keep-derivations = true;
   # };
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     thunderbird
-  #   ];
-  # };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
+  # environment.pathsToLink = [
+  #   "/share/nix-direnv"
+  # ];
+  # nixpkgs.overlays = [
+  #   (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
   # ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.bash = {
+    loginShellInit = ''
+      if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
+        exec sway >/dev/null 2>&1
+      fi
+    '';
+  };
 
-  # List services that you want to enable:
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    configure = {
+      customRC = ''
+        let g:netrw_banner=0
+        set clipboard=unnamedplus
+        set guicursor+=a:blinkon700
+        set hidden
+        set laststatus=1
+        set shortmess+=I
+        
+        augroup Colors
+          autocmd!
+          autocmd Syntax * call SetColors()
+        augroup END
+        
+        function! SetColors() abort
+          if &background ==# "dark"
+            highlight Directory ctermfg=cyan
+            highlight SpecialKey ctermfg=cyan
+            highlight Type ctermfg=green
+            highlight PreProc ctermfg=blue
+          endif
+          highlight WinSeparator ctermbg=None
+        endfunction 
+      '';
+      packages.myVimPackage = with pkgs.vimPlugins; {
+        start = [ editorconfig-vim fugitive vim-nix ];
+      };
+    };
+  };
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "gnome3";
+  };
 
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [ 
+      brightnessctl
+      dmenu
+      foot 
+      grim 
+      i3status 
+      mako 
+      slurp 
+      swaybg 
+      swaylock 
+      wl-clipboard 
+    ];
+    extraSessionCommands = ''
+      # export QT_QPA_PLATFORM=wayland
+      # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+      # export _JAVA_AWT_WM_NONREPARENTING=1
+    '';
+  };
+
+  # programs.chromium.enable = true;
+  programs.firefox.enable = true;
+  programs.htop.enable = true;
+  programs.openvpn3.enable = true;
+  programs.xwayland.enable = true;
+
+  programs.git = {
+    enable = true;
+    config = {
+      user.name = "Patrick Widmer";
+      user.email = "patrick.widmer@tbwnet.ch";
+      core.editor = "nvim";
+    };
+    lfs.enable = true;
+  };
+
+  services.openssh.enable = true;
+
+  services.syncthing = {
+    enable = true;
+    user = "${user}";
+    dataDir = "/home/${user}/sync";
+    configDir = "/home/${user}/.config/syncthing";
+  };
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  virtualisation.docker.enable = true;
+
+  security.sudo.enable = false;
+  security.doas = {
+    enable = true;
+    extraRules = [{
+      users = [ "${user}" ];
+      keepEnv = true;
+      persist = true;
+    }];
+  };
+
+  fileSystems = {
+    "/home/${user}/music" = {
+      device = "192.168.0.3:/mnt/tank/media/music";
+      fsType = "nfs";
+      options = [ "nfsvers=3" ];
+    };
+    "/home/${user}/videos/movies" = {
+      device = "192.168.0.3:/mnt/tank/media/movies";
+      fsType = "nfs";
+      options = [ "nfsvers=3" ];
+    };
+    "/home/${user}/videos/tv_shows" = {
+      device = "192.168.0.3:/mnt/tank/media/tv_shows";
+      fsType = "nfs";
+      options = [ "nfsvers=3" ];
+    };
+  };
+  
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -107,4 +268,3 @@
   system.stateVersion = "22.11"; # Did you read the comment?
 
 }
-
