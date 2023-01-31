@@ -7,6 +7,7 @@ in
   imports =
     [
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
   
   boot.loader.systemd-boot.enable = true;
@@ -49,16 +50,13 @@ in
     chromium
     curl
     dbeaver
-    direnv
     docker-compose
-    fzf
     imagemagick
     jetbrains.idea-community
     jq
     libreoffice
     mpv
     networkmanager-openvpn
-    # nix-direnv
     pass
     pavucontrol
     pinentry-gnome
@@ -66,7 +64,6 @@ in
     ripgrep
     unzip
     wget
-    xdg-user-dirs
     xdg-utils
     yt-dlp
     zathura
@@ -90,31 +87,9 @@ in
     };
   };
 
-  environment.etc."xdg/user-dirs.defaults".text = ''
-    DESKTOP=desktop
-    DOCUMENTS=documents
-    DOWNLOAD=downloads
-    MUSIC=music
-    PICTURES=pictures
-    PUBLICSHARE=public
-    TEMPLATES=templates
-    VIDEOS=videos
-  '';
-
   environment.variables = {
     EDITOR = "nvim";
   };
-
-  # nix.settings = {
-  #   keep-outputs = true;
-  #   keep-derivations = true;
-  # };
-  # environment.pathsToLink = [
-  #   "/share/nix-direnv"
-  # ];
-  # nixpkgs.overlays = [
-  #   (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
-  # ];
 
   programs.bash = {
     loginShellInit = ''
@@ -170,9 +145,7 @@ in
     extraPackages = with pkgs; [ 
       brightnessctl
       dmenu
-      foot 
       grim 
-      i3status 
       mako 
       slurp 
       swaybg 
@@ -266,5 +239,251 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
+
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+
+  home-manager.users.${user} = {
+    # home.username = "${user}";
+    # home.homeDirectory = "/home/${user}";
+
+    programs.bash.enable = true;
+
+    programs.direnv.enable = true;
+    # programs.direnv.nix-direnv.enable = true;
+    # programs.direnv.nix-direnv.enableFlakes = true;
+
+    wayland.windowManager.sway = {
+      enable = true;
+      config = {
+        modifier = "Mod4";
+        fonts = { 
+          names = [ "sans-serif" ];
+          size = 9.0;
+        };
+        input = {
+          "type:keyboard" = {
+            xkb_layout = "us";
+            xkb_variant = "altgr-intl";
+            xkb_options = "caps:swapescape";
+            xkb_numlock = "enabled";
+            repeat_delay = "200";
+            repeat_rate = "30";
+          };
+          "type:mouse" = {
+              pointer_accel = "0";
+              scroll_factor = "2";
+          };
+        };
+        seat = { "*" = { hide_cursor = "when-typing enable"; }; };
+        colors = {
+          background = "#ffffff";
+          focused = {
+            border = "#285577";
+            background = "#285577";
+            text = "#ffffff";
+            indicator = "#285577";
+            childBorder = "#285577";
+          };
+          focusedInactive = {
+            border = "#5f676a";
+            background = "#5f676a";
+            text = "#ffffff";
+            indicator = "#5f676a";
+            childBorder = "#5f676a";
+          };
+          unfocused = {
+            border = "#222222";
+            background = "#222222";
+            text = "#888888";
+            indicator = "#222222";
+            childBorder = "#222222";
+          };
+          placeholder = {
+            border = "#0c0c0c";
+            background = "#0c0c0c";
+            text = "#ffffff";
+            indicator = "#0c0c0c";
+            childBorder = "#0c0c0c";
+          };
+        };
+        bars = [{
+          fonts = {
+            names = [ "sans-serif" ];
+            size = 9.0;
+          };
+          statusCommand = "i3status";
+          # stripWorkspaceNumbers = yes;
+          position = "top";
+          extraConfig = ''
+            separator_symbol "    "
+            # Diable vertical scrolling (workspaces)
+            bindsym button4 nop;
+            bindsym button5 nop;
+            # Diable horizontal scrolling (workspaces)
+            bindsym button6 nop;
+            bindsym button7 nop;
+          '';
+          colors = {
+            background = "#000000";
+            statusline = "#ffffff";
+            separator = "#ffffff";
+            focusedWorkspace = {
+              border = "#000000";
+              background = "#285577";
+              text = "#ffffff";
+            };
+            activeWorkspace = {
+              border = "#000000";
+              background = "#5f676a";
+              text = "#ffffff";
+            };
+            inactiveWorkspace = {
+              border = "#000000";
+              background = "#222222";
+              text = "#888888";
+            };
+            urgentWorkspace = {
+              border = "#000000";
+              background = "#900000";
+              text = "#ffffff";
+            };
+            bindingMode = {
+              border = "#000000";
+              background = "#900000";
+              text = "#ffffff";
+            };
+          };
+        }];
+      };
+    };
+
+    programs.i3status = {
+      enable = true;
+      enableDefault = false;
+      general = {
+        colors = true;
+        interval = 5;
+      };
+      modules = {
+        "load" = {
+          position = 1;
+          settings = {
+            format = "";
+            format_above_threshold = "   %1min";
+            max_threshold = 16;
+          };
+        };
+        "memory" = {
+          position = 2;
+          settings = {
+            format = "";
+            threshold_degraded = "5G";
+            format_degraded = "   < %available";
+          };
+        };
+        "path_exists VPN" = {
+          position = 3;
+          settings = {
+            format = "   VPN";
+            format_down = "";
+            path = "/proc/sys/net/ipv4/conf/tun0";
+          };
+        };
+        "volume master" = {
+          position = 4;
+          settings = {
+            format = "   %volume";
+            format_muted = "   muted";
+            device = "pulse";
+          };
+        };
+        "battery all" = {
+          position = 5;
+          settings = {
+            format = "%status %percentage";
+            format_down = "No battery";
+            integer_battery_capacity = true;
+            status_chr = "  ";
+            status_bat = "  ";
+            status_unk = "  ";
+            status_full = "  ";
+            path = "/sys/class/power_supply/BAT%d/uevent";
+            low_threshold = 10;
+          };
+        };
+        "tztime date" = {
+          position = 6;
+          settings = { format = "%a, %b %d"; };
+        };
+        "tztime time" = {
+          position = 7;
+          settings = { format = "%H:%M "; };
+        };
+      };
+    };
+
+    programs.foot = {
+      enable = true;
+      settings = {
+        main = { font = "monospace:size=7"; };
+        cursor = { blink = "yes"; };
+        colors = {
+          foreground = "d8d8d8";
+          background = "181818";
+          regular0 = "181818";    # black
+          regular1 = "ab4642";    # red
+          regular2 = "a1b56c";    # green
+          regular3 = "f7ca88";    # yellow
+          regular4 = "7cafc2";    # blue
+          regular5 = "ba8baf";    # magenta
+          regular6 = "86c1b9";    # cyan
+          regular7 = "d8d8d8";    # white
+          bright0 = "585858";     # bright black
+          bright1 = "ab4642";     # bright red
+          bright2 = "a1b56c";     # bright green
+          bright3 = "f7ca88";     # bright yellow
+          bright4 = "7cafc2";     # bright blue
+          bright5 = "ba8baf";     # bright magenta
+          bright6 = "86c1b9";     # bright cyan
+          bright7 = "f8f8f8";     # bright white
+        };
+      };
+    };
+
+    programs.fzf.enable = true;
+
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+      desktop = "desktop";
+      documents = "documents";
+      download = "downloads";
+      music = "music";
+      pictures = "pictures";
+      publicShare = "public";
+      templates = "templates";
+      videos = "videos";
+    };
+
+    services.wlsunset = {
+      enable = true;
+      latitude = "47.3";
+      longitude = "8.5";
+    };
+
+    services.gpg-agent = {
+      defaultCacheTtl = 60480000;
+      maxCacheTtl = 60480000;
+    };
+
+    home.stateVersion = "22.11";
+  };
+
+  # XXX: nix.settings
+  # nix.extraOptions = ''
+  #   keep-outputs = true
+  #   keep-derivations = true
+  # '';
 
 }
