@@ -2,6 +2,28 @@
 
 let
   user = "patwid";
+  colors = {
+    dark = {
+      black = "181818";
+      red = "ab4642";
+      green = "a1b56c";
+      yellow = "f7ca88";
+      blue = "7cafc2";
+      magenta = "ba8baf";
+      cyan = "86c1b9";
+      white = "d8d8d8";
+    };
+    light = {
+      black = "585858";
+      red = "ab4642";
+      green = "a1b56c";
+      yellow = "f7ca88";
+      blue = "7cafc2";
+      magenta = "ba8baf";
+      cyan = "86c1b9";
+      white = "f8f8f8";
+    };
+  };
 in
 {
   imports =
@@ -429,24 +451,24 @@ in
         main = { font = "monospace:size=7"; };
         cursor = { blink = "yes"; };
         colors = {
-          foreground = "d8d8d8";
-          background = "181818";
-          regular0 = "181818";    # black
-          regular1 = "ab4642";    # red
-          regular2 = "a1b56c";    # green
-          regular3 = "f7ca88";    # yellow
-          regular4 = "7cafc2";    # blue
-          regular5 = "ba8baf";    # magenta
-          regular6 = "86c1b9";    # cyan
-          regular7 = "d8d8d8";    # white
-          bright0 = "585858";     # bright black
-          bright1 = "ab4642";     # bright red
-          bright2 = "a1b56c";     # bright green
-          bright3 = "f7ca88";     # bright yellow
-          bright4 = "7cafc2";     # bright blue
-          bright5 = "ba8baf";     # bright magenta
-          bright6 = "86c1b9";     # bright cyan
-          bright7 = "f8f8f8";     # bright white
+          foreground = "${colors.dark.white}";
+          background = "${colors.dark.black}";
+          regular0 = "${colors.dark.black}";
+          regular1 = "${colors.dark.red}";
+          regular2 = "${colors.dark.green}";
+          regular3 = "${colors.dark.yellow}";
+          regular4 = "${colors.dark.blue}";
+          regular5 = "${colors.dark.magenta}";
+          regular6 = "${colors.dark.cyan}";
+          regular7 = "${colors.dark.white}";
+          bright0 = "${colors.light.black}";
+          bright1 = "${colors.light.red}";
+          bright2 = "${colors.light.green}";
+          bright3 = "${colors.light.yellow}";
+          bright4 = "${colors.light.blue}";
+          bright5 = "${colors.light.magenta}";
+          bright6 = "${colors.light.cyan}";
+          bright7 = "${colors.light.white}";
         };
       };
     };
