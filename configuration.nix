@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, home-manager, ... }:
 
 let
   user = "patwid";
@@ -29,8 +29,10 @@ in
   imports =
     [
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      home-manager.nixosModule
     ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
