@@ -272,10 +272,7 @@ in
       enable = true;
       config = {
         modifier = "Mod4";
-        fonts = { 
-          names = [ "sans-serif" ];
-          size = 9.0;
-        };
+        fonts.size = 9.0;
         input = {
           "type:keyboard" = {
             xkb_layout = "us";
@@ -323,15 +320,12 @@ in
           };
         };
         bars = [{
-          fonts = {
-            names = [ "sans-serif" ];
-            size = 9.0;
-          };
+          fonts.size = 9.0;
           statusCommand = "i3status";
           # stripWorkspaceNumbers = yes;
           position = "top";
           extraConfig = ''
-            separator_symbol "    "
+            separator_symbol "  "
             # Diable vertical scrolling (workspaces)
             bindsym button4 nop;
             bindsym button5 nop;
@@ -385,7 +379,7 @@ in
           position = 1;
           settings = {
             format = "";
-            format_above_threshold = "   %1min";
+            format_above_threshold = " %1min";
             max_threshold = 16;
           };
         };
@@ -394,13 +388,13 @@ in
           settings = {
             format = "";
             threshold_degraded = "5G";
-            format_degraded = "   < %available";
+            format_degraded = " < %available";
           };
         };
         "path_exists VPN" = {
           position = 3;
           settings = {
-            format = "   VPN";
+            format = " VPN";
             format_down = "";
             path = "/proc/sys/net/ipv4/conf/tun0";
           };
@@ -408,8 +402,8 @@ in
         "volume master" = {
           position = 4;
           settings = {
-            format = "   %volume";
-            format_muted = "   muted";
+            format = " %volume";
+            format_muted = " muted";
             device = "pulse";
           };
         };
@@ -419,10 +413,10 @@ in
             format = "%status %percentage";
             format_down = "No battery";
             integer_battery_capacity = true;
-            status_chr = "  ";
-            status_bat = "  ";
-            status_unk = "  ";
-            status_full = "  ";
+            status_chr = "";
+            status_bat = "";
+            status_unk = "";
+            status_full = "";
             path = "/sys/class/power_supply/BAT%d/uevent";
             low_threshold = 10;
           };
