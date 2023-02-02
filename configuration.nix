@@ -86,10 +86,8 @@ in
     libreoffice
     mpv
     networkmanager-openvpn
-    pass
     pavucontrol
     pinentry-gnome
-    qutebrowser
     ripgrep
     unzip
     wget
@@ -275,13 +273,6 @@ in
   home-manager.users.${user} = {
     # home.username = "${user}";
     # home.homeDirectory = "/home/${user}";
-
-    programs.bash.enable = true;
-
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
 
     wayland.windowManager.sway = {
       enable = true;
@@ -481,7 +472,15 @@ in
       };
     };
 
+    programs.bash.enable = true;
     programs.fzf.enable = true;
+    programs.password-store.enable = true;
+    programs.qutebrowser.enable = true;
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     xdg.userDirs = {
       enable = true;
