@@ -3,26 +3,16 @@
 let
   user = "patwid";
   colors = {
-    dark = {
-      black = "181818";
-      red = "ab4642";
-      green = "a1b56c";
-      yellow = "f7ca88";
-      blue = "7cafc2";
-      magenta = "ba8baf";
-      cyan = "86c1b9";
-      white = "d8d8d8";
-    };
-    light = {
-      black = "585858";
-      red = "ab4642";
-      green = "a1b56c";
-      yellow = "f7ca88";
-      blue = "7cafc2";
-      magenta = "ba8baf";
-      cyan = "86c1b9";
-      white = "f8f8f8";
-    };
+    black = "181818";
+    darkGrey = "585858";
+    lightGrey = "d8d8d8";
+    white = "f8f8f8";
+    red = "ab4642";
+    green = "a1b56c";
+    yellow = "f7ca88";
+    blue = "7cafc2";
+    magenta = "ba8baf";
+    cyan = "86c1b9";
   };
 in
 {
@@ -298,7 +288,7 @@ in
               scroll_factor = "2";
           };
         };
-        seat = { "*" = { hide_cursor = "when-typing enable"; }; };
+        seat."*".hide_cursor = "when-typing enable";
         colors = {
           background = "#ffffff";
           focused = {
@@ -437,11 +427,11 @@ in
         };
         "tztime date" = {
           position = 6;
-          settings = { format = "%a, %b %d"; };
+          settings.format = "%a, %b %d";
         };
         "tztime time" = {
           position = 7;
-          settings = { format = "%H:%M "; };
+          settings.format = "%H:%M ";
         };
       };
     };
@@ -449,27 +439,27 @@ in
     programs.foot = {
       enable = true;
       settings = {
-        main = { font = "monospace:size=7"; };
-        cursor = { blink = "yes"; };
+        main.font = "monospace:size=7";
+        cursor.blink = "yes";
         colors = {
-          foreground = "${colors.dark.white}";
-          background = "${colors.dark.black}";
-          regular0 = "${colors.dark.black}";
-          regular1 = "${colors.dark.red}";
-          regular2 = "${colors.dark.green}";
-          regular3 = "${colors.dark.yellow}";
-          regular4 = "${colors.dark.blue}";
-          regular5 = "${colors.dark.magenta}";
-          regular6 = "${colors.dark.cyan}";
-          regular7 = "${colors.dark.white}";
-          bright0 = "${colors.light.black}";
-          bright1 = "${colors.light.red}";
-          bright2 = "${colors.light.green}";
-          bright3 = "${colors.light.yellow}";
-          bright4 = "${colors.light.blue}";
-          bright5 = "${colors.light.magenta}";
-          bright6 = "${colors.light.cyan}";
-          bright7 = "${colors.light.white}";
+          foreground = "${colors.lightGrey}";
+          background = "${colors.black}";
+          regular0 = "${colors.black}";
+          regular1 = "${colors.red}";
+          regular2 = "${colors.green}";
+          regular3 = "${colors.yellow}";
+          regular4 = "${colors.blue}";
+          regular5 = "${colors.magenta}";
+          regular6 = "${colors.cyan}";
+          regular7 = "${colors.lightGrey}";
+          bright0 = "${colors.darkGrey}";
+          bright1 = "${colors.red}";
+          bright2 = "${colors.green}";
+          bright3 = "${colors.yellow}";
+          bright4 = "${colors.blue}";
+          bright5 = "${colors.magenta}";
+          bright6 = "${colors.cyan}";
+          bright7 = "${colors.white}";
         };
       };
     };
