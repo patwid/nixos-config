@@ -199,6 +199,7 @@ in
       user.name = "Patrick Widmer";
       user.email = "patrick.widmer@tbwnet.ch";
       core.editor = "nvim";
+      safe.directory = "/etc/nixos";
     };
     lfs.enable = true;
   };
