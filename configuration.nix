@@ -33,6 +33,11 @@ in
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
@@ -273,9 +278,10 @@ in
 
     programs.bash.enable = true;
 
-    programs.direnv.enable = true;
-    # programs.direnv.nix-direnv.enable = true;
-    # programs.direnv.nix-direnv.enableFlakes = true;
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
 
     wayland.windowManager.sway = {
       enable = true;
@@ -503,11 +509,5 @@ in
 
     home.stateVersion = "22.11";
   };
-
-  # XXX: nix.settings
-  # nix.extraOptions = ''
-  #   keep-outputs = true
-  #   keep-derivations = true
-  # '';
 
 }
