@@ -22,12 +22,11 @@ in
       home-manager.nixosModule
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nix.extraOptions = ''
-    keep-outputs = true
-    keep-derivations = true
-  '';
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    keep-outputs = true;
+    keep-derivations = true;
+  };
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
