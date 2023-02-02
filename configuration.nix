@@ -114,6 +114,9 @@ in
         exec sway >/dev/null 2>&1
       fi
     '';
+    shellAliases = {
+      dot = "git --git-dir=/home/${user}/.local/share/dotfiles --work-tree=/etc/nixos";
+    };
   };
 
   programs.neovim = {
@@ -173,7 +176,7 @@ in
     extraSessionCommands = ''
       # export QT_QPA_PLATFORM=wayland
       # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-      # export _JAVA_AWT_WM_NONREPARENTING=1
+      export _JAVA_AWT_WM_NONREPARENTING=1
     '';
   };
 
