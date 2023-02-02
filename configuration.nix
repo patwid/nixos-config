@@ -172,6 +172,7 @@ in
     extraPackages = with pkgs; [ 
       brightnessctl
       dmenu
+      dmenu-wayland
       grim 
       mako 
       slurp 
