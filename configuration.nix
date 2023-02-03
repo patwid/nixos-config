@@ -1,18 +1,18 @@
-{ config, pkgs, home-manager, ... }:
+{ config, lib, pkgs, home-manager, ... }:
 
 let
   user = "patwid";
   colors = {
-    black = "181818";
-    darkGrey = "585858";
-    lightGrey = "d8d8d8";
-    white = "f8f8f8";
-    red = "ab4642";
-    green = "a1b56c";
-    yellow = "f7ca88";
-    blue = "7cafc2";
-    magenta = "ba8baf";
-    cyan = "86c1b9";
+    black = "#181818";
+    darkGrey = "#585858";
+    lightGrey = "#d8d8d8";
+    white = "#f8f8f8";
+    red = "#ab4642";
+    green = "#a1b56c";
+    yellow = "#f7ca88";
+    blue = "#7cafc2";
+    magenta = "#ba8baf";
+    cyan = "#86c1b9";
   };
 in
 {
@@ -112,9 +112,6 @@ in
         exec sway >/dev/null 2>&1
       fi
     '';
-    shellAliases = {
-      dot = "git --git-dir=/home/${user}/.local/share/dotfiles --work-tree=/etc/nixos";
-    };
   };
 
   programs.neovim = {
@@ -190,6 +187,7 @@ in
       user.name = "Patrick Widmer";
       user.email = "patrick.widmer@tbwnet.ch";
       core.editor = "nvim";
+      safe.directory = "/etc/nixos";
     };
     lfs.enable = true;
   };
@@ -436,24 +434,24 @@ in
         main.font = "monospace:size=7";
         cursor.blink = "yes";
         colors = {
-          foreground = "${colors.lightGrey}";
-          background = "${colors.black}";
-          regular0 = "${colors.black}";
-          regular1 = "${colors.red}";
-          regular2 = "${colors.green}";
-          regular3 = "${colors.yellow}";
-          regular4 = "${colors.blue}";
-          regular5 = "${colors.magenta}";
-          regular6 = "${colors.cyan}";
-          regular7 = "${colors.lightGrey}";
-          bright0 = "${colors.darkGrey}";
-          bright1 = "${colors.red}";
-          bright2 = "${colors.green}";
-          bright3 = "${colors.yellow}";
-          bright4 = "${colors.blue}";
-          bright5 = "${colors.magenta}";
-          bright6 = "${colors.cyan}";
-          bright7 = "${colors.white}";
+          foreground = lib.strings.removePrefix "#" "${colors.lightGrey}";
+          background = lib.strings.removePrefix "#" "${colors.black}";
+          regular0 = lib.strings.removePrefix "#" "${colors.black}";
+          regular1 = lib.strings.removePrefix "#" "${colors.red}";
+          regular2 = lib.strings.removePrefix "#" "${colors.green}";
+          regular3 = lib.strings.removePrefix "#" "${colors.yellow}";
+          regular4 = lib.strings.removePrefix "#" "${colors.blue}";
+          regular5 = lib.strings.removePrefix "#" "${colors.magenta}";
+          regular6 = lib.strings.removePrefix "#" "${colors.cyan}";
+          regular7 = lib.strings.removePrefix "#" "${colors.lightGrey}";
+          bright0 = lib.strings.removePrefix "#" "${colors.darkGrey}";
+          bright1 = lib.strings.removePrefix "#" "${colors.red}";
+          bright2 = lib.strings.removePrefix "#" "${colors.green}";
+          bright3 = lib.strings.removePrefix "#" "${colors.yellow}";
+          bright4 = lib.strings.removePrefix "#" "${colors.blue}";
+          bright5 = lib.strings.removePrefix "#" "${colors.magenta}";
+          bright6 = lib.strings.removePrefix "#" "${colors.cyan}";
+          bright7 = lib.strings.removePrefix "#" "${colors.white}";
         };
       };
     };
