@@ -16,11 +16,10 @@ let
   };
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      home-manager.nixosModule
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    home-manager.nixosModule
+  ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
