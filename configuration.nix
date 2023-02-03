@@ -492,7 +492,7 @@ in
       maxCacheTtl = 60480000;
     };
 
-    home.stateVersion = "22.11";
+    home.stateVersion = "${config.system.stateVersion}";
   };
 
 }
