@@ -4,8 +4,12 @@ let
   user = "patwid";
   colors = {
     black = "#181818";
+    darkestGrey = "#282828";
+    darkerGrey = "#383838";
     darkGrey = "#585858";
-    lightGrey = "#d8d8d8";
+    lightGrey = "#b8b8b8";
+    lighterGrey = "#d8d8d8";
+    lightestGrey = "#e8e8e8";
     white = "#f8f8f8";
     red = "#ab4642";
     green = "#a1b56c";
@@ -267,6 +271,7 @@ in
     wayland.windowManager.sway = {
       enable = true;
       config = {
+        window.titlebar = true;
         modifier = "Mod4";
         fonts.size = 9.0;
         input = {
@@ -285,32 +290,32 @@ in
         };
         seat."*".hide_cursor = "when-typing enable";
         colors = {
-          background = "#ffffff";
+          background = "${colors.white}";
           focused = {
-            border = "#285577";
-            background = "#285577";
-            text = "#ffffff";
-            indicator = "#285577";
-            childBorder = "#285577";
+            border = "${colors.blue}";
+            background = "${colors.blue}";
+            text = "${colors.black}";
+            indicator = "${colors.blue}";
+            childBorder = "${colors.blue}";
           };
           focusedInactive = {
-            border = "#5f676a";
-            background = "#5f676a";
-            text = "#ffffff";
-            indicator = "#5f676a";
-            childBorder = "#5f676a";
+            border = "${colors.darkGrey}";
+            background = "${colors.darkGrey}";
+            text = "${colors.black}";
+            indicator = "${colors.darkGrey}";
+            childBorder = "${colors.darkGrey}";
           };
           unfocused = {
-            border = "#222222";
-            background = "#222222";
-            text = "#888888";
-            indicator = "#222222";
-            childBorder = "#222222";
+            border = "${colors.darkestGrey}";
+            background = "${colors.darkestGrey}";
+            text = "${colors.lightGrey}";
+            indicator = "${colors.darkestGrey}";
+            childBorder = "${colors.darkestGrey}";
           };
           placeholder = {
             border = "#0c0c0c";
             background = "#0c0c0c";
-            text = "#ffffff";
+            text = "${colors.white}";
             indicator = "#0c0c0c";
             childBorder = "#0c0c0c";
           };
@@ -330,37 +335,41 @@ in
             bindsym button7 nop;
           '';
           colors = {
-            background = "#000000";
-            statusline = "#ffffff";
-            separator = "#ffffff";
+            background = "${colors.black}";
+            statusline = "${colors.white}";
+            separator = "${colors.white}";
             focusedWorkspace = {
-              border = "#000000";
-              background = "#285577";
-              text = "#ffffff";
+              border = "${colors.black}";
+              background = "${colors.blue}";
+              text = "${colors.black}";
             };
             activeWorkspace = {
-              border = "#000000";
-              background = "#5f676a";
-              text = "#ffffff";
+              border = "${colors.black}";
+              background = "${colors.darkGrey}";
+              text = "${colors.black}";
             };
             inactiveWorkspace = {
-              border = "#000000";
-              background = "#222222";
-              text = "#888888";
+              border = "${colors.black}";
+              background = "${colors.darkestGrey}";
+              text = "${colors.lightGrey}";
             };
             urgentWorkspace = {
-              border = "#000000";
-              background = "#900000";
-              text = "#ffffff";
+              border = "${colors.black}";
+              background = "${colors.red}";
+              text = "${colors.black}";
             };
             bindingMode = {
-              border = "#000000";
-              background = "#900000";
-              text = "#ffffff";
+              border = "${colors.black}";
+              background = "${colors.red}";
+              text = "${colors.black}";
             };
           };
         }];
       };
+      extraConfig = ''
+        titlebar_border_thickness 0
+        titlebar_padding 2
+      '';
     };
 
     programs.i3status = {
@@ -434,7 +443,7 @@ in
         main.font = "monospace:size=7";
         cursor.blink = "yes";
         colors = {
-          foreground = lib.strings.removePrefix "#" "${colors.lightGrey}";
+          foreground = lib.strings.removePrefix "#" "${colors.lighterGrey}";
           background = lib.strings.removePrefix "#" "${colors.black}";
           regular0 = lib.strings.removePrefix "#" "${colors.black}";
           regular1 = lib.strings.removePrefix "#" "${colors.red}";
@@ -443,7 +452,7 @@ in
           regular4 = lib.strings.removePrefix "#" "${colors.blue}";
           regular5 = lib.strings.removePrefix "#" "${colors.magenta}";
           regular6 = lib.strings.removePrefix "#" "${colors.cyan}";
-          regular7 = lib.strings.removePrefix "#" "${colors.lightGrey}";
+          regular7 = lib.strings.removePrefix "#" "${colors.lighterGrey}";
           bright0 = lib.strings.removePrefix "#" "${colors.darkGrey}";
           bright1 = lib.strings.removePrefix "#" "${colors.red}";
           bright2 = lib.strings.removePrefix "#" "${colors.green}";
