@@ -378,6 +378,9 @@ in
       enableDefault = false;
       general = {
         colors = true;
+        color_good = "${colors.green}";
+        color_degraded = "${colors.yellow}";
+        color_bad = "${colors.red}";
         interval = 5;
       };
       modules = {
