@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, ... }:
+{ config, lib, pkgs, home-manager, menu, ... }:
 
 let
   user = "patwid";
@@ -91,6 +91,8 @@ in
     yt-dlp
     zathura
     zip
+
+    menu.packages.x86_64-linux.menu
   ];
 
   fonts.fonts = with pkgs; [
@@ -280,6 +282,7 @@ in
       config = {
         modifier = "Mod4";
         fonts.size = 9.0;
+        menu = "dmenu_path | menu | xargs swaymsg exec --";
         input = {
           "type:keyboard" = {
             xkb_layout = "us";
