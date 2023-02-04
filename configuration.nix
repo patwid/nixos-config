@@ -302,16 +302,16 @@ in
           focusedInactive = {
             border = "${colors.darkGrey}";
             background = "${colors.darkGrey}";
-            text = "${colors.black}";
+            text = "${colors.lightGrey}";
             indicator = "${colors.darkGrey}";
             childBorder = "${colors.darkGrey}";
           };
           unfocused = {
-            border = "${colors.darkestGrey}";
-            background = "${colors.darkestGrey}";
+            border = "${colors.darkerGrey}";
+            background = "${colors.darkerGrey}";
             text = "${colors.lightGrey}";
-            indicator = "${colors.darkestGrey}";
-            childBorder = "${colors.darkestGrey}";
+            indicator = "${colors.darkerGrey}";
+            childBorder = "${colors.darkerGrey}";
           };
           placeholder = {
             border = "${colors.black}";
@@ -347,11 +347,11 @@ in
             activeWorkspace = {
               border = "${colors.black}";
               background = "${colors.darkGrey}";
-              text = "${colors.black}";
+              text = "${colors.lightGrey}";
             };
             inactiveWorkspace = {
               border = "${colors.black}";
-              background = "${colors.darkestGrey}";
+              background = "${colors.darkerGrey}";
               text = "${colors.lightGrey}";
             };
             urgentWorkspace = {
@@ -469,10 +469,127 @@ in
       };
     };
 
+    programs.qutebrowser = {
+      enable = true;
+      searchEngines = {
+        DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
+        aw = "https://wiki.archlinux.org/?search={}";
+        g = "https://www.google.com/search?q={}";
+        yt = "https://youtube.com/results?search_query={}";
+      };
+      settings = {
+        url.start_pages = [ "about:blank" ];
+        url.default_page = "about:blank";
+        tabs.mousewheel_switching = false;
+        tabs.favicons.show = "pinned";
+        scrolling.smooth = true;
+        # content.cookies.store = false;
+        colors = {
+          completion = {
+            category.bg = "${colors.black}";
+            category.border.bottom = "${colors.black}";
+            category.border.top = "${colors.black}";
+            category.fg = "${colors.lightGrey}";
+            even.bg = "${colors.black}";
+            fg = "${colors.lightGrey}";
+            item.selected.bg = "${colors.blue}";
+            item.selected.border.bottom = "${colors.blue}";
+            item.selected.border.top = "${colors.blue}";
+            item.selected.fg = "${colors.black}";
+            item.selected.match.fg = "${colors.black}";
+            match.fg = "${colors.lightGrey}";
+            odd.bg = "${colors.black}";
+            scrollbar.bg = "${colors.black}";
+            scrollbar.fg = "${colors.lightGrey}";
+          };
+          downloads = {
+            bar.bg = "${colors.black}";
+            error.bg = "${colors.red}";
+            error.fg = "${colors.black}";
+            start.bg = "${colors.yellow}";
+            start.fg = "${colors.black}";
+            stop.bg = "${colors.green}";
+            stop.fg = "${colors.black}";
+          };
+          hints.bg = "${colors.yellow}";
+          hints.fg = "${colors.black}";
+          hints.match.fg = "${colors.darkGrey}";
+          # keyhint.bg = 'rgba(0, 0, 0, 80%)'
+          keyhint.fg = "${colors.white}";
+          keyhint.suffix.fg = "${colors.white}";
+          messages = {
+            error.bg = "${colors.red}";
+            error.border = "${colors.red}";
+            error.fg = "${colors.black}";
+            info.bg = "${colors.black}";
+            info.border = "${colors.black}";
+            info.fg = "${colors.white}";
+            warning.bg = "${colors.yellow}";
+            warning.border = "${colors.yellow}";
+            warning.fg = "${colors.black}";
+          };
+          prompts = {
+            bg = "${colors.black}";
+            border = "${colors.black}";
+            fg = "${colors.white}";
+            selected.bg = "${colors.blue}";
+            selected.fg = "${colors.black}";
+          };
+          statusbar = {
+            caret.bg = "${colors.magenta}";
+            caret.fg = "${colors.black}";
+            caret.selection.bg = "${colors.magenta}";
+            caret.selection.fg = "${colors.black}";
+            command.bg = "${colors.black}";
+            command.fg = "${colors.white}";
+            command.private.bg = "${colors.darkerGrey}";
+            command.private.fg = "${colors.white}";
+            insert.bg = "${colors.green}";
+            insert.fg = "${colors.black}";
+            normal.bg = "${colors.black}";
+            normal.fg = "${colors.white}";
+            passthrough.bg = "${colors.blue}";
+            passthrough.fg = "${colors.black}";
+            private.bg = "${colors.darkerGrey}";
+            private.fg = "${colors.white}";
+            #progress.bg = "${colors.black}";'white'
+            url.error.fg = "${colors.red}";
+            url.fg = "${colors.white}";
+            url.hover.fg = "${colors.blue}";
+            url.success.http.fg = "${colors.white}";
+            url.success.https.fg = "${colors.green}";
+            url.warn.fg = "${colors.yellow}";
+          };
+          tabs = {
+            bar.bg = "${colors.black}";
+            even.bg = "${colors.darkerGrey}";
+            even.fg = "${colors.lightGrey}";
+            indicator.error = "${colors.red}";
+            indicator.start = "${colors.black}";
+            indicator.stop = "${colors.green}";
+            odd.bg = "${colors.darkGrey}";
+            odd.fg = "${colors.lightGrey}";
+            pinned.even.bg = "${colors.darkerGrey}";
+            pinned.even.fg = "${colors.lightGrey}";
+            pinned.odd.bg = "${colors.darkGrey}";
+            pinned.odd.fg = "${colors.lightGrey}";
+            pinned.selected.even.bg = "${colors.blue}";
+            pinned.selected.even.fg = "${colors.black}";
+            pinned.selected.odd.bg = "${colors.blue}";
+            pinned.selected.odd.fg = "${colors.black}";
+            selected.even.bg = "${colors.blue}";
+            selected.even.fg = "${colors.black}";
+            selected.odd.bg = "${colors.blue}";
+            selected.odd.fg = "${colors.black}";
+          };
+          webpage.bg = "${colors.white}";
+        };
+      };
+    };
+
     programs.bash.enable = true;
     programs.fzf.enable = true;
     programs.password-store.enable = true;
-    programs.qutebrowser.enable = true;
 
     programs.direnv = {
       enable = true;
