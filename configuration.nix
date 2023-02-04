@@ -72,6 +72,7 @@ in
     curl
     dbeaver
     docker-compose
+    gnome.adwaita-icon-theme
     imagemagick
     jetbrains.idea-community
     jq
@@ -108,6 +109,7 @@ in
 
   environment.variables = {
     EDITOR = "nvim";
+    XCURSOR_THEME = "Adwaita";
   };
 
   programs.bash = {
@@ -476,6 +478,7 @@ in
         aw = "https://wiki.archlinux.org/?search={}";
         g = "https://www.google.com/search?q={}";
         yt = "https://youtube.com/results?search_query={}";
+        np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       };
       settings = {
         url.start_pages = [ "about:blank" ];
