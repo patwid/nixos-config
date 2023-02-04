@@ -291,25 +291,25 @@ in
         colors = {
           background = "${colors.white}";
           focused = {
-            border = "${colors.darkerGrey}";
-            background = "${colors.darkerGrey}";
-            text = "${colors.white}";
-            indicator = "${colors.darkerGrey}";
-            childBorder = "${colors.darkerGrey}";
+            border = "${colors.blue}";
+            background = "${colors.blue}";
+            text = "${colors.black}";
+            indicator = "${colors.blue}";
+            childBorder = "${colors.blue}";
           };
           focusedInactive = {
-            border = "${colors.darkerGrey}";
-            background = "${colors.darkerGrey}";
-            text = "${colors.lightGrey}";
-            indicator = "${colors.darkerGrey}";
-            childBorder = "${colors.darkerGrey}";
+            border = "${colors.darkGrey}";
+            background = "${colors.darkGrey}";
+            text = "${colors.black}";
+            indicator = "${colors.darkGrey}";
+            childBorder = "${colors.darkGrey}";
           };
           unfocused = {
-            border = "${colors.darkerGrey}";
-            background = "${colors.darkerGrey}";
+            border = "${colors.darkestGrey}";
+            background = "${colors.darkestGrey}";
             text = "${colors.lightGrey}";
-            indicator = "${colors.darkerGrey}";
-            childBorder = "${colors.darkerGrey}";
+            indicator = "${colors.darkestGrey}";
+            childBorder = "${colors.darkestGrey}";
           };
           placeholder = {
             border = "${colors.black}";
@@ -339,17 +339,17 @@ in
             separator = "${colors.white}";
             focusedWorkspace = {
               border = "${colors.black}";
-              background = "${colors.darkerGrey}";
-              text = "${colors.white}";
+              background = "${colors.blue}";
+              text = "${colors.black}";
             };
             activeWorkspace = {
               border = "${colors.black}";
-              background = "${colors.black}";
-              text = "${colors.lightGrey}";
+              background = "${colors.darkGrey}";
+              text = "${colors.black}";
             };
             inactiveWorkspace = {
               border = "${colors.black}";
-              background = "${colors.black}";
+              background = "${colors.darkestGrey}";
               text = "${colors.lightGrey}";
             };
             urgentWorkspace = {
