@@ -307,11 +307,11 @@ in
             childBorder = "${colors.darkGrey}";
           };
           unfocused = {
-            border = "${colors.darkerGrey}";
-            background = "${colors.darkerGrey}";
+            border = "${colors.darkestGrey}";
+            background = "${colors.darkestGrey}";
             text = "${colors.lightGrey}";
-            indicator = "${colors.darkerGrey}";
-            childBorder = "${colors.darkerGrey}";
+            indicator = "${colors.darkestGrey}";
+            childBorder = "${colors.darkestGrey}";
           };
           placeholder = {
             border = "${colors.black}";
@@ -351,7 +351,7 @@ in
             };
             inactiveWorkspace = {
               border = "${colors.black}";
-              background = "${colors.darkerGrey}";
+              background = "${colors.darkestGrey}";
               text = "${colors.lightGrey}";
             };
             urgentWorkspace = {
@@ -542,7 +542,7 @@ in
             caret.selection.fg = "${colors.black}";
             command.bg = "${colors.black}";
             command.fg = "${colors.white}";
-            command.private.bg = "${colors.darkerGrey}";
+            command.private.bg = "${colors.darkestGrey}";
             command.private.fg = "${colors.white}";
             insert.bg = "${colors.green}";
             insert.fg = "${colors.black}";
@@ -550,7 +550,7 @@ in
             normal.fg = "${colors.white}";
             passthrough.bg = "${colors.blue}";
             passthrough.fg = "${colors.black}";
-            private.bg = "${colors.darkerGrey}";
+            private.bg = "${colors.darkestGrey}";
             private.fg = "${colors.white}";
             #progress.bg = "${colors.black}";'white'
             url.error.fg = "${colors.red}";
@@ -562,14 +562,14 @@ in
           };
           tabs = {
             bar.bg = "${colors.black}";
-            even.bg = "${colors.darkerGrey}";
+            even.bg = "${colors.darkestGrey}";
             even.fg = "${colors.lightGrey}";
             indicator.error = "${colors.red}";
             indicator.start = "${colors.black}";
             indicator.stop = "${colors.green}";
             odd.bg = "${colors.darkGrey}";
             odd.fg = "${colors.lightGrey}";
-            pinned.even.bg = "${colors.darkerGrey}";
+            pinned.even.bg = "${colors.darkestGrey}";
             pinned.even.fg = "${colors.lightGrey}";
             pinned.odd.bg = "${colors.darkGrey}";
             pinned.odd.fg = "${colors.lightGrey}";
