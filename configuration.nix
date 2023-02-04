@@ -211,6 +211,8 @@ in
     pulse.enable = true;
   };
 
+  services.tlp.enable = true;
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
