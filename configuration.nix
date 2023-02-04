@@ -436,6 +436,7 @@ in
             status_full = "";
             path = "/sys/class/power_supply/BAT%d/uevent";
             low_threshold = 10;
+            threshold_type = "percentage";
           };
         };
         "tztime date" = {
