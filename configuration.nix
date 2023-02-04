@@ -30,18 +30,18 @@ in
     keep-outputs = true;
     keep-derivations = true;
   };
-  
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  
+
   networking.hostName = "laptop";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
-  
+
   time.timeZone = "Europe/Zurich";
-  
+
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_CH.UTF-8";
@@ -54,9 +54,9 @@ in
     LC_TELEPHONE = "de_CH.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-  
+
   console.keyMap = "us";
-  
+
   users.users.${user} = {
     isNormalUser = true;
     description = "${user}";
@@ -131,12 +131,12 @@ in
         set hidden
         set laststatus=1
         set shortmess+=I
-        
+
         augroup Colors
           autocmd!
           autocmd Syntax * call SetColors()
         augroup END
-        
+
         function! SetColors() abort
           if &background ==# "dark"
             highlight Directory ctermfg=cyan
@@ -145,7 +145,7 @@ in
             highlight PreProc ctermfg=blue
           endif
           highlight WinSeparator ctermbg=None
-        endfunction 
+        endfunction
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [ editorconfig-vim fugitive vim-nix ];
@@ -161,16 +161,16 @@ in
 
   programs.sway = {
     enable = true;
-    extraPackages = with pkgs; [ 
+    extraPackages = with pkgs; [
       brightnessctl
       dmenu
       dmenu-wayland
-      grim 
-      mako 
-      slurp 
-      swaybg 
-      swaylock 
-      wl-clipboard 
+      grim
+      mako
+      slurp
+      swaybg
+      swaylock
+      wl-clipboard
     ];
     extraSessionCommands = ''
       # export QT_QPA_PLATFORM=wayland
@@ -248,7 +248,7 @@ in
       options = [ "nfsvers=3" ];
     };
   };
-  
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
