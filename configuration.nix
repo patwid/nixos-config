@@ -69,6 +69,7 @@ in
   environment.systemPackages = with pkgs; [
     aerc
     chromium
+    citrix_workspace
     curl
     dbeaver
     docker-compose
