@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, menu, ... }:
+{ config, lib, pkgs, home-manager, menu, pass-menu, ... }:
 
 let
   user = "patwid";
@@ -93,6 +93,7 @@ in {
     zip
 
     menu.packages.x86_64-linux.menu
+    pass-menu.packages.x86_64-linux.pass-menu
   ];
 
   fonts.fonts = with pkgs; [
@@ -394,7 +395,7 @@ in {
             criteria.app_id = "^pavucontrol$";
           }];
           keybindings = lib.mkOptionDefault {
-            "${modifier}+p" = "exec passmenu";
+            "${modifier}+p" = "exec pass-menu";
             "--release Print" = "exec grimshot --notify save output";
             "--release Shift+Print" = "exec grimshot --notify save area";
             "--release Ctrl+Print" = "exec grimshot --notify save active";

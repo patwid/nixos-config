@@ -8,11 +8,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1675462931,
-        "narHash": "sha256-JiOUSERBtA1lN/s9YTKGZoZ3XUicHDwr+C8swaPSh3M=",
+        "lastModified": 1675595366,
+        "narHash": "sha256-WoQkwaaoZqrhWpIrMxA+2j8CgxgyvjHzCyEZAQu06rQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e2c1756e3ae001ca8696912016dd31cb1503ccf3",
+        "rev": "9621e9ab80a038cd11c7cfcae4df46a59d62b16a",
         "type": "github"
       },
       "original": {
@@ -28,8 +28,26 @@
         ]
       },
       "locked": {
-        "lastModified": 1675585950,
-        "narHash": "sha256-oO7ZsUlmGOnidskrqeCCA9rTJxnkQF8hbZT068bh1Aw=",
+        "lastModified": 1675603031,
+        "narHash": "sha256-h90z4AjH0QIqvQgET5UkwGad9Ft4ssl0UHiCrbD0Uco=",
+        "path": "/etc/nixos/pkgs/menu",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/pkgs/menu",
+        "type": "path"
+      }
+    },
+    "menu_2": {
+      "inputs": {
+        "nixpkgs": [
+          "pass-menu",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675603031,
+        "narHash": "sha256-h90z4AjH0QIqvQgET5UkwGad9Ft4ssl0UHiCrbD0Uco=",
         "path": "/etc/nixos/pkgs/menu",
         "type": "path"
       },
@@ -54,11 +72,30 @@
         "type": "github"
       }
     },
+    "pass-menu": {
+      "inputs": {
+        "menu": "menu_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675604146,
+        "narHash": "sha256-7cGhfFqbwV17k73L808XzrSGUEZ4krDbC/NCVKmaRgk=",
+        "path": "/etc/nixos/pkgs/pass-menu",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/pkgs/pass-menu",
+        "type": "path"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "menu": "menu",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pass-menu": "pass-menu"
       }
     },
     "utils": {

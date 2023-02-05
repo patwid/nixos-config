@@ -6,7 +6,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
       in {
         packages.x86_64-linux.menu = pkgs.stdenv.mkDerivation {
-          name = "menu";
+          pname = "menu";
           version = "1.0.0";
           src = ./menu.sh;
 
