@@ -448,7 +448,7 @@ in
         };
         "tztime date" = {
           position = 6;
-          settings.format = "%a, %b %d";
+          settings.format = "%a, %d %b";
         };
         "tztime time" = {
           position = 7;
