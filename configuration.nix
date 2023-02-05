@@ -175,6 +175,7 @@ in
       grim
       mako
       slurp
+      sway-contrib.grimshot
       swaybg
       swaylock
       wl-clipboard
@@ -492,6 +493,7 @@ in
         url.default_page = "about:blank";
         tabs.mousewheel_switching = false;
         tabs.favicons.show = "pinned";
+        tabs.indicator.width = 0;
         scrolling.smooth = true;
         # content.cookies.store = false;
         colors = {
@@ -563,12 +565,12 @@ in
             private.bg = "${colors.darkestGrey}";
             private.fg = "${colors.white}";
             #progress.bg = "${colors.black}";'white'
-            url.error.fg = "${colors.red}";
+            url.error.fg = "${colors.white}";
             url.fg = "${colors.white}";
-            url.hover.fg = "${colors.blue}";
+            url.hover.fg = "${colors.white}";
             url.success.http.fg = "${colors.white}";
-            url.success.https.fg = "${colors.green}";
-            url.warn.fg = "${colors.yellow}";
+            url.success.https.fg = "${colors.white}";
+            url.warn.fg = "${colors.white}";
           };
           tabs = {
             bar.bg = "${colors.black}";
