@@ -5,18 +5,18 @@
       let
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
       in {
-        packages.x86_64-linux.passmenu_path = pkgs.stdenv.mkDerivation {
-          pname = "passmenu_path";
+        packages.x86_64-linux.menu_pass = pkgs.stdenv.mkDerivation {
+          pname = "menu_pass";
           version = "1.0.0";
-          src = ./passmenu_path.sh;
+          src = ./menu_pass.sh;
 
           dontUnpack = true;
           dontBuild = true;
           dontConfigure = true;
 
           installPhase = with pkgs; ''
-            install -Dm 0755 $src $out/bin/passmenu_path
-            wrapProgram $out/bin/passmenu_path --set PATH \
+            install -Dm 0755 $src $out/bin/menu_pass
+            wrapProgram $out/bin/menu_pass --set PATH \
               "${
                 lib.makeBinPath [
                   bash
@@ -32,6 +32,6 @@
           ];
         };
 
-        packages.x86_64-linux.default = self.packages.x86_64-linux.passmenu_path;
+        packages.x86_64-linux.default = self.packages.x86_64-linux.menu_pass;
     };
 }

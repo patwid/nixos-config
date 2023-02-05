@@ -7,8 +7,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     menu.url = path:/etc/nixos/pkgs/menu;
     menu.inputs.nixpkgs.follows = "nixpkgs";
-    passmenu_path.url = path:/etc/nixos/pkgs/passmenu_path;
-    passmenu_path.inputs.nixpkgs.follows = "nixpkgs";
+    menu_pass.url = path:/etc/nixos/pkgs/menu_pass;
+    menu_pass.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, ... }@attrs: {

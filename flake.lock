@@ -38,6 +38,23 @@
         "type": "path"
       }
     },
+    "menu_pass": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675627165,
+        "narHash": "sha256-k7/JEGQUW9sQwLkompai8QmY6SC0vknTfXV8o+pnUo0=",
+        "path": "/etc/nixos/pkgs/menu_pass",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/pkgs/menu_pass",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1675545634,
@@ -54,29 +71,12 @@
         "type": "github"
       }
     },
-    "passmenu_path": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1675605530,
-        "narHash": "sha256-d28Os8SYLZ9xFgphi5qUw9XPe9XWAsrYBC5Ab+NrIng=",
-        "path": "/etc/nixos/pkgs/passmenu_path",
-        "type": "path"
-      },
-      "original": {
-        "path": "/etc/nixos/pkgs/passmenu_path",
-        "type": "path"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "menu": "menu",
-        "nixpkgs": "nixpkgs",
-        "passmenu_path": "passmenu_path"
+        "menu_pass": "menu_pass",
+        "nixpkgs": "nixpkgs"
       }
     },
     "utils": {

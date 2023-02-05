@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, menu, passmenu_path, ... }:
+{ config, lib, pkgs, home-manager, menu, menu_pass, ... }:
 
 let
   user = "patwid";
@@ -91,9 +91,6 @@ in {
     yt-dlp
     zathura
     zip
-
-    menu.packages.x86_64-linux.menu
-    passmenu_path.packages.x86_64-linux.passmenu_path
   ];
 
   fonts.fonts = with pkgs; [
@@ -179,6 +176,9 @@ in {
       swaybg
       swaylock
       wl-clipboard
+
+      menu.packages.x86_64-linux.menu
+      menu_pass.packages.x86_64-linux.menu_pass
     ];
     extraSessionCommands = ''
       export QT_QPA_PLATFORM=wayland
@@ -394,7 +394,7 @@ in {
             criteria.app_id = "^pavucontrol$";
           }];
           keybindings = lib.mkOptionDefault {
-            "${modifier}+p" = "exec passmenu_path | menu | xargs pass show --clip";
+            "${modifier}+p" = "exec menu_pass | menu | xargs pass show --clip";
             "--release Print" = "exec grimshot --notify save output";
             "--release Shift+Print" = "exec grimshot --notify save area";
             "--release Ctrl+Print" = "exec grimshot --notify save active";
