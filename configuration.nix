@@ -77,6 +77,7 @@ in
     docker-compose
     gnome.adwaita-icon-theme
     imagemagick
+    imv
     jetbrains.idea-community
     jq
     libreoffice
@@ -284,109 +285,133 @@ in
     # home.username = "${user}";
     # home.homeDirectory = "/home/${user}";
 
-    wayland.windowManager.sway = {
-      enable = true;
-      config = {
+    wayland.windowManager.sway =
+      let
         modifier = "Mod4";
-        fonts.size = 9.0;
-        menu = "dmenu_path | menu | xargs swaymsg exec --";
-        input = {
-          "type:keyboard" = {
-            xkb_layout = "us";
-            xkb_variant = "altgr-intl";
-            xkb_options = "caps:swapescape";
-            xkb_numlock = "enabled";
-            repeat_delay = "200";
-            repeat_rate = "30";
-          };
-          "type:mouse" = {
-              pointer_accel = "0";
-              scroll_factor = "2";
-          };
-        };
-        seat."*".hide_cursor = "when-typing enable";
-        colors = {
-          background = "${colors.white}";
-          focused = {
-            border = "${colors.blue}";
-            background = "${colors.blue}";
-            text = "${colors.black}";
-            indicator = "${colors.blue}";
-            childBorder = "${colors.blue}";
-          };
-          focusedInactive = {
-            border = "${colors.darkGrey}";
-            background = "${colors.darkGrey}";
-            text = "${colors.lightGrey}";
-            indicator = "${colors.darkGrey}";
-            childBorder = "${colors.darkGrey}";
-          };
-          unfocused = {
-            border = "${colors.darkestGrey}";
-            background = "${colors.darkestGrey}";
-            text = "${colors.lightGrey}";
-            indicator = "${colors.darkestGrey}";
-            childBorder = "${colors.darkestGrey}";
-          };
-          placeholder = {
-            border = "${colors.black}";
-            background = "${colors.black}";
-            text = "${colors.white}";
-            indicator = "${colors.black}";
-            childBorder = "${colors.black}";
-          };
-        };
-        bars = [{
+      in {
+        enable = true;
+        config = {
+          modifier = "${modifier}";
           fonts.size = 9.0;
-          statusCommand = "i3status";
-          # stripWorkspaceNumbers = yes;
-          position = "top";
-          extraConfig = ''
-            separator_symbol "  "
-            # Diable vertical scrolling (workspaces)
-            bindsym button4 nop;
-            bindsym button5 nop;
-            # Diable horizontal scrolling (workspaces)
-            bindsym button6 nop;
-            bindsym button7 nop;
-          '';
+          menu = "dmenu_path | menu | xargs swaymsg exec --";
+          input = {
+            "type:keyboard" = {
+              xkb_layout = "us";
+              xkb_variant = "altgr-intl";
+              xkb_options = "caps:swapescape";
+              xkb_numlock = "enabled";
+              repeat_delay = "200";
+              repeat_rate = "30";
+            };
+            "type:mouse" = {
+                pointer_accel = "0";
+                scroll_factor = "2";
+            };
+          };
+          seat."*".hide_cursor = "when-typing enable";
           colors = {
-            background = "${colors.black}";
-            statusline = "${colors.white}";
-            separator = "${colors.white}";
-            focusedWorkspace = {
-              border = "${colors.black}";
+            background = "${colors.white}";
+            focused = {
+              border = "${colors.blue}";
               background = "${colors.blue}";
               text = "${colors.black}";
+              indicator = "${colors.blue}";
+              childBorder = "${colors.blue}";
             };
-            activeWorkspace = {
-              border = "${colors.black}";
+            focusedInactive = {
+              border = "${colors.darkGrey}";
               background = "${colors.darkGrey}";
               text = "${colors.lightGrey}";
+              indicator = "${colors.darkGrey}";
+              childBorder = "${colors.darkGrey}";
             };
-            inactiveWorkspace = {
-              border = "${colors.black}";
+            unfocused = {
+              border = "${colors.darkestGrey}";
               background = "${colors.darkestGrey}";
               text = "${colors.lightGrey}";
+              indicator = "${colors.darkestGrey}";
+              childBorder = "${colors.darkestGrey}";
             };
-            urgentWorkspace = {
+            placeholder = {
               border = "${colors.black}";
-              background = "${colors.red}";
-              text = "${colors.black}";
-            };
-            bindingMode = {
-              border = "${colors.black}";
-              background = "${colors.red}";
-              text = "${colors.black}";
+              background = "${colors.black}";
+              text = "${colors.white}";
+              indicator = "${colors.black}";
+              childBorder = "${colors.black}";
             };
           };
-        }];
+          bars = [{
+            fonts.size = 9.0;
+            statusCommand = "i3status";
+            # stripWorkspaceNumbers = yes;
+            position = "top";
+            extraConfig = ''
+              separator_symbol "  "
+              # Diable vertical scrolling (workspaces)
+              bindsym button4 nop;
+              bindsym button5 nop;
+              # Diable horizontal scrolling (workspaces)
+              bindsym button6 nop;
+              bindsym button7 nop;
+            '';
+            colors = {
+              background = "${colors.black}";
+              statusline = "${colors.white}";
+              separator = "${colors.white}";
+              focusedWorkspace = {
+                border = "${colors.black}";
+                background = "${colors.blue}";
+                text = "${colors.black}";
+              };
+              activeWorkspace = {
+                border = "${colors.black}";
+                background = "${colors.darkGrey}";
+                text = "${colors.lightGrey}";
+              };
+              inactiveWorkspace = {
+                border = "${colors.black}";
+                background = "${colors.darkestGrey}";
+                text = "${colors.lightGrey}";
+              };
+              urgentWorkspace = {
+                border = "${colors.black}";
+                background = "${colors.red}";
+                text = "${colors.black}";
+              };
+              bindingMode = {
+                border = "${colors.black}";
+                background = "${colors.red}";
+                text = "${colors.black}";
+              };
+            };
+          }];
+          floating.criteria = [
+            { app_id = "^menu$"; }
+            { app_id = "^pavucontrol$"; }
+            # { class = "^jetbrains-.*$"; title = "^win0$"; }
+          ];
+          window.commands = [{
+            command = "resize set 640 480, border normal";
+            criteria.app_id = "^pavucontrol$";
+          }];
+          keybindings = lib.mkOptionDefault {
+            "${modifier}+p" = "exec passmenu";
+            "--release Print" = "exec grimshot --notify save output";
+            "--release Shift+Print" = "exec grimshot --notify save area";
+            "--release Ctrl+Print" = "exec grimshot --notify save active";
+            # Diable vertical scrolling (window tabs)
+            "button4" = "nop";
+            "button5" = "nop";
+            # Diable horizontal scrolling (window tabs)
+            "button6" = "nop";
+            "button7" = "nop";
+          };
+        };
+        extraConfig = ''
+          titlebar_border_thickness 0
+          titlebar_padding 2
+        '';
       };
-      extraConfig = ''
-        titlebar_border_thickness 0
-        titlebar_padding 2
-      '';
-    };
 
     programs.i3status = {
       enable = true;
