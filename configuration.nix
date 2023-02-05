@@ -67,9 +67,6 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.packageOverrides = super: {
-    menu = menu.packages.x86_64-linux.menu;
-  };
 
   environment.systemPackages = with pkgs; [
     aerc
@@ -95,7 +92,7 @@ in
     zathura
     zip
 
-    pkgs.menu
+    menu.packages.x86_64-linux.menu
   ];
 
   fonts.fonts = with pkgs; [
