@@ -181,8 +181,8 @@ in
       wl-clipboard
     ];
     extraSessionCommands = ''
-      # export QT_QPA_PLATFORM=wayland
-      # export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+      export QT_QPA_PLATFORM=wayland
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       export _JAVA_AWT_WM_NONREPARENTING=1
     '';
   };
@@ -245,22 +245,22 @@ in
     }];
   };
 
-  fileSystems = {
-    "/home/${user}/music" = {
-      device = "192.168.0.3:/mnt/tank/media/music";
-      fsType = "nfs";
-      options = [ "nfsvers=3" ];
-    };
-    "/home/${user}/videos/movies" = {
-      device = "192.168.0.3:/mnt/tank/media/movies";
-      fsType = "nfs";
-      options = [ "nfsvers=3" ];
-    };
-    "/home/${user}/videos/tv_shows" = {
-      device = "192.168.0.3:/mnt/tank/media/tv_shows";
-      fsType = "nfs";
-      options = [ "nfsvers=3" ];
-    };
+  fileSystems."/home/${user}/music" = {
+    device = "192.168.0.3:/mnt/tank/media/music";
+    fsType = "nfs";
+    options = [ "nfsvers=3" ];
+  };
+
+  fileSystems."/home/${user}/videos/movies" = {
+    device = "192.168.0.3:/mnt/tank/media/movies";
+    fsType = "nfs";
+    options = [ "nfsvers=3" ];
+  };
+
+  fileSystems."/home/${user}/videos/tv_shows" = {
+    device = "192.168.0.3:/mnt/tank/media/tv_shows";
+    fsType = "nfs";
+    options = [ "nfsvers=3" ];
   };
 
   # Open ports in the firewall.
@@ -567,7 +567,7 @@ in
             caret.selection.fg = "${colors.white}";
             command.bg = "${colors.black}";
             command.fg = "${colors.white}";
-            command.private.bg = "${colors.darkestGrey}";
+            command.private.bg = "${colors.darkerGrey}";
             command.private.fg = "${colors.white}";
             insert.bg = "${colors.black}";
             insert.fg = "${colors.white}";
@@ -575,9 +575,9 @@ in
             normal.fg = "${colors.white}";
             passthrough.bg = "${colors.black}";
             passthrough.fg = "${colors.white}";
-            private.bg = "${colors.darkestGrey}";
+            private.bg = "${colors.darkerGrey}";
             private.fg = "${colors.white}";
-            #progress.bg = "${colors.black}";'white'
+            progress.bg = "${colors.white}";
             url.error.fg = "${colors.white}";
             url.fg = "${colors.white}";
             url.hover.fg = "${colors.white}";
