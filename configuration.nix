@@ -18,8 +18,7 @@ let
     magenta = "#ba8baf";
     cyan = "#86c1b9";
   };
-in
-{
+in {
   imports = [
     ./hardware-configuration.nix
     home-manager.nixosModule
