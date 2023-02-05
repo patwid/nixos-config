@@ -398,10 +398,10 @@ in {
             "--release Print" = "exec grimshot --notify save output";
             "--release Shift+Print" = "exec grimshot --notify save area";
             "--release Ctrl+Print" = "exec grimshot --notify save active";
-            # Diable vertical scrolling (window tabs)
+            # Diable vertical scrolling (windows)
             "button4" = "nop";
             "button5" = "nop";
-            # Diable horizontal scrolling (window tabs)
+            # Diable horizontal scrolling (windows)
             "button6" = "nop";
             "button7" = "nop";
           };
