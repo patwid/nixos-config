@@ -487,12 +487,18 @@ in
 
     programs.qutebrowser = {
       enable = true;
+      quickmarks = {
+        yt = "https://youtube.com";
+        no = "https://nixos.org/manual/nixos/stable/options.html";
+        hmo = "https://nix-community.github.io/home-manager/options.html";
+      };
       searchEngines = {
         DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
         aw = "https://wiki.archlinux.org/?search={}";
         g = "https://www.google.com/search?q={}";
         yt = "https://youtube.com/results?search_query={}";
         np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
+        no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       };
       settings = {
         url.start_pages = [ "about:blank" ];
@@ -500,6 +506,7 @@ in
         tabs.mousewheel_switching = false;
         tabs.favicons.show = "pinned";
         tabs.indicator.width = 0;
+        statusbar.widgets = [ "url" "progress" ];
         scrolling.smooth = true;
         # content.cookies.store = false;
         colors = {
@@ -554,20 +561,20 @@ in
             selected.fg = "${colors.black}";
           };
           statusbar = {
-            caret.bg = "${colors.magenta}";
-            caret.fg = "${colors.black}";
-            caret.selection.bg = "${colors.magenta}";
-            caret.selection.fg = "${colors.black}";
+            caret.bg = "${colors.black}";
+            caret.fg = "${colors.white}";
+            caret.selection.bg = "${colors.black}";
+            caret.selection.fg = "${colors.white}";
             command.bg = "${colors.black}";
             command.fg = "${colors.white}";
             command.private.bg = "${colors.darkestGrey}";
             command.private.fg = "${colors.white}";
-            insert.bg = "${colors.green}";
-            insert.fg = "${colors.black}";
+            insert.bg = "${colors.black}";
+            insert.fg = "${colors.white}";
             normal.bg = "${colors.black}";
             normal.fg = "${colors.white}";
-            passthrough.bg = "${colors.blue}";
-            passthrough.fg = "${colors.black}";
+            passthrough.bg = "${colors.black}";
+            passthrough.fg = "${colors.white}";
             private.bg = "${colors.darkestGrey}";
             private.fg = "${colors.white}";
             #progress.bg = "${colors.black}";'white'
@@ -601,6 +608,16 @@ in
             selected.odd.fg = "${colors.black}";
           };
           webpage.bg = "${colors.white}";
+        };
+      };
+      keyBindings = {
+        normal = {
+          ",m" = "spawn --detach mpv {url}";
+          ",M" = "hint links spawn --detach mpv {hint-url}";
+          ";M" = "hint --rapid links spawn --detach mpv {hint-url}";
+          ",u" = "spawn umpv {url}";
+          ",U" = "hint links spawn umpv {hint-url}";
+          ";U" = "hint --rapid links spawn umpv {hint-url}";
         };
       };
     };
