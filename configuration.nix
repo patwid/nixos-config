@@ -170,7 +170,6 @@ in {
       brightnessctl
       dmenu
       grim
-      mako
       slurp
       sway-contrib.grimshot
       swaybg
@@ -644,6 +643,16 @@ in {
           ";U" = "hint --rapid links spawn umpv {hint-url}";
         };
       };
+    };
+
+    programs.mako = {
+      enable = true;
+      backgroundColor = "${colors.darkerGrey}";
+      borderColor = "${colors.darkerGrey}";
+      borderSize = 0;
+      icons = false;
+      progressColor = "over ${colors.red}"; # XXX
+      textColor = "${colors.white}";
     };
 
     programs.bash.enable = true;
