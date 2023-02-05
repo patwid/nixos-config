@@ -1,12 +1,11 @@
 {
   description = "A menu";
 
-  outputs = { self, nixpkgs }: {
-    packages.x86_64-linux.menu =
-      let 
+  outputs = { self, nixpkgs }:
+      let
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      in 
-        pkgs.stdenv.mkDerivation {
+      in {
+        packages.x86_64-linux.menu = pkgs.stdenv.mkDerivation {
           name = "menu";
           version = "1.0.0";
           src = ./menu.sh;
@@ -33,6 +32,6 @@
           ];
         };
 
-      packages.x86_64-linux.default = self.packages.x86_64-linux.menu;
-  };
+        packages.x86_64-linux.default = self.packages.x86_64-linux.menu;
+    };
 }
