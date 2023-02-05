@@ -204,7 +204,13 @@ in
     lfs.enable = true;
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      passwordAuthentication = false;
+      permitRootLogin = "no";
+    };
+  };
 
   services.syncthing = {
     enable = true;
