@@ -383,6 +383,7 @@ in {
               };
             };
           }];
+          floating.titlebar = true;
           floating.criteria = [
             { app_id = "^menu$"; }
             { app_id = "^pavucontrol$"; }
