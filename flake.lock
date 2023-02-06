@@ -1,5 +1,33 @@
 {
   "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "id": "flake-utils",
+        "type": "indirect"
+      }
+    },
+    "flake-utils_2": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "id": "flake-utils",
+        "type": "indirect"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -23,13 +51,14 @@
     },
     "menu": {
       "inputs": {
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1675711305,
-        "narHash": "sha256-9CD3oZrQpFVp0y9e+ieen7PVaL4CjEURVqBCPOnFWb4=",
+        "lastModified": 1675715478,
+        "narHash": "sha256-qU9ed3TToRH2rST2OhOTEVV2UvF6twvolGVC9LeIQhg=",
         "path": "/etc/nixos/pkgs/menu",
         "type": "path"
       },
@@ -40,13 +69,14 @@
     },
     "menu_pass": {
       "inputs": {
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1675711435,
-        "narHash": "sha256-K9RyW5bV2dM6FrxL4sNovPUP4tl6hOwBqTbH4ZXX5Vk=",
+        "lastModified": 1675715482,
+        "narHash": "sha256-fsVEpK5XQ42iynY3l5iS+P8fkKv4d2dt5ZAbtgU1nbo=",
         "path": "/etc/nixos/pkgs/menu_pass",
         "type": "path"
       },
