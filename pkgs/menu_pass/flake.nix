@@ -1,37 +1,17 @@
 {
   description = "A passmenu";
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs }: {
+    packages.x86_64-linux.default = self.packages.x86_64-linux.menu_pass;
+    packages.x86_64-linux.menu_pass =
       let
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      in {
-        packages.x86_64-linux.menu_pass = pkgs.stdenv.mkDerivation {
-          pname = "menu_pass";
-          version = "1.0.0";
-          src = ./menu_pass.sh;
-
-          dontUnpack = true;
-          dontBuild = true;
-          dontConfigure = true;
-
-          installPhase = with pkgs; ''
-            install -Dm 0755 $src $out/bin/menu_pass
-            wrapProgram $out/bin/menu_pass --set PATH \
-              "${
-                lib.makeBinPath [
-                  bash
-                  coreutils
-                  findutils
-                  gnused
-                ]
-              }"
-          '';
-
-          nativeBuildInputs = with pkgs; [
-            makeWrapper
-          ];
-        };
-
-        packages.x86_64-linux.default = self.packages.x86_64-linux.menu_pass;
-    };
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
+      in
+        pkgs.writeShellScriptBin "menu_pass" ''
+          prefix=''${PASSWORD_STORE_DIR:-~/.password-store}
+          ${pkgs.findutils}/bin/find "$prefix" -name '*.gpg' \
+            | ${pkgs.gnused}/bin/sed "s,^$prefix\(.*\)\.gpg$,\1," \
+            | ${pkgs.coreutils}/bin/coreutils --coreutils-prog=sort
+        '';
+  };
 }
