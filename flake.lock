@@ -8,11 +8,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1675637696,
-        "narHash": "sha256-tilJS8zCS3PaDfVOfsBZ4zspuam8tc7IMZxtGa/K/uo=",
+        "lastModified": 1675595366,
+        "narHash": "sha256-WoQkwaaoZqrhWpIrMxA+2j8CgxgyvjHzCyEZAQu06rQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c43d4a3d6d9ef8ddbe2438362f5c775b4186000b",
+        "rev": "9621e9ab80a038cd11c7cfcae4df46a59d62b16a",
         "type": "github"
       },
       "original": {
@@ -45,8 +45,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1675710222,
-        "narHash": "sha256-tHycgrouCYJu+bnH3kK/6itI2rVgYJpNnaR58WH+fvE=",
+        "lastModified": 1675627165,
+        "narHash": "sha256-k7/JEGQUW9sQwLkompai8QmY6SC0vknTfXV8o+pnUo0=",
         "path": "/etc/nixos/pkgs/menu_pass",
         "type": "path"
       },
