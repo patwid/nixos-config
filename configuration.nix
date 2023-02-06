@@ -616,11 +616,11 @@ in {
             indicator.error = "${colors.red}";
             indicator.start = "${colors.black}";
             indicator.stop = "${colors.green}";
-            odd.bg = "${colors.darkGrey}";
+            odd.bg = "${colors.darkestGrey}";
             odd.fg = "${colors.lightGrey}";
             pinned.even.bg = "${colors.darkestGrey}";
             pinned.even.fg = "${colors.lightGrey}";
-            pinned.odd.bg = "${colors.darkGrey}";
+            pinned.odd.bg = "${colors.darkestGrey}";
             pinned.odd.fg = "${colors.lightGrey}";
             pinned.selected.even.bg = "${colors.blue}";
             pinned.selected.even.fg = "${colors.black}";
