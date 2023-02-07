@@ -97,6 +97,7 @@ in {
   environment.variables = {
     EDITOR = "nvim";
     XCURSOR_THEME = "Adwaita";
+    NIXOS_OZONE_WL = "1"; # Enabling native wayland support in chromium
   };
 
   programs.bash = {
