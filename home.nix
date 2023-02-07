@@ -141,7 +141,7 @@ in {
             criteria.app_id = "^pavucontrol$";
           }];
           keybindings = lib.mkOptionDefault {
-            "${modifier}+p" = "exec menu_pass | menu | xargs pass show --clip";
+            "${modifier}+p" = "exec menu_pass | menu | xargs --no-run-if-empty pass show --clip";
             "--release Print" = "exec grimshot --notify save output";
             "--release Shift+Print" = "exec grimshot --notify save area";
             "--release Ctrl+Print" = "exec grimshot --notify save active";
