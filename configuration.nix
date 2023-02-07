@@ -51,31 +51,41 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    aerc
-    chromium
-    citrix_workspace
-    curl
-    dbeaver
-    docker-compose
-    gnome.adwaita-icon-theme
-    imagemagick
-    imv
-    jetbrains.idea-community
-    jq
-    libreoffice
-    mpv
-    networkmanager-openvpn
-    pavucontrol
-    pinentry-gnome
-    ripgrep
-    unzip
-    wget
-    xdg-utils
-    yt-dlp
-    zathura
-    zip
-  ];
+  environment.systemPackages =
+    let
+      outlook = pkgs.callPackage ./pkgs/webapp { app = "outlook"; url = "https://outlook.office.com/mail/"; };
+      mattermost = pkgs.callPackage ./pkgs/webapp { app = "mattermost"; url = "https://mattermost.ergon.ch/"; };
+      teams = pkgs.callPackage ./pkgs/webapp { app = "teams"; url = "https://teams.microsoft.com/"; };
+      smartaz = pkgs.callPackage ./pkgs/webapp { app = "smartaz"; url = "https://smartaz.ergon.ch/"; };
+    in with pkgs; [
+      aerc
+      chromium
+      citrix_workspace
+      curl
+      dbeaver
+      docker-compose
+      gnome.adwaita-icon-theme
+      imagemagick
+      imv
+      jetbrains.idea-community
+      jq
+      libreoffice
+      mattermost
+      mpv
+      networkmanager-openvpn
+      outlook
+      pavucontrol
+      pinentry-gnome
+      ripgrep
+      smartaz
+      teams
+      unzip
+      wget
+      xdg-utils
+      yt-dlp
+      zathura
+      zip
+    ];
 
   fonts.fonts = with pkgs; [
     noto-fonts
