@@ -136,10 +136,18 @@ in {
             { app_id = "^pavucontrol$"; }
             # { class = "^jetbrains-.*$"; title = "^win0$"; }
           ];
-          window.commands = [{
-            command = "resize set 640 480, border normal";
-            criteria.app_id = "^pavucontrol$";
-          }];
+          window.commands = [
+            {
+              command = "resize set 640 480, border normal";
+              criteria.app_id = "^pavucontrol$";
+            }
+            {
+              # Since chromium version 103, when started in application mode
+              # (--app=<url>), by default the keyboard seems to be inhibted.
+              command = "shortcuts_inhibitor disable";
+              criteria.app_id = "^chrome-.*-.*$";
+            }
+          ];
           keybindings = lib.mkOptionDefault {
             "${modifier}+p" = "exec menu_pass | menu | xargs --no-run-if-empty pass show --clip";
             "--release Print" = "exec grimshot --notify save output";
