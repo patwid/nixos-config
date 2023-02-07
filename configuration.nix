@@ -53,10 +53,22 @@ in {
 
   environment.systemPackages =
     let
-      outlook = pkgs.callPackage ./pkgs/webapp { app = "outlook"; url = "https://outlook.office.com/mail/"; };
-      mattermost = pkgs.callPackage ./pkgs/webapp { app = "mattermost"; url = "https://mattermost.ergon.ch/"; };
-      teams = pkgs.callPackage ./pkgs/webapp { app = "teams"; url = "https://teams.microsoft.com/"; };
-      smartaz = pkgs.callPackage ./pkgs/webapp { app = "smartaz"; url = "https://smartaz.ergon.ch/"; };
+      outlook = pkgs.callPackage ./pkgs/webapp {
+        app = "outlook";
+        url = "https://outlook.office.com/mail/";
+      };
+      mattermost = pkgs.callPackage ./pkgs/webapp {
+        app = "mattermost";
+        url = "https://mattermost.ergon.ch/";
+      };
+      teams = pkgs.callPackage ./pkgs/webapp {
+        app = "teams";
+        url = "https://teams.microsoft.com/";
+      };
+      smartaz = pkgs.callPackage ./pkgs/webapp {
+        app = "smartaz";
+        url = "https://smartaz.ergon.ch/";
+      };
     in with pkgs; [
       aerc
       chromium
