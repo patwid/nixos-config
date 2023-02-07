@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, menu, menu_pass, ... }:
+{ config, lib, pkgs, home-manager, ... }:
 
 let
   user = "patwid";
@@ -164,27 +164,30 @@ in {
     pinentryFlavor = "gnome3";
   };
 
-  programs.sway = {
-    enable = true;
-    extraPackages = with pkgs; [
-      brightnessctl
-      dmenu
-      grim
-      slurp
-      sway-contrib.grimshot
-      swaybg
-      swaylock
-      wl-clipboard
-
-      menu.packages.x86_64-linux.menu
-      menu_pass.packages.x86_64-linux.menu_pass
-    ];
-    extraSessionCommands = ''
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-      export _JAVA_AWT_WM_NONREPARENTING=1
-    '';
-  };
+  programs.sway =
+    let
+      menu = pkgs.callPackage ./pkgs/menu {};
+      menu_pass = pkgs.callPackage ./pkgs/menu_pass {};
+    in {
+      enable = true;
+      extraPackages = with pkgs; [
+        brightnessctl
+        dmenu
+        grim
+        menu
+        menu_pass
+        slurp
+        sway-contrib.grimshot
+        swaybg
+        swaylock
+        wl-clipboard
+      ];
+      extraSessionCommands = ''
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+        export _JAVA_AWT_WM_NONREPARENTING=1
+      '';
+    };
 
   # programs.chromium.enable = true;
   programs.firefox.enable = true;
