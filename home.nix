@@ -32,14 +32,14 @@ in {
   home-manager.users.${user} =
     let
       homeDirectory = "/home/${user}";
+      menu = pkgs.callPackage ./pkgs/menu {};
+      menu_pass = pkgs.callPackage ./pkgs/menu_pass {};
     in {
       home.username = "${user}";
       home.homeDirectory = "${homeDirectory}";
 
       home.packages =
         let
-          menu = pkgs.callPackage ./pkgs/menu {};
-          menu_pass = pkgs.callPackage ./pkgs/menu_pass {};
           outlook = pkgs.callPackage ./pkgs/webapp {
             app = "outlook";
             url = "https://outlook.office.com/mail/";
@@ -110,7 +110,11 @@ in {
           config = {
             modifier = "${modifier}";
             fonts.size = 9.0;
-            menu = "dmenu_path | menu | xargs swaymsg exec --";
+            menu = ''
+              ${pkgs.dmenu}/bin/dmenu_path \
+                | ${menu}/bin/menu \
+                | ${pkgs.findutils}/bin/xargs ${pkgs.sway}/bin/swaymsg exec --
+            '';
             input = {
               "type:keyboard" = {
                 xkb_layout = "us";
@@ -221,10 +225,14 @@ in {
               }
             ];
             keybindings = lib.mkOptionDefault {
-              "${modifier}+p" = "exec menu_pass | menu | xargs --no-run-if-empty pass show --clip";
-              "--release Print" = "exec grimshot --notify save output";
-              "--release Shift+Print" = "exec grimshot --notify save area";
-              "--release Ctrl+Print" = "exec grimshot --notify save active";
+              "${modifier}+p" = ''
+                exec ${menu_pass}/bin/menu_pass \
+                | ${menu}/bin/menu \
+                | ${pkgs.findutils}/bin/xargs --no-run-if-empty ${pkgs.pass}/bin/pass show --clip
+              '';
+              "--release Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output";
+              "--release Shift+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+              "--release Ctrl+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active";
               # Diable vertical scrolling (windows)
               "button4" = "nop";
               "button5" = "nop";
@@ -468,12 +476,12 @@ in {
         };
         keyBindings = {
           normal = {
-            ",m" = "spawn --detach mpv {url}";
-            ",M" = "hint links spawn --detach mpv {hint-url}";
-            ";M" = "hint --rapid links spawn --detach mpv {hint-url}";
-            ",u" = "spawn umpv {url}";
-            ",U" = "hint links spawn umpv {hint-url}";
-            ";U" = "hint --rapid links spawn umpv {hint-url}";
+            ",m" = "spawn --detach ${pkgs.mpv}/bin/mpv {url}";
+            ",M" = "hint links spawn --detach ${pkgs.mpv}/bin/mpv {hint-url}";
+            ";M" = "hint --rapid links spawn --detach ${pkgs.mpv}/bin/mpv {hint-url}";
+            ",u" = "spawn ${pkgs.mpv}/bin/umpv {url}";
+            ",U" = "hint links spawn ${pkgs.mpv}/bin/umpv {hint-url}";
+            ";U" = "hint --rapid links spawn ${pkgs.mpv}/bin/umpv {hint-url}";
           };
         };
       };
@@ -492,7 +500,7 @@ in {
         enable = true;
         profileExtra = ''
           if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-            exec sway >/dev/null 2>&1
+            exec ${pkgs.sway}/bin/sway >/dev/null 2>&1
           fi
         '';
       };
