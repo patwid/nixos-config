@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   user = "patwid";
@@ -18,7 +18,6 @@ in {
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   boot.cleanTmpDir = true;
 
   networking.hostName = "laptop";
@@ -51,54 +50,6 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages =
-    let
-      outlook = pkgs.callPackage ./pkgs/webapp {
-        app = "outlook";
-        url = "https://outlook.office.com/mail/";
-      };
-      mattermost = pkgs.callPackage ./pkgs/webapp {
-        app = "mattermost";
-        url = "https://mattermost.ergon.ch/";
-      };
-      teams = pkgs.callPackage ./pkgs/webapp {
-        app = "teams";
-        url = "https://teams.microsoft.com/";
-      };
-      smartaz = pkgs.callPackage ./pkgs/webapp {
-        app = "smartaz";
-        url = "https://smartaz.ergon.ch/";
-      };
-    in with pkgs; [
-      aerc
-      chromium
-      citrix_workspace
-      curl
-      dbeaver
-      docker-compose
-      gnome.adwaita-icon-theme
-      imagemagick
-      imv
-      jetbrains.idea-community
-      jq
-      libreoffice
-      mattermost
-      mpv
-      networkmanager-openvpn
-      outlook
-      pavucontrol
-      pinentry-gnome
-      ripgrep
-      smartaz
-      teams
-      unzip
-      wget
-      xdg-utils
-      yt-dlp
-      zathura
-      zip
-    ];
-
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
@@ -114,20 +65,6 @@ in {
       sansSerif = [ "Noto Sans" ];
       serif = [ "Noto Serif" ];
     };
-  };
-
-  environment.variables = {
-    EDITOR = "nvim";
-    XCURSOR_THEME = "Adwaita";
-    NIXOS_OZONE_WL = "1"; # Enabling native wayland support in chromium
-  };
-
-  programs.bash = {
-    loginShellInit = ''
-      if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-        exec sway >/dev/null 2>&1
-      fi
-    '';
   };
 
   programs.neovim = {
@@ -160,58 +97,29 @@ in {
         endfunction
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [ editorconfig-vim fugitive vim-nix ];
+        start = [
+          editorconfig-vim
+          fugitive
+          vim-nix
+        ];
       };
     };
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
-  };
-
-  programs.sway =
-    let
-      menu = pkgs.callPackage ./pkgs/menu {};
-      menu_pass = pkgs.callPackage ./pkgs/menu_pass {};
-    in {
-      enable = true;
-      extraPackages = with pkgs; [
-        brightnessctl
-        dmenu
-        grim
-        menu
-        menu_pass
-        slurp
-        sway-contrib.grimshot
-        swaybg
-        swaylock
-        wl-clipboard
-      ];
-      extraSessionCommands = ''
-        export QT_QPA_PLATFORM=wayland
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-        export _JAVA_AWT_WM_NONREPARENTING=1
-      '';
-    };
-
-  # programs.chromium.enable = true;
-  programs.firefox.enable = true;
-  programs.htop.enable = true;
   programs.openvpn3.enable = true;
-  programs.xwayland.enable = true;
+  programs.sway.enable = true;
 
   programs.git = {
     enable = true;
     config = {
       user.name = "Patrick Widmer";
       user.email = "patrick.widmer@tbwnet.ch";
-      core.editor = "nvim";
       safe.directory = "/etc/nixos";
     };
-    lfs.enable = true;
   };
+
+  # Required for pinentry flavor gnome3 to work on non-gnome systems
+  services.dbus.packages = [ pkgs.gcr ];
 
   services.openssh = {
     enable = true;
@@ -219,13 +127,6 @@ in {
       passwordAuthentication = false;
       permitRootLogin = "no";
     };
-  };
-
-  services.syncthing = {
-    enable = true;
-    user = "${user}";
-    dataDir = "/home/${user}/sync";
-    configDir = "/home/${user}/.config/syncthing";
   };
 
   services.pipewire = {
