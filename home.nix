@@ -69,7 +69,7 @@ in {
           grim
           imagemagick
           imv
-          jetbrains.idea-community
+          jetbrains.idea-ultimate
           jq
           libreoffice
           mattermost
