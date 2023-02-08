@@ -39,7 +39,7 @@ in {
       home.packages =
         let
           menu = pkgs.callPackage ./pkgs/menu {};
-          menu_pass = pkgs.callPackage ./pkgs/menu_pass { inherit menu; };
+          menu_pass = pkgs.callPackage ./pkgs/menu_pass {};
           outlook = pkgs.callPackage ./pkgs/webapp {
             app = "outlook";
             url = "https://outlook.office.com/mail/";
@@ -221,7 +221,7 @@ in {
               }
             ];
             keybindings = lib.mkOptionDefault {
-              "${modifier}+p" = "exec menu_pass";
+              "${modifier}+p" = "exec menu_pass | menu | xargs --no-run-if-empty pass show --clip";
               "--release Print" = "exec grimshot --notify save output";
               "--release Shift+Print" = "exec grimshot --notify save area";
               "--release Ctrl+Print" = "exec grimshot --notify save active";
