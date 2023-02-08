@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, menu, ... }:
 
 pkgs.stdenv.mkDerivation {
   pname = "menu_pass";
@@ -20,6 +20,9 @@ pkgs.stdenv.mkDerivation {
           coreutils
           findutils
           gnused
+          menu
+          pass
+          wl-clipboard
         ]
       }"
   '';
