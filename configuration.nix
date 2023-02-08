@@ -106,17 +106,9 @@ in {
     };
   };
 
+  programs.git.enable = true;
   programs.openvpn3.enable = true;
   programs.sway.enable = true;
-
-  programs.git = {
-    enable = true;
-    config = {
-      user.name = "Patrick Widmer";
-      user.email = "patrick.widmer@tbwnet.ch";
-      safe.directory = "/etc/nixos";
-    };
-  };
 
   # Required for pinentry flavor gnome3 to work on non-gnome systems
   services.dbus.packages = [ pkgs.gcr ];
