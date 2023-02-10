@@ -300,6 +300,7 @@ in {
               path = "/sys/class/power_supply/BAT%d/uevent";
               low_threshold = 10;
               threshold_type = "percentage";
+              last_full_capacity = true;
             };
           };
           "tztime date" = {
