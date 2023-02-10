@@ -1,6 +1,6 @@
-{ lib, pkgs, ... }:
+{ stdenv, lib, makeWrapper, bash, coreutils, findutils, gnused, ... }:
 
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "menu_pass";
   version = "1.0.0";
   src = ./menu_pass.sh;
@@ -9,9 +9,9 @@ pkgs.stdenv.mkDerivation {
   dontBuild = true;
   dontConfigure = true;
 
-  nativeBuildInputs = [ pkgs.makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
 
-  installPhase = with pkgs; ''
+  installPhase = ''
     install -Dm 0755 $src $out/bin/menu_pass
     wrapProgram $out/bin/menu_pass --set PATH \
       "${

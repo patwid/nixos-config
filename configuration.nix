@@ -44,7 +44,7 @@ in {
   users.users.${user} = {
     isNormalUser = true;
     description = "${user}";
-    extraGroups = [ "docker" "networkmanager" "video" "audio" "wheel" ];
+    extraGroups = [ "docker" "networkmanager" "input" "video" "audio" "wheel" ];
     packages = with pkgs; [];
   };
 

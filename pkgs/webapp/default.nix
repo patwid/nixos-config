@@ -1,5 +1,5 @@
-{ pkgs, app, url, ... }:
+{ writeShellScriptBin, chromium, app, url, ... }:
 
-pkgs.writeShellScriptBin "${app}" ''
-  ${pkgs.chromium}/bin/chromium --app='${url}'
+writeShellScriptBin "${app}" ''
+  ${chromium}/bin/chromium --app='${url}'
 ''

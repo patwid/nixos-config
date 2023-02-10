@@ -287,14 +287,6 @@ in {
               path = "/proc/sys/net/ipv4/conf/tun0";
             };
           };
-          "volume master" = {
-            position = 4;
-            settings = {
-              format = " %volume";
-              format_muted = " muted";
-              device = "pulse";
-            };
-          };
           "battery all" = {
             position = 5;
             settings = {
@@ -325,6 +317,7 @@ in {
         enable = true;
         settings = {
           main.font = "monospace:size=7";
+          main.pad = "4x4";
           cursor.blink = "yes";
           colors = {
             foreground = lib.strings.removePrefix "#" "${colors.lighterGrey}";

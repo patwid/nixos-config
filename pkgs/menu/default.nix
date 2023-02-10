@@ -1,6 +1,6 @@
-{ lib, pkgs, ... }:
+{ stdenv, lib, makeWrapper, bash, coreutils, foot, fzf, ... }:
 
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "menu";
   version = "1.0.0";
   src = ./menu.sh;
@@ -9,9 +9,9 @@ pkgs.stdenv.mkDerivation {
   dontBuild = true;
   dontConfigure = true;
 
-  nativeBuildInputs = [ pkgs.makeWrapper ];
+  nativeBuildInputs = [ makeWrapper ];
 
-  installPhase = with pkgs; ''
+  installPhase = ''
     install -Dm 0755 $src $out/bin/menu
     wrapProgram $out/bin/menu --set PATH \
       "${
