@@ -533,6 +533,16 @@ in {
         videos = "${homeDirectory}/videos";
       };
 
+      xdg.mimeApps.enable = true;
+      xdg.mimeApps.defaultApplications = {
+        "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+        "image/jpeg" = [ "imv.desktop" ];
+        "image/png" = [ "imv.desktop" ];
+        "text/plain" = [ "nvim.desktop" ];
+        "x-scheme-handler/http" = [ "org.qutebrowser.qutebrowser.desktop" ];
+        "x-scheme-handler/https" = [ "org.qutebrowser.qutebrowser.desktop" ];
+      };
+
       services.syncthing.enable = true;
 
       services.wlsunset = {
