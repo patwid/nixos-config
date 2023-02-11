@@ -67,6 +67,10 @@ in {
     };
   };
 
+  # programs.bash.promptInit = ''
+  #   PS1="\033[1m#\033[0m "
+  # '';
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;

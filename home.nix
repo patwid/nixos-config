@@ -231,7 +231,7 @@ in {
                 | ${pkgs.findutils}/bin/xargs --no-run-if-empty ${pkgs.pass}/bin/pass show --clip
               '';
               "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
-              "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%- && ${pkgs.brightnessctl}/bin/brightnessctl --min-value set 33%";
+              "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%- && ${pkgs.brightnessctl}/bin/brightnessctl --min-value set 13%";
               "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
               "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%-";
               "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
@@ -351,7 +351,7 @@ in {
       programs.qutebrowser = {
         enable = true;
         quickmarks = {
-          hmo = "https://nix-community.github.io/home-manager/options.html";
+          hm = "https://nix-community.github.io/home-manager/options.html";
           no = "https://nixos.org/manual/nixos/stable/options.html";
           yt = "https://youtube.com";
         };
