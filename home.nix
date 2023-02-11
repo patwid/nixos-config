@@ -18,7 +18,6 @@ let
     magenta = "#ba8baf";
     cyan = "#86c1b9";
   };
-  localPkgs = import ./pkgs { inherit lib pkgs; };
 in {
   imports = [
     home-manager.nixosModule
@@ -29,6 +28,17 @@ in {
 
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
+
+  nixpkgs.config.packageOverrides = let
+      localPkgs = import ./pkgs { inherit lib pkgs; };
+    in
+      pkgs: {
+        menu = localPkgs.menu;
+        menu_pass = localPkgs.menu_pass;
+        outlook = localPkgs.outlook;
+        smartaz = localPkgs.smartaz;
+        teams = localPkgs.teams;
+      };
 
   home-manager.users.${user} =
     let
@@ -53,21 +63,21 @@ in {
         jetbrains.idea-ultimate
         jq
         libreoffice
-        localPkgs.mattermost
-        localPkgs.menu
-        localPkgs.menu_pass
+        mattermost
+        menu
+        menu_pass
         mpv
         networkmanager-openvpn
-        localPkgs.outlook
+        outlook
         pavucontrol
         pinentry-gnome
         ripgrep
         slurp
-        localPkgs.smartaz
+        smartaz
         sway-contrib.grimshot
         swaybg
         swaylock
-        localPkgs.teams
+        teams
         unzip
         wget
         wl-clipboard
@@ -93,7 +103,7 @@ in {
             fonts.size = 9.0;
             menu = ''
               ${pkgs.dmenu}/bin/dmenu_path \
-                | ${localPkgs.menu}/bin/menu \
+                | ${pkgs.menu}/bin/menu \
                 | ${pkgs.findutils}/bin/xargs ${pkgs.sway}/bin/swaymsg exec --
             '';
             input = {
@@ -207,8 +217,8 @@ in {
             ];
             keybindings = lib.mkOptionDefault {
               "${modifier}+p" = ''
-                exec ${localPkgs.menu_pass}/bin/menu_pass \
-                | ${localPkgs.menu}/bin/menu \
+                exec ${pkgs.menu_pass}/bin/menu_pass \
+                | ${pkgs.menu}/bin/menu \
                 | ${pkgs.findutils}/bin/xargs --no-run-if-empty ${pkgs.pass}/bin/pass show --clip
               '';
               "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
