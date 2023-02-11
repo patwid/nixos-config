@@ -18,6 +18,7 @@ let
     magenta = "#ba8baf";
     cyan = "#86c1b9";
   };
+  localPkgs = import ./pkgs { inherit lib pkgs; };
 in {
   imports = [
     home-manager.nixosModule
@@ -32,69 +33,49 @@ in {
   home-manager.users.${user} =
     let
       homeDirectory = "/home/${user}";
-      menu = pkgs.callPackage ./pkgs/menu {};
-      menu_pass = pkgs.callPackage ./pkgs/menu_pass {};
     in {
       home.username = "${user}";
       home.homeDirectory = "${homeDirectory}";
 
-      home.packages =
-        let
-          outlook = pkgs.callPackage ./pkgs/webapp {
-            app = "outlook";
-            url = "https://outlook.office.com/mail/";
-          };
-          mattermost = pkgs.callPackage ./pkgs/webapp {
-            app = "mattermost";
-            url = "https://mattermost.ergon.ch/";
-          };
-          teams = pkgs.callPackage ./pkgs/webapp {
-            app = "teams";
-            url = "https://teams.microsoft.com/";
-          };
-          smartaz = pkgs.callPackage ./pkgs/webapp {
-            app = "smartaz";
-            url = "https://smartaz.ergon.ch/";
-          };
-        in with pkgs; [
-          aerc
-          brightnessctl
-          chromium
-          citrix_workspace
-          curl
-          dbeaver
-          dmenu
-          docker-compose
-          gnome.adwaita-icon-theme
-          grim
-          imagemagick
-          imv
-          jetbrains.idea-ultimate
-          jq
-          libreoffice
-          mattermost
-          menu
-          menu_pass
-          mpv
-          networkmanager-openvpn
-          outlook
-          pavucontrol
-          pinentry-gnome
-          ripgrep
-          slurp
-          smartaz
-          sway-contrib.grimshot
-          swaybg
-          swaylock
-          teams
-          unzip
-          wget
-          wl-clipboard
-          xdg-utils
-          yt-dlp
-          zathura
-          zip
-        ];
+      home.packages = with pkgs; [
+        aerc
+        brightnessctl
+        chromium
+        citrix_workspace
+        curl
+        dbeaver
+        dmenu
+        docker-compose
+        gnome.adwaita-icon-theme
+        grim
+        imagemagick
+        imv
+        jetbrains.idea-ultimate
+        jq
+        libreoffice
+        localPkgs.mattermost
+        localPkgs.menu
+        localPkgs.menu_pass
+        mpv
+        networkmanager-openvpn
+        localPkgs.outlook
+        pavucontrol
+        pinentry-gnome
+        ripgrep
+        slurp
+        localPkgs.smartaz
+        sway-contrib.grimshot
+        swaybg
+        swaylock
+        localPkgs.teams
+        unzip
+        wget
+        wl-clipboard
+        xdg-utils
+        yt-dlp
+        zathura
+        zip
+      ];
 
       home.sessionVariables = {
         EDITOR = "nvim";
@@ -112,7 +93,7 @@ in {
             fonts.size = 9.0;
             menu = ''
               ${pkgs.dmenu}/bin/dmenu_path \
-                | ${menu}/bin/menu \
+                | ${localPkgs.menu}/bin/menu \
                 | ${pkgs.findutils}/bin/xargs ${pkgs.sway}/bin/swaymsg exec --
             '';
             input = {
@@ -226,8 +207,8 @@ in {
             ];
             keybindings = lib.mkOptionDefault {
               "${modifier}+p" = ''
-                exec ${menu_pass}/bin/menu_pass \
-                | ${menu}/bin/menu \
+                exec ${localPkgs.menu_pass}/bin/menu_pass \
+                | ${localPkgs.menu}/bin/menu \
                 | ${pkgs.findutils}/bin/xargs --no-run-if-empty ${pkgs.pass}/bin/pass show --clip
               '';
               "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
