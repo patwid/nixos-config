@@ -211,11 +211,11 @@ in {
                 | ${localPkgs.menu}/bin/menu \
                 | ${pkgs.findutils}/bin/xargs --no-run-if-empty ${pkgs.pass}/bin/pass show --clip
               '';
-              "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
-              "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%- && ${pkgs.brightnessctl}/bin/brightnessctl --min-value set 13%";
-              "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
-              "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%-";
-              "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
+              "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
+              "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%- && ${pkgs.brightnessctl}/bin/brightnessctl --min-value set 13%";
+              "--locked XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
+              "--locked XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%-";
+              "--locked XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
               "--release Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output";
               "--release Shift+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
               "--release Ctrl+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active";
@@ -509,13 +509,13 @@ in {
       xdg.userDirs = {
         enable = true;
         createDirectories = true;
-        desktop = "${homeDirectory}/desktop";
+        desktop = null;
         documents = "${homeDirectory}/documents";
         download = "${homeDirectory}/downloads";
         music = "${homeDirectory}/music";
         pictures = "${homeDirectory}/pictures";
-        publicShare = "${homeDirectory}/public";
-        templates = "${homeDirectory}/templates";
+        publicShare = null;
+        templates = null;
         videos = "${homeDirectory}/videos";
       };
 
