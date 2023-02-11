@@ -4,7 +4,8 @@ let
   callPackage = lib.callPackageWith (pkgs // localPkgs);
   localPkgs = {
     menu = callPackage ./menu { };
-    menu_pass = callPackage ./menu_pass { };
+    menu-pass = callPackage ./menu-pass { };
+    menu-run = callPackage ./menu-run { };
     outlook = callPackage ./webapp {
       app = "outlook";
       url = "https://outlook.office.com/mail/";

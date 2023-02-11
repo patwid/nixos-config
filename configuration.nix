@@ -49,6 +49,10 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk

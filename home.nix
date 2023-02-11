@@ -17,8 +17,8 @@ in {
   nixpkgs.overlays = let
       localPkgs = import ./pkgs { inherit lib pkgs; };
     in [(self: super: {
-        menu = localPkgs.menu;
-        menu_pass = localPkgs.menu_pass;
+        menu-run = localPkgs.menu-run;
+        menu-pass = localPkgs.menu-pass;
         outlook = localPkgs.outlook;
         smartaz = localPkgs.smartaz;
         teams = localPkgs.teams;
@@ -48,8 +48,8 @@ in {
         jq
         libreoffice
         mattermost
-        menu
-        menu_pass
+        menu-pass
+        menu-run
         mpv
         networkmanager-openvpn
         outlook
@@ -72,9 +72,8 @@ in {
       ];
 
       home.sessionVariables = {
-        EDITOR = "nvim";
         XCURSOR_THEME = "Adwaita";
-        NIXOS_OZONE_WL = "1"; # Enabling native wayland support in chromium
+        NIXOS_OZONE_WL = "1"; # Enable native wayland support in chromium
       };
 
       wayland.windowManager.sway =
@@ -85,11 +84,7 @@ in {
           config = {
             modifier = "${modifier}";
             fonts.size = 9.0;
-            menu = ''
-              ${pkgs.dmenu}/bin/dmenu_path \
-                | ${pkgs.menu}/bin/menu \
-                | ${pkgs.findutils}/bin/xargs ${pkgs.sway}/bin/swaymsg exec --
-            '';
+            menu = "menu-run";
             input = {
               "type:keyboard" = {
                 xkb_layout = "us";
@@ -143,10 +138,10 @@ in {
               position = "top";
               extraConfig = ''
                 separator_symbol "  "
-                # Diable vertical scrolling (workspaces)
+                # Disable vertical scrolling (workspaces)
                 bindsym button4 nop;
                 bindsym button5 nop;
-                # Diable horizontal scrolling (workspaces)
+                # Disable horizontal scrolling (workspaces)
                 bindsym button6 nop;
                 bindsym button7 nop;
               '';
@@ -200,11 +195,7 @@ in {
               }
             ];
             keybindings = lib.mkOptionDefault {
-              "${modifier}+p" = ''
-                exec ${pkgs.menu_pass}/bin/menu_pass \
-                | ${pkgs.menu}/bin/menu \
-                | ${pkgs.findutils}/bin/xargs --no-run-if-empty ${pkgs.pass}/bin/pass show --clip
-              '';
+              "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
               "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
               "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%- && ${pkgs.brightnessctl}/bin/brightnessctl --min-value set 13%";
               "--locked XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";

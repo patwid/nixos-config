@@ -1,9 +1,9 @@
-{ stdenv, lib, makeWrapper, bash, coreutils, findutils, gnused, ... }:
+{ stdenv, lib, makeWrapper, bash, coreutils, findutils, gnused, menu, pass, wl-clipboard, ... }:
 
 stdenv.mkDerivation {
-  pname = "menu_pass";
+  pname = "menu-pass";
   version = "1.0.0";
-  src = ./menu_pass.sh;
+  src = ./menu-pass.sh;
 
   dontUnpack = true;
   dontBuild = true;
@@ -12,14 +12,17 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
-    install -Dm 0755 $src $out/bin/menu_pass
-    wrapProgram $out/bin/menu_pass --set PATH \
+    install -Dm 0755 $src $out/bin/menu-pass
+    wrapProgram $out/bin/menu-pass --set PATH \
       "${
         lib.makeBinPath [
           bash
           coreutils
           findutils
           gnused
+          menu
+          pass
+          wl-clipboard
         ]
       }"
   '';
