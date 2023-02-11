@@ -29,16 +29,15 @@ in {
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
 
-  nixpkgs.config.packageOverrides = let
+  nixpkgs.overlays = let
       localPkgs = import ./pkgs { inherit lib pkgs; };
-    in
-      pkgs: {
+    in [(self: super: {
         menu = localPkgs.menu;
         menu_pass = localPkgs.menu_pass;
         outlook = localPkgs.outlook;
         smartaz = localPkgs.smartaz;
         teams = localPkgs.teams;
-      };
+      })];
 
   home-manager.users.${user} =
     let
