@@ -492,6 +492,11 @@ in {
             exec ${pkgs.sway}/bin/sway >/dev/null 2>&1
           fi
         '';
+        bashrcExtra = ''
+          BOLD="\[$(tput bold)\]"
+          RESET="\[$(tput sgr0)\]"
+          PS1="''${BOLD}\$''${RESET} "
+        '';
       };
 
       programs.git = {

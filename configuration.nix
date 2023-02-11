@@ -66,9 +66,11 @@ in {
     };
   };
 
-  # programs.bash.promptInit = ''
-  #   PS1="\033[1m#\033[0m "
-  # '';
+  programs.bash.promptInit = ''
+    BOLD="\[$(tput bold)\]"
+    RESET="\[$(tput sgr0)\]"
+    PS1="''${BOLD}#''${RESET} "
+  '';
 
   programs.neovim = {
     enable = true;
