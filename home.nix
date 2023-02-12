@@ -474,10 +474,15 @@ in {
           fi
         '';
         bashrcExtra = ''
-          BOLD="\[$(tput bold)\]"
-          GREEN="\[$(tput setaf 2)\]"
-          RESET="\[$(tput sgr0)\]"
-          PS1="\n''${BOLD}''${GREEN}[\u@\h:\w]\$''${RESET} "
+          bold="\[$(tput bold)\]"
+          red="\[$(tput setaf 1)\]"
+          green="\[$(tput setaf 2)\]"
+          blue="\[$(tput setaf 4)\]"
+          reset="\[$(tput sgr0)\]"
+
+          PS1="\n''${bold}"
+          PS1+="\$(if [ \$? == 0 ]; then printf ''${green}; else printf ''${red}; fi)"
+          PS1+="→ ''${blue}\W''${reset} "
         '';
       };
 
