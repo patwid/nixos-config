@@ -14,15 +14,18 @@ in {
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
 
-  nixpkgs.overlays = let
+  nixpkgs.overlays =
+    let
       localPkgs = import ./pkgs { inherit lib pkgs; };
-    in [(self: super: {
-        menu-run = localPkgs.menu-run;
-        menu-pass = localPkgs.menu-pass;
-        outlook = localPkgs.outlook;
-        smartaz = localPkgs.smartaz;
-        teams = localPkgs.teams;
-      })];
+    in [
+      (self: super: {
+          menu-run = localPkgs.menu-run;
+          menu-pass = localPkgs.menu-pass;
+          outlook = localPkgs.outlook;
+          smartaz = localPkgs.smartaz;
+          teams = localPkgs.teams;
+      })
+    ];
 
   home-manager.users.${user} =
     let
@@ -131,51 +134,53 @@ in {
                 childBorder = "${colors.black}";
               };
             };
-            bars = [{
-              fonts.size = 9.0;
-              statusCommand = "i3status";
-              # stripWorkspaceNumbers = yes;
-              position = "top";
-              extraConfig = ''
-                separator_symbol "  "
-                # Disable vertical scrolling (workspaces)
-                bindsym button4 nop;
-                bindsym button5 nop;
-                # Disable horizontal scrolling (workspaces)
-                bindsym button6 nop;
-                bindsym button7 nop;
-              '';
-              colors = {
-                background = "${colors.black}";
-                statusline = "${colors.white}";
-                separator = "${colors.white}";
-                focusedWorkspace = {
-                  border = "${colors.black}";
-                  background = "${colors.blue}";
-                  text = "${colors.black}";
+            bars = [
+              {
+                fonts.size = 9.0;
+                statusCommand = "i3status";
+                # stripWorkspaceNumbers = yes;
+                position = "top";
+                extraConfig = ''
+                  separator_symbol "  "
+                  # Disable vertical scrolling (workspaces)
+                  bindsym button4 nop;
+                  bindsym button5 nop;
+                  # Disable horizontal scrolling (workspaces)
+                  bindsym button6 nop;
+                  bindsym button7 nop;
+                '';
+                colors = {
+                  background = "${colors.black}";
+                  statusline = "${colors.white}";
+                  separator = "${colors.white}";
+                  focusedWorkspace = {
+                    border = "${colors.black}";
+                    background = "${colors.blue}";
+                    text = "${colors.black}";
+                  };
+                  activeWorkspace = {
+                    border = "${colors.black}";
+                    background = "${colors.darkGrey}";
+                    text = "${colors.lightGrey}";
+                  };
+                  inactiveWorkspace = {
+                    border = "${colors.black}";
+                    background = "${colors.darkestGrey}";
+                    text = "${colors.lightGrey}";
+                  };
+                  urgentWorkspace = {
+                    border = "${colors.black}";
+                    background = "${colors.red}";
+                    text = "${colors.black}";
+                  };
+                  bindingMode = {
+                    border = "${colors.black}";
+                    background = "${colors.red}";
+                    text = "${colors.black}";
+                  };
                 };
-                activeWorkspace = {
-                  border = "${colors.black}";
-                  background = "${colors.darkGrey}";
-                  text = "${colors.lightGrey}";
-                };
-                inactiveWorkspace = {
-                  border = "${colors.black}";
-                  background = "${colors.darkestGrey}";
-                  text = "${colors.lightGrey}";
-                };
-                urgentWorkspace = {
-                  border = "${colors.black}";
-                  background = "${colors.red}";
-                  text = "${colors.black}";
-                };
-                bindingMode = {
-                  border = "${colors.black}";
-                  background = "${colors.red}";
-                  text = "${colors.black}";
-                };
-              };
-            }];
+              }
+            ];
             floating.titlebar = true;
             floating.criteria = [
               { app_id = "^menu$"; }
@@ -470,8 +475,9 @@ in {
         '';
         bashrcExtra = ''
           BOLD="\[$(tput bold)\]"
+          GREEN="\[$(tput setaf 2)\]"
           RESET="\[$(tput sgr0)\]"
-          PS1="''${BOLD}\$''${RESET} "
+          PS1="\n''${BOLD}''${GREEN}[\u@\h:\w]\$''${RESET} "
         '';
       };
 
