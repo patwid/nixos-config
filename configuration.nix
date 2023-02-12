@@ -71,12 +71,6 @@ in {
     };
   };
 
-  programs.bash.promptInit = ''
-    BOLD="\[$(tput bold)\]"
-    RESET="\[$(tput sgr0)\]"
-    PS1="''${BOLD}#''${RESET} "
-  '';
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
