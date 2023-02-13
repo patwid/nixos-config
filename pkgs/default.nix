@@ -3,6 +3,7 @@
 let
   callPackage = lib.callPackageWith (pkgs // localPkgs);
   localPkgs = {
+    xdg-open = callPackage ./xdg-open { };
     menu = callPackage ./menu { };
     menu-pass = callPackage ./menu-pass { };
     menu-run = callPackage ./menu-run { };

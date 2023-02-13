@@ -48,6 +48,7 @@ in {
       unzip
       wget
       wl-clipboard
+      xdg-open
       yt-dlp
       zathura
       zip
