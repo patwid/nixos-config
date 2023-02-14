@@ -1,12 +1,20 @@
 { pkgs, ... }:
-{
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    configure = {
-      customRC = ''
+let
+  user = import ./user.nix;
+in {
+  environment.variables = {
+    EDITOR = "nvim";
+  };
+
+  programs.neovim.enable = true;
+
+  home-manager.users.${user} = {
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      extraConfig = ''
         let g:netrw_banner=0
         set clipboard=unnamedplus
         set guicursor+=a:blinkon700
@@ -29,17 +37,11 @@
           highlight WinSeparator ctermbg=None
         endfunction
       '';
-      packages.myVimPackage = with pkgs.vimPlugins; {
-        start = [
-          editorconfig-vim
-          fugitive
-          vim-nix
-        ];
-      };
+      plugins = with pkgs.vimPlugins; [
+        editorconfig-vim
+        fugitive
+        vim-nix
+      ];
     };
-  };
-
-  environment.variables = {
-    EDITOR = "nvim";
   };
 }

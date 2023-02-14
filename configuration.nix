@@ -9,7 +9,6 @@
     ./fonts.nix
     ./home-shares.nix
     ./localization.nix
-    ./neovim.nix
     ./networkmanager.nix
     ./openssh.nix
     ./openvpn.nix

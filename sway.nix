@@ -15,6 +15,7 @@ in {
     ./i3status.nix
     ./local-pkgs.nix
     ./mako.nix
+    ./neovim.nix
     ./password-store.nix
     ./pipewire.nix
     ./qutebrowser.nix
