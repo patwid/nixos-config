@@ -3,12 +3,7 @@ let
   user = import ./user.nix;
 in {
   programs.bash.promptInit = ''
-    bold="\[$(tput bold)\]"
-    red="\[$(tput setaf 1)\]"
-    reset="\[$(tput sgr0)\]"
-    exit="\$(if [ \$? != 0 ]; then printf ''${red}; fi)"
-
-    PS1="\n''${bold}''${exit}\#''${reset} "
+    PS1="\n# "
   '';
 
   home-manager.users.${user} = {
@@ -20,12 +15,7 @@ in {
         fi
       '';
       initExtra = ''
-        bold="\[$(tput bold)\]"
-        red="\[$(tput setaf 1)\]"
-        reset="\[$(tput sgr0)\]"
-        exit="\$(if [ \$? != 0 ]; then printf ''${red}; fi)"
-
-        PS1="\n''${bold}''${exit}\$''${reset} "
+        PS1="\n\$ "
       '';
     };
   };
