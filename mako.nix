@@ -6,9 +6,9 @@ in {
   home-manager.users.${user} = {
     programs.mako = {
       enable = true;
-      backgroundColor = "${colors.darkerGrey}";
-      borderColor = "${colors.darkerGrey}";
-      borderSize = 0;
+      backgroundColor = "${colors.black}";
+      borderColor = "${colors.darkestGrey}";
+      borderSize = 2;
       icons = false;
       progressColor = "over ${colors.red}"; # XXX
       textColor = "${colors.white}";

@@ -78,18 +78,18 @@ in {
         colors = {
           background = "${colors.white}";
           focused = {
-            border = "${colors.blue}";
-            background = "${colors.blue}";
-            text = "${colors.black}";
-            indicator = "${colors.blue}";
-            childBorder = "${colors.blue}";
+            border = "${colors.darkerGrey}";
+            background = "${colors.darkerGrey}";
+            text = "${colors.white}";
+            indicator = "${colors.darkerGrey}";
+            childBorder = "${colors.darkerGrey}";
           };
           focusedInactive = {
-            border = "${colors.darkGrey}";
-            background = "${colors.darkGrey}";
-            text = "${colors.lightGrey}";
-            indicator = "${colors.darkGrey}";
-            childBorder = "${colors.darkGrey}";
+            border = "${colors.darkestGrey}";
+            background = "${colors.darkestGrey}";
+            text = "${colors.white}";
+            indicator = "${colors.darkestGrey}";
+            childBorder = "${colors.darkestGrey}";
           };
           unfocused = {
             border = "${colors.darkestGrey}";
@@ -122,33 +122,33 @@ in {
               bindsym button7 nop;
             '';
             colors = {
-              background = "${colors.black}";
+              background = "${colors.darkestGrey}";
               statusline = "${colors.white}";
               separator = "${colors.white}";
               focusedWorkspace = {
-                border = "${colors.black}";
-                background = "${colors.blue}";
-                text = "${colors.black}";
+                border = "${colors.darkestGrey}";
+                background = "${colors.darkerGrey}";
+                text = "${colors.white}";
               };
               activeWorkspace = {
-                border = "${colors.black}";
-                background = "${colors.darkGrey}";
-                text = "${colors.lightGrey}";
+                border = "${colors.darkestGrey}";
+                background = "${colors.darkestGrey}";
+                text = "${colors.white}";
               };
               inactiveWorkspace = {
-                border = "${colors.black}";
+                border = "${colors.darkestGrey}";
                 background = "${colors.darkestGrey}";
                 text = "${colors.lightGrey}";
               };
               urgentWorkspace = {
-                border = "${colors.black}";
+                border = "${colors.darkestGrey}";
                 background = "${colors.red}";
-                text = "${colors.black}";
+                text = "${colors.darkestGrey}";
               };
               bindingMode = {
-                border = "${colors.black}";
+                border = "${colors.darkestGrey}";
                 background = "${colors.red}";
-                text = "${colors.black}";
+                text = "${colors.darkestGrey}";
               };
             };
           }
