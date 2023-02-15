@@ -126,7 +126,7 @@ in {
               statusline = "${colors.white}";
               separator = "${colors.white}";
               focusedWorkspace = {
-                border = "${colors.darkestGrey}";
+                border = "${colors.darkerGrey}";
                 background = "${colors.darkerGrey}";
                 text = "${colors.white}";
               };
@@ -141,12 +141,12 @@ in {
                 text = "${colors.lightGrey}";
               };
               urgentWorkspace = {
-                border = "${colors.darkestGrey}";
+                border = "${colors.red}";
                 background = "${colors.red}";
                 text = "${colors.darkestGrey}";
               };
               bindingMode = {
-                border = "${colors.darkestGrey}";
+                border = "${colors.red}";
                 background = "${colors.red}";
                 text = "${colors.darkestGrey}";
               };
