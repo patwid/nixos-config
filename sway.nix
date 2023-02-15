@@ -6,6 +6,7 @@ let
 in {
   imports = [
     ./aerc.nix
+    ./base.nix
     ./bash.nix
     ./chromium.nix
     ./direnv.nix
@@ -29,34 +30,23 @@ in {
 
   home-manager.users.${user} = {
     home.packages = with pkgs; [
-      curl
       dmenu
       gnome.adwaita-icon-theme
       grim
-      imagemagick
       imv
-      jq
       libreoffice
       menu-pass
       menu-run
       mpv
       pavucontrol
-      ripgrep
       slurp
       sway-contrib.grimshot
       swaybg
       swaylock
-      unzip
-      wget
-      wl-clipboard
       xdg-open
       yt-dlp
       zathura
-      zip
     ];
-
-    programs.fzf.enable = true;
-    programs.htop.enable = true;
 
     services.syncthing.enable = true;
 
