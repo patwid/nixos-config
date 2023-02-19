@@ -12,6 +12,7 @@ in {
       citrix_workspace
       dbeaver
       jetbrains.idea-ultimate
+      jtt
       mattermost
       outlook
       smartaz
