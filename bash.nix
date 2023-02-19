@@ -15,6 +15,7 @@ in {
         fi
       '';
       initExtra = ''
+        export GIT_PS1_SHOWDIRTYSTATE=true
         source /run/current-system/sw/share/bash-completion/completions/git-prompt.sh
 
         bold="\[$(tput bold)\]"
