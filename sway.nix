@@ -14,7 +14,7 @@ in {
     ./foot.nix
     ./git.nix
     ./i3status.nix
-    ./local-pkgs.nix
+    ./localpkgs.nix
     ./mako.nix
     ./neovim.nix
     ./password-store.nix

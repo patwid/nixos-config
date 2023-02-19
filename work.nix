@@ -3,7 +3,7 @@ let
   user = import ./user.nix;
 in {
   imports = [
-    ./local-pkgs.nix
+    ./localpkgs.nix
     ./docker.nix
   ];
 
