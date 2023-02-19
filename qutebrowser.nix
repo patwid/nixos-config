@@ -8,6 +8,7 @@ in {
       enable = true;
       quickmarks = {
         hm = "https://nix-community.github.io/home-manager/options.html";
+        i3 = "https://i3wm.org/docs/userguide.html";
         no = "https://nixos.org/manual/nixos/stable/options.html";
         yt = "https://youtube.com";
       };
