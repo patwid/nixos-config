@@ -8,7 +8,7 @@ in {
       enable = true;
       settings = {
         main.font = "monospace:size=7";
-        main.pad = "4x4";
+        main.pad = "8x8";
         cursor.blink = "yes";
         colors = {
           foreground = lib.strings.removePrefix "#" "${colors.lighterGrey}";
