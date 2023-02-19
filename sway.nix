@@ -191,7 +191,7 @@ in {
       };
       extraConfig = ''
         titlebar_border_thickness 0
-        titlebar_padding 2
+        titlebar_padding 8 2
       '';
       extraSessionCommands = ''
         export QT_QPA_PLATFORM=wayland
