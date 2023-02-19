@@ -1,28 +1,28 @@
-{ stdenv, lib, makeWrapper, aerc, bash, imv, mpv, qutebrowser, zathura, ... }:
+{ writeShellApplication, aerc, imv, mpv, qutebrowser, zathura, ... }:
 
-stdenv.mkDerivation {
-  pname = "xdg-open";
-  version = "1.0.0";
-  src = ./xdg-open.sh;
-
-  dontUnpack = true;
-  dontBuild = true;
-  dontConfigure = true;
-
-  nativeBuildInputs = [ makeWrapper ];
-
-  installPhase = ''
-    install -Dm 0755 $src $out/bin/xdg-open
-    wrapProgram $out/bin/xdg-open --set PATH \
-      "${
-        lib.makeBinPath [
-          aerc
-          bash
-          imv
-          mpv
-          qutebrowser
-          zathura
-        ]
-      }"
+writeShellApplication {
+  name = "xdg-open";
+  runtimeInputs = [ aerc imv mpv qutebrowser zathura ];
+  text = ''
+    case "''${1%%:*}" in
+            http|https)
+                    exec qutebrowser "$1"
+                    ;;
+            mailto)
+                    exec aerc "$1"
+                    ;;
+            *.pdf)
+                    exec zathura "$1"
+                    ;;
+            *.jpg|*.png)
+                    exec imv "$1"
+                    ;;
+            *.mp3|*.flac|*.mkv)
+                    exec mpv "$1"
+                    ;;
+            *)
+                    exit 1
+                    ;;
+    esac
   '';
 }

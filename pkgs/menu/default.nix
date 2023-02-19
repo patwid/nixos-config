@@ -1,26 +1,18 @@
-{ stdenv, lib, makeWrapper, bash, coreutils, foot, fzf, ... }:
+{ writeShellApplication, coreutils, foot, fzf, ... }:
 
-stdenv.mkDerivation {
-  pname = "menu";
-  version = "1.0.0";
-  src = ./menu.sh;
+writeShellApplication {
+  name = "menu";
+  runtimeInputs = [ coreutils foot fzf ];
+  text = ''
+    in_pipe="$XDG_RUNTIME_DIR/menu-in.$$.pipe"
+    out_pipe="$XDG_RUNTIME_DIR/menu-out.$$.pipe"
 
-  dontUnpack = true;
-  dontBuild = true;
-  dontConfigure = true;
+    mkfifo "$in_pipe" "$out_pipe"
+    trap 'rm -f $in_pipe $out_pipe' EXIT
 
-  nativeBuildInputs = [ makeWrapper ];
+    foot --app-id=menu sh -x -c "fzf --reverse --no-info <$in_pipe >$out_pipe" &
 
-  installPhase = ''
-    install -Dm 0755 $src $out/bin/menu
-    wrapProgram $out/bin/menu --set PATH \
-      "${
-        lib.makeBinPath [
-          bash
-          coreutils
-          foot
-          fzf
-        ]
-      }"
+    cat >"$in_pipe"
+    cat <"$out_pipe"
   '';
 }

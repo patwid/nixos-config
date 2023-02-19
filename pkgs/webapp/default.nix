@@ -1,5 +1,9 @@
-{ writeShellScriptBin, chromium, app, url, ... }:
+{ writeShellApplication, chromium, app, url, ... }:
 
-writeShellScriptBin "${app}" ''
-  ${chromium}/bin/chromium --app='${url}'
-''
+writeShellApplication {
+  name = "${app}";
+  runtimeInputs = [ chromium ];
+  text = ''
+    chromium --app='${url}'
+  '';
+}
