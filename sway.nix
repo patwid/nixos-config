@@ -174,7 +174,7 @@ in {
         keybindings = lib.mkOptionDefault {
           "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
           "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
-          "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%- && ${pkgs.brightnessctl}/bin/brightnessctl --min-value set 13%";
+          "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%-";
           "--locked XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
           "--locked XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%-";
           "--locked XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
