@@ -18,6 +18,10 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  nix.gc.automatic = true;
+  nix.gc.dates = "monthly";
+  # nix.gc.options = "--delete-old";
+
   nixpkgs.config.allowUnfree = true;
 
   boot.cleanTmpDir = true;
