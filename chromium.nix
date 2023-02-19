@@ -6,11 +6,15 @@ in {
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
 
   home-manager.users.${user} = {
-      home.packages = [ pkgs.chromium ];
       home.sessionVariables = {
         NIXOS_OZONE_WL = "1"; # Enable native wayland support in chromium
       };
 
-      # programs.chromium.enable = true;
+      programs.chromium = {
+        enable = true;
+        extensions = [
+          { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # uBlock Origin
+        ];
+      };
   };
 }
