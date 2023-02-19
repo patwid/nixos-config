@@ -113,6 +113,7 @@ in {
             # stripWorkspaceNumbers = yes;
             position = "top";
             extraConfig = ''
+              status_edge_padding 8
               separator_symbol "  "
               # Disable vertical scrolling (workspaces)
               bindsym button4 nop;

@@ -61,7 +61,7 @@ in {
         };
         "tztime time" = {
           position = 7;
-          settings.format = "%H:%M ";
+          settings.format = "%H:%M";
         };
       };
     };
