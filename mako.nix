@@ -9,6 +9,7 @@ in {
       backgroundColor = "${colors.black}";
       borderColor = "${colors.darkestGrey}";
       borderSize = 2;
+      padding = "10";
       icons = false;
       progressColor = "over ${colors.red}"; # XXX
       textColor = "${colors.white}";
