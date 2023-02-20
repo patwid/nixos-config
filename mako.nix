@@ -6,11 +6,13 @@ in {
   home-manager.users.${user} = {
     programs.mako = {
       enable = true;
+      font = "sans-serif 10";
+      icons = false;
+      padding = "12";
+      width = 320;
+      borderSize = 2;
       backgroundColor = "${colors.black}";
       borderColor = "${colors.darkestGrey}";
-      borderSize = 2;
-      padding = "10";
-      icons = false;
       progressColor = "over ${colors.red}"; # XXX
       textColor = "${colors.white}";
     };
