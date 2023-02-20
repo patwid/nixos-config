@@ -28,6 +28,15 @@ in
     installPhase = ''
       mkdir -p $out/bin
       makeWrapper ${jdk17}/bin/java $out/bin/${name} \
-        --add-flags "--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED --add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED --add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED --add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED -jar $out/share/java/${name}.jar --trace=3 --no-update --enable-remotecontrol --database=ergon --server=sslsocket://ttshost.ergon.ch:5101"
+        --add-flags "--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED" \
+        --add-flags "--add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED" \
+        --add-flags "--add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED" \
+        --add-flags "--add-opens=javafx.controls/javafx.scene.control.skin=ALL-UNNAMED" \
+        --add-flags "-jar $out/share/java/${name}.jar" \
+        --add-flags "--trace=3" \
+        --add-flags "--no-update" \
+        --add-flags "--enable-remotecontrol" \
+        --add-flags "--database=ergon" \
+        --add-flags "--server=sslsocket://ttshost.ergon.ch:5101"
     '';
   }
