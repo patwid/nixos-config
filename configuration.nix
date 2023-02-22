@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
-{
+
+let
+  user = import ./user.nix;
+in {
   imports = [
     ./hardware-configuration.nix
     ./home.nix
@@ -35,6 +38,9 @@
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
+    flags = [
+      "--flake" "/home/${user}/.config/nixos#laptop"
+    ];
   };
 
   # This value determines the NixOS release from which the default
