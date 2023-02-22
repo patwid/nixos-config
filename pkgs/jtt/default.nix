@@ -2,11 +2,12 @@
 
 let
   name = "jtt";
-  src = "jtt-all-4.3.12-39-gcf4b0f5-dirty.jar";
+  version = "4.3.12-39";
+  src = "jtt-all-${version}-gcf4b0f5-dirty.jar";
 in
   stdenv.mkDerivation {
     pname = "${name}";
-    version = "4.3.12-39";
+    version = "${version}";
 
     src = requireFile {
       name = "${src}";
