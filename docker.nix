@@ -2,6 +2,10 @@
 let
   user = import ./user.nix;
 in {
+  # Defaults are documented here:
+  # https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
+  # https://github.com/docker/docs/issues/8663
+
   virtualisation.docker.enable = true;
   virtualisation.docker.daemon.settings = {
     "default-address-pools" = [
