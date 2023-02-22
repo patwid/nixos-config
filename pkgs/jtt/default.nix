@@ -2,17 +2,18 @@
 
 let
   name = "jtt";
+  src = "jtt-all-4.3.12-39-gcf4b0f5-dirty.jar";
 in
   stdenv.mkDerivation {
     pname = "${name}";
     version = "4.3.12-39";
 
     src = requireFile {
-      name = "jtt-all-4.3.12-39-gcf4b0f5-dirty.jar";
+      name = "${src}";
       sha256 = "d4b37a5a099dbda557c7882804cfa091c7e09d249f0167ffeac366f4d3cbec45";
 
       message = ''
-        nix-prefetch-url file://$\PWD/jtt-all-4.3.12-39-gcf4b0f5-dirty.jar
+        nix-prefetch-url file://$\PWD/${src}
       '';
     };
 
