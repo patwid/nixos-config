@@ -21,6 +21,7 @@ in {
         yt = "https://youtube.com/results?search_query={}";
       };
       settings = {
+        fonts.default_family = [ "sans-serif" ];
         url.start_pages = [ "about:blank" ];
         url.default_page = "about:blank";
         tabs.mousewheel_switching = false;

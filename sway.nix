@@ -58,7 +58,10 @@ in {
       enable = true;
       config = {
         modifier = "${modifier}";
-        fonts.size = 9.0;
+        fonts = {
+          names = [ "sans-serif" ];
+          size = 9.0;
+        };
         menu = "menu-run";
         input = {
           "type:keyboard" = {
@@ -108,13 +111,16 @@ in {
         };
         bars = [
           {
-            fonts.size = 9.0;
+            fonts = {
+              names = [ "sans-serif" ];
+              size = 9.0;
+            };
             statusCommand = "i3status";
             # stripWorkspaceNumbers = yes;
             position = "top";
             extraConfig = ''
               status_edge_padding 8
-              separator_symbol "  "
+              separator_symbol "     "
               # Disable vertical scrolling (workspaces)
               bindsym button4 nop;
               bindsym button5 nop;
