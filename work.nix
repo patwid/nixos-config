@@ -5,6 +5,7 @@ in {
   imports = [
     ./localpkgs.nix
     ./docker.nix
+    ./shares-work.nix
   ];
 
   home-manager.users.${user} = {

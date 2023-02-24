@@ -10,11 +10,11 @@ in {
     ./doas.nix
     ./docker.nix
     ./fonts.nix
-    ./home-shares.nix
     ./localization.nix
     ./networkmanager.nix
     ./openssh.nix
     ./openvpn.nix
+    ./shares-home.nix
     ./systemdboot.nix
     ./users.nix
   ];

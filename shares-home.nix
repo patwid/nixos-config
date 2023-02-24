@@ -2,6 +2,14 @@
 let
   user = import ./user.nix;
 in {
+  disabledModules = [
+    "tasks/filesystems/nfs.nix"
+  ];
+
+  imports = [
+    ./nfs.nix
+  ];
+
   fileSystems."/home/${user}/music" = {
     device = "192.168.0.3:/mnt/tank/media/music";
     fsType = "nfs";
