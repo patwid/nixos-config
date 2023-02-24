@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   user = import ./user.nix;
-  options = ''defaults,noauto,user=patwid,domain=ERGON,uid=1000,gid=100'';
+  options = [ ''defaults,noauto,user=patwid,domain=ERGON,uid=1000,gid=100'' ];
 in {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
   # request-key expects a configuration file under /etc
@@ -38,60 +38,60 @@ in {
   fileSystems."/docs" = {
     device = "//fsdocs/docs";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/ergon_home" = {
     device = "//fshome/home";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/projects" = {
     device = "//fsprojects/projects";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/masters" = {
     device = "//fsmasters/masters";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/partner" = {
     device = "//fspartner/partner";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/data" = {
     device = "//fsdata/data";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/data/pump" = {
     device = "//fsdata/data/pump";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/data/taifun" = {
     device = "//fsdata/data/taifun";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/usr2" = {
     device = "//fsusr2/usr2";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 
   fileSystems."/hist" = {
     device = "//fshist/hist";
     fsType = "cifs";
-    options = [ options ];
+    inherit options;
   };
 }
