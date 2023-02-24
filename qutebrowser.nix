@@ -14,11 +14,14 @@ in {
       };
       searchEngines = {
         DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
-        aw = "https://wiki.archlinux.org/?search={}";
+        a = "https://jira.ergon.ch/browse/AXONLAB-{}";
+        aw = "https://intern.achilles-online.ch/jira/browse/AW-{}";
         g = "https://www.google.com/search?q={}";
         no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
         np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
+        wa = "https://wiki.archlinux.org/?search={}";
         yt = "https://youtube.com/results?search_query={}";
+        ytm = "https://music.youtube.com/search?q={}";
       };
       settings = {
         fonts.default_family = [ "sans-serif" ];
