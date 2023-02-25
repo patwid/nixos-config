@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   user = import ./user.nix;
-  options = [ ''defaults,noauto,user=patwid,domain=ERGON,uid=1000,gid=100'' ];
+  options = [ ''noauto,user=patwid,domain=ERGON,uid=1000,gid=100'' ];
 in {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
   # request-key expects a configuration file under /etc
@@ -26,14 +26,6 @@ in {
       negate  *             *            *             ${keyctl} negate %k 30 %S
     '';
   };
-  environment.systemPackages = with pkgs; [
-    # Doesn't *need* to be in the system profile for this to work, but we
-    # want it installed so that e.g. the man pages are available
-    cifs-utils
-    # This *does* need to be installed in the system profile, as we link to
-    # it there in the symlink-requestkey activation script defined above
-    keyutils
-  ];
 
   fileSystems."/docs" = {
     device = "//fsdocs/docs";
@@ -61,12 +53,6 @@ in {
 
   fileSystems."/partner" = {
     device = "//fspartner/partner";
-    fsType = "cifs";
-    inherit options;
-  };
-
-  fileSystems."/data" = {
-    device = "//fsdata/data";
     fsType = "cifs";
     inherit options;
   };
