@@ -5,6 +5,7 @@ in {
   imports = [
     ./localpkgs.nix
     ./docker.nix
+    ./openvpn.nix
     ./shares-work.nix
   ];
 
