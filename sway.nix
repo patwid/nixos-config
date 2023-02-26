@@ -178,23 +178,27 @@ in {
             criteria.app_id = "^chrome-.*-.*$";
           }
         ];
-        keybindings = lib.mkOptionDefault {
-          "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
-          "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%+";
-          "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 20%-";
-          "--locked XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
-          "--locked XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_SINK@ 10%-";
-          "--locked XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_SINK@ toggle";
-          "--release Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output";
-          "--release Shift+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
-          "--release Ctrl+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active";
-          # Diable vertical scrolling (windows)
-          "button4" = "nop";
-          "button5" = "nop";
-          # Diable horizontal scrolling (windows)
-          "button6" = "nop";
-          "button7" = "nop";
-        };
+        keybindings = let
+            brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
+            wpctl = "${pkgs.wireplumber}/bin/wpctl";
+            grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
+          in lib.mkOptionDefault {
+            "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
+            "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
+            "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
+            "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
+            "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
+            "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_SINK@ toggle";
+            "--release Print" = "exec ${grimshot} --notify save output";
+            "--release Shift+Print" = "exec ${grimshot} --notify save area";
+            "--release Ctrl+Print" = "exec ${grimshot} --notify save active";
+            # Diable vertical scrolling (windows)
+            "button4" = "nop";
+            "button5" = "nop";
+            # Diable horizontal scrolling (windows)
+            "button6" = "nop";
+            "button7" = "nop";
+          };
       };
       extraConfig = ''
         titlebar_border_thickness 0
