@@ -13,7 +13,6 @@ in {
     ./foot.nix
     ./git.nix
     ./i3status.nix
-    ../overlays/localpkgs.nix
     ./mako.nix
     ./neovim.nix
     ./password-store.nix

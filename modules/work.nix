@@ -1,7 +1,6 @@
 { pkgs, args, ... }:
 {
   imports = [
-    ../overlays/localpkgs.nix
     ./docker.nix
   ];
 

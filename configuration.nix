@@ -1,5 +1,7 @@
-{ config, args, ... }:
-{
+{ config, lib, pkgs, args, ... }:
+let
+  localpkgs = import ./overlays/localpkgs.nix { inherit lib pkgs; } ;
+in {
   imports = [
     ./hardware-configuration.nix
     ./modules/home.nix
@@ -21,6 +23,7 @@
   # nix.gc.options = "--delete-old";
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ localpkgs ];
 
   boot.cleanTmpDir = true;
 
