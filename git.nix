@@ -6,7 +6,7 @@
     programs.git = {
       enable = true;
       userName = "Patrick Widmer";
-      userEmail = "patrick.widmer@tbwnet.ch";
+      userEmail = "${args.email}";
       lfs.enable = true;
       extraConfig = {
         core.editor = "nvim";

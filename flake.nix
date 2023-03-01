@@ -15,6 +15,7 @@
       // {
         args = {
           user = "patwid";
+          email = "patrick.widmer@tbwnet.ch";
           hostname = "laptop";
         };
       };
@@ -29,6 +30,7 @@
       // {
         args = {
           user = "patwid";
+          email = "patrick.widmer@tbwnet.ch";
           hostname = "htpc";
         };
       };
