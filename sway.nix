@@ -97,7 +97,7 @@ in {
           unfocused = {
             border = "${colors.darkestGrey}";
             background = "${colors.darkestGrey}";
-            text = "${colors.darkGrey}";
+            text = "${colors.lightGrey}";
             indicator = "${colors.darkestGrey}";
             childBorder = "${colors.darkestGrey}";
           };
@@ -145,7 +145,7 @@ in {
               inactiveWorkspace = {
                 border = "${colors.darkestGrey}";
                 background = "${colors.darkestGrey}";
-                text = "${colors.darkGrey}";
+                text = "${colors.lightGrey}";
               };
               urgentWorkspace = {
                 border = "${colors.red}";
