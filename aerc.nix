@@ -2,7 +2,20 @@
 let
   user = import ./user.nix;
 in {
+  imports = [
+    ./email.nix
+  ];
+
   home-manager.users.${user} = {
+    accounts.email.accounts.Personal = {
+      aerc.enable = true;
+    };
+
+    accounts.email.accounts.Work = {
+      aerc.enable = true;
+      # aerc.smtpAuth = "xoauth2";
+    };
+
     programs.aerc = {
       enable = true;
       extraConfig = {
@@ -137,22 +150,6 @@ in {
           "<C-p>" = ":prev-tab<Enter>";
           "<C-n>" = ":next-tab<Enter>";
         };
-      };
-    };
-
-    accounts.email.accounts = {
-      Personal = {
-        primary = true;
-        realName = "Patrick Widmer";
-        address = "patrick.widmer@tbwnet.ch";
-        userName = "patrick.widmer@tbwnet.ch";
-        imap.host = "imap.tbwnet.ch";
-        imap.port = 993;
-        smtp.host = "smtp.tbwnet.ch";
-        smtp.port = 465;
-        passwordCommand = "pass mail/tbwnet | head -n 1";
-
-        aerc.enable = true;
       };
     };
   };
