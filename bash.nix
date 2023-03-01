@@ -28,7 +28,7 @@ in {
 
         PS1="''${bold}"
         PS1+="\n''${cyan}\W"
-        PS1+="''${magenta}\$(__git_ps1 \" ''${reset}''${magenta}git:(''${bold}%s''${reset}''${magenta})\")"
+        PS1+="''${blue}\$(__git_ps1 \" ''${reset}''${blue}git:(''${bold}%s''${reset}''${blue})\")"
         PS1+="''${reset}\n\$(if [ \"\$?\" = 0 ]; then printf ''${green}; else printf ''${red}; fi)"
         PS1+="\$"
         PS1+="''${reset} "
