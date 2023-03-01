@@ -3,8 +3,6 @@
   imports = [
     ./localpkgs.nix
     ./docker.nix
-    ./openvpn.nix
-    ./shares-work.nix
   ];
 
   home-manager.users.${args.user} = {
