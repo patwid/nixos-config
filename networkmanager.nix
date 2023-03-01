@@ -1,8 +1,6 @@
-{ ... }:
-let
-  user = import ./user.nix;
-in {
+{ args, ... }:
+{
   networking.networkmanager.enable = true;
 
-  users.users.${user}.extraGroups = [ "networkmanager" ];
+  users.users.${args.user}.extraGroups = [ "networkmanager" ];
 }

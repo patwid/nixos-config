@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   services.tlp.enable = true;
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     home.packages = [ pkgs.brightnessctl ];
   };
 }

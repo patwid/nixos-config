@@ -1,12 +1,10 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   programs.bash.promptInit = ''
     PS1="\n# "
   '';
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     programs.bash = {
       enable = true;
       profileExtra = ''

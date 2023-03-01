@@ -1,13 +1,11 @@
-{ ... }:
-let
-  user = import ./user.nix;
-in {
+{ args, ... }:
+{
   nix.settings = {
     keep-outputs = true;
     keep-derivations = true;
   };
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

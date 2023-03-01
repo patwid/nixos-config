@@ -1,7 +1,5 @@
-{ ... }:
-let
-  user = import ./user.nix;
-in {
+{ args, ... }:
+{
   imports = [
     ./gpg.nix
   ];
@@ -12,7 +10,7 @@ in {
     })
   ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     programs.password-store.enable = true;
   };
 }

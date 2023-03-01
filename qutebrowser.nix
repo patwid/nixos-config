@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, args, ... }:
 let
-  user = import ./user.nix;
+
   colors = import ./colors.nix;
 in {
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     programs.qutebrowser = {
       enable = true;
       quickmarks = {

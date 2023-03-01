@@ -1,8 +1,6 @@
-{ ... }:
-let
-  user = import ./user.nix;
-in {
-  home-manager.users.${user} = {
+{ args, ... }:
+{
+  home-manager.users.${args.user} = {
     services.wlsunset = {
       enable = true;
       latitude = "47.3";

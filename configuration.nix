@@ -1,8 +1,5 @@
-{ config, ... }:
-
-let
-  user = import ./user.nix;
-in {
+{ config, args, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ./home.nix
@@ -27,7 +24,7 @@ in {
 
   boot.cleanTmpDir = true;
 
-  networking.hostName = "laptop";
+  networking.hostName = "${args.hostname}";
 
   time.timeZone = "Europe/Zurich";
 
@@ -37,7 +34,7 @@ in {
     enable = true;
     dates = "weekly";
     flags = [
-      "--flake" "/home/${user}/.config/nixos#laptop"
+      "--flake" "/home/${args.user}/.config/nixos#laptop"
     ];
   };
 
@@ -48,5 +45,4 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11";
-
 }

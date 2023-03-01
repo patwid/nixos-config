@@ -1,12 +1,10 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   imports = [
     ./email.nix
   ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     accounts.email.accounts.Personal = {
       aerc.enable = true;
     };

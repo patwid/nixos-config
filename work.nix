@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   imports = [
     ./localpkgs.nix
     ./docker.nix
@@ -9,7 +7,7 @@ in {
     ./shares-work.nix
   ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     home.packages = with pkgs; [
       citrix_workspace
       dbeaver

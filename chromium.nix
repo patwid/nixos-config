@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
 
-  users.users.${user}.packages = [
+  users.users.${args.user}.packages = [
     pkgs.chromium
   ];
 

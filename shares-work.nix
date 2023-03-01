@@ -1,8 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, args, ... }:
 let
-  user = import ./user.nix;
+
   fsType = "cifs";
-  options = [ ''noauto,user=patwid,domain=ERGON,uid=1000,gid=100'' ];
+  options = [ ''noauto,user=${args.user},domain=ERGON,uid=1000,gid=100'' ];
 in {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
   # request-key expects a configuration file under /etc

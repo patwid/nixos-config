@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
-  home-manager.users.${user} = {
+{ pkgs, args, ... }:
+{
+  home-manager.users.${args.user} = {
     accounts.email.accounts.Personal = {
       primary = true;
       realName = "Patrick Widmer";

@@ -1,10 +1,8 @@
-{ ... }:
-let
-  user = import ./user.nix;
-in {
+{ args, ... }:
+{
   programs.git.enable = true;
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     programs.git = {
       enable = true;
       userName = "Patrick Widmer";

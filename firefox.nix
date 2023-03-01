@@ -1,8 +1,6 @@
-{ config, pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
-  home-manager.users.${user} = {
+{ config, pkgs, args, ... }:
+{
+  home-manager.users.${args.user} = {
     programs.firefox = {
       enable = true;
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

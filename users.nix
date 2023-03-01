@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
-  users.users.${user} = {
+{ pkgs, args, ... }:
+{
+  users.users.${args.user} = {
     isNormalUser = true;
-    description = "${user}";
+    description = "${args.user}";
     extraGroups = [ "wheel" ];
     packages = with pkgs; [];
   };

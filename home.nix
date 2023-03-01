@@ -1,8 +1,6 @@
-{ config, home-manager, ... }:
+{ config, home-manager, args, ... }:
 
-let
-  user = import ./user.nix;
-in {
+{
   imports = [
     home-manager.nixosModule
 
@@ -14,9 +12,9 @@ in {
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
-  home-manager.users.${user} = {
-    home.username = "${user}";
-    home.homeDirectory = "/home/${user}";
+  home-manager.users.${args.user} = {
+    home.username = "${args.user}";
+    home.homeDirectory = "/home/${args.user}";
 
     home.stateVersion = "${config.system.stateVersion}";
   };

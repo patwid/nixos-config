@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   # Required for pinentry flavor gnome3 to work on non-gnome systems
   services.dbus.packages = [ pkgs.gcr ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     home.packages = [ pkgs.pinentry-gnome ];
 
     services.gpg-agent = {

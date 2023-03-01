@@ -1,6 +1,6 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, args, ... }:
 let
-  user = import ./user.nix;
+
   colors = import ./colors.nix;
   modifier = "Mod4";
 in {
@@ -24,11 +24,11 @@ in {
     ./xdg.nix
   ];
 
-  users.users.${user}.extraGroups = [ "input" "video" "audio" ];
+  users.users.${args.user}.extraGroups = [ "input" "video" "audio" ];
 
   programs.sway.enable = true;
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     home.packages = with pkgs; [
       dmenu
       gnome.adwaita-icon-theme

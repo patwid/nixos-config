@@ -1,9 +1,9 @@
-{ ... }:
+{ args, ... }:
 let
-  user = import ./user.nix;
+
   colors = import ./colors.nix;
 in {
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     programs.mako = {
       enable = true;
       font = "sans-serif 10";

@@ -1,8 +1,6 @@
-{ lib, pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
-  home-manager.users.${user} = {
+{ lib, pkgs, args, ... }:
+{
+  home-manager.users.${args.user} = {
     home.packages = with pkgs; [
       curl
       imagemagick

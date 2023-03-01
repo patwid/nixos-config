@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-let
-  user = import ./user.nix;
-in {
+{ pkgs, args, ... }:
+{
   # Defaults are documented here:
   # https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
   # https://github.com/docker/docs/issues/8663
@@ -34,9 +32,9 @@ in {
     iptables -A INPUT -s 192.168.0.0/16 -j ACCEPT
   '';
 
-  users.users.${user}.extraGroups = [ "docker" ];
+  users.users.${args.user}.extraGroups = [ "docker" ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${args.user} = {
     home.packages = [ pkgs.docker-compose ];
   };
 }
