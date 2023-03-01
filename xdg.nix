@@ -7,10 +7,10 @@ in {
       enable = true;
       createDirectories = true;
       desktop = null;
-      documents = "/home/${user}/documents";
-      download = "/home/${user}/downloads";
+      documents = "/home/${user}/sync/documents";
+      download = "/home/${user}/sync/downloads";
       music = "/home/${user}/music";
-      pictures = "/home/${user}/pictures";
+      pictures = "/home/${user}/sync/pictures";
       publicShare = null;
       templates = null;
       videos = "/home/${user}/videos";
