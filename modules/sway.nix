@@ -1,6 +1,5 @@
 { lib, pkgs, args, ... }:
 let
-
   colors = import ../colors.nix;
   modifier = "Mod4";
 in {
