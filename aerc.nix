@@ -19,6 +19,9 @@
       extraConfig = {
         general.unsafe-accounts-conf = true;
       };
+
+      # Remove once https://github.com/nix-community/home-manager/pull/3150 is
+      # merged
       extraBinds = {
         messages = {
           q = ":quit<Enter>";
