@@ -28,48 +28,48 @@ in {
     '';
   };
 
-  fileSystems."/docs" = {
+  fileSystems."/mnt/docs" = {
     device = "//fsdocs/docs";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/ergon_home" = {
+  fileSystems."/mnt/home" = {
     device = "//fshome/home";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/projects" = {
+  fileSystems."/mnt/projects" = {
     device = "//fsprojects/projects";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/masters" = {
+  fileSystems."/mnt/masters" = {
     device = "//fsmasters/masters";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/partner" = {
+  fileSystems."/mnt/partner" = {
     device = "//fspartner/partner";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/data/pump" = {
+  fileSystems."/mnt/data/pump" = {
     device = "//fsdata/data/pump";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/data/taifun" = {
+  fileSystems."/mnt/data/taifun" = {
     device = "//fsdata/data/taifun";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/usr2" = {
+  fileSystems."/mnt/usr2" = {
     device = "//fsusr2/usr2";
-    inherit options fsType;
+    inherit fsType options;
   };
 
-  fileSystems."/hist" = {
+  fileSystems."/mnt/hist" = {
     device = "//fshist/hist";
-    inherit options fsType;
+    inherit fsType options;
   };
 }
