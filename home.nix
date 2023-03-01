@@ -2,8 +2,6 @@
 
 {
   imports = [
-    home-manager.nixosModule
-
     ./laptop.nix
     ./sway.nix
     ./work.nix

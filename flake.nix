@@ -8,7 +8,7 @@
     nur.url = github:nix-community/NUR;
   };
 
-  outputs = { self, nixpkgs, nur, ... }@attrs: {
+  outputs = { self, nixpkgs, home-manager, nur, ... }@attrs: {
     nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = attrs
@@ -20,6 +20,7 @@
         };
       };
       modules = [
+        home-manager.nixosModules.home-manager
         nur.nixosModules.nur
         ./configuration.nix
       ];
@@ -35,6 +36,7 @@
         };
       };
       modules = [
+        home-manager.nixosModules.home-manager
         nur.nixosModules.nur
         ./configuration.nix
       ];
