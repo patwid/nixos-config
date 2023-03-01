@@ -1,11 +1,12 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   user = import ./user.nix;
+  fsType = "cifs";
   options = [ ''noauto,user=patwid,domain=ERGON,uid=1000,gid=100'' ];
 in {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
   # request-key expects a configuration file under /etc
-  environment.etc."request-key.conf" = {
+  environment.etc."request-key.conf" = lib.mkForce {
     text = let
       upcall = "${pkgs.cifs-utils}/bin/cifs.upcall";
       keyctl = "${pkgs.keyutils}/bin/keyctl";
@@ -29,55 +30,46 @@ in {
 
   fileSystems."/docs" = {
     device = "//fsdocs/docs";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/ergon_home" = {
     device = "//fshome/home";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/projects" = {
     device = "//fsprojects/projects";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/masters" = {
     device = "//fsmasters/masters";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/partner" = {
     device = "//fspartner/partner";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/data/pump" = {
     device = "//fsdata/data/pump";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/data/taifun" = {
     device = "//fsdata/data/taifun";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/usr2" = {
     device = "//fsusr2/usr2";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 
   fileSystems."/hist" = {
     device = "//fshist/hist";
-    fsType = "cifs";
-    inherit options;
+    inherit options fsType;
   };
 }
