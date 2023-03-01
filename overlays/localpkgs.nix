@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  localpkgs = import ./pkgs { inherit lib pkgs; };
+  localpkgs = import ../pkgs { inherit lib pkgs; };
 in {
   nixpkgs.overlays = [
     (self: super: {

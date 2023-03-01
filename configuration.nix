@@ -2,16 +2,16 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./home.nix
+    ./modules/home.nix
 
-    ./doas.nix
-    ./fonts.nix
-    ./localization.nix
-    ./networkmanager.nix
-    ./openssh.nix
-    ./shares-home.nix
-    ./systemdboot.nix
-    ./users.nix
+    ./modules/doas.nix
+    ./modules/fonts.nix
+    ./modules/localization.nix
+    ./modules/networkmanager.nix
+    ./modules/openssh.nix
+    ./modules/shares-home.nix
+    ./modules/systemdboot.nix
+    ./modules/users.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -1,7 +1,7 @@
 { lib, pkgs, args, ... }:
 let
 
-  colors = import ./colors.nix;
+  colors = import ../colors.nix;
   modifier = "Mod4";
 in {
   imports = [
@@ -14,7 +14,7 @@ in {
     ./foot.nix
     ./git.nix
     ./i3status.nix
-    ./localpkgs.nix
+    ../overlays/localpkgs.nix
     ./mako.nix
     ./neovim.nix
     ./password-store.nix
