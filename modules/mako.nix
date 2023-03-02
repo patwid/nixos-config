@@ -3,7 +3,7 @@ let
   colors = import ../colors.nix;
 in {
   home-manager.users.${args.user} = {
-    programs.mako = {
+    services.mako = {
       enable = true;
       font = "sans-serif 10";
       icons = false;
