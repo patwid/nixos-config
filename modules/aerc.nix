@@ -9,6 +9,7 @@
       aerc.enable = true;
     };
 
+    # https://man.sr.ht/~rjarry/aerc/providers/microsoft.md
     accounts.email.accounts.Work = {
       aerc.enable = true;
       # aerc.smtpAuth = "xoauth2";

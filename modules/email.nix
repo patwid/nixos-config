@@ -13,7 +13,6 @@
       passwordCommand = "pass mail/tbwnet | head -n 1";
     };
 
-    # https://man.sr.ht/~rjarry/aerc/providers/microsoft.md
     accounts.email.accounts.Work = {
       flavor = "outlook.office365.com";
       realName = "Patrick Widmer";
