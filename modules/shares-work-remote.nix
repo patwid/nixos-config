@@ -1,6 +1,5 @@
 { lib, pkgs, args, ... }:
 let
-
   fsType = "cifs";
   options = [ ''noauto,user=${args.user},domain=ERGON,uid=1000,gid=100'' ];
 in {

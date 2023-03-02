@@ -1,6 +1,5 @@
 { args, ... }:
 let
-
   fsType = "nfs";
   options = [ "nfsvers=3" ];
 in {
