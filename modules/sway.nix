@@ -35,16 +35,17 @@ in {
       libreoffice
       menu-pass
       menu-run
-      mpv
       pavucontrol
       slurp
       sway-contrib.grimshot
       swaybg
       swaylock
       xdg-open
-      yt-dlp
-      zathura
     ];
+
+    programs.mpv.enable = true;
+    programs.yt-dlp.enable = true;
+    programs.zathura.enable = true;
 
     services.syncthing.enable = true;
 
