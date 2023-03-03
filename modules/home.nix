@@ -5,6 +5,7 @@
     ./laptop.nix
     ./sway.nix
     ./work.nix
+    ./work-remote.nix
   ];
 
   home-manager.useUserPackages = true;
