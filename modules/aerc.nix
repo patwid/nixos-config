@@ -12,7 +12,7 @@
     # https://man.sr.ht/~rjarry/aerc/providers/microsoft.md
     accounts.email.accounts.Work = {
       aerc.enable = true;
-      # aerc.smtpAuth = "xoauth2";
+      aerc.smtpAuth = "xoauth2";
     };
 
     programs.aerc = {
@@ -21,8 +21,8 @@
         general.unsafe-accounts-conf = true;
       };
 
-      # Remove once https://github.com/nix-community/home-manager/pull/3150 is
-      # merged
+      # TODO: remove once https://github.com/nix-community/home-manager/pull/3150
+      # is merged
       extraBinds = {
         messages = {
           q = ":quit<Enter>";
