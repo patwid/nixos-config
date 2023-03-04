@@ -6,40 +6,18 @@ in {
     ./hardware-configuration.nix
     ./modules/home.nix
 
+    ./modules/boot.nix
     ./modules/doas.nix
     ./modules/fonts.nix
     ./modules/localization.nix
+    ./modules/networking.nix
     ./modules/networkmanager.nix
+    ./modules/nix.nix
     ./modules/openssh.nix
     ./modules/shares-home.nix
     ./modules/systemdboot.nix
     ./modules/users.nix
   ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nix.gc.automatic = true;
-  nix.gc.dates = "monthly";
-  # nix.gc.options = "--delete-old";
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ localpkgs ];
-
-  boot.cleanTmpDir = true;
-
-  networking.hostName = "${args.hostname}";
-
-  time.timeZone = "Europe/Zurich";
-
-  console.keyMap = "us";
-
-  system.autoUpgrade = {
-    enable = true;
-    dates = "weekly";
-    flags = [
-      "--flake" "/home/${args.user}/.config/nixos#laptop"
-    ];
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

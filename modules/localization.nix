@@ -1,4 +1,6 @@
 {
+  time.timeZone = "Europe/Zurich";
+
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_CH.UTF-8";
