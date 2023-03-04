@@ -28,7 +28,6 @@ in {
 
   home-manager.users.${args.user} = {
     home.packages = with pkgs; [
-      dmenu
       gnome.adwaita-icon-theme
       grim
       imv
