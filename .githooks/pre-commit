@@ -17,10 +17,3 @@ fi
 
 echo "$files" | xargs nix fmt
 echo "$files" | xargs git add
-
-# Abort on empty commit.
-if [ -z "$(git diff --cached --name-only)" ]; then
-	# Print error message for empty commit.
-	git commit
-	exit 1
-fi
