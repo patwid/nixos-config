@@ -43,6 +43,14 @@ in
       xdg-open
     ];
 
+    programs.bash = {
+      profileExtra = ''
+        if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
+          exec ${pkgs.sway}/bin/sway >/dev/null 2>&1
+        fi
+      '';
+    };
+
     programs.mpv.enable = true;
     programs.yt-dlp.enable = true;
     programs.zathura.enable = true;

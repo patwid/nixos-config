@@ -7,11 +7,6 @@
   home-manager.users.${args.user} = {
     programs.bash = {
       enable = true;
-      profileExtra = ''
-        if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
-          exec ${pkgs.sway}/bin/sway >/dev/null 2>&1
-        fi
-      '';
       initExtra = ''
         export GIT_PS1_SHOWDIRTYSTATE=true
         source /run/current-system/sw/share/bash-completion/completions/git-prompt.sh
