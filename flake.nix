@@ -9,37 +9,43 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@attrs: {
-    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = attrs
-      // {
-        args = {
-          user = "patwid";
-          email = "patrick.widmer@tbwnet.ch";
-          hostname = "laptop";
+    nixosConfigurations.laptop =
+      let
+        hostname = "laptop";
+      in nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = attrs
+        // {
+          args = {
+            user = "patwid";
+            email = "patrick.widmer@tbwnet.ch";
+            inherit hostname;
+          };
         };
+        modules = [
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+          ./hosts/${hostname}/configuration.nix
+        ];
       };
-      modules = [
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        ./configuration.nix
-      ];
-    };
-    nixosConfigurations.htpc = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = attrs
-      // {
-        args = {
-          user = "patwid";
-          email = "patrick.widmer@tbwnet.ch";
-          hostname = "htpc";
+    nixosConfigurations.htpc =
+      let
+        hostname = "htpc";
+      in nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = attrs
+        // {
+          args = {
+            user = "patwid";
+            email = "patrick.widmer@tbwnet.ch";
+            inherit hostname;
+          };
         };
+        modules = [
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+          ./hosts/${hostname}/configuration.nix
+        ];
       };
-      modules = [
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        ./configuration.nix
-      ];
-    };
   };
 }

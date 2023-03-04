@@ -2,22 +2,22 @@
   imports = [
     ./hardware-configuration.nix
 
-    ./modules/boot.nix
-    ./modules/doas.nix
-    ./modules/fonts.nix
-    ./modules/home.nix
-    ./modules/laptop.nix
-    ./modules/localization.nix
-    ./modules/networking.nix
-    ./modules/networkmanager.nix
-    ./modules/nix.nix
-    ./modules/openssh.nix
-    ./modules/shares-home.nix
-    ./modules/sway.nix
-    ./modules/systemdboot.nix
-    ./modules/users.nix
-    ./modules/work-remote.nix
-    ./modules/work.nix
+    ../../modules/boot.nix
+    ../../modules/doas.nix
+    ../../modules/fonts.nix
+    ../../modules/home.nix
+    ../../modules/laptop.nix
+    ../../modules/localization.nix
+    ../../modules/networking.nix
+    ../../modules/networkmanager.nix
+    ../../modules/nix.nix
+    ../../modules/openssh.nix
+    ../../modules/shares-home.nix
+    ../../modules/sway.nix
+    ../../modules/systemdboot.nix
+    ../../modules/users.nix
+    ../../modules/work-remote.nix
+    ../../modules/work.nix
   ];
 
   # This value determines the NixOS release from which the default
