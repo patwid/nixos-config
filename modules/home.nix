@@ -1,5 +1,4 @@
-{ config, home-manager, args, ... }:
-
+{ config, args, ... }:
 {
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
