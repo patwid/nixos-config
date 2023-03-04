@@ -3,10 +3,6 @@
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
 
-  users.users.${args.user}.packages = [
-    pkgs.chromium
-  ];
-
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Enable native wayland support in chromium
   };
@@ -40,5 +36,9 @@
         "ShowHomeButton" = false;
         "SyncDisabled" = true;
     };
+  };
+
+  home-manager.users.${args.user} = {
+    programs.chromium.enable = true;
   };
 }
