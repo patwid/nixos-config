@@ -1,7 +1,8 @@
 { pkgs, args, ... }:
 let
   colors = import ../colors.nix;
-in {
+in
+{
   home-manager.users.${args.user} = {
     programs.qutebrowser = {
       enable = true;

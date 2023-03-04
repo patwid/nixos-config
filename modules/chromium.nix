@@ -16,25 +16,25 @@
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
     ];
     extraOpts = {
-        "AutofillAddressEnabled" = false;
-        "BookmarkBarEnabled" = false;
-        "BrowserSignin" = false;
-        "ClearBrowsingDataOnExitList" = [
-           "browsing_history"
-           "download_history"
-           "cookies_and_other_site_data"
-           "cached_images_and_files"
-           "password_signin"
-           "autofill"
-           "site_settings"
-           "hosted_app_data"
-        ];
-        "NewTabPageLocation" = "about:blank";
-        "PasswordManagerEnabled" = false;
-        "PaymentMethodQueryEnabled" = false;
-        "PromptForDownloadLocation" = true;
-        "ShowHomeButton" = false;
-        "SyncDisabled" = true;
+      "AutofillAddressEnabled" = false;
+      "BookmarkBarEnabled" = false;
+      "BrowserSignin" = false;
+      "ClearBrowsingDataOnExitList" = [
+        "browsing_history"
+        "download_history"
+        "cookies_and_other_site_data"
+        "cached_images_and_files"
+        "password_signin"
+        "autofill"
+        "site_settings"
+        "hosted_app_data"
+      ];
+      "NewTabPageLocation" = "about:blank";
+      "PasswordManagerEnabled" = false;
+      "PaymentMethodQueryEnabled" = false;
+      "PromptForDownloadLocation" = true;
+      "ShowHomeButton" = false;
+      "SyncDisabled" = true;
     };
   };
 

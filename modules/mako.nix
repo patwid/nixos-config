@@ -1,7 +1,8 @@
 { args, ... }:
 let
   colors = import ../colors.nix;
-in {
+in
+{
   home-manager.users.${args.user} = {
     services.mako = {
       enable = true;

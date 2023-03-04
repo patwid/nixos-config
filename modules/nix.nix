@@ -1,7 +1,8 @@
 { lib, pkgs, args, ... }:
 let
-  localpkgs = import ../overlays/localpkgs.nix { inherit lib pkgs; } ;
-in {
+  localpkgs = import ../overlays/localpkgs.nix { inherit lib pkgs; };
+in
+{
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   nix.gc.automatic = true;
@@ -15,7 +16,8 @@ in {
     enable = true;
     dates = "weekly";
     flags = [
-      "--flake" "/home/${args.user}/.config/nixos#laptop"
+      "--flake"
+      "/home/${args.user}/.config/nixos#laptop"
     ];
   };
 }

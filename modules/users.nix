@@ -4,6 +4,6 @@
     isNormalUser = true;
     description = "${args.user}";
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 }

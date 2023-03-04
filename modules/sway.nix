@@ -2,7 +2,8 @@
 let
   colors = import ../colors.nix;
   modifier = "Mod4";
-in {
+in
+{
   imports = [
     ./aerc.nix
     ./base.nix
@@ -71,8 +72,8 @@ in {
             repeat_rate = "30";
           };
           "type:mouse" = {
-              pointer_accel = "0";
-              scroll_factor = "2";
+            pointer_accel = "0";
+            scroll_factor = "2";
           };
         };
         seat."*".hide_cursor = "when-typing enable";
@@ -176,11 +177,13 @@ in {
             criteria.app_id = "^chrome-.*-.*$";
           }
         ];
-        keybindings = let
+        keybindings =
+          let
             brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
             wpctl = "${pkgs.wireplumber}/bin/wpctl";
             grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
-          in lib.mkOptionDefault {
+          in
+          lib.mkOptionDefault {
             "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
             "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
             "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";

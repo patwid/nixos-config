@@ -39,6 +39,8 @@
         editorconfig-vim
         fugitive
         vim-nix
+        #fzf-vim
+        #fzfWrapper
       ];
     };
   };

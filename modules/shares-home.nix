@@ -2,7 +2,8 @@
 let
   fsType = "nfs";
   options = [ "nfsvers=3" ];
-in {
+in
+{
   fileSystems."/home/${args.user}/music" = {
     device = "192.168.0.3:/mnt/tank/media/music";
     inherit fsType options;
