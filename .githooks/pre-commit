@@ -1,0 +1,15 @@
+#!/bin/sh
+
+nixfmt=$(git config --type=bool hooks.nixfmt)
+
+if [ "$nixfmt" != true ]; then
+	exit 0
+fi
+
+# Redirect output to stderr.
+exec 1>&2
+
+for f in $(git diff --cached --name-only --diff-filter=d | grep '\.nix$'); do
+	nix fmt "$f"
+	git add "$f"
+done
