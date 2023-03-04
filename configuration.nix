@@ -1,7 +1,4 @@
-{ config, lib, pkgs, args, ... }:
-let
-  localpkgs = import ./overlays/localpkgs.nix { inherit lib pkgs; } ;
-in {
+{
   imports = [
     ./hardware-configuration.nix
 
