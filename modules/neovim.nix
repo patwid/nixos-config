@@ -39,8 +39,8 @@
         editorconfig-vim
         fugitive
         vim-nix
-        #fzf-vim
-        #fzfWrapper
+        fzf-vim
+        # fzfWrapper # TODO: what does fzfWrapper do?
       ];
     };
   };
