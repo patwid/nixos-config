@@ -26,7 +26,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
-          ./hosts/${hostname}/configuration.nix
+          ./hosts/${hostname}
         ];
       };
 
@@ -47,7 +47,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
-          ./hosts/${hostname}/configuration.nix
+          ./hosts/${hostname}
         ];
       };
 
