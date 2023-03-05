@@ -19,6 +19,7 @@ in
         g = "https://www.google.com/search?q={}";
         no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
         np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
+        nt = "https://nixpk.gs/pr-tracker.html?pr={}";
         wa = "https://wiki.archlinux.org/?search={}";
         yt = "https://youtube.com/results?search_query={}";
         ytm = "https://music.youtube.com/search?q={}";
