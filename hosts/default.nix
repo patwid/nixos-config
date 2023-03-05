@@ -10,7 +10,7 @@
   {
     system = "x86_64-linux";
     args = {
-      hostname = "cohen";
+      hostname = "work";
       user = "patwid";
       email = "patrick.widmer@ergon.ch";
     };
