@@ -1,6 +1,6 @@
 { pkgs, args, ... }:
 let
-  colors = import ../colors.nix;
+  colors = import ./colors.nix;
 in
 {
   home-manager.users.${args.user} = {
