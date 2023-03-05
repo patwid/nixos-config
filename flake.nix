@@ -9,6 +9,48 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@attrs: {
+    nixosConfigurations.desktop =
+      let
+        hostname = "desktop";
+      in
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = attrs
+          // {
+          args = {
+            user = "patwid";
+            email = "patrick.widmer@ergon.ch";
+            inherit hostname;
+          };
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+          ./hosts/${hostname}
+        ];
+      };
+
+    nixosConfigurations.cohen =
+      let
+        hostname = "cohen";
+      in
+      nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = attrs
+          // {
+          args = {
+            user = "patwid";
+            email = "patrick.widmer@ergon.ch";
+            inherit hostname;
+          };
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+          ./hosts/${hostname}
+        ];
+      };
+
     nixosConfigurations.laptop =
       let
         hostname = "laptop";
