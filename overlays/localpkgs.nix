@@ -1,9 +1,8 @@
 { lib, pkgs }:
-(self: super:
 let
   localpkgs = import ../pkgs { inherit lib pkgs; };
 in
-{
+(self: super: {
   xdg-open = localpkgs.xdg-open;
   zulu17 = localpkgs.zulu17;
   jtt = localpkgs.jtt;
