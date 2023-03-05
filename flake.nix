@@ -9,89 +9,22 @@
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@attrs: {
-    nixosConfigurations.desktop =
-      let
-        hostname = "desktop";
-      in
-      nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = attrs
-          // {
-          args = {
-            user = "patwid";
-            email = "patrick.widmer@ergon.ch";
-            inherit hostname;
-          };
-        };
+    nixosConfigurations = builtins.mapAttrs
+      (hostname: { system, args }: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = attrs // { inherit args; };
         modules = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
           ./hosts/${hostname}
         ];
-      };
-
-    nixosConfigurations.cohen =
-      let
-        hostname = "cohen";
-      in
-      nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = attrs
-          // {
-          args = {
-            user = "patwid";
-            email = "patrick.widmer@ergon.ch";
-            inherit hostname;
-          };
-        };
-        modules = [
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          ./hosts/${hostname}
-        ];
-      };
-
-    nixosConfigurations.laptop =
-      let
-        hostname = "laptop";
-      in
-      nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = attrs
-          // {
-          args = {
-            user = "patwid";
-            email = "patrick.widmer@tbwnet.ch";
-            inherit hostname;
-          };
-        };
-        modules = [
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          ./hosts/${hostname}
-        ];
-      };
-
-    nixosConfigurations.htpc =
-      let
-        hostname = "htpc";
-      in
-      nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = attrs
-          // {
-          args = {
-            user = "patwid";
-            email = "patrick.widmer@tbwnet.ch";
-            inherit hostname;
-          };
-        };
-        modules = [
-          home-manager.nixosModules.home-manager
-          nur.nixosModules.nur
-          ./hosts/${hostname}
-        ];
-      };
+      })
+      (builtins.listToAttrs (map
+        ({ args, ... }@config: {
+          name = args.hostname;
+          value = config;
+        })
+        (import ./hosts)));
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
   };
