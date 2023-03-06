@@ -1,6 +1,9 @@
-{ lib, pkgs, args, ... }:
+{ config, lib, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     home.packages = with pkgs; [
       curl
       imagemagick

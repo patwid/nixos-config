@@ -1,4 +1,7 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
@@ -38,7 +41,7 @@
     };
   };
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     programs.chromium.enable = true;
   };
 }

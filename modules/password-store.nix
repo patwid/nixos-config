@@ -1,4 +1,7 @@
-{ args, ... }:
+{ config, ... }:
+let
+  inherit (config) user;
+in
 {
   imports = [
     ./gpg.nix
@@ -10,7 +13,7 @@
     })
   ];
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     programs.password-store.enable = true;
   };
 }

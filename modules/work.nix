@@ -1,10 +1,13 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
   imports = [
     ./docker.nix
   ];
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     home.packages = with pkgs; [
       citrix_workspace
       dbeaver

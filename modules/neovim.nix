@@ -1,4 +1,7 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
   environment.variables = {
     EDITOR = "nvim";
@@ -6,7 +9,7 @@
 
   programs.neovim.enable = true;
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     programs.neovim = {
       enable = true;
       defaultEditor = true;

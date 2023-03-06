@@ -1,6 +1,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./user.nix
     ../../modules/boot.nix
     ../../modules/colors.nix
     ../../modules/doas.nix

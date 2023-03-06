@@ -1,11 +1,14 @@
-{ args, ... }:
+{ config, ... }:
+let
+  inherit (config) user;
+in
 {
   nix.settings = {
     keep-outputs = true;
     keep-derivations = true;
   };
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

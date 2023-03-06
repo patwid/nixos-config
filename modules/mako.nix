@@ -1,9 +1,9 @@
-{ config, args, ... }:
+{ config, ... }:
 let
-  inherit (config) colors;
+  inherit (config) user colors;
 in
 {
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     services.mako = {
       enable = true;
       font = "sans-serif 10";

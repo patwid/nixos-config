@@ -1,8 +1,11 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
-  users.users.${args.user} = {
+  users.users.${user.name} = {
     isNormalUser = true;
-    description = "${args.user}";
+    description = "${user.name}";
     extraGroups = [ "wheel" ];
     packages = with pkgs; [ ];
   };

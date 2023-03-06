@@ -1,4 +1,7 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
   # Defaults are documented here:
   # https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
@@ -32,9 +35,9 @@
     iptables -A INPUT -s 192.168.0.0/16 -j ACCEPT
   '';
 
-  users.users.${args.user}.extraGroups = [ "docker" ];
+  users.users.${user.name}.extraGroups = [ "docker" ];
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     home.packages = [ pkgs.docker-compose ];
   };
 }

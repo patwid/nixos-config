@@ -1,4 +1,7 @@
-{ config, home-manager, args, ... }:
+{ config, home-manager, ... }:
+let
+  inherit (config) user;
+in
 {
   imports = [
     home-manager.nixosModule
@@ -7,9 +10,9 @@
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
-  home-manager.users.${args.user} = {
-    home.username = "${args.user}";
-    home.homeDirectory = "/home/${args.user}";
+  home-manager.users.${user.name} = {
+    home.username = "${user.name}";
+    home.homeDirectory = "/home/${user.name}";
 
     home.stateVersion = "${config.system.stateVersion}";
   };

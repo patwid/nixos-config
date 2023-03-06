@@ -1,9 +1,12 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
   # Required for pinentry flavor gnome3 to work on non-gnome systems
   services.dbus.packages = [ pkgs.gcr ];
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     home.packages = [ pkgs.pinentry-gnome ];
 
     services.gpg-agent = {

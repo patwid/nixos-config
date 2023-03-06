@@ -1,9 +1,9 @@
-{ config, pkgs, args, ... }:
+{ config, pkgs, ... }:
 let
-  inherit (config) colors;
+  inherit (config) user colors;
 in
 {
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     programs.qutebrowser = {
       enable = true;
       quickmarks = {

@@ -1,12 +1,13 @@
-{ config, lib, pkgs, args, ... }:
+{ config, lib, pkgs, ... }:
 let
+  inherit (config) user;
   fsType = "cifs";
-  user = config.users.users.${args.user};
-  primary = config.users.users.${args.user}.group;
+  user' = config.users.users.${user.name};
+  primary = config.users.users.${user.name}.group;
   group = config.users.groups.${primary};
-  uid = if user.uid == null then "1000" else toString user.uid;
+  uid = if user'.uid == null then "1000" else toString user'.uid;
   gid = if group.gid == null then "100" else toString group.gid;
-  options = [ ''noauto,user=${args.user},domain=ERGON,uid=${uid},gid=${gid}'' ];
+  options = [ ''noauto,user=${user.name},domain=ERGON,uid=${uid},gid=${gid}'' ];
 in
 {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved

@@ -1,6 +1,6 @@
-{ config, lib, pkgs, args, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (config) colors;
+  inherit (config) user colors;
   modifier = "Mod4";
 in
 {
@@ -23,11 +23,11 @@ in
     ./xdg.nix
   ];
 
-  users.users.${args.user}.extraGroups = [ "input" "video" "audio" ];
+  users.users.${user.name}.extraGroups = [ "input" "video" "audio" ];
 
   programs.sway.enable = true;
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     home.packages = with pkgs; [
       gnome.adwaita-icon-theme
       grim

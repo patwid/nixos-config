@@ -1,6 +1,9 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     accounts.email.accounts.Personal = {
       primary = true;
       realName = "Patrick Widmer";

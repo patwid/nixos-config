@@ -1,10 +1,13 @@
-{ pkgs, args, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (config) user;
+in
 {
   programs.bash.promptInit = ''
     PS1="\n# "
   '';
 
-  home-manager.users.${args.user} = {
+  home-manager.users.${user.name} = {
     programs.bash = {
       enable = true;
       initExtra = ''
