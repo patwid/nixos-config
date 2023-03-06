@@ -16,5 +16,6 @@ in
     enable = true;
     dates = "weekly";
     flake = "/home/${args.user}/.config/nixos#${args.hostname}";
+    flags = [ "--recreate-lock-file" ];
   };
 }
