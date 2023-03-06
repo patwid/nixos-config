@@ -79,4 +79,18 @@ in
     device = "//fshist/hist";
     inherit fsType options;
   };
+
+  system.activationScripts = {
+    createMountDirs = ''
+      mkdir -p /mnt/docs
+      mkdir -p /mnt/home
+      mkdir -p /mnt/projects
+      mkdir -p /mnt/masters
+      mkdir -p /mnt/partner
+      mkdir -p /mnt/data/pump
+      mkdir -p /mnt/data/taifun
+      mkdir -p /mnt/usr2
+      mkdir -p /mnt/hist
+    '';
+  };
 }
