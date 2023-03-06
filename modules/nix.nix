@@ -15,9 +15,6 @@ in
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
-    flags = [
-      "--flake"
-      "/home/${args.user}/.config/nixos#laptop"
-    ];
+    flake = "/home/${args.user}/.config/nixos#${args.hostname}";
   };
 }
