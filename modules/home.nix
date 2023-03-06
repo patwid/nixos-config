@@ -1,5 +1,9 @@
-{ config, args, ... }:
+{ config, home-manager, args, ... }:
 {
+  imports = [
+    home-manager.nixosModule
+  ];
+
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 

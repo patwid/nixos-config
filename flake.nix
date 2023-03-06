@@ -8,13 +8,12 @@
     nur.url = github:nix-community/NUR;
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@attrs: {
+  outputs = { self, nixpkgs, nur, ... }@attrs: {
     nixosConfigurations = builtins.mapAttrs
       (hostname: { system, args }: nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = attrs // { inherit args; };
         modules = [
-          home-manager.nixosModules.home-manager
           nur.nixosModules.nur
           ./hosts/${hostname}/configuration.nix
         ];
