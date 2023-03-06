@@ -1,7 +1,12 @@
-{ lib, pkgs, args, ... }:
+{ config, lib, pkgs, args, ... }:
 let
   fsType = "cifs";
-  options = [ ''noauto,user=${args.user},domain=ERGON,uid=1000,gid=100'' ];
+  user = config.users.users.${args.user};
+  primary = config.users.users.${args.user}.group;
+  group = config.users.groups.${primary};
+  uid = if user.uid == null then "1000" else toString user.uid;
+  gid = if group.gid == null then "100" else toString group.gid;
+  options = [ ''noauto,user=${args.user},domain=ERGON,uid=${uid},gid=${gid}'' ];
 in
 {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
