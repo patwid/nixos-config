@@ -18,4 +18,10 @@ in
     flake = "/home/${args.user}/.config/nixos#${args.hostname}";
     flags = [ "--recreate-lock-file" ];
   };
+
+  system.activationScripts = {
+    linkFlakeConfig = ''
+      ln -sfn /home/${args.user}/.config/nixos/flake.nix /etc/nixos/flake.nix
+    '';
+  };
 }
