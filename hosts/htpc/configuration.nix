@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/boot.nix
+    ../../modules/colors.nix
     ../../modules/doas.nix
     ../../modules/fonts.nix
     ../../modules/grub.nix

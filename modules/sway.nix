@@ -1,6 +1,6 @@
-{ lib, pkgs, args, ... }:
+{ config, lib, pkgs, args, ... }:
 let
-  colors = import ./colors.nix;
+  colors = config.colors;
   modifier = "Mod4";
 in
 {
