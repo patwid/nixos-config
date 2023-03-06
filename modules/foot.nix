@@ -1,6 +1,6 @@
 { config, lib, args, ... }:
 let
-  colors = config.colors;
+  inherit (config) colors;
 in
 {
   home-manager.users.${args.user} = {

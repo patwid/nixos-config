@@ -1,6 +1,6 @@
 { config, lib, pkgs, args, ... }:
 let
-  colors = config.colors;
+  inherit (config) colors;
   modifier = "Mod4";
 in
 {
