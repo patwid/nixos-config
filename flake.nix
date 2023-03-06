@@ -16,7 +16,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
-          ./hosts/${hostname}
+          ./hosts/${hostname}/configuration.nix
         ];
       })
       (builtins.listToAttrs (map

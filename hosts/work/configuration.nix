@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hardware-configuration.nix
     ../../modules/boot.nix
     ../../modules/doas.nix
     ../../modules/fonts.nix
