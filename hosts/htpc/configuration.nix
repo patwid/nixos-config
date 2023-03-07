@@ -9,7 +9,7 @@
     ../../modules/grub.nix
     ../../modules/home.nix
     ../../modules/laptop.nix
-    ../../modules/localization.nix
+    ../../modules/localisation.nix
     ../../modules/networking.nix
     ../../modules/networkmanager.nix
     ../../modules/nix.nix
