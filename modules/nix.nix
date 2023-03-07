@@ -1,7 +1,5 @@
 { config, lib, pkgs, nur, ... }:
 let
-  localpkgs = import ../overlays/localpkgs.nix { inherit lib pkgs; };
-  nur' = import ../overlays/nur.nix { inherit nur; };
   inherit (config) user;
 in
 {
@@ -12,7 +10,10 @@ in
   # nix.gc.options = "--delete-old";
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ localpkgs nur' ];
+  nixpkgs.overlays = [
+    (import ../overlays/localpkgs.nix { inherit lib pkgs; })
+    (import ../overlays/nur.nix { inherit nur; })
+  ];
 
   system.autoUpgrade = {
     enable = true;
