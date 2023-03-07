@@ -9,16 +9,19 @@
   };
 
   outputs = { self, nixpkgs, nur, ... }@attrs: {
-    nixosConfigurations = builtins.mapAttrs
-      (hostname: system: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = attrs // { inherit hostname; };
-        modules = [
-          nur.nixosModules.nur
-          ./hosts/${hostname}/configuration.nix
-        ];
+    nixosConfigurations = builtins.listToAttrs (map
+      (hostname: {
+        name = hostname;
+        value = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = attrs // { inherit hostname; };
+          modules = [
+            nur.nixosModules.nur
+            ./hosts/${hostname}/configuration.nix
+          ];
+        };
       })
-      (import ./hosts);
+      (builtins.attrNames (builtins.readDir ./hosts)));
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
   };
