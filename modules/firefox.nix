@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nur, ... }:
 let
   inherit (config) user;
 in
@@ -19,7 +19,7 @@ in
         };
       };
       profiles.default = {
-        extensions = with config.nur.repos.rycee.firefox-addons; [
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
         ];
         search.default = "DuckDuckGo";

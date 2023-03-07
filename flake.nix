@@ -16,7 +16,6 @@
           system = "x86_64-linux";
           specialArgs = attrs // { inherit hostname; };
           modules = [
-            nur.nixosModules.nur
             ./hosts/${hostname}/configuration.nix
           ];
         };
