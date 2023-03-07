@@ -1,4 +1,4 @@
-{ config, lib, pkgs, args, ... }:
+{ config, lib, pkgs, ... }:
 let
   localpkgs = import ../overlays/localpkgs.nix { inherit lib pkgs; };
   inherit (config) user;
@@ -16,7 +16,7 @@ in
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
-    flake = "/home/${user.name}/.config/nixos#${args.hostname}";
+    flake = "/home/${user.name}/.config/nixos#${config.networking.hostName}";
     flags = [ "--recreate-lock-file" ];
   };
 

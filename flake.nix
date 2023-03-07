@@ -10,20 +10,15 @@
 
   outputs = { self, nixpkgs, nur, ... }@attrs: {
     nixosConfigurations = builtins.mapAttrs
-      (hostname: { system, args }: nixpkgs.lib.nixosSystem {
+      (hostname: { system }: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = attrs // { inherit args; };
+        specialArgs = attrs // { inherit hostname; };
         modules = [
           nur.nixosModules.nur
           ./hosts/${hostname}/configuration.nix
         ];
       })
-      (builtins.listToAttrs (map
-        ({ args, ... }@config: {
-          name = args.hostname;
-          value = config;
-        })
-        (import ./hosts)));
+      (import ./hosts);
 
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
   };

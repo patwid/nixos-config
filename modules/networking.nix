@@ -1,4 +1,4 @@
-{ args, ... }:
+{ hostname, ... }:
 {
-  networking.hostName = "${args.hostname}";
+  networking.hostName = "${hostname}";
 }
