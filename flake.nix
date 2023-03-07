@@ -10,7 +10,7 @@
 
   outputs = { self, nixpkgs, nur, ... }@attrs: {
     nixosConfigurations = builtins.mapAttrs
-      (hostname: { system }: nixpkgs.lib.nixosSystem {
+      (hostname: system: nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = attrs // { inherit hostname; };
         modules = [
