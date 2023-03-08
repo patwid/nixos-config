@@ -10,10 +10,7 @@ in
   # nix.gc.options = "--delete-old";
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (import ../overlays/localpkgs.nix { inherit lib pkgs; })
-    (import ../overlays/nur.nix { inherit nur; })
-  ];
+  nixpkgs.overlays = import ../overlays { inherit lib pkgs nur; };
 
   system.autoUpgrade = {
     enable = true;
