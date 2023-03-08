@@ -17,6 +17,8 @@
           specialArgs = attrs // { inherit hostname; };
           modules = [
             ./hosts/${hostname}/configuration.nix
+            ./hosts/${hostname}/hardware-configuration.nix
+            ./hosts/${hostname}/user.nix
           ];
         };
       })
