@@ -10,7 +10,7 @@
     ../../modules/localisation.nix
     ../../modules/networking.nix
     ../../modules/networkmanager.nix
-    ../../modules/nix.nix
+    ../../modules/system.nix
     ../../modules/openssh.nix
     ../../modules/sway.nix
     ../../modules/systemdboot.nix
