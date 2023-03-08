@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 let
   inherit (config) user;
+  pass = "${pkgs.pass}/bin/pass";
+  head = "${pkgs.coreutils}/bin/head";
 in
 {
   home-manager.users.${user.name} = {
@@ -13,7 +15,7 @@ in
       imap.port = 993;
       smtp.host = "smtp.tbwnet.ch";
       smtp.port = 465;
-      passwordCommand = "pass mail/tbwnet | head -n 1";
+      passwordCommand = "${pass} mail/tbwnet | ${head} -n 1";
     };
 
     accounts.email.accounts.Work = {
@@ -26,7 +28,7 @@ in
       smtp.host = "smtp.office365.com";
       smtp.port = 587;
       smtp.tls.useStartTls = true;
-      passwordCommand = "pass work/sso | head -n 1";
+      passwordCommand = "${pass} work/sso | ${head} -n 1";
     };
   };
 }
