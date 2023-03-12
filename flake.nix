@@ -19,6 +19,7 @@
             ./hosts/${hostname}/configuration.nix
             ./hosts/${hostname}/hardware-configuration.nix
             ./hosts/${hostname}/user.nix
+            ./hosts/${hostname}/hostname.nix
           ];
         };
       })

@@ -8,7 +8,6 @@
     ../../modules/home.nix
     ../../modules/laptop.nix
     ../../modules/localisation.nix
-    ../../modules/networking.nix
     ../../modules/networkmanager.nix
     ../../modules/system.nix
     ../../modules/openssh.nix
