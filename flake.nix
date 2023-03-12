@@ -14,7 +14,7 @@
         name = hostname;
         value = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = attrs // { inherit hostname; };
+          specialArgs = attrs;
           modules = [
             ./hosts/${hostname}/configuration.nix
             ./hosts/${hostname}/hardware-configuration.nix
