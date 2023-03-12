@@ -10,3 +10,7 @@ tasks:
       --extra-experimental-features nix-command \
       --extra-experimental-features flakes \
       flake check
+triggers:
+- action: email
+  condition: failure
+  to: Patrick Widmer <patrick.widmer@tbwnet.ch>
