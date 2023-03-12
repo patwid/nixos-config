@@ -69,7 +69,7 @@ in
           names = [ "sans-serif" ];
           size = 9.0;
         };
-        menu = "menu-run";
+        menu = "${pkgs.menu-run}/bin/menu-run";
         input = {
           "type:keyboard" = {
             xkb_layout = "us";
@@ -122,7 +122,7 @@ in
               names = [ "sans-serif" ];
               size = 9.0;
             };
-            statusCommand = "i3status";
+            statusCommand = "${pkgs.i3status}/bin/i3status";
             # stripWorkspaceNumbers = yes;
             position = "top";
             extraConfig = ''
