@@ -1,7 +1,4 @@
-{ lib, ... }:
-let
-  hostname = baseNameOf (toString ./.);
-in
+{ hostname, ... }:
 {
   networking.hostName = "${hostname}";
 }
