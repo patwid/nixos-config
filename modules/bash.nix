@@ -22,12 +22,9 @@ in
         cyan="\[$(tput setaf 6)\]"
         reset="\[$(tput sgr0)\]"
 
-        PS1="''${bold}"
-        PS1+="\n''${cyan}\W"
-        PS1+="''${blue}\$(__git_ps1 \" ''${reset}''${blue}git:(''${bold}%s''${reset}''${blue})\")"
-        PS1+="''${reset}\n\$(if [ \"\$?\" = 0 ]; then printf ''${green}; else printf ''${red}; fi)"
-        PS1+="\$"
-        PS1+="''${reset} "
+        PS1="\n"
+        PS1+="''${bold}\W''${reset}\$(__git_ps1 \" git:(''${bold}%s''${reset})\")\n"
+        PS1+="\$ "
       '';
     };
   };
