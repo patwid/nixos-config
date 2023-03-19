@@ -19,6 +19,7 @@ in
     ./password-store.nix
     ./pipewire.nix
     ./qutebrowser.nix
+    ./tmux.nix
     ./wlsunset.nix
     ./xdg.nix
   ];
