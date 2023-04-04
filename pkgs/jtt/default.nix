@@ -2,21 +2,18 @@
 
 let
   name = "jtt";
-  version = "4.3.12-39";
-  src = "${name}-${version}-gcf4b0f5-dirty.tar";
+  version = "4.3.14";
+  src = "${name}-${version}-dirty.tar";
   jdk = jdk17.override { enableJavaFX = true; };
 in
 stdenv.mkDerivation {
-  pname = "${name}";
-  version = "${version}";
+  pname = name;
+  inherit version;
 
   src = requireFile {
-    name = "${src}";
-    sha256 = "12lw7jdq4jgq7rsfwph659ibj01vr8wbp5xpi37gzvkffrsmwcg5";
-
-    message = ''
-      nix-prefetch-url file://$\PWD/${src}
-    '';
+    name = src;
+    sha256 = "14pgfxf9dmm1f0fv8c8kx7iflgidhnp9zq6c6mmxb3i3j0p53p8z";
+    message = ''nix-prefetch-url file://$\PWD/${src}'';
   };
 
   nativeBuildInputs = [ gradle jdk makeWrapper ];
