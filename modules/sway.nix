@@ -41,6 +41,7 @@ in
       sway-contrib.grimshot
       swaybg
       swaylock
+      transmission-gtk
       xdg-open
     ];
 
@@ -60,6 +61,9 @@ in
 
     home.sessionVariables = {
       XCURSOR_THEME = "Adwaita";
+      QT_QPA_PLATFORM = "wayland";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      _JAVA_AWT_WM_NONREPARENTING = "1";
     };
 
     wayland.windowManager.sway = {
