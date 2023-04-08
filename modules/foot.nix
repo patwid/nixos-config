@@ -11,8 +11,8 @@ in
         main.pad = "8x8";
         cursor.blink = "yes";
         colors = {
-          foreground = lib.strings.removePrefix "#" "${colors.darkerGrey}";
-          background = lib.strings.removePrefix "#" "${colors.white}";
+          foreground = lib.strings.removePrefix "#" "${colors.lighterGrey}";
+          background = lib.strings.removePrefix "#" "${colors.black}";
           regular0 = lib.strings.removePrefix "#" "${colors.black}";
           regular1 = lib.strings.removePrefix "#" "${colors.red}";
           regular2 = lib.strings.removePrefix "#" "${colors.green}";
