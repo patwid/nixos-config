@@ -19,7 +19,7 @@ in
           position = 1;
           settings = {
             format = "";
-            format_above_threshold = "L  %1min";
+            format_above_threshold = "CPU  %1min";
             max_threshold = 16;
           };
         };
@@ -28,7 +28,7 @@ in
           settings = {
             format = "";
             threshold_degraded = "5G";
-            format_degraded = "M  < %available";
+            format_degraded = "MEM  < %available";
           };
         };
         "path_exists VPN" = {
@@ -45,10 +45,10 @@ in
             format = "%status  %percentage";
             format_down = "No battery";
             integer_battery_capacity = true;
-            status_chr = "C";
-            status_bat = "B";
-            status_unk = "B";
-            status_full = "B";
+            status_chr = "CHR";
+            status_bat = "BAT";
+            status_unk = "BAT";
+            status_full = "BAT";
             path = "/sys/class/power_supply/BAT%d/uevent";
             low_threshold = 10;
             threshold_type = "percentage";
