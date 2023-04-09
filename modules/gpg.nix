@@ -9,6 +9,8 @@ in
   home-manager.users.${user.name} = {
     home.packages = [ pkgs.pinentry-gnome ];
 
+    programs.gpg.enable = true;
+
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
