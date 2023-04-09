@@ -19,6 +19,7 @@ in
     ./password-store.nix
     ./pipewire.nix
     ./qutebrowser.nix
+    ./syncthing.nix
     ./tmux.nix
     ./wlsunset.nix
     ./xdg.nix
@@ -56,8 +57,6 @@ in
     programs.mpv.enable = true;
     programs.yt-dlp.enable = true;
     programs.zathura.enable = true;
-
-    services.syncthing.enable = true;
 
     home.sessionVariables = {
       XCURSOR_THEME = "Adwaita";
