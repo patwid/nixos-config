@@ -13,7 +13,7 @@ stdenv.mkDerivation {
   src = requireFile {
     name = src;
     sha256 = "14pgfxf9dmm1f0fv8c8kx7iflgidhnp9zq6c6mmxb3i3j0p53p8z";
-    message = ''nix-prefetch-url file://$\PWD/${src}'';
+    message = "nix-prefetch-url file://\$PWD/${src}";
   };
 
   nativeBuildInputs = [ gradle jdk makeWrapper ];
