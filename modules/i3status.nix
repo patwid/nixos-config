@@ -39,22 +39,6 @@ in
             path = "/proc/sys/net/ipv4/conf/tun0";
           };
         };
-        "battery all" = {
-          position = 4;
-          settings = {
-            format = "%status  %percentage";
-            format_down = "No battery";
-            integer_battery_capacity = true;
-            status_chr = "CHR";
-            status_bat = "BAT";
-            status_unk = "BAT";
-            status_full = "BAT";
-            path = "/sys/class/power_supply/BAT%d/uevent";
-            low_threshold = 10;
-            threshold_type = "percentage";
-            last_full_capacity = true;
-          };
-        };
         "tztime date" = {
           position = 5;
           settings.format = "%a, %d %b";
