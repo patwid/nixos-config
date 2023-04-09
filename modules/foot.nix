@@ -7,7 +7,7 @@ in
     programs.foot = {
       enable = true;
       settings = {
-        main.font = "monospace:size=7";
+        main.font = "monospace:size=10";
         main.pad = "8x8";
         cursor.blink = "yes";
         colors = {
