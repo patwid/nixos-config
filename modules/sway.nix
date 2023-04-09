@@ -34,7 +34,7 @@ in
       gnome.adwaita-icon-theme
       grim
       imv
-      libreoffice
+      libreoffice-fresh
       menu-pass
       menu-run
       pavucontrol
