@@ -40,7 +40,7 @@ in
           };
         };
         "battery all" = {
-          position = 5;
+          position = 4;
           settings = {
             format = "%status  %percentage";
             format_down = "No battery";
@@ -56,11 +56,11 @@ in
           };
         };
         "tztime date" = {
-          position = 6;
+          position = 5;
           settings.format = "%a, %d %b";
         };
         "tztime time" = {
-          position = 7;
+          position = 6;
           settings.format = "%H:%M";
         };
       };
