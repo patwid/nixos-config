@@ -1,13 +1,13 @@
 { config, lib, ... }:
 let
-  inherit (config) user colors;
+  inherit (config) user colors terminal;
 in
 {
   home-manager.users.${user.name} = {
     programs.foot = {
       enable = true;
       settings = {
-        main.font = "monospace:size=10";
+        main.font = "monospace:size=${toString terminal.fontsize}";
         main.pad = "8x8";
         cursor.blink = "yes";
         colors = {
