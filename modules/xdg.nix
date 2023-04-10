@@ -1,20 +1,20 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     xdg.userDirs = {
       enable = true;
       createDirectories = true;
       desktop = null;
-      documents = "/home/${user.name}/sync/documents";
-      download = "/home/${user.name}/sync/downloads";
-      music = "/home/${user.name}/music";
-      pictures = "/home/${user.name}/sync/pictures";
+      documents = "/home/${user}/sync/documents";
+      download = "/home/${user}/sync/downloads";
+      music = "/home/${user}/music";
+      pictures = "/home/${user}/sync/pictures";
       publicShare = null;
       templates = null;
-      videos = "/home/${user.name}/videos";
+      videos = "/home/${user}/videos";
     };
   };
 }

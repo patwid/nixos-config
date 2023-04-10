@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ args, config, pkgs, ... }:
 let
-  inherit (config) user colors;
+  inherit (args) user;
+  inherit (config) colors;
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.i3status = {
       enable = true;
       enableDefault = false;

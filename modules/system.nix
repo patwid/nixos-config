@@ -1,6 +1,6 @@
-{ config, lib, pkgs, nur, ... }:
+{ args, config, lib, pkgs, nur, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -16,13 +16,13 @@ in
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
-    flake = "/home/${user.name}/.config/nixos#${config.networking.hostName}";
+    flake = "/home/${user}/.config/nixos#${config.networking.hostName}";
     flags = [ "--recreate-lock-file" ];
   };
 
   system.activationScripts = {
     linkFlakeConfig = ''
-      ln -sfn /home/${user.name}/.config/nixos/flake.nix /etc/nixos/flake.nix
+      ln -sfn /home/${user}/.config/nixos/flake.nix /etc/nixos/flake.nix
     '';
   };
 }

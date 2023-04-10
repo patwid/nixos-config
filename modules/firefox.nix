@@ -1,9 +1,9 @@
-{ config, pkgs, nur, ... }:
+{ args, pkgs, nur, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.firefox = {
       enable = true;
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

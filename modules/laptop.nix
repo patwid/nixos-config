@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   services.tlp.enable = true;
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     home.packages = [ pkgs.brightnessctl ];
 
     programs.i3status = {

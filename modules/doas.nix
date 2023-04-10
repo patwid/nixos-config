@@ -1,13 +1,13 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   security.sudo.enable = false;
   security.doas = {
     enable = true;
     extraRules = [{
-      users = [ "${user.name}" ];
+      users = [ "${user}" ];
       keepEnv = true;
       persist = true;
     }];

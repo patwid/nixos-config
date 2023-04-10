@@ -1,9 +1,10 @@
-{ config, lib, ... }:
+{ args, config, lib, ... }:
 let
-  inherit (config) user colors terminal;
+  inherit (args) user terminal;
+  inherit (config) colors;
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.foot = {
       enable = true;
       settings = {

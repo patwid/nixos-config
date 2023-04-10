@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   environment.variables = {
@@ -9,7 +9,7 @@ in
 
   programs.neovim.enable = true;
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.neovim = {
       enable = true;
       defaultEditor = true;

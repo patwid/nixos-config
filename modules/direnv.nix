@@ -1,6 +1,6 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   nix.settings = {
@@ -8,7 +8,7 @@ in
     keep-derivations = true;
   };
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

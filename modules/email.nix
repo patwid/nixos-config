@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
   pass = "${pkgs.pass}/bin/pass";
   head = "${pkgs.coreutils}/bin/head";
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     accounts.email.accounts.Personal = {
       primary = true;
       realName = "Patrick Widmer";

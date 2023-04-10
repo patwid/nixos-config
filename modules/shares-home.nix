@@ -1,6 +1,6 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
   fsType = "nfs";
   options = [ "nfsvers=3" ];
   nas = "192.168.0.3";
@@ -8,17 +8,17 @@ let
   transmission = "192.168.0.6";
 in
 {
-  fileSystems."/home/${user.name}/music" = {
+  fileSystems."/home/${user}/music" = {
     device = "${nas}:/mnt/tank/media/music";
     inherit fsType options;
   };
 
-  fileSystems."/home/${user.name}/videos/movies" = {
+  fileSystems."/home/${user}/videos/movies" = {
     device = "${nas}:/mnt/tank/media/movies";
     inherit fsType options;
   };
 
-  fileSystems."/home/${user.name}/videos/tv_shows" = {
+  fileSystems."/home/${user}/videos/tv_shows" = {
     device = "${nas}:/mnt/tank/media/tv_shows";
     inherit fsType options;
   };

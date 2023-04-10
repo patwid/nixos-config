@@ -1,13 +1,13 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   imports = [
     ./email.nix
   ];
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     accounts.email.accounts.Personal = {
       aerc.enable = true;
     };

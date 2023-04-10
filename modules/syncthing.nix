@@ -1,12 +1,12 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   services.syncthing = {
     enable = true;
-    user = "${user.name}";
-    dataDir = "/home/${user.name}/sync";
-    configDir = "/home/${user.name}/.config/syncthing";
+    user = "${user}";
+    dataDir = "/home/${user}/sync";
+    configDir = "/home/${user}/.config/syncthing";
   };
 }

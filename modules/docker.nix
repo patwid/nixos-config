@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   # Defaults are documented here:
@@ -35,9 +35,9 @@ in
     iptables -A INPUT -s 192.168.0.0/16 -j ACCEPT
   '';
 
-  users.users.${user.name}.extraGroups = [ "docker" ];
+  users.users.${user}.extraGroups = [ "docker" ];
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     home.packages = [ pkgs.docker-compose ];
   };
 }

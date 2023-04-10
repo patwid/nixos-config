@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   # Required for screen sharing to work
@@ -41,7 +41,7 @@ in
     };
   };
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.chromium.enable = true;
   };
 }

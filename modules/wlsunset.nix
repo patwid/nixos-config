@@ -1,9 +1,9 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     services.wlsunset = {
       enable = true;
       latitude = "47.3";

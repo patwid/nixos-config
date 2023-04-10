@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.tmux = {
       enable = true;
       prefix = "C-a";

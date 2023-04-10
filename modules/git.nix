@@ -1,15 +1,15 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user email;
 in
 {
   programs.git.enable = true;
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.git = {
       enable = true;
       userName = "Patrick Widmer";
-      userEmail = "${user.email}";
+      userEmail = "${email}";
       lfs.enable = true;
       extraConfig = {
         core.editor = "nvim";

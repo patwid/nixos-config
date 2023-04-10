@@ -1,6 +1,6 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   imports = [
@@ -13,7 +13,7 @@ in
     })
   ];
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     programs.password-store.enable = true;
   };
 }

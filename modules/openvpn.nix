@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ args, pkgs, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   programs.openvpn3.enable = true;
 
-  home-manager.users.${user.name} = {
+  home-manager.users.${user} = {
     home.packages = [ pkgs.networkmanager-openvpn ];
   };
 }

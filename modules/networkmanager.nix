@@ -1,9 +1,9 @@
-{ config, ... }:
+{ args, ... }:
 let
-  inherit (config) user;
+  inherit (args) user;
 in
 {
   networking.networkmanager.enable = true;
 
-  users.users.${user.name}.extraGroups = [ "networkmanager" ];
+  users.users.${user}.extraGroups = [ "networkmanager" ];
 }
