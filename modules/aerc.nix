@@ -3,10 +3,6 @@ let
   inherit (args) user;
 in
 {
-  imports = [
-    ./email.nix
-  ];
-
   home-manager.users.${user} = {
     accounts.email.accounts.Personal = {
       aerc.enable = true;

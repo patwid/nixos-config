@@ -1,6 +1,7 @@
+{ lib, ... }:
 {
-  imports = [
-    ./openvpn.nix
-    ./shares-work-remote.nix
-  ];
+  options.remoteWork = lib.mkOption {
+    default = false;
+    type = lib.types.bool;
+  };
 }

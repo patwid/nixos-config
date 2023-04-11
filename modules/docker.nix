@@ -1,8 +1,9 @@
-{ args, pkgs, ... }:
+{ config, args, lib, pkgs, ... }:
 let
   inherit (args) user;
 in
-{
+lib.mkIf config.work {
+
   # Defaults are documented here:
   # https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
   # https://github.com/docker/docs/issues/8663
@@ -44,4 +45,5 @@ in
   home-manager.users.${user} = {
     home.packages = [ pkgs.docker-compose ];
   };
+
 }

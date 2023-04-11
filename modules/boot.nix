@@ -1,3 +1,8 @@
+{ config, lib, ... }:
 {
-  boot.cleanTmpDir = true;
+  options.bootloader = lib.mkOption {
+    type = lib.types.enum [ "systemdboot" "grub" ];
+  };
+
+  config.boot.cleanTmpDir = true;
 }

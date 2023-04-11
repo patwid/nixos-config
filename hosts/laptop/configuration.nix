@@ -1,23 +1,9 @@
 {
-  imports = [
-    ../../modules/boot.nix
-    ../../modules/colors.nix
-    ../../modules/doas.nix
-    ../../modules/fonts.nix
-    ../../modules/home.nix
-    ../../modules/laptop.nix
-    ../../modules/localisation.nix
-    ../../modules/networking.nix
-    ../../modules/networkmanager.nix
-    ../../modules/system.nix
-    ../../modules/openssh.nix
-    ../../modules/shares-home.nix
-    ../../modules/sway.nix
-    ../../modules/systemdboot.nix
-    ../../modules/users.nix
-    ../../modules/work-remote.nix
-    ../../modules/work.nix
-  ];
+  bootloader = "systemdboot";
+  laptop = true;
+  sharesHome = true;
+  work = true;
+  remoteWork = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

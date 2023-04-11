@@ -22,6 +22,7 @@
             modules = [
               ./hosts/${hostname}/configuration.nix
               ./hosts/${hostname}/hardware-configuration.nix
+              ./modules
             ];
           };
       })

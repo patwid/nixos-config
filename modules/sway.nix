@@ -5,27 +5,6 @@ let
   modifier = "Mod4";
 in
 {
-  imports = [
-    ./aerc.nix
-    ./base.nix
-    ./bash.nix
-    ./chromium.nix
-    ./direnv.nix
-    ./firefox.nix
-    ./foot.nix
-    ./git.nix
-    ./i3status.nix
-    ./mako.nix
-    ./neovim.nix
-    ./password-store.nix
-    ./pipewire.nix
-    ./qutebrowser.nix
-    ./syncthing.nix
-    ./tmux.nix
-    ./wlsunset.nix
-    ./xdg.nix
-  ];
-
   users.users.${user}.extraGroups = [ "input" "video" "audio" ];
 
   programs.sway.enable = true;
