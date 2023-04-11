@@ -17,7 +17,7 @@
             args = import  ./hosts/${hostname}/args.nix // { inherit hostname; };
           in
           nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+            inherit (args) system;
             specialArgs = attrs // { inherit args; };
             modules = [
               ./hosts/${hostname}/configuration.nix
