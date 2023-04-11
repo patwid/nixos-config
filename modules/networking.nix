@@ -1,6 +1,7 @@
 { args, ... }:
 let
   inherit (args) hostname;
-in {
+in
+{
   networking.hostName = "${hostname}";
 }

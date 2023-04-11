@@ -12,16 +12,18 @@
     nixosConfigurations = builtins.listToAttrs (map
       (hostname: {
         name = hostname;
-        value = let
-          args = import ./hosts/${hostname}/args.nix // { inherit hostname; };
-        in nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = attrs // { inherit args; };
-          modules = [
-            ./hosts/${hostname}/configuration.nix
-            ./hosts/${hostname}/hardware-configuration.nix
-          ];
-        };
+        value =
+          let
+            args = import  ./hosts/${hostname}/args.nix // { inherit hostname; };
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = attrs // { inherit args; };
+            modules = [
+              ./hosts/${hostname}/configuration.nix
+              ./hosts/${hostname}/hardware-configuration.nix
+            ];
+          };
       })
       (builtins.attrNames (builtins.readDir ./hosts)));
 
