@@ -21,6 +21,10 @@ in
       { "base" = "172.28.0.0/14"; "size" = 20; }
       { "base" = "192.168.0.0/16"; "size" = 24; }
     ];
+    "registry-mirrors" = [ "https://docker-mirror.ergon.ch" ];
+    "insecure-registries" = [ ];
+    "debug" = true;
+    "experimental" = false;
   };
 
   networking.firewall.extraCommands = ''
