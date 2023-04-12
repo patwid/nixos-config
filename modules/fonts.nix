@@ -7,6 +7,9 @@
     roboto-mono
     hack-font
     font-awesome
+    corefonts
+    carlito
+    caladea
   ];
 
   fonts.fontconfig = {
