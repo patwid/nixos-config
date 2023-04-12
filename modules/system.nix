@@ -1,6 +1,6 @@
 { args, config, lib, pkgs, nur, ... }:
 let
-  inherit (args) user;
+  inherit (args) user stateVersion;
 in
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -25,4 +25,6 @@ in
       ln -sfn /home/${user}/.config/nixos/flake.nix /etc/nixos/flake.nix
     '';
   };
+
+  system.stateVersion = stateVersion;
 }
