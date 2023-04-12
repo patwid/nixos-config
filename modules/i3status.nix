@@ -1,4 +1,4 @@
-{ args, config, pkgs, ... }:
+{ args, config, lib, pkgs, ... }:
 let
   inherit (args) user;
   inherit (config) colors;
@@ -47,6 +47,24 @@ in
         "tztime time" = {
           position = 6;
           settings.format = "%H:%M";
+        };
+      }
+      // lib.attrsets.optionalAttrs config.laptop {
+        "battery all" = {
+          position = 4;
+          settings = {
+            format = "%status  %percentage";
+            format_down = "No battery";
+            integer_battery_capacity = true;
+            status_chr = "CHR";
+            status_bat = "BAT";
+            status_unk = "BAT";
+            status_full = "BAT";
+            path = "/sys/class/power_supply/BAT%d/uevent";
+            low_threshold = 10;
+            threshold_type = "percentage";
+            last_full_capacity = true;
+          };
         };
       };
     };
