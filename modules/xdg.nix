@@ -8,10 +8,10 @@ in
       enable = true;
       createDirectories = true;
       desktop = null;
-      documents = "/home/${user}/sync/documents";
-      download = "/home/${user}/sync/downloads";
+      documents = "/home/${user}/documents";
+      download = "/home/${user}/downloads";
       music = "/home/${user}/music";
-      pictures = "/home/${user}/sync/pictures";
+      pictures = "/home/${user}/pictures";
       publicShare = null;
       templates = null;
       videos = "/home/${user}/videos";
