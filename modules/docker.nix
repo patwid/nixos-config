@@ -11,7 +11,7 @@ lib.mkIf config.work {
   virtualisation.docker.enable = true;
   virtualisation.docker.daemon.settings = {
     "default-address-pools" = [
-      { "base" = "172.17.0.0/16"; "size" = 20; }
+      { "base" = "172.17.0.0/16"; "size" = 16; }
       { "base" = "172.19.0.0/16"; "size" = 20; }
       { "base" = "172.21.0.0/16"; "size" = 20; }
       { "base" = "172.22.0.0/16"; "size" = 20; }
