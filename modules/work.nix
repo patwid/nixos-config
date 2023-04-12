@@ -8,6 +8,11 @@ in
     type = lib.types.bool;
   };
 
+  options.remoteWork = lib.mkOption {
+    default = false;
+    type = lib.types.bool;
+  };
+
   config = lib.mkIf config.work {
     home-manager.users.${user} = {
       home.packages = with pkgs; [
