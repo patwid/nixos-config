@@ -14,7 +14,7 @@
         name = hostname;
         value =
           let
-            args = import  ./hosts/${hostname}/args.nix // { inherit hostname; };
+            args = import ./hosts/${hostname}/args.nix // { inherit hostname; };
           in
           nixpkgs.lib.nixosSystem {
             inherit (args) system;
