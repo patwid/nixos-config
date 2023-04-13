@@ -15,6 +15,7 @@
         value =
           let
             args = import ./hosts/${hostname}/args.nix // { inherit hostname; };
+            paths = path: map (f: path + "/${f}") (builtins.attrNames (builtins.readDir path));
           in
           nixpkgs.lib.nixosSystem {
             inherit (args) system;
@@ -22,8 +23,7 @@
             modules = [
               ./hosts/${hostname}/configuration.nix
               ./hosts/${hostname}/hardware-configuration.nix
-              ./modules
-            ];
+            ] ++ paths ./modules;
           };
       })
       (builtins.attrNames (builtins.readDir ./hosts)));
