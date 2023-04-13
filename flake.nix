@@ -8,7 +8,7 @@
     nur.url = github:nix-community/NUR;
   };
 
-  outputs = { self, nixpkgs, nur, ... }@attrs: {
+  outputs = { self, nixpkgs, ... }@attrs: {
     nixosConfigurations = builtins.listToAttrs (map
       (hostname: {
         name = hostname;
