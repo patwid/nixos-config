@@ -6,6 +6,7 @@ in
   xdg-open = localpkgs.xdg-open;
   zulu17 = localpkgs.zulu17;
   jtt = localpkgs.jtt;
+  google-chrome = localpkgs.google-chrome;
   mattermost = localpkgs.mattermost;
   menu-run = localpkgs.menu-run;
   menu-pass = localpkgs.menu-pass;

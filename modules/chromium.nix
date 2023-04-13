@@ -43,5 +43,9 @@ in
 
   home-manager.users.${user} = {
     programs.chromium.enable = true;
+
+    home.packages = with pkgs; [
+      google-chrome
+    ];
   };
 }
