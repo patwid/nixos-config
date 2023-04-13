@@ -5,14 +5,12 @@
     noto-fonts-cjk
     noto-fonts-emoji
     roboto-mono
-    hack-font
-    font-awesome
   ];
 
   fonts.fontconfig = {
     defaultFonts = {
-      emoji = [ "Noto Emoji" "Font Awesome" ];
-      monospace = [ "Roboto Mono" "Hack" ];
+      emoji = [ "Noto Emoji" ];
+      monospace = [ "Roboto Mono" ];
       sansSerif = [ "Noto Sans" ];
       serif = [ "Noto Serif" ];
     };
