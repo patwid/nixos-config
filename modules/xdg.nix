@@ -16,5 +16,9 @@ in
       templates = null;
       videos = "/home/${user}/videos";
     };
+
+    home.sessionVariables = {
+      XDG_SCREENSHOTS_DIR = "/home/${user}/pictures/screenshots";
+    };
   };
 }
