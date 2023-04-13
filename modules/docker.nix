@@ -2,7 +2,7 @@
 let
   inherit (args) user;
 in
-lib.mkIf config.work {
+lib.mkIf config.work.enable {
 
   # Defaults are documented here:
   # https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go

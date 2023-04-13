@@ -3,17 +3,18 @@ let
   inherit (args) user;
 in
 {
-  options.work = lib.mkOption {
-    default = false;
-    type = lib.types.bool;
+  options.work = {
+    enable = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
+    remote = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+    };
   };
 
-  options.remoteWork = lib.mkOption {
-    default = false;
-    type = lib.types.bool;
-  };
-
-  config = lib.mkIf config.work {
+  config = lib.mkIf config.work.enable {
     home-manager.users.${user} = {
       home.packages = with pkgs; [
         citrix_workspace

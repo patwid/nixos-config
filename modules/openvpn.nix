@@ -2,7 +2,7 @@
 let
   inherit (args) user;
 in
-lib.mkIf config.remoteWork {
+lib.mkIf config.work.remote {
   programs.openvpn3.enable = true;
 
   home-manager.users.${user} = {

@@ -9,7 +9,7 @@ let
   gid = if group.gid == null then "100" else toString group.gid;
   options = [ ''noauto,user=${user},domain=ERGON,uid=${uid},gid=${gid}'' ];
 in
-lib.mkIf config.remoteWork {
+lib.mkIf config.work.remote {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
   # request-key expects a configuration file under /etc
   environment.etc."request-key.conf" = lib.mkForce {

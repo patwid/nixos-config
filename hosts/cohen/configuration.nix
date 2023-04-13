@@ -1,4 +1,4 @@
 {
   bootloader = "systemdboot";
-  work = true;
+  work.enable = true;
 }

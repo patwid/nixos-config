@@ -2,6 +2,6 @@
   bootloader = "systemdboot";
   laptop = true;
   sharesHome = true;
-  work = true;
-  remoteWork = true;
+  work.enable = true;
+  work.remote = true;
 }
