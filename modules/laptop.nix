@@ -1,5 +1,6 @@
 { config, args, lib, pkgs, ... }:
 let
+  inherit (config) laptop;
   inherit (args) user;
 in
 {
@@ -8,7 +9,7 @@ in
     type = lib.types.bool;
   };
 
-  config = lib.mkIf config.laptop {
+  config = lib.mkIf (laptop) {
     services.tlp.enable = true;
 
     home-manager.users.${user} = {

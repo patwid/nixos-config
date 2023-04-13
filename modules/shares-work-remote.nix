@@ -1,6 +1,8 @@
 { args, config, lib, pkgs, ... }:
 let
   inherit (args) user;
+  inherit (config) work;
+
   fsType = "cifs";
   user' = config.users.users.${user};
   primary = config.users.users.${user}.group;
@@ -9,7 +11,7 @@ let
   gid = if group.gid == null then "100" else toString group.gid;
   options = [ ''noauto,user=${user},domain=ERGON,uid=${uid},gid=${gid}'' ];
 in
-lib.mkIf config.work.remote {
+lib.mkIf (work.remote) {
   # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
   # request-key expects a configuration file under /etc
   environment.etc."request-key.conf" = lib.mkForce {

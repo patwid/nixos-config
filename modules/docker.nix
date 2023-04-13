@@ -1,8 +1,9 @@
 { config, args, lib, pkgs, ... }:
 let
+  inherit (config) work;
   inherit (args) user;
 in
-lib.mkIf config.work.enable (lib.mkMerge [
+lib.mkIf (work.enable) (lib.mkMerge [
   {
     # Defaults are documented here:
     # - https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
@@ -20,7 +21,7 @@ lib.mkIf config.work.enable (lib.mkMerge [
     };
   }
 
-  (lib.mkIf config.work.remote {
+  (lib.mkIf (work.remote) {
     virtualisation.docker.daemon.settings = {
       # Remote work via vpn, some subnets are already used. Specifically,
       # 172.18.0.0/16, 172.20.0.0/16, 172.25.0.0.16 are routed via VPN. To avoid
@@ -52,7 +53,7 @@ lib.mkIf config.work.enable (lib.mkMerge [
     '';
   })
 
-  (lib.mkIf (!config.work.remote) {
+  (lib.mkIf (!work.remote) {
     virtualisation.docker.daemon.settings = {
       "default-address-pools" = [
         { "base" = "172.17.0.0/16"; "size" = 16; }

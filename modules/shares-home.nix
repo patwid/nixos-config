@@ -1,6 +1,8 @@
 { config, args, lib, ... }:
 let
   inherit (args) user;
+  inherit (config) sharesHome;
+
   fsType = "nfs";
   options = [ "nfsvers=3" ];
   nas = "192.168.0.3";
@@ -13,7 +15,7 @@ in
     type = lib.types.bool;
   };
 
-  config = lib.mkIf config.sharesHome {
+  config = lib.mkIf (sharesHome) {
     fileSystems."/home/${user}/music" = {
       device = "${nas}:/mnt/tank/media/music";
       inherit fsType options;

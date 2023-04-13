@@ -1,5 +1,6 @@
 { config, args, lib, pkgs, ... }:
 let
+  inherit (config) work;
   inherit (args) user;
 in
 {
@@ -14,7 +15,7 @@ in
     };
   };
 
-  config = lib.mkIf config.work.enable {
+  config = lib.mkIf (work.enable) {
     home-manager.users.${user} = {
       home.packages = with pkgs; [
         citrix_workspace

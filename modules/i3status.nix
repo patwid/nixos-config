@@ -1,7 +1,7 @@
 { args, config, lib, pkgs, ... }:
 let
   inherit (args) user;
-  inherit (config) colors;
+  inherit (config) colors laptop;
 in
 lib.mkMerge [
   {
@@ -54,7 +54,7 @@ lib.mkMerge [
     };
   }
 
-  (lib.mkIf config.laptop {
+  (lib.mkIf (laptop) {
     home-manager.users.${user} = {
       programs.i3status.modules = {
         "battery all" = {

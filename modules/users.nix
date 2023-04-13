@@ -13,7 +13,7 @@ lib.mkMerge [
     };
   }
 
-  (lib.mkIf customGroup {
+  (lib.mkIf (customGroup) {
     users.users.${user} = {
       inherit (args) group;
     };
