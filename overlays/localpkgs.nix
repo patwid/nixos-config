@@ -4,7 +4,6 @@ let
 in
 (self: super: {
   xdg-open = localpkgs.xdg-open;
-  zulu17 = localpkgs.zulu17;
   jtt = localpkgs.jtt;
   google-chrome = localpkgs.google-chrome;
   mattermost = localpkgs.mattermost;
