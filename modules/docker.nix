@@ -10,6 +10,7 @@ lib.mkIf config.work.enable {
 
   virtualisation.docker.enable = true;
   virtualisation.docker.daemon.settings = {
+    "registry-mirrors" = [ "https://docker-mirror.ergon.ch" ];
     "default-address-pools" = [
       { "base" = "172.17.0.0/16"; "size" = 16; }
       { "base" = "172.19.0.0/16"; "size" = 20; }
@@ -22,10 +23,6 @@ lib.mkIf config.work.enable {
       { "base" = "172.28.0.0/14"; "size" = 20; }
       { "base" = "192.168.0.0/16"; "size" = 24; }
     ];
-    "registry-mirrors" = [ "https://docker-mirror.ergon.ch" ];
-    "insecure-registries" = [ ];
-    "debug" = true;
-    "experimental" = false;
   };
 
   networking.firewall.extraCommands = ''
