@@ -3,21 +3,23 @@ let
   inherit (args) user;
   customGroup = args ? group && args ? gid;
 in
-{
-  users = {
-    users.${user} = {
+lib.mkMerge [
+  {
+    users.users.${user} = {
       isNormalUser = true;
       description = "${user}";
       extraGroups = [ "wheel" ];
       packages = with pkgs; [ ];
-    }
-    // lib.attrsets.optionalAttrs customGroup {
-      inherit (args) group;
     };
   }
-  // lib.attrsets.optionalAttrs customGroup {
-    groups.${args.group} = {
+
+  (lib.mkIf customGroup {
+    users.users.${user} = {
+      inherit (args) group;
+    };
+
+    users.groups.${args.group} = {
       inherit (args) gid;
     };
-  };
-}
+  })
+]
