@@ -1,4 +1,4 @@
-{ stdenv, chromium, makeWrapper, ... }:
+{ stdenv, chromium, ... }:
 
 let
   name = "google-chrome";
@@ -10,10 +10,10 @@ stdenv.mkDerivation {
 
   src = ./.;
 
-  nativeBuildInputs = [ chromium makeWrapper ];
+  nativeBuildInputs = [ chromium ];
 
   installPhase = ''
     mkdir -p $out/bin
-    makeWrapper ${chromium}/bin/chromium $out/bin/${name}
+    ln -s ${chromium}/bin/chromium $out/bin/${name}
   '';
 }
