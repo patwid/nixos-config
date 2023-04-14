@@ -3,13 +3,14 @@ let
   localpkgs = import ../pkgs { inherit lib pkgs; };
 in
 (self: super: {
-  xdg-open = localpkgs.xdg-open;
-  jtt = localpkgs.jtt;
-  google-chrome = localpkgs.google-chrome;
-  mattermost = localpkgs.mattermost;
-  menu-run = localpkgs.menu-run;
-  menu-pass = localpkgs.menu-pass;
-  outlook = localpkgs.outlook;
-  smartaz = localpkgs.smartaz;
-  teams = localpkgs.teams;
+  inherit (localpkgs)
+    xdg-open
+    jtt
+    google-chrome
+    mattermost
+    menu-run
+    menu-pass
+    outlook
+    smartaz
+    teams;
 })
