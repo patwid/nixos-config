@@ -1,4 +1,4 @@
-{ args, ... }:
+{ args, pkgs, ... }:
 let
   inherit (args) user email;
 in
@@ -13,7 +13,7 @@ in
       lfs.enable = true;
       extraConfig = {
         init.defaultBranch = "master";
-        core.editor = "nvim";
+        core.editor = "${pkgs.neovim}/bin/nvim";
       };
     };
   };
