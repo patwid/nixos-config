@@ -3,7 +3,7 @@
 let
   name = "jtt";
   version = "4.3.14";
-  src = "${name}-${version}-dirty.tar";
+  src = "${name}-${version}.tar";
   jdk = jdk17.override { enableJavaFX = true; };
 in
 stdenv.mkDerivation {
@@ -12,7 +12,7 @@ stdenv.mkDerivation {
 
   src = requireFile {
     name = src;
-    sha256 = "sha256-ivlzImMxFqeVrhiCnLAqhXCtBpBIgy6FjLdDi158TCg=";
+    sha256 = "sha256-2H+RLCMWB9VBU86LwrcJP3oo2QZi1bWUGOqFEYNQZxM=";
     message = ''nix-prefetch-url file://\$PWD/${src}'';
   };
 
