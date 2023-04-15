@@ -3,13 +3,12 @@ secrets:
 - 7f4676f8-c40c-498b-a4d4-a644037f559c
 sources:
 - git@git.sr.ht/~patwid/nixos-config
+environment:
+  NIX_CONFIG: experimental-features = nix-command flakes
 tasks:
 - check: |
     cd nixos-config
-    nix \
-      --extra-experimental-features nix-command \
-      --extra-experimental-features flakes \
-      flake check
+    nix flake check
 triggers:
 - action: email
   condition: failure
