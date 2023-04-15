@@ -12,6 +12,7 @@ in
       userEmail = "${email}";
       lfs.enable = true;
       extraConfig = {
+        init.defaultBranch = "master";
         core.editor = "nvim";
       };
     };
