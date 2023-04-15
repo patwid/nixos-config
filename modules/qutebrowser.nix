@@ -139,16 +139,21 @@ in
           webpage.bg = "${colors.white}";
         };
       };
-      keyBindings = {
-        normal = {
-          ",m" = "spawn --detach ${pkgs.mpv}/bin/mpv {url}";
-          ",M" = "hint links spawn --detach ${pkgs.mpv}/bin/mpv {hint-url}";
-          ";M" = "hint --rapid links spawn --detach ${pkgs.mpv}/bin/mpv {hint-url}";
-          ",u" = "spawn ${pkgs.mpv}/bin/umpv {url}";
-          ",U" = "hint links spawn ${pkgs.mpv}/bin/umpv {hint-url}";
-          ";U" = "hint --rapid links spawn ${pkgs.mpv}/bin/umpv {hint-url}";
+      keyBindings =
+        let
+          mpv = "${pkgs.mpv}/bin/mpv";
+          umpv = "${pkgs.mpv}/bin/umpv";
+        in
+        {
+          normal = {
+            ",m" = "spawn --detach ${mpv} {url}";
+            ",M" = "hint links spawn --detach ${mpv} {hint-url}";
+            ";M" = "hint --rapid links spawn --detach ${mpv} {hint-url}";
+            ",u" = "spawn ${umpv} {url}";
+            ",U" = "hint links spawn ${umpv} {hint-url}";
+            ";U" = "hint --rapid links spawn ${umpv} {hint-url}";
+          };
         };
-      };
     };
   };
 }
