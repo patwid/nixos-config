@@ -12,7 +12,7 @@ stdenv.mkDerivation {
 
   src = requireFile {
     name = src;
-    sha256 = "0a2cgig8nhxpij2jx0s8j03asw455aq9r0hqmsasf5iicci77yca";
+    sha256 = "sha256-ivlzImMxFqeVrhiCnLAqhXCtBpBIgy6FjLdDi158TCg=";
     message = ''nix-prefetch-url file://\$PWD/${src}'';
   };
 
