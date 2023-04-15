@@ -1,19 +1,7 @@
-{ stdenv, chromium, ... }:
+{ writeShellApplication, chromium, ... }:
 
-let
+writeShellApplication {
   name = "google-chrome";
-  version = "${chromium.version}";
-in
-stdenv.mkDerivation {
-  pname = name;
-  inherit version;
-
-  src = ./.;
-
-  nativeBuildInputs = [ chromium ];
-
-  installPhase = ''
-    mkdir -p $out/bin
-    ln -s ${chromium}/bin/chromium $out/bin/${name}
-  '';
+  runtimeInputs = [ chromium ];
+  text = ''chromium "$@"'';
 }
