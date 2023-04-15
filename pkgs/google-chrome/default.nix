@@ -2,7 +2,7 @@
 
 let
   name = "google-chrome";
-  version = "1.0.0";
+  version = "${chromium.version}";
 in
 stdenv.mkDerivation {
   pname = name;
