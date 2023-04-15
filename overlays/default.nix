@@ -1,5 +1,8 @@
 { lib, pkgs, nur }:
+let
+  localpkgs = import ./localpkgs.nix { inherit lib pkgs; };
+in
 [
-  (import ./localpkgs.nix { inherit lib pkgs; })
-  (import ./nur.nix { inherit nur; })
+  nur.overlay
+  localpkgs
 ]
