@@ -8,12 +8,11 @@ in
     programs.qutebrowser = {
       enable = true;
       quickmarks = {
-        hm = "https://nix-community.github.io/home-manager/options.html";
         i3 = "https://i3wm.org/docs/userguide.html";
-        no = "https://nixos.org/manual/nixos/stable/options.html";
         nt = "https://nixpk.gs/pr-tracker.html";
-        stn = "http://syncthing.local:8384/";
+        s = "http://stash.ergon.ch/";
         st = "http://localhost:8384/";
+        stn = "http://syncthing.local:8384/";
         tm = "http://transmission.local:9091/transmission/web/";
         yt = "https://youtube.com";
       };
