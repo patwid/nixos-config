@@ -4,5 +4,5 @@ let
 in
 [
   nur.overlay
-  localpkgs
+  localpkgs.overlay
 ]
