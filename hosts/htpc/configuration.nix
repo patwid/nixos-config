@@ -1,5 +1,5 @@
 {
   bootloader = "grub";
   laptop = true;
-  sharesHome = true;
+  home = true;
 }

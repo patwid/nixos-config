@@ -1,7 +1,7 @@
 { config, args, lib, ... }:
 let
   inherit (args) user;
-  inherit (config) sharesHome;
+  inherit (config) home;
 
   fsType = "nfs";
   options = [ "nfsvers=3" ];
@@ -10,12 +10,12 @@ let
   transmission = "192.168.0.6";
 in
 {
-  options.sharesHome = lib.mkOption {
+  options.home = lib.mkOption {
     default = false;
     type = lib.types.bool;
   };
 
-  config = lib.mkIf (sharesHome) {
+  config = lib.mkIf (home) {
     fileSystems."/home/${user}/music" = {
       device = "${nas}:/mnt/tank/media/music";
       inherit fsType options;

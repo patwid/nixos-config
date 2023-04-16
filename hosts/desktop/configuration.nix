@@ -1,6 +1,6 @@
 {
   bootloader = "systemdboot";
-  sharesHome = true;
+  home = true;
   work.enable = true;
   work.remote = true;
 }
