@@ -49,6 +49,7 @@ in
       enable = true;
       config = {
         modifier = "${modifier}";
+        defaultWorkspace = "workspace number 1";
         fonts = {
           names = [ "sans-serif" ];
           size = 9.0;
@@ -176,6 +177,8 @@ in
             grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
           in
           lib.mkOptionDefault {
+            "${modifier}+0" = "workspace number 10";
+            "${modifier}+Shift+0" = "move container to workspace number 10";
             "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
             "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
             "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
