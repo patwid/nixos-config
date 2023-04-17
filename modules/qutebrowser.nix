@@ -8,19 +8,19 @@ in
     programs.qutebrowser = {
       enable = true;
       quickmarks = {
-        i3 = "https://i3wm.org/docs/userguide.html";
-        nt = "https://nixpk.gs/pr-tracker.html";
         b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=1234";
+        g = "https://grafana.axenita.dev/";
+        i3 = "https://i3wm.org/docs/userguide.html";
+        ls = "https://logsearch.axenita.dev/";
+        nt = "https://nixpk.gs/pr-tracker.html";
         s = "http://stash.ergon.ch/";
         st = "http://localhost:8384/";
         stn = "http://syncthing.local:8384/";
-        tm = "http://transmission.local:9091/transmission/web/";
-        yt = "https://youtube.com";
-        wi = "https://wi.sanacare.ch/";
-        ls = "https://logsearch.axenita.dev/";
-        g = "https://grafana.axenita.dev/";
         t = "https://tower.axenita.dev/";
         td = "https://tower-dev.axenita.dev/";
+        tm = "http://transmission.local:9091/transmission/web/";
+        wi = "https://wi.sanacare.ch/";
+        yt = "https://youtube.com";
       };
       searchEngines = {
         DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
@@ -30,6 +30,8 @@ in
         no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
         np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
         nt = "https://nixpk.gs/pr-tracker.html?pr={}";
+        p = "https://git.sr.ht/~patwid/{}";
+        s = "https://git.sr.ht/~{}";
         wa = "https://wiki.archlinux.org/?search={}";
         yt = "https://youtube.com/results?search_query={}";
         ytm = "https://music.youtube.com/search?q={}";
