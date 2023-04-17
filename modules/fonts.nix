@@ -14,5 +14,16 @@
       sansSerif = [ "Noto Sans" ];
       serif = [ "Noto Serif" ];
     };
+    localConf = ''
+      <selectfont>
+        <rejectfont>
+          <glob>${pkgs.dejavu_fonts}/*</glob>
+          <glob>${pkgs.liberation_ttf}/*</glob>
+          <glob>${pkgs.gyre-fonts}/*</glob>
+          <glob>${pkgs.freefont_ttf}/*</glob>
+          <glob>${pkgs.unifont}/*</glob>
+        </rejectfont>
+      </selectfont>
+    '';
   };
 }
