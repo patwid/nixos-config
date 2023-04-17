@@ -1,4 +1,4 @@
-{ writeShellApplication, coreutils, dmenu, findutils, menu, sway, ... }:
+{ writeShellApplication, coreutils, dmenu, findutils, wmenu, sway, ... }:
 
 writeShellApplication {
   name = "menu-run";
@@ -6,10 +6,10 @@ writeShellApplication {
     coreutils # dmenu_path depends on coreutils (cat)
     dmenu
     findutils
-    menu
+    wmenu
     sway
   ];
   text = ''
-    dmenu_path | menu | xargs --no-run-if-empty swaymsg exec --
+    dmenu_path | wmenu | xargs --no-run-if-empty swaymsg exec --
   '';
 }
