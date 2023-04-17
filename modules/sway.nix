@@ -28,7 +28,7 @@ in
 
     programs.bash = {
       profileExtra = ''
-        if [ -z "$DISPLAY" ] && [ "$(tty)" = /dev/tty1 ]; then
+        if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
           exec ${pkgs.sway}/bin/sway >/dev/null 2>&1
         fi
       '';
