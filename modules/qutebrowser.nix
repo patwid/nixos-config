@@ -10,11 +10,17 @@ in
       quickmarks = {
         i3 = "https://i3wm.org/docs/userguide.html";
         nt = "https://nixpk.gs/pr-tracker.html";
+        b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=1234";
         s = "http://stash.ergon.ch/";
         st = "http://localhost:8384/";
         stn = "http://syncthing.local:8384/";
         tm = "http://transmission.local:9091/transmission/web/";
         yt = "https://youtube.com";
+        wi = "https://wi.sanacare.ch/";
+        ls = "https://logsearch.axenita.dev/";
+        g = "https://grafana.axenita.dev/";
+        t = "https://tower.axenita.dev/";
+        td = "https://tower-dev.axenita.dev/";
       };
       searchEngines = {
         DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
