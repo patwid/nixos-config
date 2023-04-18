@@ -7,7 +7,8 @@ in
 {
   users.users.${user}.extraGroups = [ "input" "video" "audio" ];
 
-  programs.sway.enable = true;
+  security.polkit.enable = true;
+  hardware.opengl.enable = true;
 
   home-manager.users.${user} = {
     home.packages = with pkgs; [
@@ -29,7 +30,7 @@ in
     programs.bash = {
       profileExtra = ''
         if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-          exec ${pkgs.sway}/bin/sway >/dev/null 2>&1
+          exec sway >/dev/null 2>&1
         fi
       '';
     };
@@ -38,15 +39,10 @@ in
     programs.yt-dlp.enable = true;
     programs.zathura.enable = true;
 
-    home.sessionVariables = {
-      XCURSOR_THEME = "Adwaita";
-      QT_QPA_PLATFORM = "wayland";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      _JAVA_AWT_WM_NONREPARENTING = "1";
-    };
-
     wayland.windowManager.sway = {
       enable = true;
+      wrapperFeatures.base = true;
+      systemdIntegration = true;
       config = {
         modifier = "${modifier}";
         defaultWorkspace = "workspace number 1";
@@ -203,6 +199,7 @@ in
       extraSessionCommands = ''
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+        export XCURSOR_THEME=Adwaita
         export _JAVA_AWT_WM_NONREPARENTING=1
       '';
     };
