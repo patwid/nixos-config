@@ -7,6 +7,7 @@ in
     (self: super: {
       inherit (localpkgs)
         xdg-open
+        xdg-desktop-portal-wlr
         jtt
         google-chrome
         mattermost
