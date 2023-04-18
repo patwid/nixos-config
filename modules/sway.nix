@@ -14,8 +14,6 @@ in
     home.packages = with pkgs; [
       gnome.adwaita-icon-theme
       grim
-      imv
-      libreoffice-fresh
       menu-pass
       menu-run
       pavucontrol
@@ -23,7 +21,6 @@ in
       sway-contrib.grimshot
       swaybg
       swaylock
-      transmission-gtk
       xdg-open
     ];
 
@@ -34,10 +31,6 @@ in
         fi
       '';
     };
-
-    programs.mpv.enable = true;
-    programs.yt-dlp.enable = true;
-    programs.zathura.enable = true;
 
     wayland.windowManager.sway = {
       enable = true;
