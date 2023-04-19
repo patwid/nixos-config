@@ -4,5 +4,5 @@
     type = lib.types.enum [ "systemdboot" "grub" ];
   };
 
-  config.boot.tmp.cleanOnBoot = true;
+  config.boot.tmp.useTmpfs = true;
 }
