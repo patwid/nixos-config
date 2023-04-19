@@ -11,6 +11,9 @@ in
 
   config = lib.mkIf (laptop) {
     services.tlp.enable = true;
+    services.upower.enable = true;
+
+    powerManagement.powertop.enable = true;
 
     home-manager.users.${user} = {
       home.packages = [ pkgs.brightnessctl ];
