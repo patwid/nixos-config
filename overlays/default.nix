@@ -1,7 +1,7 @@
-{ lib, pkgs, nur }:
+{ lib, config, pkgs, nur }:
 let
   localpkgs = import ./localpkgs.nix { inherit lib pkgs; };
-  wmenu = import ./wmenu;
+  wmenu = import ./wmenu { inherit lib config pkgs; };
 in
 [
   nur.overlay
