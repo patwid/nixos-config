@@ -1,4 +1,11 @@
-{ writeShellApplication, coreutils, findutils, gnused, menu, pass, wl-clipboard, ... }:
+{ writeShellApplication
+, coreutils
+, findutils
+, gnused
+, menu
+, pass
+, wl-clipboard
+}:
 
 writeShellApplication {
   name = "menu-pass";

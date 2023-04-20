@@ -1,4 +1,4 @@
-{ writeShellApplication, chromium, app, url, ... }:
+{ writeShellApplication, chromium, app, url }:
 
 writeShellApplication {
   name = "${app}";

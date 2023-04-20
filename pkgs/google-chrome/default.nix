@@ -1,4 +1,4 @@
-{ writeShellApplication, chromium, ... }:
+{ writeShellApplication, chromium }:
 
 writeShellApplication {
   name = "google-chrome";

@@ -1,4 +1,4 @@
-{ stdenv, requireFile, gradle, jdk17, makeWrapper, ... }:
+{ stdenv, requireFile, gradle, jdk17, makeWrapper }:
 
 let
   name = "jtt";

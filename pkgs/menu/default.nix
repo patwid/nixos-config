@@ -1,4 +1,4 @@
-{ writeShellApplication, coreutils, foot, fzf, ... }:
+{ writeShellApplication, coreutils, foot, fzf }:
 
 writeShellApplication {
   name = "menu";

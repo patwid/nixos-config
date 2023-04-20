@@ -1,4 +1,4 @@
-{ writeShellApplication, aerc, imv, mpv, qutebrowser, zathura, ... }:
+{ writeShellApplication, aerc, imv, mpv, qutebrowser, zathura }:
 
 writeShellApplication {
   name = "xdg-open";
