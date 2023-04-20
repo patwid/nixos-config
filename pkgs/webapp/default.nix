@@ -4,6 +4,6 @@ writeShellApplication {
   name = "${app}";
   runtimeInputs = [ chromium ];
   text = ''
-    chromium --app='${url}'
+    exec chromium --app='${url}'
   '';
 }
