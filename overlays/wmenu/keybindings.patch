@@ -1,0 +1,24 @@
+diff --git a/main.c b/main.c
+index 496521f..639ea80 100644
+--- a/main.c
++++ b/main.c
+@@ -649,9 +649,6 @@ void keypress(struct menu_state *state, enum wl_keyboard_key_state key_state,
+ 		break;
+ 	case XKB_KEY_Up:
+ 	case XKB_KEY_KP_Up:
+-		if (!state->vertical) {
+-			break;
+-		}
+ 		if (state->cursor && (!state->selection || !state->selection->left)) {
+ 			state->cursor = nextrune(state, -1);
+ 			render_frame(state);
+@@ -668,9 +665,6 @@ void keypress(struct menu_state *state, enum wl_keyboard_key_state key_state,
+ 		break;
+ 	case XKB_KEY_Down:
+ 	case XKB_KEY_KP_Down:
+-		if (!state->vertical) {
+-			break;
+-		}
+ 		if (state->cursor < len) {
+ 			state->cursor = nextrune(state, +1);
+ 			render_frame(state);
