@@ -3,5 +3,5 @@
 writeShellApplication {
   name = "google-chrome";
   runtimeInputs = [ chromium ];
-  text = ''chromium "$@"'';
+  text = ''exec chromium "$@"'';
 }
