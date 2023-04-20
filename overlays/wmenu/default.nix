@@ -8,6 +8,7 @@ in
       wmenu = super.wmenu.overrideAttrs (old: {
         patches = (old.patches or []) ++ [
           ./keybindings.patch
+          ./line_height.patch
         ];
         buildInputs = (old.buildInputs or []) ++ [
           pkgs.makeWrapper

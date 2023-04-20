@@ -1,0 +1,13 @@
+diff --git a/main.c b/main.c
+index 496521f..9973c8e 100644
+--- a/main.c
++++ b/main.c
+@@ -991,7 +991,7 @@ void read_stdin(struct menu_state *state) {
+
+ static void menu_init(struct menu_state *state) {
+ 	int height = get_font_height(state->font);
+-	state->line_height = height + 3;
++	state->line_height = height + 7;
+ 	state->height = state->line_height;
+ 	if (state->vertical) {
+ 		state->height += state->height * state->lines;
