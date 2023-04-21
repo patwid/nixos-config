@@ -97,7 +97,6 @@ in
               size = 9.0;
             };
             statusCommand = "${pkgs.i3status}/bin/i3status";
-            # stripWorkspaceNumbers = yes;
             position = "top";
             extraConfig = ''
               status_edge_padding 8
@@ -145,7 +144,6 @@ in
         floating.criteria = [
           { app_id = "^menu$"; }
           { app_id = "^pavucontrol$"; }
-          # { class = "^jetbrains-.*$"; title = "^win0$"; }
         ];
         window.commands = [
           {
