@@ -107,7 +107,7 @@ lib.mkIf (work.enable) (lib.mkMerge [
   (
     let
       fsType = "nfs";
-      options = [ ];
+      options = [ ]; # TODO: set required options
     in
     lib.mkIf (!work.remote) {
       fileSystems."/mnt/docs" = {
