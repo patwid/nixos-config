@@ -19,6 +19,7 @@ in
             --add-flags "-n ${lib.strings.removePrefix "#" colors.lightGrey}" \
             --add-flags "-S ${lib.strings.removePrefix "#" colors.darkerGrey}" \
             --add-flags "-s ${lib.strings.removePrefix "#" colors.white}" \
+            --add-flags "-f \"sans-serif 10\"" \
             --add-flags "-i"
         '';
       });
