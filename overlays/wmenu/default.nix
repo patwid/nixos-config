@@ -1,6 +1,8 @@
 { lib, config, pkgs }:
 let
   inherit (config) colors;
+
+  colorWithoutPrefix = color: lib.strings.removePrefix "#" color;
 in
 {
   overlay =
@@ -15,10 +17,10 @@ in
         ];
         postInstall = old.postInstall or "" + ''
           wrapProgram $out/bin/wmenu \
-            --add-flags "-N ${lib.strings.removePrefix "#" colors.darkestGrey}" \
-            --add-flags "-n ${lib.strings.removePrefix "#" colors.lightGrey}" \
-            --add-flags "-S ${lib.strings.removePrefix "#" colors.darkerGrey}" \
-            --add-flags "-s ${lib.strings.removePrefix "#" colors.white}" \
+            --add-flags "-N ${colorWithoutPrefix colors.darkestGrey}" \
+            --add-flags "-n ${colorWithoutPrefix colors.lightGrey}" \
+            --add-flags "-S ${colorWithoutPrefix colors.darkerGrey}" \
+            --add-flags "-s ${colorWithoutPrefix colors.white}" \
             --add-flags "-f \"sans-serif 10\"" \
             --add-flags "-i"
         '';
