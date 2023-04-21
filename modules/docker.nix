@@ -36,7 +36,6 @@ lib.mkIf (work.enable) (lib.mkMerge [
         { "base" = "172.26.0.0/16"; "size" = 20; }
         { "base" = "172.27.0.0/16"; "size" = 20; }
         { "base" = "172.28.0.0/14"; "size" = 20; }
-        { "base" = "192.168.0.0/16"; "size" = 20; }
       ];
     };
 
@@ -49,7 +48,6 @@ lib.mkIf (work.enable) (lib.mkMerge [
       iptables -A INPUT -s 172.26.0.0/16 -j ACCEPT
       iptables -A INPUT -s 172.27.0.0/16 -j ACCEPT
       iptables -A INPUT -s 172.28.0.0/14 -j ACCEPT
-      iptables -A INPUT -s 192.168.0.0/16 -j ACCEPT
     '';
   })
 
@@ -62,7 +60,6 @@ lib.mkIf (work.enable) (lib.mkMerge [
         { "base" = "172.20.0.0/14"; "size" = 20; }
         { "base" = "172.24.0.0/14"; "size" = 20; }
         { "base" = "172.28.0.0/14"; "size" = 20; }
-        { "base" = "192.168.0.0/16"; "size" = 20; }
       ];
     };
 
@@ -72,7 +69,6 @@ lib.mkIf (work.enable) (lib.mkMerge [
       iptables -A INPUT -s 172.20.0.0/14 -j ACCEPT
       iptables -A INPUT -s 172.24.0.0/14 -j ACCEPT
       iptables -A INPUT -s 172.28.0.0/14 -j ACCEPT
-      iptables -A INPUT -s 192.168.0.0/16 -j ACCEPT
     '';
   })
 ])
