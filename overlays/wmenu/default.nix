@@ -6,11 +6,11 @@ in
   overlay =
     (self: super: {
       wmenu = super.wmenu.overrideAttrs (old: {
-        patches = (old.patches or []) ++ [
+        patches = (old.patches or [ ]) ++ [
           ./keybindings.patch
-          ./line_height.patch
+          ./lineheight.patch
         ];
-        buildInputs = (old.buildInputs or []) ++ [
+        buildInputs = (old.buildInputs or [ ]) ++ [
           pkgs.makeWrapper
         ];
         postInstall = old.postInstall or "" + ''
@@ -19,6 +19,7 @@ in
             --add-flags "-n ${lib.strings.removePrefix "#" colors.lightGrey}" \
             --add-flags "-S ${lib.strings.removePrefix "#" colors.darkerGrey}" \
             --add-flags "-s ${lib.strings.removePrefix "#" colors.white}" \
+            --add-flags "-i"
         '';
       });
     });
