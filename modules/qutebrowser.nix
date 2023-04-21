@@ -48,6 +48,7 @@ in
         statusbar.widgets = [ "url" "progress" ];
         scrolling.smooth = true;
         # content.cookies.store = false;
+        completion.open_categories = [ "quickmarks" "history" "filesystem" ];
         colors = {
           completion = {
             category.bg = colors.black;
