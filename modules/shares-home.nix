@@ -10,10 +10,7 @@ let
   transmission = "192.168.0.6";
 in
 {
-  options.home = lib.mkOption {
-    default = false;
-    type = lib.types.bool;
-  };
+  options.home = lib.mkEnableOption { };
 
   config = lib.mkIf (home) {
     fileSystems."/home/${user}/music" = {

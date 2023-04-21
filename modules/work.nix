@@ -5,14 +5,8 @@ let
 in
 {
   options.work = {
-    enable = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-    };
-    remote = lib.mkOption {
-      default = false;
-      type = lib.types.bool;
-    };
+    enable = lib.mkEnableOption { };
+    remote = lib.mkEnableOption { };
   };
 
   config = lib.mkIf (work.enable) {
