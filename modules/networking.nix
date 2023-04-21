@@ -3,5 +3,5 @@ let
   inherit (args) hostname;
 in
 {
-  networking.hostName = "${hostname}";
+  networking.hostName = hostname;
 }
