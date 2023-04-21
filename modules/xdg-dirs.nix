@@ -1,17 +1,8 @@
-{ args, pkgs, ... }:
+{ args, ... }:
 let
   inherit (args) user;
 in
 {
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-
   home-manager.users.${user} = {
     xdg.userDirs = {
       enable = true;
