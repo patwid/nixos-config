@@ -12,10 +12,10 @@ in
       padding = "12";
       width = 320;
       borderSize = 2;
-      backgroundColor = "${colors.black}";
-      borderColor = "${colors.darkestGrey}";
-      progressColor = "over ${colors.red}"; # XXX
-      textColor = "${colors.white}";
+      backgroundColor = colors.black;
+      borderColor = colors.darkestGrey;
+      progressColor = "over ${colors.red}"; # TODO: usage?
+      textColor = colors.white;
     };
   };
 }
