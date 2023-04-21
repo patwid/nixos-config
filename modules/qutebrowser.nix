@@ -9,6 +9,7 @@ in
       enable = true;
       quickmarks = {
         b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=1234";
+        gb = "https://jira.axonlab.com/secure/RapidBoard.jspa?rapidView=88&view=planning.nodetail&issueLimit=100";
         g = "https://grafana.axenita.dev/";
         i3 = "https://i3wm.org/docs/userguide.html";
         ls = "https://logsearch.axenita.dev/";
