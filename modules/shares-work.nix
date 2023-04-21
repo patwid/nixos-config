@@ -31,8 +31,8 @@ lib.mkIf (work.enable) (lib.mkMerge [
       options = [ ''noauto,user=${user},domain=ERGON,uid=${uid},gid=${gid}'' ];
     in
     lib.mkIf (work.remote) {
-      # Remove this once https://github.com/NixOS/nixpkgs/issues/34638 is resolved
-      # request-key expects a configuration file under /etc
+      # TODO: remove once https://github.com/NixOS/nixpkgs/issues/34638 is
+      # resolved request-key expects a configuration file under /etc
       environment.etc."request-key.conf" = lib.mkForce {
         text =
           let
