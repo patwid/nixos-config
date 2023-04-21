@@ -60,34 +60,34 @@ in
         };
         seat."*".hide_cursor = "when-typing enable";
         colors = {
-          background = "${colors.white}";
+          background = colors.white;
           focused = {
-            border = "${colors.darkerGrey}";
-            background = "${colors.darkerGrey}";
-            text = "${colors.white}";
-            indicator = "${colors.darkerGrey}";
-            childBorder = "${colors.darkerGrey}";
+            border = colors.darkerGrey;
+            background = colors.darkerGrey;
+            text = colors.white;
+            indicator = colors.darkerGrey;
+            childBorder = colors.darkerGrey;
           };
           focusedInactive = {
-            border = "${colors.darkestGrey}";
-            background = "${colors.darkestGrey}";
-            text = "${colors.white}";
-            indicator = "${colors.darkestGrey}";
-            childBorder = "${colors.darkestGrey}";
+            border = colors.darkestGrey;
+            background = colors.darkestGrey;
+            text = colors.white;
+            indicator = colors.darkestGrey;
+            childBorder = colors.darkestGrey;
           };
           unfocused = {
-            border = "${colors.darkestGrey}";
-            background = "${colors.darkestGrey}";
-            text = "${colors.lightGrey}";
-            indicator = "${colors.darkestGrey}";
-            childBorder = "${colors.darkestGrey}";
+            border = colors.darkestGrey;
+            background = colors.darkestGrey;
+            text = colors.lightGrey;
+            indicator = colors.darkestGrey;
+            childBorder = colors.darkestGrey;
           };
           placeholder = {
-            border = "${colors.black}";
-            background = "${colors.black}";
-            text = "${colors.white}";
-            indicator = "${colors.black}";
-            childBorder = "${colors.black}";
+            border = colors.black;
+            background = colors.black;
+            text = colors.white;
+            indicator = colors.black;
+            childBorder = colors.black;
           };
         };
         bars = [
@@ -109,33 +109,33 @@ in
               bindsym button7 nop;
             '';
             colors = {
-              background = "${colors.darkestGrey}";
-              statusline = "${colors.white}";
-              separator = "${colors.white}";
+              background = colors.darkestGrey;
+              statusline = colors.white;
+              separator = colors.white;
               focusedWorkspace = {
-                border = "${colors.darkerGrey}";
-                background = "${colors.darkerGrey}";
-                text = "${colors.white}";
+                border = colors.darkerGrey;
+                background = colors.darkerGrey;
+                text = colors.white;
               };
               activeWorkspace = {
-                border = "${colors.darkestGrey}";
-                background = "${colors.darkestGrey}";
-                text = "${colors.white}";
+                border = colors.darkestGrey;
+                background = colors.darkestGrey;
+                text = colors.white;
               };
               inactiveWorkspace = {
-                border = "${colors.darkestGrey}";
-                background = "${colors.darkestGrey}";
-                text = "${colors.lightGrey}";
+                border = colors.darkestGrey;
+                background = colors.darkestGrey;
+                text = colors.lightGrey;
               };
               urgentWorkspace = {
-                border = "${colors.red}";
-                background = "${colors.red}";
-                text = "${colors.darkestGrey}";
+                border = colors.red;
+                background = colors.red;
+                text = colors.darkestGrey;
               };
               bindingMode = {
-                border = "${colors.red}";
-                background = "${colors.red}";
-                text = "${colors.darkestGrey}";
+                border = colors.red;
+                background = colors.red;
+                text = colors.darkestGrey;
               };
             };
           }
