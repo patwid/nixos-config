@@ -1,8 +1,8 @@
-{ lib, config, pkgs, nur }:
+{ nur, ... }@attrs:
 let
-  localpkgs = import ./localpkgs.nix { inherit lib pkgs; };
-  pass = import ./pass.nix;
-  wmenu = import ./wmenu { inherit lib config pkgs; };
+  localpkgs = import ./localpkgs.nix attrs;
+  pass = import ./pass.nix attrs;
+  wmenu = import ./wmenu attrs;
 in
 [
   nur.overlay

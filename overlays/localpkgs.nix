@@ -1,6 +1,6 @@
-{ lib, pkgs }:
+{ lib, pkgs, ... }@attrs:
 let
-  localpkgs = import ../pkgs { inherit lib pkgs; };
+  localpkgs = import ../pkgs attrs;
 in
 {
   overlay =

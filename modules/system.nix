@@ -1,4 +1,4 @@
-{ args, config, lib, pkgs, nur, ... }:
+{ args, config, pkgs, ... }@attrs:
 let
   inherit (args) user stateVersion;
 in
@@ -11,7 +11,7 @@ in
   # nix.gc.options = "--delete-old";
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = import ../overlays { inherit lib config pkgs nur; };
+  nixpkgs.overlays = import ../overlays attrs;
 
   system.autoUpgrade = {
     enable = true;
