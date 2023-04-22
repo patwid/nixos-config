@@ -20,6 +20,7 @@
           nixpkgs.lib.nixosSystem {
             inherit (args) system;
             specialArgs = attrs // { inherit args; };
+            lib = nixpkgs.lib.extend (import ./lib);
             modules = [
               ./hosts/${hostname}/configuration.nix
               ./hosts/${hostname}/hardware-configuration.nix

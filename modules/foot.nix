@@ -2,8 +2,6 @@
 let
   inherit (args) user terminal;
   inherit (config) colors;
-
-  colorWithoutPrefix = color: lib.strings.removePrefix "#" color;
 in
 {
   home-manager.users.${user} = {
@@ -14,24 +12,24 @@ in
         main.pad = "8x8";
         cursor.blink = "yes";
         colors = {
-          foreground = colorWithoutPrefix colors.lighterGrey;
-          background = colorWithoutPrefix colors.black;
-          regular0 = colorWithoutPrefix colors.black;
-          regular1 = colorWithoutPrefix colors.red;
-          regular2 = colorWithoutPrefix colors.green;
-          regular3 = colorWithoutPrefix colors.yellow;
-          regular4 = colorWithoutPrefix colors.blue;
-          regular5 = colorWithoutPrefix colors.magenta;
-          regular6 = colorWithoutPrefix colors.cyan;
-          regular7 = colorWithoutPrefix colors.lighterGrey;
-          bright0 = colorWithoutPrefix colors.darkGrey;
-          bright1 = colorWithoutPrefix colors.red;
-          bright2 = colorWithoutPrefix colors.green;
-          bright3 = colorWithoutPrefix colors.yellow;
-          bright4 = colorWithoutPrefix colors.blue;
-          bright5 = colorWithoutPrefix colors.magenta;
-          bright6 = colorWithoutPrefix colors.cyan;
-          bright7 = colorWithoutPrefix colors.white;
+          foreground = lib.colors.withoutPrefix colors.lighterGrey;
+          background = lib.colors.withoutPrefix colors.black;
+          regular0 = lib.colors.withoutPrefix colors.black;
+          regular1 = lib.colors.withoutPrefix colors.red;
+          regular2 = lib.colors.withoutPrefix colors.green;
+          regular3 = lib.colors.withoutPrefix colors.yellow;
+          regular4 = lib.colors.withoutPrefix colors.blue;
+          regular5 = lib.colors.withoutPrefix colors.magenta;
+          regular6 = lib.colors.withoutPrefix colors.cyan;
+          regular7 = lib.colors.withoutPrefix colors.lighterGrey;
+          bright0 = lib.colors.withoutPrefix colors.darkGrey;
+          bright1 = lib.colors.withoutPrefix colors.red;
+          bright2 = lib.colors.withoutPrefix colors.green;
+          bright3 = lib.colors.withoutPrefix colors.yellow;
+          bright4 = lib.colors.withoutPrefix colors.blue;
+          bright5 = lib.colors.withoutPrefix colors.magenta;
+          bright6 = lib.colors.withoutPrefix colors.cyan;
+          bright7 = lib.colors.withoutPrefix colors.white;
         };
       };
     };
