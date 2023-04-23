@@ -4,7 +4,6 @@ let
   callPackage = lib.callPackageWith (pkgs // localPkgs);
   localPkgs = {
     xdg-open = callPackage ./xdg-open { };
-    xdg-desktop-portal-wlr = callPackage ./xdg-desktop-portal-wlr { };
     jtt = callPackage ./jtt { };
     menu = callPackage ./menu { };
     menu-pass = callPackage ./menu-pass { };

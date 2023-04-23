@@ -6,9 +6,6 @@ in
   overlay =
     (self: super: {
       inherit (localpkgs)
-        # TODO: remove, https://nixpk.gs/pr-tracker.html?pr=226520
-        xdg-desktop-portal-wlr
-
         xdg-open
         jtt
         google-chrome
