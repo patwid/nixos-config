@@ -23,6 +23,7 @@ in
         tm = "http://transmission.local:9091/transmission/web/";
         wi = "https://wi.sanacare.ch/";
         yt = "https://youtube.com";
+        mt = "https://webmail.flashcable.ch/";
       };
       searchEngines = {
         DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
