@@ -1,4 +1,4 @@
-{ args, config, pkgs, ... }@attrs:
+{ args, config, pkgs, nixpkgs, ... }@attrs:
 let
   inherit (args) user stateVersion;
 in
@@ -9,6 +9,8 @@ in
   nix.gc.automatic = true;
   nix.gc.dates = "monthly";
   # nix.gc.options = "--delete-old";
+
+  nix.registry.nixpkgs.flake = nixpkgs;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = import ../overlays attrs;
