@@ -162,6 +162,8 @@ in
             brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
             wpctl = "${pkgs.wireplumber}/bin/wpctl";
             grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
+            date = "${pkgs.coreutils}/bin/coreutils --coreutils-prog=date";
+            file = "\"$XDG_SCREENSHOTS_DIR\"/$(${date} +%Y%m%d_%H%M%S_%3N).png";
           in
           lib.mkOptionDefault {
             "${modifier}+0" = "workspace number 10";
@@ -172,9 +174,9 @@ in
             "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
             "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
             "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_SINK@ toggle";
-            "--release Print" = "exec ${grimshot} --notify save output";
-            "--release Shift+Print" = "exec ${grimshot} --notify save area";
-            "--release Ctrl+Print" = "exec ${grimshot} --notify save active";
+            "--release Print" = "exec ${grimshot} --notify save output ${file}";
+            "--release Shift+Print" = "exec ${grimshot} --notify save area ${file}";
+            "--release Ctrl+Print" = "exec ${grimshot} --notify save active ${file}";
             # Diable vertical scrolling (windows)
             "button4" = "nop";
             "button5" = "nop";
