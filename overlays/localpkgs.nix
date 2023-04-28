@@ -8,6 +8,7 @@ in
       inherit (localpkgs)
         xdg-open
         jtt
+        google-chrome
         mattermost
         menu-run
         menu-pass

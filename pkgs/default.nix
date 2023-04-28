@@ -8,6 +8,7 @@ let
     menu = callPackage ./menu { };
     menu-pass = callPackage ./menu-pass { };
     menu-run = callPackage ./menu-run { };
+    google-chrome = callPackage ./google-chrome { };
     outlook = callPackage ./webapp {
       app = "outlook";
       url = "https://outlook.office.com/mail/";
