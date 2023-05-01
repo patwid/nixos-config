@@ -5,7 +5,7 @@ in
 {
   services.syncthing = {
     enable = true;
-    user = "${user}";
+    inherit user;
     dataDir = "/home/${user}";
     configDir = "/home/${user}/.config/syncthing";
   };
