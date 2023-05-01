@@ -1,11 +1,16 @@
-{ args, pkgs, ... }:
+{ args, ... }:
 let
   inherit (args) user;
 in
 {
-  home-manager.users.${user} = {
-    home.packages = with pkgs; [
-      transmission-gtk
-    ];
+  services.transmission = {
+    enable = true;
+    inherit user;
+    settings = {
+      alt-speed-up = 0;
+      download-dir = "/home/${user}/downloads";
+      speed-limit-up = 0;
+      speed-limit-up-enabled = true;
+    };
   };
 }
