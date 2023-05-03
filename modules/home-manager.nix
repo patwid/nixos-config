@@ -1,6 +1,7 @@
 { args, config, home-manager, ... }:
 let
   inherit (args) user;
+  inherit (config.system) stateVersion;
 in
 {
   imports = [
@@ -14,6 +15,6 @@ in
     home.username = "${user}";
     home.homeDirectory = "/home/${user}";
 
-    home.stateVersion = "${config.system.stateVersion}";
+    home.stateVersion = stateVersion;
   };
 }
