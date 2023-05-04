@@ -1,9 +1,5 @@
 { config, lib, ... }:
-let
-  inherit (config) bootloader;
-in
-lib.mkIf (bootloader == "systemdboot") {
-  boot.loader.systemd-boot.enable = true;
+lib.mkIf (config.boot.loader.systemd-boot.enable) {
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";

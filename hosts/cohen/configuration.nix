@@ -7,8 +7,9 @@
     common-pc-ssd
   ];
 
-  bootloader = "systemdboot";
   work.enable = true;
+
+  boot.loader.systemd-boot.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -6,10 +6,11 @@
     common-pc-ssd
   ];
 
-  bootloader = "systemdboot";
   home = true;
   work.enable = true;
   work.remote = true;
+
+  boot.loader.systemd-boot.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
