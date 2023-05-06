@@ -7,7 +7,7 @@ lib.mkMerge [
   {
     users.users.${user} = {
       isNormalUser = true;
-      description = "${user}";
+      description = user;
       extraGroups = [ "wheel" ];
       packages = with pkgs; [ ];
     };
