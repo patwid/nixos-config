@@ -9,18 +9,15 @@ in
     nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
 
-  home = true;
   apple-silicon = true;
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
+  home = true;
 
   home-manager.users.${user} = {
-    wayland.windowManager.sway.config = {
-      output.HDMI-A-1.scale = "2";
+    wayland.windowManager.sway = {
+      config = {
+        output.HDMI-A-1.scale = "2";
+      };
     };
-
-    programs.qutebrowser.package = pkgs.qutebrowser-qt6;
   };
 
   # This value determines the NixOS release from which the default

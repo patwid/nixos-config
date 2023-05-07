@@ -1,8 +1,10 @@
 { args, config, pkgs, nixpkgs, ... }@attrs:
 let
-  inherit (args) user;
+  inherit (args) user hostname;
 in
 {
+  networking.hostName = hostname;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings.auto-optimise-store = true;
 

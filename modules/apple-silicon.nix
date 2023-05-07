@@ -1,5 +1,6 @@
-{ config, lib, nixos-apple-silicon, ... }:
+{ args, config, lib, pkgs, nixos-apple-silicon, ... }:
 let
+  inherit (args) user;
   inherit (config) apple-silicon;
 in
 {
@@ -14,5 +15,11 @@ in
     hardware.asahi.useExperimentalGPUDriver = true;
 
     system.autoUpgrade.flags = [ "--impure" ];
+
+    home-manager.users.${user} = {
+      programs.qutebrowser = {
+        package = pkgs.qutebrowser-qt6;
+      };
+    };
   };
 }

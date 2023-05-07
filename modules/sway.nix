@@ -11,19 +11,6 @@ in
   hardware.opengl.enable = true;
 
   home-manager.users.${user} = {
-    home.packages = with pkgs; [
-      gnome.adwaita-icon-theme
-      grim
-      menu-pass
-      menu-run
-      pavucontrol
-      slurp
-      sway-contrib.grimshot
-      swaybg
-      swaylock
-      xdg-open
-    ];
-
     programs.bash = {
       profileExtra = ''
         if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
