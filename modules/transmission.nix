@@ -4,7 +4,7 @@ let
 in
 {
   services.transmission = {
-    enable = true;
+    enable = false;
     inherit user;
     settings = {
       alt-speed-up = 0;
