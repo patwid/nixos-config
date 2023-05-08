@@ -10,28 +10,37 @@ let
   transmission = "192.168.0.6";
 in
 {
-  options.home = lib.mkEnableOption { };
-
-  config = lib.mkIf (home) {
-    fileSystems."/home/${user}/music" = {
-      device = "${nas}:/mnt/tank/media/music";
-      inherit fsType options;
-    };
-
-    fileSystems."/home/${user}/videos/movies" = {
-      device = "${nas}:/mnt/tank/media/movies";
-      inherit fsType options;
-    };
-
-    fileSystems."/home/${user}/videos/tv_shows" = {
-      device = "${nas}:/mnt/tank/media/tv_shows";
-      inherit fsType options;
-    };
-
-    networking.extraHosts = ''
-      ${nas} nas.local
-      ${syncthing} syncthing.local
-      ${transmission} transmission.local
-    '';
+  options.home = {
+    enable = lib.mkEnableOption { };
+    server = lib.mkEnableOption { };
   };
+
+  config = lib.mkMerge [
+    (lib.mkIf (home.enable) {
+      fileSystems."/home/${user}/music" = {
+        device = "${nas}:/mnt/tank/media/music";
+        inherit fsType options;
+      };
+
+      fileSystems."/home/${user}/videos/movies" = {
+        device = "${nas}:/mnt/tank/media/movies";
+        inherit fsType options;
+      };
+
+      fileSystems."/home/${user}/videos/tv_shows" = {
+        device = "${nas}:/mnt/tank/media/tv_shows";
+        inherit fsType options;
+      };
+
+      networking.extraHosts = ''
+        ${nas} nas.local
+        ${syncthing} syncthing.local
+        ${transmission} transmission.local
+      '';
+    })
+
+    (lib.mkIf (home.server) {
+      services.nfs.server.enable = true;
+    })
+  ];
 }

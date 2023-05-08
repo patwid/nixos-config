@@ -6,7 +6,7 @@
     common-pc-ssd
   ];
 
-  home = true;
+  home.enable = true;
   work.enable = true;
   work.remote = true;
 

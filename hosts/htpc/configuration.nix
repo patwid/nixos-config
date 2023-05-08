@@ -10,7 +10,7 @@ in
   ];
 
   apple-silicon = true;
-  home = true;
+  home.enable = true;
 
   # Unfortunately, these options are not recognized on x86_64-linux systems and
   # therefore cannot be specified in modules/apple-silicon.nix
