@@ -5,10 +5,6 @@ let
 in
 lib.mkIf (work.enable) (lib.mkMerge [
   {
-    # Defaults are documented here:
-    # - https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
-    # - https://github.com/docker/docs/issues/8663
-
     virtualisation.docker.enable = true;
     virtualisation.docker.daemon.settings = {
       "registry-mirrors" = [ "https://docker-mirror.ergon.ch" ];
@@ -24,11 +20,16 @@ lib.mkIf (work.enable) (lib.mkMerge [
     };
   }
 
+  # Default address pool settings are documented here:
+  #   - https://github.com/moby/libnetwork/blob/master/ipamutils/utils.go
+  #   - https://github.com/docker/docs/issues/8663
+
   (lib.mkIf (work.remote) {
     virtualisation.docker.daemon.settings = {
-      # Remote work via vpn, some subnets are already used. Specifically,
-      # 172.18.0.0/16, 172.20.0.0/16, 172.25.0.0.16 are routed via VPN. To avoid
-      # any conflicts we simply exclude them from the default address pools.
+      # Remote work via VPN, the subnets 172.18.0.0/16, 172.20.0.0/16 and
+      # 172.25.0.0.16 are routed via VPN. To avoid any conflicts we simply
+      # exclude them from the default address pools.
+
       "default-address-pools" = [
         { "base" = "172.17.0.0/16"; "size" = 16; }
         { "base" = "172.19.0.0/16"; "size" = 20; }
