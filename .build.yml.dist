@@ -5,10 +5,10 @@ sources:
 - git@git.sr.ht/~patwid/nixos-config
 environment:
   NIX_CONFIG: experimental-features = nix-command flakes
-#tasks:
-#- check: |
-#    cd nixos-config
-#    nix flake check
+tasks:
+- check: |
+    cd nixos-config
+    nix flake check
 triggers:
 - action: email
   condition: failure
