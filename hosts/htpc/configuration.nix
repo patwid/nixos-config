@@ -12,6 +12,11 @@ in
   apple-silicon = true;
   home = true;
 
+  # Unfortunately, these options are not recognized on x86_64-linux systems and
+  # therefore cannot be specified in modules/apple-silicon.nix
+  hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
+  hardware.asahi.useExperimentalGPUDriver = true;
+
   home-manager.users.${user} = {
     wayland.windowManager.sway = {
       config = {

@@ -11,9 +11,6 @@ in
       nixos-apple-silicon.overlays.apple-silicon-overlay
     ];
 
-    hardware.asahi.peripheralFirmwareDirectory = ../firmware;
-    hardware.asahi.useExperimentalGPUDriver = true;
-
     system.autoUpgrade.flags = [ "--impure" ];
 
     home-manager.users.${user} = {
