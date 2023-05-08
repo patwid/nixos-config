@@ -16,6 +16,9 @@ lib.mkIf (work.enable) (lib.mkMerge [
 
     users.users.${user}.extraGroups = [ "docker" ];
 
+    # Required for elasticsearch container
+    boot.kernel.sysctl = { "vm.max_map_count" = 262144; };
+
     home-manager.users.${user} = {
       home.packages = [ pkgs.docker-compose ];
     };
