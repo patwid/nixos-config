@@ -25,11 +25,11 @@ lib.mkIf (work.enable) (lib.mkMerge [
   #   - https://github.com/docker/docs/issues/8663
 
   (lib.mkIf (work.remote) {
-    virtualisation.docker.daemon.settings = {
-      # Remote work via VPN, the subnets 172.18.0.0/16, 172.20.0.0/16 and
-      # 172.25.0.0.16 are routed via VPN. To avoid any conflicts we simply
-      # exclude them from the default address pools.
+    # In remote work via VPN, the subnets 172.18.0.0/16, 172.20.0.0/16 and
+    # 172.25.0.0.16 are routed via VPN. To avoid any conflicts we simply exclude
+    # them from the default address pools.
 
+    virtualisation.docker.daemon.settings = {
       "default-address-pools" = [
         { "base" = "172.17.0.0/16"; "size" = 16; }
         { "base" = "172.19.0.0/16"; "size" = 20; }
