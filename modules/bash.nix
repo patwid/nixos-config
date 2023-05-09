@@ -3,6 +3,10 @@ let
   inherit (args) user;
 in
 {
+  environment.sessionVariables = {
+    PATH = [ "." ];
+  };
+
   home-manager.users.${user} = {
     programs.bash = {
       enable = true;
