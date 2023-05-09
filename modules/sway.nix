@@ -128,6 +128,7 @@ in
             };
           }
         ];
+        gaps.smartBorders = "on";
         floating.titlebar = true;
         floating.criteria = [
           { app_id = "^menu$"; }
