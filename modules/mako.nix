@@ -10,6 +10,7 @@ in
       font = "sans-serif 10";
       icons = false;
       padding = "12";
+      anchor = "bottom-right";
       width = 320;
       borderSize = 2;
       backgroundColor = colors.black;
