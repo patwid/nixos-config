@@ -1,10 +1,12 @@
-{ args, config, ... }:
+{ args, config, pkgs, ... }:
 let
   inherit (args) user;
   inherit (config) colors;
 in
 {
   home-manager.users.${user} = {
+    home.packages = [ pkgs.libnotify ];
+
     services.mako = {
       enable = true;
       font = "sans-serif 10";
