@@ -10,19 +10,19 @@ let
     menu-run = callPackage ./menu-run { };
     google-chrome = callPackage ./google-chrome { };
     outlook = callPackage ./webapp {
-      app = "outlook";
+      name = "outlook";
       url = "https://outlook.office.com/mail/";
     };
     mattermost = callPackage ./webapp {
-      app = "mattermost";
+      name = "mattermost";
       url = "https://mattermost.ergon.ch/";
     };
     teams = callPackage ./webapp {
-      app = "teams";
+      name = "teams";
       url = "https://teams.microsoft.com/";
     };
     smartaz = callPackage ./webapp {
-      app = "smartaz";
+      name = "smartaz";
       url = "https://smartaz.ergon.ch/";
     };
     notify-low-battery = callPackage ./notify {

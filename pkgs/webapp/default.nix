@@ -1,7 +1,7 @@
-{ writeShellApplication, chromium, app, url }:
+{ writeShellApplication, chromium, name, url }:
 
 writeShellApplication {
-  name = "${app}";
+  inherit name;
   runtimeInputs = [ chromium ];
   text = ''
     exec chromium --app='${url}'
