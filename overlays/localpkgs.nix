@@ -9,6 +9,7 @@ in
         xdg-open
         jtt
         google-chrome
+        notify-low-battery
         mattermost
         menu-run
         menu-pass

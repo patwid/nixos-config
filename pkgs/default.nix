@@ -25,6 +25,11 @@ let
       app = "smartaz";
       url = "https://smartaz.ergon.ch/";
     };
+    notify-low-battery = callPackage ./notify {
+      name = "notify-low-battery";
+      summary = "Warning";
+      body = "Low Battery";
+    };
   };
 in
 localPkgs
