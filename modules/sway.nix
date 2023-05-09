@@ -79,6 +79,8 @@ in
         };
         bars = [
           {
+            mode = "hide";
+            hiddenState = "hide";
             fonts = {
               names = [ "sans-serif" ];
               size = 9.0;
