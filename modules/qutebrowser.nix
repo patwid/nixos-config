@@ -26,6 +26,7 @@ in
         mt = "https://webmail.flashcable.ch/";
         c = "https://confluence.ergon.ch/";
         ac = "https://confluence.axonlab.com/";
+        dd = "https://app.datadoghq.eu/";
       };
       searchEngines = {
         DEFAULT = "https://duckduckgo.com/?q={}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
