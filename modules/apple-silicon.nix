@@ -12,11 +12,5 @@ in
     ];
 
     system.autoUpgrade.flags = [ "--impure" ];
-
-    home-manager.users.${user} = {
-      programs.qutebrowser = {
-        package = pkgs.qutebrowser-qt6;
-      };
-    };
   };
 }
