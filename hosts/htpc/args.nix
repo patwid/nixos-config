@@ -2,5 +2,5 @@
   system = "aarch64-linux";
   user = "patwid";
   email = "patrick.widmer@tbwnet.ch";
-  terminal.fontsize = 10;
+  terminal.fontsize = 14;
 }
