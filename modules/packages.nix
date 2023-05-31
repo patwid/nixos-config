@@ -24,7 +24,6 @@ in
       swaybg
       swaylock
       unzip
-      wget
       wl-clipboard
       xdg-open
       zip
