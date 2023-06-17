@@ -22,7 +22,7 @@ in
     wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.base = true;
-      systemdIntegration = true;
+      systemd.enable = true;
       config = {
         modifier = "${modifier}";
         defaultWorkspace = "workspace number 1";
