@@ -27,17 +27,21 @@
           value =
             let
               args = import ./hosts/${hostname}/args.nix // { inherit hostname; };
-              paths = path: map (f: path + "/${f}") (builtins.attrNames (builtins.readDir path));
+              files = path: map (f: path + "/${f}") (builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (_: type: type == "regular") (builtins.readDir path)));
+              arch = nixpkgs.lib.strings.removeSuffix "-linux" args.system;
             in
             nixpkgs.lib.nixosSystem {
               inherit (args) system;
               specialArgs = attrs // { inherit args; };
               lib = nixpkgs.lib.extend (import ./lib);
 
-              modules = [
-                ./hosts/${hostname}/configuration.nix
-                ./hosts/${hostname}/hardware-configuration.nix
-              ] ++ paths ./modules;
+              modules =
+                [
+                  ./hosts/${hostname}/configuration.nix
+                  ./hosts/${hostname}/hardware-configuration.nix
+                ]
+                ++ files ./modules
+                ++ nixpkgs.lib.optionals (builtins.pathExists (./modules + "/${arch}")) (files (./modules + "/${arch}"));
             };
         })
         (builtins.attrNames (builtins.readDir ./hosts)));

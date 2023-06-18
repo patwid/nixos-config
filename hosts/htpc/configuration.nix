@@ -6,20 +6,10 @@ in
   imports = [
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-pc-ssd
-
-    # Unfortunately, optional imports lead to infinite recursion errors.
-    # Therefore, we import the module here instead of in the apple-silicon
-    # module.
-    nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
 
   apple-silicon = true;
   home.enable = true;
-
-  # Unfortunately, these options are not recognized on x86_64-linux systems and
-  # therefore cannot be specified in apple-silicon module.
-  hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
-  hardware.asahi.useExperimentalGPUDriver = true;
 
   home-manager.users.${user} = {
     wayland.windowManager.sway = {
