@@ -12,7 +12,6 @@ in
   config = lib.mkIf (work.enable) {
     home-manager.users.${user} = {
       home.packages = with pkgs; [
-        citrix_workspace
         dbeaver
         jetbrains.idea-ultimate
         jtt
