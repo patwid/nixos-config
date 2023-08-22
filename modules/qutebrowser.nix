@@ -7,7 +7,6 @@ in
   home-manager.users.${user} = {
     programs.qutebrowser = {
       enable = true;
-      package = pkgs.qutebrowser-qt6;
       quickmarks = {
         b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=2544";
         ab = "https://jira.axonlab.com/secure/RapidBoard.jspa?rapidView=73&view=planning.nodetail&quickFilter=527&issueLimit=100";
