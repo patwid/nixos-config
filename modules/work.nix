@@ -18,6 +18,7 @@ in
         mattermost
         outlook
         smartaz
+        teleport
         teams
       ];
     };
