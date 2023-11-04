@@ -1,6 +1,7 @@
-{ args, pkgs, ... }:
+{ config, args, pkgs, ... }:
 let
-  inherit (args) user email;
+  inherit (args) user;
+  inherit (config) work;
 in
 {
   programs.git.enable = true;
@@ -9,7 +10,12 @@ in
     programs.git = {
       enable = true;
       userName = "Patrick Widmer";
-      userEmail = "${email}";
+      userEmail =
+        if work.enable then
+          "patrick.widmer@ergon.ch"
+        else
+          "patrick.widmer@tbwnet.ch";
+
       lfs.enable = true;
       extraConfig = {
         init.defaultBranch = "master";

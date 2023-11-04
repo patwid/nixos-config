@@ -8,7 +8,6 @@
   ];
 
   work.enable = true;
-  terminal.fontsize = 10;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
