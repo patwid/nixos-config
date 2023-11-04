@@ -5,5 +5,4 @@
   group = "ergon";
   uid = 1795;
   gid = 1111;
-  terminal.fontsize = 10;
 }

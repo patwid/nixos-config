@@ -10,6 +10,7 @@ in
 
   apple-silicon = true;
   home.enable = true;
+  terminal.fontsize = 14;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
