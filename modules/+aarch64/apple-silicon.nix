@@ -21,6 +21,9 @@ in
       nixos-apple-silicon.overlays.apple-silicon-overlay
     ];
 
+    boot.loader.efi.canTouchEfiVariables = false;
+    boot.loader.efi.efiSysMountPoint = "/boot";
+
     system.autoUpgrade.flags = [ "--impure" ];
   };
 }
