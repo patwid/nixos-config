@@ -17,30 +17,39 @@
 
   outputs = { self, nixpkgs, ... }@attrs:
     let
+      inherit (nixpkgs) lib;
+      inherit (builtins)
+        attrNames
+        filter
+        head
+        listToAttrs
+        readDir
+        toString;
+
       systems = [ "aarch64-linux" "x86_64-linux" ];
-      forEachSystem = nixpkgs.lib.genAttrs systems;
+      forEachSystem = lib.genAttrs systems;
     in
     {
-      nixosConfigurations = builtins.listToAttrs (map
+      nixosConfigurations = listToAttrs (map
         (hostname: {
           name = hostname;
           value =
             let
               args = import ./hosts/${hostname}/+args.nix // { inherit hostname; };
-              arch = builtins.head (nixpkgs.lib.strings.splitString "-" args.system);
-              isOptionalModule = path: nixpkgs.lib.strings.hasInfix "+" path;
-              isArchModule = path: nixpkgs.lib.strings.hasInfix "+${arch}" path;
+              arch = head (lib.strings.splitString "-" args.system);
+              isOptionalModule = path: lib.strings.hasInfix "+" path;
+              isArchModule = path: lib.strings.hasInfix "+${arch}" path;
               shouldImportModule = path: !isOptionalModule path || isArchModule path;
-              files = path: builtins.filter (p: shouldImportModule (builtins.toString p)) (nixpkgs.lib.filesystem.listFilesRecursive path);
+              files = path: filter (p: shouldImportModule (toString p)) (lib.filesystem.listFilesRecursive path);
             in
-            nixpkgs.lib.nixosSystem {
+            lib.nixosSystem {
               inherit (args) system;
               specialArgs = attrs // { inherit args; };
-              lib = nixpkgs.lib.extend (import ./lib);
+              lib = lib.extend (import ./lib);
               modules = files ./hosts/${hostname} ++ files ./modules;
             };
         })
-        (builtins.attrNames (builtins.readDir ./hosts)));
+        (attrNames (readDir ./hosts)));
 
       formatter = forEachSystem (system:
         nixpkgs.legacyPackages.${system}.nixpkgs-fmt
