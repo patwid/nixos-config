@@ -1,12 +1,26 @@
-{ config, args, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (config) user;
-  customGroup = args ? group && args ? gid;
+  inherit (config) user uid group gid;
 in
 {
   options.user = lib.mkOption {
     type = lib.types.str;
     default = "patwid";
+  };
+
+  options.uid = lib.mkOption {
+    type = lib.types.nullOr lib.types.int;
+    default = null;
+  };
+
+  options.group = lib.mkOption {
+    type = lib.types.nullOr lib.types.str;
+    default = null;
+  };
+
+  options.gid = lib.mkOption {
+    type = lib.types.nullOr lib.types.int;
+    default = null;
   };
 
   config = lib.mkMerge [
@@ -19,13 +33,19 @@ in
       };
     }
 
-    (lib.mkIf (customGroup) {
+    (lib.mkIf (uid != null) {
       users.users.${user} = {
-        inherit (args) group;
+        inherit uid;
+      };
+    })
+
+    (lib.mkIf (group != null && gid != null) {
+      users.users.${user} = {
+        inherit (config) group;
       };
 
-      users.groups.${args.group} = {
-        inherit (args) gid;
+      users.groups.${group} = {
+        inherit (config) gid;
       };
     })
   ];

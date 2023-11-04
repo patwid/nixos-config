@@ -7,6 +7,9 @@
     common-pc-ssd
   ];
 
+  group = "ergon";
+  uid = 1795;
+  gid = 1111;
   work.enable = true;
 
   # This value determines the NixOS release from which the default
