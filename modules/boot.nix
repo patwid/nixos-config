@@ -8,8 +8,7 @@ lib.mkMerge [
     boot.loader.systemd-boot.configurationLimit = 5;
     boot.loader.efi.canTouchEfiVariables = !apple-silicon;
 
-    boot.tmp.useTmpfs = !apple-silicon;
-    boot.tmp.cleanOnBoot = apple-silicon;
+    boot.tmp.useTmpfs = lib.mkDefault true;
   }
 
   (lib.mkIf (!apple-silicon) {

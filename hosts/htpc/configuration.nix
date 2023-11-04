@@ -11,6 +11,9 @@ in
   apple-silicon = true;
   home.enable = true;
 
+  boot.tmp.useTmpfs = false;
+  boot.tmp.cleanOnBoot = true;
+
   home-manager.users.${user} = {
     wayland.windowManager.sway = {
       config = {
