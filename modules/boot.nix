@@ -1,17 +1,9 @@
-{ config, lib, ... }:
-let
-  inherit (config) apple-silicon;
-in
-lib.mkMerge [
-  {
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.systemd-boot.configurationLimit = 5;
-    boot.loader.efi.canTouchEfiVariables = !apple-silicon;
+{ lib, ... }:
+{
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.efi.efiSysMountPoint = lib.mkDefault "/boot/efi";
+  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
 
-    boot.tmp.useTmpfs = lib.mkDefault true;
-  }
-
-  (lib.mkIf (!apple-silicon) {
-    boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  })
-]
+  boot.tmp.useTmpfs = lib.mkDefault true;
+}
