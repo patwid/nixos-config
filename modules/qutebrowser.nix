@@ -21,7 +21,6 @@ in
         t = "https://tower.axenita.dev/";
         td = "https://tower-dev.axenita.dev/";
         tm = "http://transmission.local:9091/transmission/web/";
-        wi = "https://wi.sanacare.ch/";
         yt = "https://youtube.com";
         mt = "https://webmail.flashcable.ch/";
         c = "https://confluence.ergon.ch/";
