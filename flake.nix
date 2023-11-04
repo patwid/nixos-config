@@ -21,31 +21,25 @@
   outputs = { self, nixpkgs, ... }@attrs:
     let
       inherit (nixpkgs) lib;
-      inherit (builtins)
-        attrNames
-        filter
-        head
-        listToAttrs
-        readDir
-        toString;
 
       systems = [ "aarch64-linux" "x86_64-linux" ];
       forEachSystem = lib.genAttrs systems;
     in
     {
-      nixosConfigurations = listToAttrs (lib.lists.concatMap (system: map
+      nixosConfigurations = lib.listToAttrs (lib.concatMap (system: map
         (hostname: {
           name = hostname;
           value =
             let
-              arch = head (lib.strings.splitString "-" system);
-              isOptionalModule = path: lib.strings.hasInfix "+" path;
-              isArchModule = path: lib.strings.hasInfix "+${arch}" path;
+              arch = lib.head (lib.splitString "-" system);
+              isOptionalModule = path: lib.hasInfix "+" path;
+              isArchModule = path: lib.hasInfix "+${arch}" path;
               shouldImportModule = path: !isOptionalModule path || isArchModule path;
 
               # XXX: this approach does not support import of directories
               # containing a default.nix file, e.g. dir/default.nix
-              files = path: filter (p: shouldImportModule (toString p)) (lib.filesystem.listFilesRecursive path);
+              files = path: lib.filter (p: shouldImportModule (builtins.toString p))
+                (lib.filesystem.listFilesRecursive path);
             in
             lib.nixosSystem {
               inherit system;
@@ -54,7 +48,7 @@
               modules = files ./hosts/${system}/${hostname} ++ files ./modules;
             };
         })
-        (attrNames (readDir ./hosts/${system}))) systems);
+        (lib.attrNames (builtins.readDir ./hosts/${system}))) systems);
 
       formatter = forEachSystem (system:
         nixpkgs.legacyPackages.${system}.nixpkgs-fmt
