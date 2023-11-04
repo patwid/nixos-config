@@ -33,12 +33,11 @@
       forEachSystem = lib.genAttrs systems;
     in
     {
-      nixosConfigurations = listToAttrs (map
+      nixosConfigurations = listToAttrs (lib.lists.concatMap (system: map
         (hostname: {
           name = hostname;
           value =
             let
-              inherit (import ./hosts/${hostname}/+system.nix) system;
               arch = head (lib.strings.splitString "-" system);
               isOptionalModule = path: lib.strings.hasInfix "+" path;
               isArchModule = path: lib.strings.hasInfix "+${arch}" path;
@@ -52,10 +51,10 @@
               inherit system;
               specialArgs = attrs // { inherit hostname; };
               lib = lib.extend (import ./lib);
-              modules = files ./hosts/${hostname} ++ files ./modules;
+              modules = files ./hosts/${system}/${hostname} ++ files ./modules;
             };
         })
-        (attrNames (readDir ./hosts)));
+        (attrNames (readDir ./hosts/${system}))) systems);
 
       formatter = forEachSystem (system:
         nixpkgs.legacyPackages.${system}.nixpkgs-fmt
