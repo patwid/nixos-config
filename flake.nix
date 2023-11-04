@@ -26,22 +26,18 @@
           name = hostname;
           value =
             let
-              args = import ./hosts/${hostname}/args.nix // { inherit hostname; };
-              files = path: map (f: path + "/${f}") (builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (_: type: type == "regular") (builtins.readDir path)));
+              args = import ./hosts/${hostname}/+args.nix // { inherit hostname; };
               arch = builtins.head (nixpkgs.lib.strings.splitString "-" args.system);
+              isOptionalModule = path: nixpkgs.lib.strings.hasInfix "+" path;
+              isArchModule = path: nixpkgs.lib.strings.hasInfix "+${arch}" path;
+              shouldImportModule = path: !isOptionalModule path || isArchModule path;
+              files = path: builtins.filter (p: shouldImportModule (builtins.toString p)) (nixpkgs.lib.filesystem.listFilesRecursive path);
             in
             nixpkgs.lib.nixosSystem {
               inherit (args) system;
               specialArgs = attrs // { inherit args; };
               lib = nixpkgs.lib.extend (import ./lib);
-
-              modules =
-                [
-                  ./hosts/${hostname}/configuration.nix
-                  ./hosts/${hostname}/hardware-configuration.nix
-                ]
-                ++ files ./modules
-                ++ nixpkgs.lib.optionals (builtins.pathExists (./modules + "/${arch}")) (files (./modules + "/${arch}"));
+              modules = files ./hosts/${hostname} ++ files ./modules;
             };
         })
         (builtins.attrNames (builtins.readDir ./hosts)));
