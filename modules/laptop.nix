@@ -1,7 +1,6 @@
-{ config, args, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (config) laptop;
-  inherit (args) user;
+  inherit (config) user laptop;
 in
 {
   options.laptop = lib.mkEnableOption { };

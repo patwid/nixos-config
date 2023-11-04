@@ -1,6 +1,7 @@
 { args, config, pkgs, nixpkgs, ... }@attrs:
 let
-  inherit (args) user hostname;
+  inherit (args) hostname;
+  inherit (config) user;
 in
 {
   networking.hostName = hostname;

@@ -1,7 +1,6 @@
-{ args, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (args) user;
-  inherit (config) colors laptop;
+  inherit (config) user colors laptop;
 in
 lib.mkMerge [
   {

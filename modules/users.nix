@@ -1,25 +1,32 @@
 { config, args, lib, pkgs, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
   customGroup = args ? group && args ? gid;
 in
-lib.mkMerge [
-  {
-    users.users.${user} = {
-      isNormalUser = true;
-      description = user;
-      extraGroups = [ "wheel" ];
-      packages = with pkgs; [ ];
-    };
-  }
+{
+  options.user = lib.mkOption {
+    type = lib.types.str;
+    default = "patwid";
+  };
 
-  (lib.mkIf (customGroup) {
-    users.users.${user} = {
-      inherit (args) group;
-    };
+  config = lib.mkMerge [
+    {
+      users.users.${user} = {
+        isNormalUser = true;
+        description = user;
+        extraGroups = [ "wheel" ];
+        packages = with pkgs; [ ];
+      };
+    }
 
-    users.groups.${args.group} = {
-      inherit (args) gid;
-    };
-  })
-]
+    (lib.mkIf (customGroup) {
+      users.users.${user} = {
+        inherit (args) group;
+      };
+
+      users.groups.${args.group} = {
+        inherit (args) gid;
+      };
+    })
+  ];
+}

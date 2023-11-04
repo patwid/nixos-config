@@ -1,6 +1,6 @@
-{ args, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
 in
 {
   # Required for screen sharing to work

@@ -1,6 +1,6 @@
-{ args, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
   pass = "${pkgs.pass}/bin/pass";
   head = "${pkgs.coreutils}/bin/head";
 in

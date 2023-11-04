@@ -1,7 +1,6 @@
-{ args, config, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  inherit (args) user;
-  inherit (config) colors;
+  inherit (config) user colors;
 in
 {
   home-manager.users.${user} = {

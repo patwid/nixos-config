@@ -1,7 +1,6 @@
-{ config, args, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (config) work;
-  inherit (args) user;
+  inherit (config) user work;
 in
 {
   options.work = {

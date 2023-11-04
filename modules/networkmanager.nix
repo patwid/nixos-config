@@ -1,6 +1,6 @@
-{ args, ... }:
+{ config, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
 in
 {
   networking.networkmanager.enable = true;

@@ -1,6 +1,6 @@
-{ args, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
 in
 {
   # Required for pinentry flavor gnome3 to work on non-gnome systems

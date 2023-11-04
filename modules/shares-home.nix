@@ -1,7 +1,6 @@
-{ config, args, lib, ... }:
+{ config, lib, ... }:
 let
-  inherit (args) user;
-  inherit (config) home;
+  inherit (config) user home;
 
   fsType = "nfs";
   options = [ "nfsvers=3" ];

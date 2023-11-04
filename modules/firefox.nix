@@ -1,6 +1,6 @@
-{ args, pkgs, nur, ... }:
+{ config, pkgs, nur, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
 in
 {
   home-manager.users.${user} = {

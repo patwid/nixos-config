@@ -1,7 +1,6 @@
-{ args, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (args) user;
-  inherit (config) colors;
+  inherit (config) user colors;
   modifier = "Mod4";
 in
 {

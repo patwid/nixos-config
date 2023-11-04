@@ -1,7 +1,6 @@
-{ args, config, lib, ... }:
+{ config, lib, ... }:
 let
-  inherit (args) user;
-  inherit (config) colors terminal;
+  inherit (config) user colors terminal;
 in
 {
   options.terminal.fontsize = lib.mkOption {

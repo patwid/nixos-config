@@ -1,7 +1,6 @@
-{ args, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
-  inherit (args) user;
-  inherit (config) work;
+  inherit (config) user work;
 in
 lib.mkIf (work.enable) (lib.mkMerge [
   {

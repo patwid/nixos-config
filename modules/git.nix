@@ -1,7 +1,6 @@
-{ config, args, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  inherit (args) user;
-  inherit (config) work;
+  inherit (config) user work;
 in
 {
   programs.git.enable = true;

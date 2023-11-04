@@ -1,6 +1,6 @@
-{ args, pkgs, nixos-hardware, nixos-apple-silicon, ... }:
+{ config, pkgs, nixos-hardware, nixos-apple-silicon, ... }:
 let
-  inherit (args) user;
+  inherit (config) user;
 in
 {
   imports = [
