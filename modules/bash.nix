@@ -12,7 +12,8 @@ in
       enable = true;
       initExtra = ''
         export GIT_PS1_SHOWDIRTYSTATE=true
-        source /run/current-system/sw/share/bash-completion/completions/git-prompt.sh
+
+        source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh
 
         bold="\[$(tput bold)\]"
         red="\[$(tput setaf 1)\]"
