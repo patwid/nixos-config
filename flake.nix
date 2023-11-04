@@ -28,7 +28,7 @@
             let
               args = import ./hosts/${hostname}/args.nix // { inherit hostname; };
               files = path: map (f: path + "/${f}") (builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (_: type: type == "regular") (builtins.readDir path)));
-              arch = nixpkgs.lib.strings.removeSuffix "-linux" args.system;
+              arch = builtins.head (nixpkgs.lib.strings.splitString "-" args.system);
             in
             nixpkgs.lib.nixosSystem {
               inherit (args) system;
