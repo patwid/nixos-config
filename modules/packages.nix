@@ -27,6 +27,8 @@ in
       wl-clipboard
       xdg-open
       zip
+
+      pkgs.stable.vscode
     ];
   };
 }
