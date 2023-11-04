@@ -35,8 +35,8 @@
           name = hostname;
           value =
             let
-              args = import ./hosts/${hostname}/+args.nix // { inherit hostname; };
-              arch = head (lib.strings.splitString "-" args.system);
+              inherit (import ./hosts/${hostname}/+system.nix) system;
+              arch = head (lib.strings.splitString "-" system);
               isOptionalModule = path: lib.strings.hasInfix "+" path;
               isArchModule = path: lib.strings.hasInfix "+${arch}" path;
               shouldImportModule = path: !isOptionalModule path || isArchModule path;
@@ -46,8 +46,8 @@
               files = path: filter (p: shouldImportModule (toString p)) (lib.filesystem.listFilesRecursive path);
             in
             lib.nixosSystem {
-              inherit (args) system;
-              specialArgs = attrs // { inherit args; };
+              inherit system;
+              specialArgs = attrs // { inherit hostname; };
               lib = lib.extend (import ./lib);
               modules = files ./hosts/${hostname} ++ files ./modules;
             };

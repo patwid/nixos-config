@@ -1,6 +1,5 @@
-{ args, config, pkgs, nixpkgs, ... }@attrs:
+{ config, pkgs, nixpkgs, hostname, ... }@attrs:
 let
-  inherit (args) hostname;
   inherit (config) user;
 in
 {
