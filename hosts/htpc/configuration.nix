@@ -11,17 +11,6 @@ in
   apple-silicon = true;
   home.enable = true;
 
-  boot.tmp.useTmpfs = false;
-  boot.tmp.cleanOnBoot = true;
-
-  home-manager.users.${user} = {
-    wayland.windowManager.sway = {
-      config = {
-        output.HDMI-A-1.scale = "2";
-      };
-    };
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
