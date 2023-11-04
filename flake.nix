@@ -41,7 +41,7 @@
               isArchModule = path: lib.strings.hasInfix "+${arch}" path;
               shouldImportModule = path: !isOptionalModule path || isArchModule path;
 
-              # XXX: this approach does not support importing of directories
+              # XXX: this approach does not support import of directories
               # containing a default.nix file, e.g. dir/default.nix
               files = path: filter (p: shouldImportModule (toString p)) (lib.filesystem.listFilesRecursive path);
             in
