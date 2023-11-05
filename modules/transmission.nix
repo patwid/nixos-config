@@ -1,10 +1,10 @@
 { config, ... }:
 let
-  inherit (config) user;
+  inherit (config) user home;
 in
 {
   services.transmission = {
-    enable = false;
+    enable = home.server;
     inherit user;
     settings = {
       alt-speed-up = 0;
