@@ -22,33 +22,35 @@
     let
       inherit (nixpkgs) lib;
 
-      systems = [ "aarch64-linux" "x86_64-linux" ];
+      systems = lib.attrNames (builtins.readDir ./hosts);
       forEachSystem = lib.genAttrs systems;
     in
     {
-      nixosConfigurations = lib.listToAttrs (lib.concatMap (system: map
-        (hostname: {
-          name = hostname;
-          value =
-            let
-              arch = lib.head (lib.splitString "-" system);
-              isOptionalModule = path: lib.hasInfix "+" path;
-              isArchModule = path: lib.hasInfix "+${arch}" path;
-              shouldImportModule = path: !isOptionalModule path || isArchModule path;
+      nixosConfigurations = lib.listToAttrs (lib.concatMap
+        (system: map
+          (hostname: {
+            name = hostname;
+            value =
+              let
+                arch = lib.head (lib.splitString "-" system);
+                isOptionalModule = path: lib.hasInfix "+" path;
+                isArchModule = path: lib.hasInfix "+${arch}" path;
+                shouldImportModule = path: !isOptionalModule path || isArchModule path;
 
-              # XXX: this approach does not support import of directories
-              # containing a default.nix file, e.g. dir/default.nix
-              files = path: lib.filter (p: shouldImportModule (builtins.toString p))
-                (lib.filesystem.listFilesRecursive path);
-            in
-            lib.nixosSystem {
-              inherit system;
-              specialArgs = attrs // { inherit hostname; };
-              lib = lib.extend (import ./lib);
-              modules = files ./hosts/${system}/${hostname} ++ files ./modules;
-            };
-        })
-        (lib.attrNames (builtins.readDir ./hosts/${system}))) systems);
+                # XXX: this approach does not support import of directories
+                # containing a default.nix file, e.g. dir/default.nix
+                files = path: lib.filter (p: shouldImportModule (builtins.toString p))
+                  (lib.filesystem.listFilesRecursive path);
+              in
+              lib.nixosSystem {
+                inherit system;
+                specialArgs = attrs // { inherit hostname; };
+                lib = lib.extend (import ./lib);
+                modules = files ./hosts/${system}/${hostname} ++ files ./modules;
+              };
+          })
+          (lib.attrNames (builtins.readDir ./hosts/${system})))
+        systems);
 
       formatter = forEachSystem (system:
         nixpkgs.legacyPackages.${system}.nixpkgs-fmt
