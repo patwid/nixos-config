@@ -5,7 +5,7 @@ in
 {
   programs.git.enable = true;
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.git = {
       enable = true;
       userName = "Patrick Widmer";

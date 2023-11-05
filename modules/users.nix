@@ -1,51 +1,58 @@
 { config, lib, pkgs, ... }:
 let
-  inherit (config) user uid group gid;
+  inherit (config) user group;
 in
 {
-  options.user = lib.mkOption {
-    type = lib.types.str;
-    default = "patwid";
+  options = {
+    user = {
+      name = lib.mkOption {
+        type = lib.types.str;
+        default = "patwid";
+      };
+
+      uid = lib.mkOption {
+        type = lib.types.nullOr lib.types.int;
+        default = null;
+      };
+    };
+
+    group = {
+      name = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = null;
+      };
+
+      gid = lib.mkOption {
+        type = lib.types.nullOr lib.types.int;
+        default = null;
+      };
+    };
   };
 
-  options.uid = lib.mkOption {
-    type = lib.types.nullOr lib.types.int;
-    default = null;
-  };
-
-  options.group = lib.mkOption {
-    type = lib.types.nullOr lib.types.str;
-    default = null;
-  };
-
-  options.gid = lib.mkOption {
-    type = lib.types.nullOr lib.types.int;
-    default = null;
-  };
 
   config = lib.mkMerge [
     {
-      users.users.${user} = {
+      users.users.${user.name} = {
         isNormalUser = true;
-        description = user;
+        description = user.name;
         extraGroups = [ "wheel" ];
         packages = with pkgs; [ ];
       };
     }
 
-    (lib.mkIf (uid != null) {
-      users.users.${user} = {
-        inherit uid;
+    (lib.mkIf (user.uid != null) {
+      users.users.${user.name} = {
+        inherit (user) uid;
       };
     })
 
-    (lib.mkIf (group != null && gid != null) {
-      users.users.${user} = {
-        inherit (config) group;
+    (lib.mkIf (group.name != null && group.gid != null) {
+      users.users.${user.name} = {
+        group = group.name;
       };
 
-      users.groups.${group} = {
-        inherit (config) gid;
+      users.groups.${group.name} = {
+        inherit (group) gid;
       };
     })
   ];

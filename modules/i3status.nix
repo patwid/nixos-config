@@ -4,7 +4,7 @@ let
 in
 lib.mkMerge [
   {
-    home-manager.users.${user} = {
+    home-manager.users.${user.name} = {
       programs.i3status = {
         enable = true;
         enableDefault = false;
@@ -54,7 +54,7 @@ lib.mkMerge [
   }
 
   (lib.mkIf (laptop) {
-    home-manager.users.${user} = {
+    home-manager.users.${user.name} = {
       programs.i3status.modules = {
         "battery all" = {
           position = 4;

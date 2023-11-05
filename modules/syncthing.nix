@@ -5,8 +5,8 @@ in
 {
   services.syncthing = {
     enable = true;
-    inherit user;
+    user = user.name;
     group = "users";
-    dataDir = "/home/${user}";
+    dataDir = "/home/${user.name}";
   };
 }

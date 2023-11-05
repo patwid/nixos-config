@@ -5,7 +5,7 @@ in
 {
   environment.defaultPackages = [ ];
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     home.packages = with pkgs; [
       curl
       gnome.adwaita-icon-theme

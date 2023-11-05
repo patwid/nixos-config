@@ -1,7 +1,4 @@
-{ config, pkgs, nixos-hardware, nixos-apple-silicon, ... }:
-let
-  inherit (config) user;
-in
+{ pkgs, nixos-hardware, nixos-apple-silicon, ... }:
 {
   imports = [
     nixos-hardware.nixosModules.common-pc

@@ -22,12 +22,12 @@ lib.mkIf (work.enable) (lib.mkMerge [
   (
     let
       fsType = "cifs";
-      user' = config.users.users.${user};
-      primary = config.users.users.${user}.group;
+      user' = config.users.users.${user.name};
+      primary = config.users.users.${user.name}.group;
       group = config.users.groups.${primary};
       uid = if user'.uid == null then "1000" else toString user'.uid;
       gid = if group.gid == null then "100" else toString group.gid;
-      options = [ ''noauto,user=${user},domain=ERGON,uid=${uid},gid=${gid}'' ];
+      options = [ ''noauto,user=${user.name},domain=ERGON,uid=${uid},gid=${gid}'' ];
     in
     lib.mkIf (work.remote) {
       # TODO: remove once https://github.com/NixOS/nixpkgs/issues/34638 is

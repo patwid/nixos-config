@@ -16,17 +16,17 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf (home.enable) {
-      fileSystems."/home/${user}/music" = {
+      fileSystems."/home/${user.name}/music" = {
         device = "${nas}:/mnt/tank/media/music";
         inherit fsType options;
       };
 
-      fileSystems."/home/${user}/videos/movies" = {
+      fileSystems."/home/${user.name}/videos/movies" = {
         device = "${nas}:/mnt/tank/media/movies";
         inherit fsType options;
       };
 
-      fileSystems."/home/${user}/videos/tv_shows" = {
+      fileSystems."/home/${user.name}/videos/tv_shows" = {
         device = "${nas}:/mnt/tank/media/tv_shows";
         inherit fsType options;
       };

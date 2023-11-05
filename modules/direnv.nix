@@ -8,7 +8,7 @@ in
     keep-derivations = true;
   };
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.direnv = {
       enable = true;
       config = {

@@ -7,7 +7,7 @@ in
     PATH = [ "." ];
   };
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.bash = {
       enable = true;
       initExtra = ''

@@ -3,7 +3,7 @@ let
   inherit (config) user colors;
 in
 {
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.qutebrowser = {
       enable = true;
       quickmarks = {

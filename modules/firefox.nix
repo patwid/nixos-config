@@ -3,7 +3,7 @@ let
   inherit (config) user;
 in
 {
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.firefox = {
       enable = true;
       package = pkgs.wrapFirefox pkgs.firefox-unwrapped {

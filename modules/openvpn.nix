@@ -5,7 +5,7 @@ in
 lib.mkIf (work.remote) {
   programs.openvpn3.enable = true;
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     home.packages = [ pkgs.networkmanager-openvpn ];
   };
 }

@@ -9,7 +9,7 @@ in
   };
 
   config = lib.mkIf (work.enable) {
-    home-manager.users.${user} = {
+    home-manager.users.${user.name} = {
       home.packages = with pkgs; [
         dbeaver
         jetbrains.idea-ultimate

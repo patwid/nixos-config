@@ -9,7 +9,7 @@ in
 
   programs.neovim.enable = true;
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.neovim = {
       enable = true;
       defaultEditor = true;

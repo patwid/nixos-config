@@ -9,12 +9,12 @@ lib.mkIf (work.enable) (lib.mkMerge [
       "registry-mirrors" = [ "https://docker-mirror.ergon.ch" ];
     };
 
-    users.users.${user}.extraGroups = [ "docker" ];
+    users.users.${user.name}.extraGroups = [ "docker" ];
 
     # Required for elasticsearch container
     boot.kernel.sysctl = { "vm.max_map_count" = 262144; };
 
-    home-manager.users.${user} = {
+    home-manager.users.${user.name} = {
       home.packages = [ pkgs.docker-compose ];
     };
   }

@@ -41,7 +41,7 @@ in
     };
   };
 
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs.chromium.enable = true;
 
     home.packages = with pkgs; [

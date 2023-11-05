@@ -9,7 +9,7 @@ in
   };
 
   config = {
-    home-manager.users.${user} = {
+    home-manager.users.${user.name} = {
       programs.foot = {
         enable = true;
         settings = {

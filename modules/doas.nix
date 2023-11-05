@@ -7,7 +7,7 @@ in
   security.doas = {
     enable = true;
     extraRules = [{
-      users = [ user ];
+      users = [ user.name ];
       keepEnv = true;
       persist = true;
     }];

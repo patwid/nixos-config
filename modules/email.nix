@@ -5,7 +5,7 @@ let
   head = "${pkgs.coreutils}/bin/head";
 in
 {
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     accounts.email.accounts.Personal = {
       primary = true;
       realName = "Patrick Widmer";

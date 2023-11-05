@@ -3,7 +3,7 @@ let
   inherit (config) user;
 in
 {
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     programs = {
       fzf.enable = true;
       htop.enable = true;

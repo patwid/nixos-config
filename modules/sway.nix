@@ -11,12 +11,12 @@
       modifier = "Mod4";
     in
     {
-      users.users.${user}.extraGroups = [ "input" "video" "audio" ];
+      users.users.${user.name}.extraGroups = [ "input" "video" "audio" ];
 
       security.polkit.enable = true;
       hardware.opengl.enable = true;
 
-      home-manager.users.${user} = {
+      home-manager.users.${user.name} = {
         programs.bash = {
           profileExtra = ''
             if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then

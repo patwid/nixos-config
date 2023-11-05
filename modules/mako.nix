@@ -3,7 +3,7 @@ let
   inherit (config) user colors;
 in
 {
-  home-manager.users.${user} = {
+  home-manager.users.${user.name} = {
     home.packages = [ pkgs.libnotify ];
 
     services.mako = {
