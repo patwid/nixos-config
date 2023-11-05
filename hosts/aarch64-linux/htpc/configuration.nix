@@ -10,12 +10,13 @@ in
 
   apple-silicon = true;
   home.enable = true;
-  tmp.useTmpfs = false;
   terminal.fontsize = 14;
 
   outputScales = {
     HDMI-A-1 = "2";
   };
+
+  boot.tmp.useTmpfs = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
