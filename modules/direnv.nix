@@ -11,6 +11,9 @@ in
   home-manager.users.${user} = {
     programs.direnv = {
       enable = true;
+      config = {
+        warn_timeout = "1h";
+      };
       nix-direnv.enable = true;
     };
   };
