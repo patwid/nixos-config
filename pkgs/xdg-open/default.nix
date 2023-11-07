@@ -17,7 +17,7 @@ writeShellApplication {
             *.jpg|*.png)
                     exec imv "$1"
                     ;;
-            *.mp3|*.flac|*.mkv)
+            *.mp3|*.flac|*.mp4|*.mkv)
                     exec mpv "$1"
                     ;;
             *)
