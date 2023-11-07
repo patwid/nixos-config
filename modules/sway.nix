@@ -171,10 +171,10 @@
                 "--release Print" = "exec ${grimshot} --notify save output ${file}";
                 "--release Shift+Print" = "exec ${grimshot} --notify save area ${file}";
                 "--release Ctrl+Print" = "exec ${grimshot} --notify save active ${file}";
-                # Diable vertical scrolling (windows)
+                # Disable vertical scrolling (windows)
                 "button4" = "nop";
                 "button5" = "nop";
-                # Diable horizontal scrolling (windows)
+                # Disable horizontal scrolling (windows)
                 "button6" = "nop";
                 "button7" = "nop";
               };
