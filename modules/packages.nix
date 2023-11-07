@@ -9,7 +9,6 @@ in
     home.packages = with pkgs; [
       curl
       gnome.adwaita-icon-theme
-      gnome.nautilus
       grim
       imagemagick
       imv
