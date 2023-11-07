@@ -1,14 +1,3 @@
-{ nur, ... }@attrs:
-let
-  localpkgs = import ./localpkgs.nix attrs;
-  pass = import ./pass.nix attrs;
-  wmenu = import ./wmenu attrs;
-  stablepkgs = import ./stablepkgs.nix attrs;
-in
-[
-  nur.overlay
-  localpkgs
-  pass
-  wmenu
-  stablepkgs
-]
+{ nur, lib, ... }@attrs:
+[ nur.overlay ]
+++ map (p: import ./${p} attrs) (lib.filter (n: n != "default.nix") (lib.attrNames (builtins.readDir ./.)))
