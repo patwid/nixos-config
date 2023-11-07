@@ -1,9 +1,7 @@
 { nixpkgs-stable, ... }:
-{
-  overlay = (self: super: {
+self: super: {
     stable = import nixpkgs-stable {
       inherit (super) system;
       config.allowUnfree = super.config.allowUnfree;
     };
-  });
-}
+  }

@@ -7,8 +7,8 @@ let
 in
 [
   nur.overlay
-  localpkgs.overlay
-  pass.overlay
-  wmenu.overlay
-  stablepkgs.overlay
+  localpkgs
+  pass
+  wmenu
+  stablepkgs
 ]

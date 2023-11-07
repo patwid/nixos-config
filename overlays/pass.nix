@@ -1,6 +1,4 @@
 { ... }:
-{
-  overlay = (self: super: {
+self: super: {
     pass = super.pass.override { dmenuSupport = false; };
-  });
-}
+  }
