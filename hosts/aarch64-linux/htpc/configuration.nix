@@ -5,7 +5,7 @@
     nixos-hardware.nixosModules.common-pc-ssd
   ];
 
-  apple-silicon = true;
+  appleSilicon.enable = true;
   home.enable = true;
   terminal.fontsize = 14;
 

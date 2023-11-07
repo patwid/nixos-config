@@ -1,9 +1,9 @@
 { config, lib, nixos-apple-silicon, ... }:
 let
-  inherit (config) apple-silicon;
+  inherit (config) appleSilicon;
 in
 {
-  options.apple-silicon = lib.mkEnableOption { };
+  options.appleSilicon.enable = lib.mkEnableOption { };
 
   # XXX: conditional import causes infite recursion error
   # imports = lib.optionals (apple-silicon) [
@@ -13,7 +13,7 @@ in
     nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
 
-  config = lib.mkIf (apple-silicon) {
+  config = lib.mkIf (appleSilicon.enable) {
     hardware.asahi.peripheralFirmwareDirectory = ../../firmware;
     hardware.asahi.useExperimentalGPUDriver = true;
 
