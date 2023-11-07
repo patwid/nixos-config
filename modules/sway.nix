@@ -52,7 +52,7 @@
               };
             };
             seat."*".hide_cursor = "when-typing enable";
-            output = lib.mapAttrs' (o: s: lib.nameValuePair (o + ".scale") s) outputScales;
+            output = lib.mapAttrs' (o: s: lib.nameValuePair o { scale = s; }) outputScales;
             colors = {
               background = colors.white;
               focused = {
