@@ -24,8 +24,8 @@ in
         reset="\[$(tput sgr0)\]"
 
         PS1="\n"
-        PS1+="''${bold}\W\$(__git_ps1 \" git:(%s)\")\n"
-        PS1+="\$''${reset} "
+        PS1+="''${bold}\W\$(__git_ps1 \" git:(%s)\")\n''${reset}"
+        PS1+="''${bold}\$''${reset} "
       '';
     };
   };
