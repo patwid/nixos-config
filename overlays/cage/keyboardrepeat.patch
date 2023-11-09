@@ -1,0 +1,13 @@
+diff --git a/seat.c b/seat.c
+index 80fd86a..cf3ddb7 100644
+--- a/seat.c
++++ b/seat.c
+@@ -399,7 +399,7 @@ handle_new_keyboard(struct cg_seat *seat, struct wlr_keyboard *keyboard, bool vi
+
+ 	xkb_keymap_unref(keymap);
+ 	xkb_context_unref(context);
+-	wlr_keyboard_set_repeat_info(keyboard, 25, 600);
++	wlr_keyboard_set_repeat_info(keyboard, @repeat_rate@, @repeat_delay@);
+
+ 	cg_keyboard_group_add(keyboard, seat, virtual);
+
