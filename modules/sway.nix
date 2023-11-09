@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  inherit (config) keyboard;
+in
 {
   options.outputScales = lib.mkOption {
     type = lib.types.attrsOf lib.types.str;
@@ -43,8 +46,8 @@
                 xkb_variant = "altgr-intl";
                 xkb_options = "caps:swapescape";
                 xkb_numlock = "enabled";
-                repeat_delay = "200";
-                repeat_rate = "30";
+                repeat_delay = builtins.toString keyboard.repeat.delay;
+                repeat_rate = builtins.toString keyboard.repeat.rate;
               };
               "type:mouse" = {
                 pointer_accel = "0";
