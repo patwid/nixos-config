@@ -11,7 +11,7 @@ self: super: {
     buildInputs = (old.buildInputs or [ ]) ++ [
       pkgs.makeWrapper
     ];
-    postInstall = old.postInstall or "" + ''
+    postInstall = (old.postInstall or "") + ''
       wrapProgram $out/bin/wmenu \
         --add-flags "-N ${lib.colors.withoutPrefix colors.darkestGrey}" \
         --add-flags "-n ${lib.colors.withoutPrefix colors.lightGrey}" \
