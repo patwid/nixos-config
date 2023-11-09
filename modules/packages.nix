@@ -7,6 +7,7 @@ in
 
   home-manager.users.${user.name} = {
     home.packages = with pkgs; [
+      cage
       curl
       gnome.adwaita-icon-theme
       grim
