@@ -1,27 +1,50 @@
-{ writeShellApplication, aerc, imv, mpv, qutebrowser, zathura }:
+{ writeShellApplication, file }:
 
-writeShellApplication {
+let
   name = "xdg-open";
-  runtimeInputs = [ aerc imv mpv qutebrowser zathura ];
+in
+writeShellApplication {
+  inherit name;
+  runtimeInputs = [ file ];
   text = ''
-    case "''${1%%:*}" in
+    targ=$1
+    scheme=''${targ%%:*}
+
+    handle_mimetype() {
+            case "$mt" in
+                    application/pdf)
+                            exec zathura "$targ"
+                            ;;
+                    *openxml*|*opendocument*)
+                            exec libreoffice "$targ"
+                            ;;
+                    image/*)
+                            exec imv "$targ"
+                            ;;
+                    video/*|audio/*)
+                            exec mpv "$targ"
+                            ;;
+                    text/*)
+                            exec foot "$EDITOR" "$targ"
+                            ;;
+                    *)
+                            echo "${name}: failed to open $targ" >&2
+                            exit 1
+                            ;;
+            esac
+    }
+
+    case "$scheme" in
             http|https)
-                    exec qutebrowser "$1"
+                    exec qutebrowser "$targ"
                     ;;
             mailto)
-                    exec aerc "$1"
-                    ;;
-            *.pdf)
-                    exec zathura "$1"
-                    ;;
-            *.jpg|*.png)
-                    exec imv "$1"
-                    ;;
-            *.mp3|*.flac|*.mp4|*.mkv)
-                    exec mpv "$1"
+                    exec aerc "$targ"
                     ;;
             *)
-                    exit 1
+                    mt=$(file --mime-type "$targ")
+                    mt=''${mt##* }
+                    handle_mimetype
                     ;;
     esac
   '';
