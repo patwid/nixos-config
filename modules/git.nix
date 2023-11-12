@@ -19,6 +19,7 @@ in
       extraConfig = {
         init.defaultBranch = "master";
         core.editor = "${pkgs.neovim}/bin/nvim";
+        rerere.enabled = true;
       };
     };
   };
