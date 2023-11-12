@@ -18,8 +18,8 @@ in
           main.term = "xterm-256color";
           cursor.blink = "yes";
           colors = with lib.colors; {
-            foreground = withoutPrefix colors.darkerGrey;
-            background = withoutPrefix colors.white;
+            foreground = withoutPrefix colors.lighterGrey;
+            background = withoutPrefix colors.black;
             regular0 = withoutPrefix colors.black;
             regular1 = withoutPrefix colors.red;
             regular2 = withoutPrefix colors.green;
