@@ -30,6 +30,7 @@ let
       summary = "Warning";
       body = "Low Battery";
     };
+    hiprompt-gtk-py = callPackage ./hiprompt-gtk-py { };
   };
 in
 localPkgs

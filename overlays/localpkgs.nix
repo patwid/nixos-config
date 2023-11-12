@@ -13,5 +13,6 @@ self: super: {
     menu-pass
     outlook
     smartaz
-    teams;
+    teams
+    hiprompt-gtk-py;
 }
