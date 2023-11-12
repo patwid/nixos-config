@@ -12,7 +12,7 @@ writeShellApplication {
   runtimeInputs = [ coreutils findutils gnused wmenu pass wl-clipboard ];
   text = ''
     prefix=''${PASSWORD_STORE_DIR:-~/.password-store}
-    find "$prefix" -name '*.gpg' \
+    exec find "$prefix" -name '*.gpg' \
             | sed "s,^$prefix/\(.*\)\.gpg$,\1," \
             | sort \
             | wmenu \

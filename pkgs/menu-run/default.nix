@@ -10,6 +10,6 @@ writeShellApplication {
     sway
   ];
   text = ''
-    dmenu_path | wmenu | xargs --no-run-if-empty swaymsg exec --
+    exec dmenu_path | wmenu | xargs --no-run-if-empty swaymsg exec --
   '';
 }
