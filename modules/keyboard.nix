@@ -3,11 +3,16 @@
   options.keyboard.repeat = {
     rate = lib.mkOption {
       type = lib.types.int;
-      default = 30;
     };
     delay = lib.mkOption {
       type = lib.types.int;
-      default = 200;
+    };
+  };
+
+  config = {
+    keyboard.repeat = {
+      rate = 30;
+      delay = 200;
     };
   };
 }
