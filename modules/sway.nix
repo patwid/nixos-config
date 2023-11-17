@@ -54,7 +54,10 @@ in
                 scroll_factor = "2";
               };
             };
-            seat."*".hide_cursor = "when-typing enable";
+            seat."*" = {
+              hide_cursor = "when-typing enable";
+              xcursor_theme = "Adwaita";
+            };
             output = lib.mapAttrs' (o: s: lib.nameValuePair o { scale = s; }) outputScales;
             colors = {
               background = colors.white;
@@ -191,7 +194,6 @@ in
           extraSessionCommands = ''
             export QT_QPA_PLATFORM=wayland
             export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-            export XCURSOR_THEME=Adwaita
             export _JAVA_AWT_WM_NONREPARENTING=1
           '';
         };
