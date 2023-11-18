@@ -12,7 +12,6 @@ in
     home-manager.users.${user.name} = {
       home.packages = with pkgs; [
         dbeaver
-        jetbrains.idea-ultimate
         jtt
         mattermost
         outlook
