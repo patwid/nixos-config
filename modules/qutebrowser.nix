@@ -50,7 +50,7 @@ in
         tabs.indicator.width = 0;
         statusbar.widgets = [ "url" "progress" ];
         scrolling.smooth = true;
-        # content.cookies.store = false;
+        content.cookies.store = false;
         completion.open_categories = [ "quickmarks" "history" "filesystem" ];
         colors = {
           completion = {
