@@ -18,10 +18,13 @@ in
     extensions = [
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
     ];
+    # https://chromeenterprise.google/policies/
     extraOpts = {
+      "AutoFillEnabled" = false;
       "AutofillAddressEnabled" = false;
+      "AutofillCreditCardEnabled" = false;
       "BookmarkBarEnabled" = false;
-      "BrowserSignin" = false;
+      "BrowserSignin" = 0; # Disable browser sign-in
       "ClearBrowsingDataOnExitList" = [
         "browsing_history"
         "download_history"
@@ -37,7 +40,14 @@ in
       "PaymentMethodQueryEnabled" = false;
       "PromptForDownloadLocation" = true;
       "ShowHomeButton" = false;
+      "SpellCheckServiceEnabled" = false;
+      "SpellcheckEnabled" = false;
       "SyncDisabled" = true;
+      "TranslateEnabled" = false;
+
+      # You and Google > Sync and Google services > Improve search suggestions
+      # Privacy and security > Send a "Do Not Track" request with your browser traffic
+      # Appearance > Use system title bar and borders
     };
   };
 
