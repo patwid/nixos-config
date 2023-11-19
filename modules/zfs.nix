@@ -11,5 +11,5 @@ lib.mkIf (home.server) {
   # networking.hostId = hostId;
 
   services.zfs.autoScrub.enable = true;
-  services.zfs.trim.enable = true;
+  # services.zfs.trim.enable = true; (unsupported)
 }
