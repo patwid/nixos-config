@@ -9,7 +9,7 @@ lib.mkIf (work.enable) {
     ];
 
     xdg.configFile."ideavim/ideavimrc".text = ''
-      set clipboard=unnamedplus
+      set clipboard+=unnamedplus,ideaput
     '';
   };
 }
