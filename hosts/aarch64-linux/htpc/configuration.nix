@@ -7,7 +7,7 @@
 
   appleSilicon.enable = true;
   home.enable = true;
-  terminal.fontsize = 14;
+  terminal.fontsize = 13;
 
   outputScales = {
     HDMI-A-1 = "2";
