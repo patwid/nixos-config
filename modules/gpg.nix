@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (config) user;
 in
@@ -12,11 +12,9 @@ in
 
     programs.gpg = {
       enable = true;
-      publicKeys = [
-        { source = ../keys/desktop.pub; trust = "ultimate"; }
-        { source = ../keys/laptop.pub; trust = "ultimate"; }
-        { source = ../keys/cohen.pub; trust = "ultimate"; }
-      ];
+      publicKeys =
+        map (k: { source = ../keys/${k}; trust = "ultimate"; })
+          (lib.attrNames (builtins.readDir ../keys));
     };
 
     services.gpg-agent = {
