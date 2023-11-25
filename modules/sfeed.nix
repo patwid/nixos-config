@@ -41,7 +41,7 @@ in
     ];
 
     home-manager.users.${user.name} = {
-      home.packages = with pkgs; [ sfeed menu-news ];
+      home.packages = with pkgs; [ sfeed menu-news menu-videos ];
 
       xdg.configFile."sfeed/sfeedrc".text = ''
         sfeedpath="$HOME/.config/sfeed/feeds"

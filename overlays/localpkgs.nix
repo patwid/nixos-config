@@ -12,6 +12,7 @@ self: super: {
     menu-run
     menu-pass
     menu-news
+    menu-videos
     outlook
     smartaz
     teams
