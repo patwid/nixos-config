@@ -8,6 +8,7 @@ let
     menu = callPackage ./menu { };
     menu-pass = callPackage ./menu-pass { };
     menu-run = callPackage ./menu-run { };
+    menu-news = callPackage ./menu-news { };
     google-chrome = callPackage ./google-chrome { };
     outlook = callPackage ./webapp {
       name = "outlook";

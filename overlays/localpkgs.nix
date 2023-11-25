@@ -11,6 +11,7 @@ self: super: {
     mattermost
     menu-run
     menu-pass
+    menu-news
     outlook
     smartaz
     teams
