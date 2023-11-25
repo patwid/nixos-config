@@ -36,7 +36,7 @@ writeShellApplication {
 
     case "$scheme" in
             http|https)
-                    exec qutebrowser "$targ"
+                    exec "$BROWSER" "$targ"
                     ;;
             mailto)
                     exec aerc "$targ"

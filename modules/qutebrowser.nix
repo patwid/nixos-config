@@ -3,6 +3,10 @@ let
   inherit (config) user colors;
 in
 {
+  environment.variables = {
+    BROWSER = "qutebrowser";
+  };
+
   home-manager.users.${user.name} = {
     programs.qutebrowser = {
       enable = true;
