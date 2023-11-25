@@ -92,6 +92,7 @@ in
             };
             bars = [
               {
+                position = "top";
                 fonts = {
                   names = [ "sans-serif" ];
                   size = 9.0;
