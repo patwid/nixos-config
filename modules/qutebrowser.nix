@@ -4,7 +4,7 @@ let
 in
 {
   environment.variables = {
-    BROWSER = "qutebrowser";
+    BROWSER = "qutebrowser --target window";
   };
 
   home-manager.users.${user.name} = {
