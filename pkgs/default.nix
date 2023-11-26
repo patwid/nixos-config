@@ -8,9 +8,9 @@ let
     menu = callPackage ./menu { };
     menu-pass = callPackage ./menu-pass { };
     menu-run = callPackage ./menu-run { };
-    menu-news = callPackage ./menu-news { };
-    menu-videos = callPackage ./menu-videos { };
-    menu-podcasts = callPackage ./menu-podcasts { };
+    menu-news = callPackage ./menu-feed { name = "news"; opener = "xdg-open"; };
+    menu-videos = callPackage ./menu-feed { name = "videos"; opener = "mpv"; };
+    menu-podcasts = callPackage ./menu-feed { name = "podcasts"; opener = "mpv"; };
     google-chrome = callPackage ./google-chrome { };
     outlook = callPackage ./webapp {
       name = "outlook";
