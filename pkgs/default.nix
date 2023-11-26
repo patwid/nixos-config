@@ -10,6 +10,7 @@ let
     menu-run = callPackage ./menu-run { };
     menu-news = callPackage ./menu-news { };
     menu-videos = callPackage ./menu-videos { };
+    menu-podcasts = callPackage ./menu-podcasts { };
     google-chrome = callPackage ./google-chrome { };
     outlook = callPackage ./webapp {
       name = "outlook";

@@ -1,11 +1,11 @@
-{ writeShellApplication, coreutils, sfeed, menu }:
+{ writeShellApplication, coreutils, sfeed, wmenu }:
 
 writeShellApplication {
   name = "menu-videos";
-  runtimeInputs = [ coreutils sfeed menu ];
+  runtimeInputs = [ coreutils sfeed wmenu ];
   text = ''
     url=''$(sfeed_plain "$HOME/.config/sfeed/videos/feeds/"* | sort --reverse |
-        menu menu-large | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
+        wmenu -l 35 | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
     test -n "''${url}" && exec mpv "''${url}"
   '';
 }

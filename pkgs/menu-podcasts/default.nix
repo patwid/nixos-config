@@ -1,11 +1,11 @@
 { writeShellApplication, coreutils, sfeed, wmenu }:
 
 writeShellApplication {
-  name = "menu-news";
+  name = "menu-podcasts";
   runtimeInputs = [ coreutils sfeed wmenu ];
   text = ''
-    url=''$(sfeed_plain "$HOME/.config/sfeed/news/feeds/"* | sort --reverse |
+    url=''$(sfeed_plain "$HOME/.config/sfeed/podcasts/feeds/"* | sort --reverse |
         wmenu -l 35 | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
-    test -n "''${url}" && exec xdg-open "''${url}"
+    test -n "''${url}" && exec mpv "''${url}"
   '';
 }
