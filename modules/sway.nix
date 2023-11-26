@@ -143,14 +143,10 @@ in
             gaps.smartBorders = "on";
             floating.titlebar = true;
             floating.criteria = [
-              { app_id = "^menu.*$"; }
+              { app_id = "^menu$"; }
               { app_id = "^pavucontrol$"; }
             ];
             window.commands = [
-              {
-                command = "resize set 1920 1080";
-                criteria.app_id = "^menu-large$";
-              }
               {
                 command = "resize set 640 480, border normal";
                 criteria.app_id = "^pavucontrol$";
