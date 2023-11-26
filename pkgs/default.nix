@@ -12,22 +12,11 @@ let
     menu-videos = callPackage ./menu-feed { name = "videos"; opener = "mpv"; };
     menu-podcasts = callPackage ./menu-feed { name = "podcasts"; opener = "mpv"; };
     google-chrome = callPackage ./google-chrome { };
-    outlook = callPackage ./webapp {
-      name = "outlook";
-      url = "https://outlook.office.com/mail/";
-    };
-    mattermost = callPackage ./webapp {
-      name = "mattermost";
-      url = "https://mattermost.ergon.ch/";
-    };
-    teams = callPackage ./webapp {
-      name = "teams";
-      url = "https://teams.microsoft.com/";
-    };
-    smartaz = callPackage ./webapp {
-      name = "smartaz";
-      url = "https://smartaz.ergon.ch/";
-    };
+    outlook = callPackage ./webapp { name = "outlook"; url = "https://outlook.office.com/mail/"; };
+    mattermost = callPackage ./webapp { name = "mattermost"; url = "https://mattermost.ergon.ch/"; };
+    teams = callPackage ./webapp { name = "teams"; url = "https://teams.microsoft.com/"; };
+    smartaz = callPackage ./webapp { name = "smartaz"; url = "https://smartaz.ergon.ch/"; };
+    whatsapp = callPackage ./webapp { name = "whatsapp"; url = "https://web.whatsapp.com/"; };
     notify-low-battery = callPackage ./notify {
       name = "notify-low-battery";
       summary = "Warning";

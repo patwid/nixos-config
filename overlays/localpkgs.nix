@@ -17,5 +17,6 @@ self: super: {
     outlook
     smartaz
     teams
+    whatsapp
     hiprompt-gtk-py;
 }

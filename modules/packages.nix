@@ -24,6 +24,7 @@ in
       swaybg
       swaylock
       unzip
+      whatsapp
       wl-clipboard
       xdg-open
       zip
