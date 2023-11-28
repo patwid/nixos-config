@@ -63,6 +63,8 @@ in
       podcasts = [
         { name = "Echo der Zeit"; url = "https://www.srf.ch/feed/podcast/sd/28549e81-c453-4671-92ad-cb28796d06a8.xml"; }
         { name = "Wirtschaftswoche"; url = "https://www.srf.ch/feed/podcast/sd/7f5b4cad-b410-4ab9-a437-b3ebfe8867e4.xml"; }
+        { name = "NZZ Akzent"; url = "https://akzent.podigee.io/feed/mp3"; }
+        { name = "Apropos"; url = "https://partner-feeds.publishing.tamedia.ch/rss/tagesanzeiger/podcast/apropos-taeglicher-podcast"; }
         { name = "Late Night Linux"; url = "https://latenightlinux.com/feed/mp3"; }
         { name = "Linux Downtime"; url = "https://latenightlinux.com/feed/extra"; }
         { name = "Linux After Dark"; url = "https://linuxafterdark.net/feed/podcast"; }
