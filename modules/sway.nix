@@ -40,6 +40,7 @@ in
               size = 9.0;
             };
             menu = "${pkgs.menu-run}/bin/menu-run";
+            terminal = "${pkgs.foot}/bin/foot ${pkgs.tmux}/bin/tmux";
             input = {
               "type:keyboard" = {
                 xkb_layout = "us";
