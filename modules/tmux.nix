@@ -9,12 +9,7 @@ in
       prefix = "C-a";
       baseIndex = 1;
       extraConfig = ''
-        set -g status-left "#S"
-        set -g status-left-style "reverse"
-        set -g status-right ""
-        set -g status-style "none"
-        set -g window-status-current-format ""
-        set -g window-status-format ""
+        set -g status off
       '';
     };
   };
