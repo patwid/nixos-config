@@ -84,7 +84,7 @@ in
           "sfeed/${type}/sfeedrc"
           {
             text = ''
-              sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
+              sfeedpath="$HOME/.config/sfeed/${type}/feeds"
 
               feeds() {
               ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
