@@ -14,7 +14,7 @@ in
         enable = true;
         settings = {
           main.font = "monospace:size=${toString terminal.fontsize}";
-          main.pad = "8x8";
+          main.pad = "8x4";
           main.term = "xterm-256color";
           cursor.blink = "yes";
           colors = with lib.colors; {
