@@ -16,8 +16,15 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf (home.enable) {
-      fileSystems."/home/${user.name}/music" = {
-        device = "${nas}:/mnt/tank/media/music";
+      # TODO: enable nohide option on nfs export to mount music share instead of
+      # subdirectories (lossless and lossy)
+      fileSystems."/home/${user.name}/music/lossless" = {
+        device = "${nas}:/mnt/tank/media/music/lossless";
+        inherit fsType options;
+      };
+
+      fileSystems."/home/${user.name}/music/lossy" = {
+        device = "${nas}:/mnt/tank/media/music/lossy";
         inherit fsType options;
       };
 
