@@ -11,7 +11,6 @@ in
   config = lib.mkIf (work.enable) {
     home-manager.users.${user.name} = {
       home.packages = with pkgs; [
-        dbeaver
         jtt
         mattermost
         outlook
