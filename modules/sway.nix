@@ -53,6 +53,9 @@ in
                 pointer_accel = "0";
                 scroll_factor = "2";
               };
+              "type:touchpad" = {
+                natural_scroll = "disabled";
+              };
             };
             seat."*" = {
               hide_cursor = "when-typing enable";
