@@ -8,7 +8,7 @@ in
       enable = true;
       settings = {
         PASSWORD_STORE_KEY =
-          lib.concatStringsSep "," (lib.attrNames (builtins.readDir ../keys));
+          lib.concatStringsSep " " (lib.attrNames (builtins.readDir ../keys));
       };
     };
   };
