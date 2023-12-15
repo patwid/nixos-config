@@ -56,7 +56,7 @@ lib.mkMerge [
   (lib.mkIf (laptop) {
     home-manager.users.${user.name} = {
       programs.i3status.modules = {
-        "battery all" = {
+        "battery 0" = {
           position = 4;
           settings = {
             format = "%status  %percentage";
@@ -66,7 +66,7 @@ lib.mkMerge [
             status_bat = "BAT";
             status_unk = "BAT";
             status_full = "BAT";
-            path = "/sys/class/power_supply/BAT%d/uevent";
+            path = "/sys/class/power_supply/macsmc-battery/uevent";
             low_threshold = 10;
             threshold_type = "percentage";
             last_full_capacity = true;

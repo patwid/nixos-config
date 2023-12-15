@@ -1,14 +1,20 @@
 { nixos-hardware, ... }:
 {
   imports = with nixos-hardware.nixosModules; [
-    lenovo-thinkpad-t460s
     common-pc-laptop-ssd
   ];
 
+  appleSilicon.enable = true;
   laptop = true;
   home.enable = true;
   work.enable = true;
   work.remote = true;
+
+  outputScales = {
+    eDP-1 = "1.5";
+  };
+
+  boot.tmp.useTmpfs = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -16,5 +22,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 }
