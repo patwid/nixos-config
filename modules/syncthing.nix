@@ -7,7 +7,8 @@ in
     enable = true;
     user = user.name;
     group = "users";
-    dataDir = "/home/${user.name}";
+    configDir = "/home/${user.name}/.config/syncthing";
+    dataDir = "/home/${user.name}/.local/share/syncthing";
     overrideDevices = false;
     overrideFolders = false;
     settings = {
