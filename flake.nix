@@ -20,8 +20,7 @@
 
   outputs = { self, nixpkgs, ... }@attrs:
     let
-      inherit (nixpkgs) lib;
-
+      lib = nixpkgs.lib.extend (import ./lib);
       systems = lib.attrNames (builtins.readDir ./hosts);
       forEachSystem = lib.genAttrs systems;
     in
@@ -31,22 +30,20 @@
           (hostname: {
             name = hostname;
             value =
-              let
-                arch = lib.head (lib.splitString "-" system);
-                isOptionalModule = path: lib.hasInfix "+" path;
-                isArchModule = path: lib.hasInfix "+${arch}" path;
-                shouldImportModule = path: !isOptionalModule path || isArchModule path;
-
-                # XXX: this approach does not support import of directories
-                # containing a default.nix file, e.g. dir/default.nix
-                files = path: lib.filter (p: shouldImportModule (builtins.toString p))
-                  (lib.filesystem.listFilesRecursive path);
-              in
               lib.nixosSystem {
-                inherit system;
+                inherit system lib;
                 specialArgs = attrs // { inherit hostname; };
-                lib = lib.extend (import ./lib);
-                modules = files ./hosts/${system}/${hostname} ++ files ./modules;
+
+                modules =
+                  lib.listModulesRecursively
+                    {
+                      inherit system;
+                      path = ./hosts/${system}/${hostname};
+                    } ++
+                  lib.listModulesRecursively {
+                    inherit system;
+                    path = ./modules/nixos;
+                  };
               };
           })
           (lib.attrNames (builtins.readDir ./hosts/${system})))
