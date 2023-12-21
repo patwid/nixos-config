@@ -1,5 +1,9 @@
-(final: prev: {
-  colors = import ./colors.nix { lib = prev; };
+{ lib }:
+let
+  filesystem = import ./filesystem.nix { inherit lib; };
+in
+{
+  inherit (filesystem) listModulesRecursively;
 
-  inherit (import ./filesystem.nix { lib = prev; }) listModulesRecursively;
-})
+  colors = import ./colors.nix { inherit lib; };
+}
