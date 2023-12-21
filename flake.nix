@@ -3,7 +3,7 @@
 
   inputs = {
     # Use this overlay as follows: pkgs.stable.<pkg-name>
-    nixpkgs-stable.url = github:NixOS/nixpkgs/nixos-23.05;
+    nixpkgs-stable.url = github:NixOS/nixpkgs/nixos-23.11;
 
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
 
