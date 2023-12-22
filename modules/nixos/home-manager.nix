@@ -19,9 +19,6 @@ in
 
     home.stateVersion = system.stateVersion;
 
-    imports = lib'.listModulesRecursively {
-      path = ../home-manager;
-      system = hostPlatform;
-    };
+    imports = lib'.modulesIn hostPlatform ../home-manager;
   };
 }

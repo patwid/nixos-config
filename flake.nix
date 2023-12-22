@@ -37,15 +37,10 @@
                 specialArgs = attrs // { inherit hostname lib'; };
 
                 modules =
-                  lib'.listModulesRecursively
-                    {
-                      inherit system;
-                      path = ./hosts/${system}/${hostname};
-                    } ++
-                  lib'.listModulesRecursively {
-                    inherit system;
-                    path = ./modules/nixos;
-                  };
+                  let
+                    modulesIn = lib'.modulesIn system;
+                  in
+                  modulesIn ./hosts/${system}/${hostname} ++ modulesIn ./modules/nixos;
               };
           })
           (lib.attrNames (builtins.readDir ./hosts/${system})))

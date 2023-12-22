@@ -1,11 +1,15 @@
 { lib }:
 let
-  arch = system: lib.head (lib.splitString "-" system);
-  isOptionalModule = path: lib.hasInfix "+" path;
-  isArchModule = { path, system }: lib.hasInfix "+${arch system}" path;
-  shouldImportModule = { path, system }@args: !isOptionalModule path || isArchModule args;
+  inherit (builtins) toString;
+  inherit (lib) filter hasInfix head splitString;
+  inherit (lib.filesystem) listFilesRecursive;
+
+  archOf = system: head (splitString "-" system);
+  isOptional = path: hasInfix "+" path;
+  isArch = { path, arch }: hasInfix "+${arch}" path;
+  isImportable = { path, arch }@args: !isOptional path || isArch args;
 in
 {
-  listModulesRecursively = { path, system }: lib.filter (p: shouldImportModule { inherit system; path = (builtins.toString p); })
-    (lib.filesystem.listFilesRecursive path);
+  modulesIn = system: path: filter (p: isImportable { arch = archOf system; path = (toString p); })
+    (listFilesRecursive path);
 }
