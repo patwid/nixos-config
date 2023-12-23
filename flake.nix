@@ -35,11 +35,8 @@
               lib.nixosSystem {
                 inherit system;
                 specialArgs = attrs // { inherit hostname lib'; };
-
                 modules =
-                  let
-                    modulesIn = lib'.modulesIn system;
-                  in
+                  let modulesIn = lib'.modulesIn system; in
                   modulesIn ./hosts/${system}/${hostname} ++ modulesIn ./modules/nixos;
               };
           })
