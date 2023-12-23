@@ -106,52 +106,52 @@ lib.mkIf (work.enable) (lib.mkMerge [
   (
     let
       fsType = "nfs";
-      options = [ ]; # TODO: set required options
+      # TODO: set required options
     in
     lib.mkIf (!work.remote) {
       fileSystems."/mnt/docs" = {
         device = "fsdocs:/docs";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/home" = {
         device = "fshome:/home";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/projects" = {
         device = "fsprojects:/projects";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/masters" = {
         device = "fsmasters:/masters";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/partner" = {
         device = "fspartner:/partner";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/data/pump" = {
         device = "fsdata:/data/pump";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/data/taifun" = {
         device = "fsdata:/data/taifun";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/usr2" = {
         device = "fsusr2:/usr2";
-        inherit fsType options;
+        inherit fsType;
       };
 
       fileSystems."/mnt/hist" = {
         device = "fshist:/hist";
-        inherit fsType options;
+        inherit fsType;
       };
     }
   )
