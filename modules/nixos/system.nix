@@ -18,7 +18,7 @@ in
   nixpkgs.overlays = import ../../overlays attrs;
 
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     dates = "weekly";
     flake = "/home/${user.name}/.config/nixos#${config.networking.hostName}";
     flags = [ "--recreate-lock-file" ];
