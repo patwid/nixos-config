@@ -17,20 +17,21 @@
       set laststatus=1
       set shortmess+=I
 
-      augroup Colors
+      augroup default_override
         autocmd!
-        autocmd Syntax * call SetColors()
+        autocmd ColorScheme default highlight Directory ctermfg=cyan
+        autocmd ColorScheme default highlight SpecialKey ctermfg=cyan
+        autocmd ColorScheme default highlight Type ctermfg=green
+        autocmd ColorScheme default highlight PreProc ctermfg=blue
+        autocmd ColorScheme default highlight Question ctermfg=green
       augroup END
 
-      function! SetColors() abort
-        if &background ==# "dark"
-          highlight Directory ctermfg=cyan
-          highlight SpecialKey ctermfg=cyan
-          highlight Type ctermfg=green
-          highlight PreProc ctermfg=blue
-        endif
-        highlight WinSeparator ctermbg=None
-      endfunction
+      augroup highlight_override
+        autocmd!
+        autocmd ColorScheme * highlight WinSeparator ctermbg=None
+      augroup END
+
+      colorscheme default
     '';
     plugins = with pkgs.vimPlugins; [
       editorconfig-vim
