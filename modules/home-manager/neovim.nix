@@ -31,13 +31,14 @@
         autocmd ColorScheme * highlight WinSeparator ctermbg=None
       augroup END
 
-      colorscheme default
+      colorscheme paige-system
     '';
     plugins = with pkgs.vimPlugins; [
       editorconfig-vim
       fugitive
       vim-nix
       fzf-vim
+      vim-paige
       # fzfWrapper # TODO: what does fzfWrapper do?
     ];
   };

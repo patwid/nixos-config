@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }@attrs:
+{ ... }@attrs:
 let
   localpkgs = import ../pkgs attrs;
 in
@@ -19,4 +19,6 @@ self: super: {
     teams
     whatsapp
     hiprompt-gtk-py;
+
+  vimPlugins = super.vimPlugins.extend (_: _: { inherit (localpkgs) vim-paige; });
 }

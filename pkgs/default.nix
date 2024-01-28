@@ -23,6 +23,7 @@ let
       body = "Low Battery";
     };
     hiprompt-gtk-py = callPackage ./hiprompt-gtk-py { };
+    vim-paige = callPackage ./vim-paige { };
   };
 in
 localPkgs
