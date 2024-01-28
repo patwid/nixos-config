@@ -1,4 +1,4 @@
-{ nixosConfig, lib', ... }:
+{ nixosConfig, lib, ... }:
 let
   inherit (nixosConfig) colors terminal;
 in
@@ -10,7 +10,7 @@ in
       main.pad = "8x4";
       main.term = "xterm-256color";
       cursor.blink = "yes";
-      colors = with lib'.colors; {
+      colors = with lib.colors; {
         foreground = withoutPrefix colors.darkerGrey;
         background = withoutPrefix colors.white;
         regular0 = withoutPrefix colors.white;

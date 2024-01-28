@@ -20,9 +20,7 @@
 
   outputs = { self, nixpkgs, ... }@attrs:
     let
-      inherit (nixpkgs) lib;
-
-      lib' = import ./lib { inherit lib; };
+      lib = nixpkgs.lib.extend (import ./lib);
       systems = lib.attrNames (builtins.readDir ./hosts);
       forEachSystem = lib.genAttrs systems;
     in
@@ -33,10 +31,10 @@
             name = hostname;
             value =
               lib.nixosSystem {
-                inherit system;
-                specialArgs = attrs // { inherit hostname lib'; };
+                inherit system lib;
+                specialArgs = attrs // { inherit hostname; };
                 modules =
-                  let modulesIn = lib'.modulesIn system; in
+                  let modulesIn = lib.modulesIn system; in
                   modulesIn ./hosts/${system}/${hostname} ++ modulesIn ./modules/nixos;
               };
           })

@@ -1,9 +1,4 @@
-{ lib }:
-let
-  filesystem = import ./filesystem.nix { inherit lib; };
-  colors = import ./colors.nix { inherit lib; };
-in
-{
-  inherit (filesystem) modulesIn;
-  inherit colors;
-}
+(final: prev: {
+  colors = import ./colors.nix { lib = prev; };
+  inherit (import ./filesystem.nix { lib = prev; }) modulesIn;
+})
