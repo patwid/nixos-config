@@ -9,6 +9,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true;
     extraConfig = ''
       let g:netrw_banner=0
       set clipboard=unnamedplus
