@@ -40,7 +40,7 @@
         autocmd ColorScheme * highlight WinSeparator ctermbg=None
       augroup END
 
-      colorscheme default
+      colorscheme paige-system
 
       " https://github.com/vim/colorschemes/wiki/How-to-override-a-colorscheme%3F
       command! Inspect echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')

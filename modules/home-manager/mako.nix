@@ -13,9 +13,9 @@ in
     anchor = "bottom-right";
     width = 320;
     borderSize = 2;
-    backgroundColor = colors.black;
-    borderColor = colors.darkestGrey;
+    backgroundColor = colors.background;
+    borderColor = colors.backgroundInactive;
     progressColor = "over ${colors.red}"; # TODO: usage?
-    textColor = colors.white;
+    textColor = colors.foreground;
   };
 }

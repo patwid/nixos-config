@@ -47,34 +47,34 @@ in
       };
       output = lib.mapAttrs' (o: s: lib.nameValuePair o { scale = s; }) outputScales;
       colors = {
-        background = colors.white;
+        background = colors.white; # TODO: usage?
         focused = {
-          border = colors.darkerGrey;
-          background = colors.darkerGrey;
-          text = colors.white;
-          indicator = colors.darkerGrey;
-          childBorder = colors.darkerGrey;
+          border = colors.backgroundActive;
+          background = colors.backgroundActive;
+          text = colors.foregroundAlt;
+          indicator = colors.backgroundActive;
+          childBorder = colors.backgroundActive;
         };
         focusedInactive = {
-          border = colors.darkestGrey;
-          background = colors.darkestGrey;
-          text = colors.white;
-          indicator = colors.darkestGrey;
-          childBorder = colors.darkestGrey;
+          border = colors.backgroundInactive;
+          background = colors.backgroundInactive;
+          text = colors.foregroundAlt;
+          indicator = colors.backgroundInactive;
+          childBorder = colors.backgroundInactive;
         };
         unfocused = {
-          border = colors.darkestGrey;
-          background = colors.darkestGrey;
-          text = colors.lightGrey;
-          indicator = colors.darkestGrey;
-          childBorder = colors.darkestGrey;
+          border = colors.backgroundInactive;
+          background = colors.backgroundInactive;
+          text = colors.foreground;
+          indicator = colors.backgroundInactive;
+          childBorder = colors.backgroundInactive;
         };
         placeholder = {
-          border = colors.black;
-          background = colors.black;
-          text = colors.white;
-          indicator = colors.black;
-          childBorder = colors.black;
+          border = colors.background;
+          background = colors.background;
+          text = colors.foreground;
+          indicator = colors.background;
+          childBorder = colors.background;
         };
       };
       bars = [
@@ -96,33 +96,33 @@ in
             bindsym button7 nop;
           '';
           colors = {
-            background = colors.darkestGrey;
-            statusline = colors.white;
-            separator = colors.white;
+            background = colors.backgroundInactive;
+            statusline = colors.foreground;
+            separator = colors.foreground;
             focusedWorkspace = {
-              border = colors.darkerGrey;
-              background = colors.darkerGrey;
-              text = colors.white;
+              border = colors.backgroundActive;
+              background = colors.backgroundActive;
+              text = colors.foregroundAlt;
             };
             activeWorkspace = {
-              border = colors.darkestGrey;
-              background = colors.darkestGrey;
-              text = colors.white;
+              border = colors.backgroundInactive;
+              background = colors.backgroundInactive;
+              text = colors.foregroundAlt;
             };
             inactiveWorkspace = {
-              border = colors.darkestGrey;
-              background = colors.darkestGrey;
-              text = colors.lightGrey;
+              border = colors.backgroundInactive;
+              background = colors.backgroundInactive;
+              text = colors.foreground;
             };
             urgentWorkspace = {
               border = colors.red;
               background = colors.red;
-              text = colors.darkestGrey;
+              text = colors.backgroundInactive;
             };
             bindingMode = {
               border = colors.red;
               background = colors.red;
-              text = colors.darkestGrey;
+              text = colors.backgroundInactive;
             };
           };
         }
