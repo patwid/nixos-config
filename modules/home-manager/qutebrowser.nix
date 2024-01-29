@@ -66,8 +66,8 @@ in
           item.selected.bg = colors.backgroundActive;
           item.selected.border.bottom = colors.backgroundActive;
           item.selected.border.top = colors.backgroundActive;
-          item.selected.fg = colors.foregroundAlt;
-          item.selected.match.fg = colors.foregroundAlt;
+          item.selected.fg = colors.foreground;
+          item.selected.match.fg = colors.foreground;
           match.fg = colors.foreground;
           odd.bg = colors.background;
           scrollbar.bg = colors.background;
@@ -110,7 +110,7 @@ in
           caret.bg = colors.backgroundInactive;
           caret.fg = colors.foreground;
           caret.selection.bg = colors.backgroundActive;
-          caret.selection.fg = colors.foregroundAlt;
+          caret.selection.fg = colors.foreground;
           command.bg = colors.backgroundInactive;
           command.fg = colors.foreground;
           command.private.bg = colors.backgroundActive;
@@ -145,13 +145,13 @@ in
           pinned.odd.bg = colors.backgroundInactive;
           pinned.odd.fg = colors.foreground;
           pinned.selected.even.bg = colors.backgroundActive;
-          pinned.selected.even.fg = colors.foregroundAlt;
+          pinned.selected.even.fg = colors.foreground;
           pinned.selected.odd.bg = colors.backgroundActive;
-          pinned.selected.odd.fg = colors.foregroundAlt;
+          pinned.selected.odd.fg = colors.foreground;
           selected.even.bg = colors.backgroundActive;
-          selected.even.fg = colors.foregroundAlt;
+          selected.even.fg = colors.foreground;
           selected.odd.bg = colors.backgroundActive;
-          selected.odd.fg = colors.foregroundAlt;
+          selected.odd.fg = colors.foreground;
         };
         webpage.bg = colors.white;
       };

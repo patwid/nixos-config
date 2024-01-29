@@ -36,9 +36,6 @@ in
     foreground = lib.mkOption {
       type = lib.types.str;
     };
-    foregroundAlt = lib.mkOption {
-      type = lib.types.str;
-    };
 
     black = lib.mkOption {
       type = lib.types.str;
@@ -92,7 +89,6 @@ in
     backgroundActive = if cfg.variant == "light" then lighterGrey else darkerGrey;
 
     foreground = if cfg.variant == "light" then darkerGrey else lighterGrey;
-    foregroundAlt = if cfg.variant == "light" then black else white;
 
     inherit
       black

@@ -51,14 +51,14 @@ in
         focused = {
           border = colors.backgroundActive;
           background = colors.backgroundActive;
-          text = colors.foregroundAlt;
+          text = colors.foreground;
           indicator = colors.backgroundActive;
           childBorder = colors.backgroundActive;
         };
         focusedInactive = {
           border = colors.backgroundInactive;
           background = colors.backgroundInactive;
-          text = colors.foregroundAlt;
+          text = colors.foreground;
           indicator = colors.backgroundInactive;
           childBorder = colors.backgroundInactive;
         };
@@ -102,12 +102,12 @@ in
             focusedWorkspace = {
               border = colors.backgroundActive;
               background = colors.backgroundActive;
-              text = colors.foregroundAlt;
+              text = colors.foreground;
             };
             activeWorkspace = {
               border = colors.backgroundInactive;
               background = colors.backgroundInactive;
-              text = colors.foregroundAlt;
+              text = colors.foreground;
             };
             inactiveWorkspace = {
               border = colors.backgroundInactive;
