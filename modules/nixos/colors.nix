@@ -21,6 +21,7 @@ in
   options.colors = {
     variant = lib.mkOption {
       type = lib.types.enum [ "light" "dark" ];
+      default = "light";
     };
 
     background = lib.mkOption {
@@ -82,8 +83,6 @@ in
   };
 
   config.colors = {
-    variant = "light";
-
     background = if cfg.variant == "light" then white else black;
     backgroundInactive = if cfg.variant == "light" then lightestGrey else darkestGrey;
     backgroundActive = if cfg.variant == "light" then lighterGrey else darkerGrey;
