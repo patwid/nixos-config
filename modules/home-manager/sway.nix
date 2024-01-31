@@ -84,10 +84,11 @@ in
             names = [ "sans-serif" ];
             size = 9.0;
           };
-          statusCommand = "${pkgs.i3status}/bin/i3status";
           extraConfig = ''
+            mode hide
+            gaps 10
             status_edge_padding 8
-            separator_symbol "     "
+            workspace_min_width 40
             # Disable vertical scrolling (workspaces)
             bindsym button4 nop;
             bindsym button5 nop;
@@ -96,7 +97,7 @@ in
             bindsym button7 nop;
           '';
           colors = {
-            background = colors.backgroundInactive;
+            background = colors.backgroundInactive + "00";
             statusline = colors.foreground;
             separator = colors.foreground;
             focusedWorkspace = {
