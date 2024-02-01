@@ -16,6 +16,23 @@ let
   blue = "#7cafc2";
   magenta = "#ba8baf";
   cyan = "#86c1b9";
+
+  light = {
+    background = white;
+    backgroundInactive = lightestGrey;
+    backgroundActive = lighterGrey;
+    foreground = darkerGrey;
+  };
+
+  dark = {
+    background = black;
+    backgroundInactive = darkestGrey;
+    backgroundActive = darkerGrey;
+    foreground = lighterGrey;
+  };
+
+  variant = if cfg.variant == "light" then light else dark;
+  inverse = if cfg.variant == "light" then dark else light;
 in
 {
   options.colors = {
@@ -33,9 +50,23 @@ in
     backgroundActive = lib.mkOption {
       type = lib.types.str;
     };
-
     foreground = lib.mkOption {
       type = lib.types.str;
+    };
+
+    inverse = {
+      background = lib.mkOption {
+        type = lib.types.str;
+      };
+      backgroundInactive = lib.mkOption {
+        type = lib.types.str;
+      };
+      backgroundActive = lib.mkOption {
+        type = lib.types.str;
+      };
+      foreground = lib.mkOption {
+        type = lib.types.str;
+      };
     };
 
     black = lib.mkOption {
@@ -83,13 +114,14 @@ in
   };
 
   config.colors = {
-    background = if cfg.variant == "light" then white else black;
-    backgroundInactive = if cfg.variant == "light" then lightestGrey else darkestGrey;
-    backgroundActive = if cfg.variant == "light" then lighterGrey else darkerGrey;
-
-    foreground = if cfg.variant == "light" then darkerGrey else lighterGrey;
+    inherit (variant)
+      background
+      backgroundInactive
+      backgroundActive
+      foreground;
 
     inherit
+      inverse
       black
       darkestGrey
       darkerGrey

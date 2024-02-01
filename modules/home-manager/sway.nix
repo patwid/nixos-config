@@ -101,19 +101,19 @@ in
             statusline = colors.foreground;
             separator = colors.foreground;
             focusedWorkspace = {
-              border = colors.backgroundActive;
-              background = colors.backgroundActive;
-              text = colors.foreground;
+              border = colors.inverse.backgroundActive;
+              background = colors.inverse.backgroundActive;
+              text = colors.inverse.foreground;
             };
             activeWorkspace = {
-              border = colors.backgroundInactive;
-              background = colors.backgroundInactive;
-              text = colors.foreground;
+              border = colors.inverse.backgroundInactive;
+              background = colors.inverse.backgroundInactive;
+              text = colors.inverse.foreground;
             };
             inactiveWorkspace = {
-              border = colors.backgroundInactive;
-              background = colors.backgroundInactive;
-              text = colors.foreground;
+              border = colors.inverse.backgroundInactive;
+              background = colors.inverse.backgroundInactive;
+              text = colors.inverse.foreground;
             };
             urgentWorkspace = {
               border = colors.red;
