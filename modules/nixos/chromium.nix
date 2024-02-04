@@ -1,4 +1,5 @@
-{ ... }:
+{ config, ... }:
+let inherit (config) colors; in
 {
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
@@ -11,7 +12,7 @@
     enable = true;
     homepageLocation = "about:blank";
     defaultSearchProviderEnabled = true;
-    defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}&kae=b&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
+    defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}&kae=${if colors.variant == "light" then "b" else "d"}&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
     extensions = [
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
     ];

@@ -20,5 +20,7 @@ self: super: {
     whatsapp
     hiprompt-gtk-py;
 
-  vimPlugins = super.vimPlugins.extend (_: _: { inherit (localpkgs) vim-paige; });
+  vimPlugins = super.vimPlugins.extend (_: _: {
+    inherit (localpkgs) vim-paige vim-simple;
+  });
 }

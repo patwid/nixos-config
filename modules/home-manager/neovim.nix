@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ nixosConfig, pkgs, ... }:
+let
+  inherit (nixosConfig) colors;
+in
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -41,7 +44,7 @@
         autocmd ColorScheme * highlight WinSeparator ctermbg=None
       augroup END
 
-      colorscheme paige-system
+      colorscheme ${colors.variant}
 
       " https://github.com/vim/colorschemes/wiki/How-to-override-a-colorscheme%3F
       command! Inspect echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
@@ -50,8 +53,8 @@
       editorconfig-vim
       fugitive
       vim-nix
+      vim-simple
       fzf-vim
-      vim-paige
       # fzfWrapper # TODO: what does fzfWrapper do?
     ];
   };

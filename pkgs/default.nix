@@ -24,6 +24,7 @@ let
     };
     hiprompt-gtk-py = callPackage ./hiprompt-gtk-py { };
     vim-paige = callPackage ./vim-paige { };
+    vim-simple = callPackage ./vim-simple { };
   };
 in
 localPkgs
