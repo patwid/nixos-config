@@ -1,4 +1,4 @@
-{ nixosConfig, pkgs, ... }:
+{ nixosConfig, ... }:
 let
   inherit (nixosConfig) work;
 in
@@ -15,7 +15,7 @@ in
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "master";
-      core.editor = "${pkgs.neovim}/bin/nvim";
+      core.editor = "nvim";
       rerere.enabled = true;
     };
   };
