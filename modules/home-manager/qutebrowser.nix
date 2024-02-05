@@ -4,7 +4,7 @@ let
 in
 {
   home.sessionVariables = {
-    BROWSER = "qutebrowser --target window";
+    BROWSER = "qutebrowser";
   };
 
   programs.qutebrowser = {
