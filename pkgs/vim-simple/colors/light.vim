@@ -49,9 +49,9 @@ let s:text_fg_green = { 'ctermfg': 'green' }
 let s:text_fg_lightgrey = { 'ctermfg': s:light_grey }
 let s:text_fg_lightergrey = { 'ctermfg': s:lighter_grey }
 
-function! Highlight(group, type = {})
-	exec 'highlight ' . a:group . ' ' . join(map(['ctermfg', 'ctermbg', 'cterm'], { _, val -> val .. '=' .. (has_key(a:type, val) ? a:type[val] : 'NONE') }), ' ')
-endfunction
+fun! Highlight(group, type = {})
+	exec 'highlight ' . a:group . ' ' . join(map(['ctermfg', 'ctermbg', 'cterm'], { _, val -> val .. '=' .. get(a:type, val, 'NONE') }), ' ')
+endfun
 
 " UI
 call Highlight('ColorColumn')
@@ -86,8 +86,6 @@ call Highlight('SpellLocal')
 call Highlight('SpellRare')
 call Highlight('StatusLine', s:text_bg_lightestgrey_bold)
 call Highlight('StatusLineNC', s:text_bg_lightestgrey)
-call Highlight('StatusLineTerm', s:text_bg_lightestgrey_bold)
-call Highlight('StatusLineTermNC', s:text_bg_lightestgrey)
 call Highlight('TabLine')
 call Highlight('TabLineFill')
 call Highlight('TabLineSel')
@@ -132,6 +130,10 @@ call Highlight('Type', s:text_bold)
 call Highlight('Underlined', s:text_underline)
 call Highlight('WinBar')
 call Highlight('lCursor')
+
+" Term
+call Highlight('StatusLineTerm', s:text_bg_lightestgrey_bold)
+call Highlight('StatusLineTermNC', s:text_bg_lightestgrey)
 
 " Diff
 call Highlight('diffAdded', s:text_fg_green)
