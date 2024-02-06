@@ -22,10 +22,10 @@ let s:text_underline = { 'cterm': 'underline' }
 " TODO improve naming
 let s:text_bg_black = { 'ctermfg': s:black, 'ctermbg': s:lighter_grey }
 
-let s:text_bg_red               = { 'ctermbg': 'red',         'ctermfg': s:lighter_grey }
-let s:text_bg_yellow            = { 'ctermbg': 'yellow',      'ctermfg': s:darker_grey }
-let s:text_bg_lightergrey       = { 'ctermbg': s:darker_grey, 'ctermfg': s:lighter_grey }
-let s:text_bg_lightestgrey      = { 'ctermbg': s:darkest_grey }
+let s:text_bg_red          = { 'ctermbg': 'red',         'ctermfg': s:lighter_grey }
+let s:text_bg_yellow       = { 'ctermbg': 'yellow',      'ctermfg': s:darker_grey }
+let s:text_bg_lightergrey  = { 'ctermbg': s:darker_grey, 'ctermfg': s:lighter_grey }
+let s:text_bg_lightestgrey = { 'ctermbg': s:darkest_grey }
 
 let s:text_bg_lightergrey_bold  = extendnew(s:text_bg_lightergrey, s:text_bold)
 let s:text_bg_lightestgrey_bold = extendnew(s:text_bg_lightestgrey, s:text_bold)
