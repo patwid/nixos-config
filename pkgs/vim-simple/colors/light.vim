@@ -16,22 +16,23 @@ let s:lighter_grey  = 247 " lightgrey (7)
 let s:lightest_grey = 250
 let s:white         = 253 " white (15)
 
-let s:text_bold = { 'cterm': 'bold' }
+let s:text_bold      = { 'cterm': 'bold' }
 let s:text_underline = { 'cterm': 'underline' }
 
 " TODO improve naming
 let s:text_bg_black = { 'ctermfg': s:white, 'ctermbg': s:darker_grey }
 
-let s:text_bg_red = { 'ctermfg': s:darker_grey, 'ctermbg': 'red' }
-let s:text_bg_yellow = { 'ctermfg': s:darker_grey, 'ctermbg': 'yellow' }
-let s:text_bg_lightergrey = { 'ctermfg': s:darker_grey, 'ctermbg': s:lighter_grey }
-let s:text_bg_lightergrey_bold = extendnew(s:text_bg_lightergrey, s:text_bold)
-let s:text_bg_lightestgrey = { 'ctermbg': s:lightest_grey }
+let s:text_bg_red               = { 'ctermbg': 'red',          'ctermfg': s:darker_grey }
+let s:text_bg_yellow            = { 'ctermbg': 'yellow',       'ctermfg': s:darker_grey }
+let s:text_bg_lightergrey       = { 'ctermbg': s:lighter_grey, 'ctermfg': s:darker_grey }
+let s:text_bg_lightestgrey      = { 'ctermbg': s:lightest_grey }
+
+let s:text_bg_lightergrey_bold  = extendnew(s:text_bg_lightergrey, s:text_bold)
 let s:text_bg_lightestgrey_bold = extendnew(s:text_bg_lightestgrey, s:text_bold)
 
-let s:text_fg_red = { 'ctermfg': 'red' }
-let s:text_fg_green = { 'ctermfg': 'green' }
-let s:text_fg_lightgrey = { 'ctermfg': s:light_grey }
+let s:text_fg_red         = { 'ctermfg': 'red' }
+let s:text_fg_green       = { 'ctermfg': 'green' }
+let s:text_fg_lightgrey   = { 'ctermfg': s:light_grey }
 let s:text_fg_lightergrey = { 'ctermfg': s:lighter_grey }
 
 fun! s:highlight(group, args = {})
