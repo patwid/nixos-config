@@ -36,7 +36,9 @@ let s:text_fg_lightgrey   = { 'ctermfg': s:dark_grey }
 let s:text_fg_lightergrey = { 'ctermfg': s:darker_grey }
 
 fun! s:highlight(group, args = {})
-	exec 'highlight ' . a:group . ' ' . ['ctermfg', 'ctermbg', 'cterm']->map({ _, val -> val .. '=' .. get(a:args, val, 'NONE') })->join(' ')
+	exec 'highlight ' . a:group . ' ' . ['ctermfg', 'ctermbg', 'cterm']
+		\ ->map({ _, val -> val .. '=' .. get(a:args, val, 'NONE') })
+		\ ->join(' ')
 endfun
 
 " UI (:h highlight-groups or :h hl-GROUP)
