@@ -16,24 +16,35 @@ let s:lighter_grey  = 247 " lightgrey (7)
 let s:lightest_grey = 250
 let s:white         = 253 " white (15)
 
+let s:red    = 'red'
+let s:green  = 'green'
+let s:yellow = 'yellow'
+
+let s:foreground          = s:darker_grey
+let s:background          = s:white
+let s:background_inactive = s:lightest_grey
+let s:background_active   = s:lighter_grey
+
+let s:dark_foreground          = s:lighter_grey
+let s:dark_background          = s:black
+let s:dark_background_inactive = s:darkest_grey
+let s:dark_background_active   = s:darker_grey
+
 let s:text_bold      = { 'cterm': 'bold' }
 let s:text_underline = { 'cterm': 'underline' }
+let s:text_inverse   = { 'cterm': 'inverse' }
 
-" TODO improve naming
-let s:text_bg_black = { 'ctermfg': s:white, 'ctermbg': s:darker_grey }
+let s:text_bg_red      = { 'ctermbg': s:red,               'ctermfg': s:dark_foreground }
+let s:text_bg_yellow   = { 'ctermbg': s:yellow,            'ctermfg': s:foreground }
+let s:text_bg_active   = { 'ctermbg': s:background_active, 'ctermfg': s:foreground }
+let s:text_bg_inactive = { 'ctermbg': s:background_inactive }
 
-let s:text_bg_red          = { 'ctermbg': 'red',          'ctermfg': s:darker_grey }
-let s:text_bg_yellow       = { 'ctermbg': 'yellow',       'ctermfg': s:darker_grey }
-let s:text_bg_lightergrey  = { 'ctermbg': s:lighter_grey, 'ctermfg': s:darker_grey }
-let s:text_bg_lightestgrey = { 'ctermbg': s:lightest_grey }
+let s:text_bg_active_bold   = extendnew(s:text_bg_active, s:text_bold)
+let s:text_bg_inactive_bold = extendnew(s:text_bg_inactive, s:text_bold)
 
-let s:text_bg_lightergrey_bold  = extendnew(s:text_bg_lightergrey, s:text_bold)
-let s:text_bg_lightestgrey_bold = extendnew(s:text_bg_lightestgrey, s:text_bold)
-
-let s:text_fg_red         = { 'ctermfg': 'red' }
-let s:text_fg_green       = { 'ctermfg': 'green' }
-let s:text_fg_lightgrey   = { 'ctermfg': s:light_grey }
-let s:text_fg_lightergrey = { 'ctermfg': s:lighter_grey }
+let s:text_fg_red       = { 'ctermfg': s:red }
+let s:text_fg_green     = { 'ctermfg': s:green }
+let s:text_fg_lightgrey = { 'ctermfg': s:light_grey }
 
 fun! s:highlight(group, args = {})
 	exec 'highlight ' . a:group . ' ' . ['ctermfg', 'ctermbg', 'cterm']
@@ -44,7 +55,7 @@ endfun
 " UI (:h highlight-groups or :h hl-GROUP)
 call s:highlight('ColorColumn')
 call s:highlight('Conceal')
-call s:highlight('CurSearch')
+call s:highlight('CurSearch', s:text_bg_yellow)
 call s:highlight('Cursor')
 call s:highlight('CursorColumn')
 call s:highlight('CursorIM')
@@ -67,7 +78,7 @@ call s:highlight('IncSearch', s:text_bg_yellow)
 call s:highlight('LineNr', s:text_fg_lightgrey)
 call s:highlight('LineNrAbove')
 call s:highlight('LineNrBelow')
-call s:highlight('MatchParen', s:text_bg_lightergrey)
+call s:highlight('MatchParen', s:text_bg_active)
 call s:highlight('ModeMsg', s:text_fg_lightgrey)
 call s:highlight('MoreMsg')
 call s:highlight('MsgArea')
@@ -76,27 +87,25 @@ call s:highlight('NonText', s:text_fg_lightgrey)
 call s:highlight('Normal')
 call s:highlight('NormalFloat')
 call s:highlight('NormalNC')
-call s:highlight('Pmenu', s:text_bg_lightestgrey)
+call s:highlight('Pmenu', s:text_bg_inactive)
 call s:highlight('PmenuExtra')
 call s:highlight('PmenuExtraSel')
 call s:highlight('PmenuKind')
 call s:highlight('PmenuKindSel')
 call s:highlight('PmenuSbar')
-call s:highlight('PmenuSel', s:text_bg_lightergrey_bold)
-call s:highlight('PmenuThumb', s:text_bg_lightergrey)
+call s:highlight('PmenuSel', s:text_bg_active_bold)
+call s:highlight('PmenuThumb', s:text_bg_active)
 call s:highlight('Question')
 call s:highlight('QuickFixLine')
-call s:highlight('Search', s:text_bg_black)
+call s:highlight('Search', s:text_inverse)
 call s:highlight('SignColumn')
 call s:highlight('SpecialKey')
 call s:highlight('SpellBad')
 call s:highlight('SpellCap')
 call s:highlight('SpellLocal')
 call s:highlight('SpellRare')
-call s:highlight('StatusLine', s:text_bg_lightestgrey_bold)
-call s:highlight('StatusLineNC', s:text_bg_lightestgrey)
-call s:highlight('StatusLineTerm', s:text_bg_lightestgrey_bold)
-call s:highlight('StatusLineTermNC', s:text_bg_lightestgrey)
+call s:highlight('StatusLine', s:text_bg_inactive_bold)
+call s:highlight('StatusLineNC', s:text_bg_inactive)
 call s:highlight('Substitute')
 call s:highlight('TabLine')
 call s:highlight('TabLineFill')
@@ -105,7 +114,7 @@ call s:highlight('TermCursor')
 call s:highlight('TermCursorNC')
 call s:highlight('Title')
 call s:highlight('VertSplit', s:text_bold)
-call s:highlight('Visual', s:text_bg_lightergrey)
+call s:highlight('Visual', s:text_bg_active)
 call s:highlight('VisualNOS')
 call s:highlight('WarningMsg')
 call s:highlight('Whitespace')
@@ -131,6 +140,10 @@ call s:highlight('Todo', s:text_bold)
 " Diff
 call s:highlight('diffAdded', s:text_fg_green)
 call s:highlight('diffRemoved', s:text_fg_red)
+
+" Term
+highlight link StatusLineTerm StatusLine
+highlight link StatusLineTermNC StatusLineNC
 
 " Vim
 highlight link vimOption Normal
