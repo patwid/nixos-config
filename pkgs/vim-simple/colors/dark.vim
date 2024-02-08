@@ -55,7 +55,7 @@ endfun
 " UI (:h highlight-groups or :h hl-GROUP)
 call s:highlight('ColorColumn')
 call s:highlight('Conceal')
-call s:highlight('CurSearch', text_bg_yellow)
+call s:highlight('CurSearch', s:text_bg_yellow)
 call s:highlight('Cursor')
 call s:highlight('CursorColumn')
 call s:highlight('CursorIM')
