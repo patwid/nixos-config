@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  home.sessionPath = [ "." ];
-
   programs.bash = {
     enable = true;
     initExtra = ''
