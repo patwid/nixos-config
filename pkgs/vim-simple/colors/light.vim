@@ -31,7 +31,6 @@ let s:dark_background_inactive = s:darkest_grey
 let s:dark_background_active   = s:darker_grey
 
 let s:text_bold      = { 'cterm': 'bold' }
-let s:text_underline = { 'cterm': 'underline' }
 let s:text_inverse   = { 'cterm': 'inverse' }
 
 let s:text_bg_red      = { 'ctermbg': s:red,               'ctermfg': s:dark_foreground }
@@ -53,7 +52,7 @@ fun! s:highlight(group, args = {})
 endfun
 
 " UI (:h highlight-groups or :h hl-GROUP)
-call s:highlight('ColorColumn')
+call s:highlight('ColorColumn', s:text_bg_inactive)
 call s:highlight('Conceal')
 call s:highlight('CurSearch', s:text_bg_yellow)
 call s:highlight('Cursor')
@@ -132,7 +131,7 @@ call s:highlight('Statement', s:text_bold)
 call s:highlight('PreProc', s:text_bold)
 call s:highlight('Type', s:text_bold)
 call s:highlight('Special', s:text_bold)
-call s:highlight('Underlined', s:text_underline)
+call s:highlight('Underlined')
 call s:highlight('Ignore')
 call s:highlight('Error', s:text_bg_red)
 call s:highlight('Todo', s:text_bold)
