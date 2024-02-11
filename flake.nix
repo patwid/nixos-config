@@ -20,7 +20,7 @@
     let
       lib = nixpkgs.lib.extend (import ./lib);
       systems = lib.attrNames (builtins.readDir ./hosts);
-      forEachSystem = lib.genAttrs systems;
+      forEachSystem = fn: lib.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
     in
     {
       nixosConfigurations = lib.listToAttrs (lib.concatMap
@@ -39,8 +39,6 @@
           (lib.attrNames (builtins.readDir ./hosts/${system})))
         systems);
 
-      formatter = forEachSystem (system:
-        nixpkgs.legacyPackages.${system}.nixpkgs-fmt
-      );
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };
 }
