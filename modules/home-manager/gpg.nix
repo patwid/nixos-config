@@ -1,7 +1,5 @@
 { lib, pkgs, ... }:
 {
-  home.packages = [ pkgs.pinentry-gnome ];
-
   programs.gpg = {
     enable = true;
     publicKeys =
@@ -12,7 +10,7 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-gnome3;
     defaultCacheTtl = 60480000;
     maxCacheTtl = 60480000;
   };

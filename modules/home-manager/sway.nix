@@ -155,10 +155,6 @@ in
           file = "\"$XDG_SCREENSHOTS_DIR\"/$(${date} +%Y%m%d_%H%M%S_%3N).png";
         in
         lib.mkOptionDefault {
-          # TODO: https://github.com/nix-community/home-manager/pull/4636
-          "${modifier}+0" = "workspace number 10";
-          "${modifier}+Shift+0" = "move container to workspace number 10";
-
           "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
           "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
           "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
