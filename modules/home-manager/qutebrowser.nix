@@ -5,6 +5,7 @@ in
 {
   home.sessionVariables = {
     BROWSER = "qutebrowser";
+    QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
   };
 
   programs.qutebrowser = {
