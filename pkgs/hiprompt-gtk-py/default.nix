@@ -46,4 +46,13 @@ stdenv.mkDerivation rec {
       pygobject3
     ]))
   ];
+
+  meta = {
+    mainProgram = "hiprompt-gtk";
+    homepage = "https://git.sr.ht/~sircmpwn/hiprompt-gtk-py";
+    description = "A GTK+ Himitsu prompter for Wayland";
+    license = lib.licenses.gpl3Only;
+    maintainers = [ ];
+    platforms = lib.platforms.linux;
+  };
 }

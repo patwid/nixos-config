@@ -1,9 +1,6 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    himitsu
-    hiprompt-gtk-py
-  ];
+  home.packages = with pkgs; [ himitsu hiprompt-gtk-py ];
 
   systemd.user.services.himitsu = {
     Unit = {
@@ -14,7 +11,15 @@
       WantedBy = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.himitsu}/bin/himitsud";
+      ExecStart = "${pkgs.hiprompt-gtk-py}/bin/himitsud";
+    };
+  };
+
+  xdg.configFile."himitsu/config.ini" = {
+    text = lib.generators.toINI { } {
+      himitsud = {
+        prompter = lib.getExe pkgs.hiprompt-gtk-py;
+      };
     };
   };
 }
