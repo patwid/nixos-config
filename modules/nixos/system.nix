@@ -20,7 +20,7 @@ in
   system.autoUpgrade = {
     enable = false;
     dates = "weekly";
-    flake = "/home/${user.name}/.config/nixos#${config.networking.hostName}";
+    flake = "/home/${user.name}/.config/nixos";
     flags = [ "--recreate-lock-file" ];
   };
 
