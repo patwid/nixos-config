@@ -79,53 +79,9 @@ in
       };
       bars = [
         {
+          command = "${pkgs.waybar}/bin/waybar";
           position = "top";
-          fonts = {
-            names = [ "sans-serif" ];
-            size = 9.0;
-          };
-          extraConfig = ''
-            mode hide
-            gaps 10
-            status_edge_padding 8
-            workspace_min_width 40
-            # Disable vertical scrolling (workspaces)
-            bindsym button4 nop;
-            bindsym button5 nop;
-            # Disable horizontal scrolling (workspaces)
-            bindsym button6 nop;
-            bindsym button7 nop;
-          '';
-          colors = {
-            background = colors.backgroundInactive + "00";
-            statusline = colors.foreground;
-            separator = colors.foreground;
-            focusedWorkspace = {
-              border = colors.inverse.backgroundActive;
-              background = colors.inverse.backgroundActive;
-              text = colors.inverse.foreground;
-            };
-            activeWorkspace = {
-              border = colors.inverse.backgroundInactive;
-              background = colors.inverse.backgroundInactive;
-              text = colors.inverse.foreground;
-            };
-            inactiveWorkspace = {
-              border = colors.inverse.backgroundInactive;
-              background = colors.inverse.backgroundInactive;
-              text = colors.inverse.foreground;
-            };
-            urgentWorkspace = {
-              border = colors.red;
-              background = colors.red;
-              text = colors.backgroundInactive;
-            };
-            bindingMode = {
-              border = colors.red;
-              background = colors.red;
-              text = colors.backgroundInactive;
-            };
-          };
+          mode = "hide";
         }
       ];
       gaps.smartBorders = "on";
