@@ -79,12 +79,12 @@ in
           error.bg = colors.red;
           error.fg = colors.backgroundInactive;
           start.bg = colors.yellow;
-          start.fg = colors.backgroundInactive;
+          start.fg = colors.darkerGrey;
           stop.bg = colors.green;
           stop.fg = colors.backgroundInactive;
         };
         hints.bg = colors.yellow;
-        hints.fg = colors.darkestGrey;
+        hints.fg = colors.darkerGrey;
         hints.match.fg = colors.backgroundInactive;
         keyhint.bg = colors.background;
         keyhint.fg = colors.foreground;
@@ -98,7 +98,7 @@ in
           info.fg = colors.foreground;
           warning.bg = colors.yellow;
           warning.border = colors.yellow;
-          warning.fg = colors.backgroundInactive;
+          warning.fg = colors.darkerGrey;
         };
         prompts = {
           bg = colors.background;
