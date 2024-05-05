@@ -77,7 +77,7 @@ in
         downloads = {
           bar.bg = colors.backgroundInactive;
           error.bg = colors.red;
-          error.fg = colors.backgroundInactive;
+          error.fg = colors.lighterGrey;
           start.bg = colors.yellow;
           start.fg = colors.darkerGrey;
           stop.bg = colors.green;
@@ -92,7 +92,7 @@ in
         messages = {
           error.bg = colors.red;
           error.border = colors.red;
-          error.fg = colors.backgroundInactive;
+          error.fg = colors.lighterGrey;
           info.bg = colors.backgroundInactive;
           info.border = colors.backgroundInactive;
           info.fg = colors.foreground;

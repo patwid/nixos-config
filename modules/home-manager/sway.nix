@@ -69,6 +69,13 @@ in
           indicator = colors.backgroundInactive;
           childBorder = colors.backgroundInactive;
         };
+        urgent = {
+          border = colors.red;
+          background = colors.red;
+          text = colors.lighterGrey;
+          indicator = colors.red;
+          childBorder = colors.red;
+        };
         placeholder = {
           border = colors.background;
           background = colors.background;

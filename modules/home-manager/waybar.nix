@@ -100,7 +100,7 @@ in
 
       #workspaces button.urgent {
         background: ${colors.red};
-        color: ${colors.backgroundInactive};
+        color: ${colors.lighterGrey};
       }
 
       #mode, #cpu, #memory, #custom-vpn, #battery, #clock {
