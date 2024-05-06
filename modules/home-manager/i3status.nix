@@ -27,7 +27,7 @@ lib.mkMerge [
           position = 2;
           settings = {
             format = "";
-            threshold_degraded = "5G";
+            threshold_critical = "5G";
             format_degraded = "MEM  < %available";
           };
         };
