@@ -1,6 +1,6 @@
 { ... }@attrs:
 let
-  inherit (import ../pkgs attrs) pkgs vimPlugins;
+  localPkgs = import ../pkgs attrs;
 in
 self: super:
-pkgs // { vimPlugins = super.vimPlugins.extend (_: _: vimPlugins); }
+localPkgs // { vimPlugins = super.vimPlugins.extend (_: _: localPkgs.vimPlugins); }

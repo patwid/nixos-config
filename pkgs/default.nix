@@ -20,31 +20,10 @@ let
     whatsapp = callPackage ./webapp { name = "whatsapp"; url = "https://web.whatsapp.com/"; };
     xdg-open = callPackage ./xdg-open { };
 
-    vim-paige = callPackage ./vim-paige { };
-    vim-simple = callPackage ./vim-simple { };
+    vimPlugins = {
+      vim-paige = callPackage ./vim-paige { };
+      vim-simple = callPackage ./vim-simple { };
+    };
   };
 in
-{
-  pkgs = {
-    inherit (localPkgs)
-      google-chrome
-      hiprompt-gtk-py
-      jtt
-      mattermost
-      menu-news
-      menu-pass
-      menu-podcasts
-      menu-run
-      menu-videos
-      notify-low-battery
-      outlook
-      smartaz
-      teams
-      whatsapp
-      xdg-open;
-  };
-
-  vimPlugins = {
-    inherit (localPkgs) vim-paige vim-simple;
-  };
-}
+lib.filterAttrs (n: _: n != "menu") localPkgs
