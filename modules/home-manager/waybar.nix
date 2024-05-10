@@ -8,7 +8,7 @@ in
 
     settings = {
       mainBar = {
-        layer = "top";
+        mode = "overlay";
         ipc = true;
         margin = "10";
 
