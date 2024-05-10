@@ -51,8 +51,7 @@ in
         };
 
         battery = {
-          format = "";
-          format-warning = "BAT  {capacity}%";
+          format = "BAT  {capacity}%";
           design-capacity = true;
           states = {
             warning = 30;
