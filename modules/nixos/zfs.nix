@@ -1,4 +1,4 @@
-{ args, config, lib, ... }:
+{ config, lib, ... }:
 
 let
   inherit (config) home;
