@@ -1,6 +1,6 @@
-{ nixosConfig, lib, pkgs, ... }:
+{ osConfig, lib, pkgs, ... }:
 let
-  inherit (nixosConfig) laptop;
+  inherit (osConfig) laptop;
 in
 lib.mkIf (laptop) {
   home.packages = [ pkgs.brightnessctl ];

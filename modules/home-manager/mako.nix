@@ -1,6 +1,6 @@
-{ nixosConfig, pkgs, ... }:
+{ osConfig, pkgs, ... }:
 let
-  inherit (nixosConfig) colors;
+  inherit (osConfig) colors;
 in
 {
   home.packages = [ pkgs.libnotify ];

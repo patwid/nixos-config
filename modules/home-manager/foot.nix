@@ -1,6 +1,6 @@
-{ nixosConfig, lib, ... }:
+{ osConfig, lib, ... }:
 let
-  inherit (nixosConfig) colors terminal;
+  inherit (osConfig) colors terminal;
 in
 {
   programs.foot = {

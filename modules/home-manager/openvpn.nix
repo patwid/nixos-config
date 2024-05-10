@@ -1,6 +1,6 @@
-{ nixosConfig, lib, pkgs, ... }:
+{ osConfig, lib, pkgs, ... }:
 let
-  inherit (nixosConfig) work;
+  inherit (osConfig) work;
 in
 lib.mkIf (work.remote) {
   home.packages = [ pkgs.networkmanager-openvpn ];

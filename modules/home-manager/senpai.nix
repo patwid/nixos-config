@@ -1,6 +1,6 @@
-{ nixosConfig, pkgs, ... }:
+{ osConfig, pkgs, ... }:
 let
-  inherit (nixosConfig) user;
+  inherit (osConfig) user;
 
   pass = "${pkgs.pass}/bin/pass";
 in

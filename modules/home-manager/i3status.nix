@@ -1,6 +1,6 @@
-{ nixosConfig, lib, pkgs, ... }:
+{ osConfig, lib, pkgs, ... }:
 let
-  inherit (nixosConfig) colors laptop;
+  inherit (osConfig) colors laptop;
 in
 lib.mkMerge [
   {

@@ -1,7 +1,7 @@
-{ nixosConfig, config, lib, home-manager, ... }@inputs:
+{ osConfig, config, lib, home-manager, ... }@inputs:
 let
   inherit (config) user system;
-  inherit (nixosConfig) hostPlatform;
+  inherit (osConfig) hostPlatform;
 in
 {
   imports = [

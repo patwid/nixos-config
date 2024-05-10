@@ -1,6 +1,6 @@
-{ nixosConfig, config, ... }:
+{ osConfig, config, ... }:
 let
-  inherit (nixosConfig) colors laptop;
+  inherit (osConfig) colors laptop;
 in
 {
   programs.waybar = {

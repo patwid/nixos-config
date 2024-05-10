@@ -1,6 +1,6 @@
-{ nixosConfig, lib, pkgs, ... }:
+{ osConfig, lib, pkgs, ... }:
 let
-  inherit (nixosConfig) colors keyboard outputScales;
+  inherit (osConfig) colors keyboard outputScales;
   modifier = "Mod4";
 in
 {

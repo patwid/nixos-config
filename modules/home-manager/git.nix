@@ -1,6 +1,6 @@
-{ nixosConfig, ... }:
+{ osConfig, ... }:
 let
-  inherit (nixosConfig) work;
+  inherit (osConfig) work;
 in
 {
   programs.git = {

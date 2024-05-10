@@ -1,6 +1,6 @@
-{ nixosConfig, ... }:
+{ osConfig, ... }:
 let
-  inherit (nixosConfig) user;
+  inherit (osConfig) user;
 in
 {
   xdg.userDirs = {
