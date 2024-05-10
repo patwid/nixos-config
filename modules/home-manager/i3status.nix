@@ -64,7 +64,7 @@ lib.mkMerge [
           status_unk = "BAT";
           status_full = "BAT";
           path = "/sys/class/power_supply/macsmc-battery/uevent";
-          low_threshold = 10;
+          low_threshold = 30;
           threshold_type = "percentage";
           last_full_capacity = true;
         };
