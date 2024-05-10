@@ -1,7 +1,6 @@
-{ osConfig, config, lib, home-manager, ... }@inputs:
+{ config, lib, home-manager, ... }@inputs:
 let
-  inherit (config) user system;
-  inherit (osConfig) hostPlatform;
+  inherit (config) user system hostPlatform;
 in
 {
   imports = [
