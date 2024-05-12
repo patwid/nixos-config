@@ -1,4 +1,4 @@
-{ pkgs, nixos-hardware, nixos-apple-silicon, ... }:
+{ nixos-hardware, ... }:
 {
   imports = [
     nixos-hardware.nixosModules.common-pc
