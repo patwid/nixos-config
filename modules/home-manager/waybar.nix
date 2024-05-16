@@ -83,13 +83,13 @@ in
         background: transparent;
       }
 
-      #workspaces button, #mode, #cpu, #memory, #custom-vpn, #battery, #clock {
-        background: ${colors.inverse.backgroundInactive};
-        color: ${colors.inverse.foreground};
+      #workspaces button {
+        min-width: 16px;
       }
 
       #workspaces button {
-        min-width: 20px;
+        background: ${colors.inverse.backgroundInactive};
+        color: ${colors.inverse.foreground};
       }
 
       #workspaces button.focused {
@@ -102,11 +102,16 @@ in
         color: ${colors.lighterGrey};
       }
 
-      #mode, #cpu, #memory, #custom-vpn, #battery, #clock {
+      .modules-right {
+        background: ${colors.inverse.backgroundInactive};
+        color: ${colors.inverse.foreground};
+      }
+
+      .modules-right, .modules-right * {
         padding: 0 8px;
       }
 
-      #cpu.warning, #memory.warning, #battery.warning {
+      .warning {
         color: ${colors.red};
       }
 
