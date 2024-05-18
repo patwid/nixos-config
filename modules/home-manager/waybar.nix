@@ -89,12 +89,12 @@ in
 
       #workspaces button {
         background: ${colors.inverse.backgroundInactive};
-        color: ${colors.inverse.foreground};
+        color: ${colors.inverse.foregroundInactive};
       }
 
       #workspaces button.focused {
         background: ${colors.inverse.backgroundActive};
-        color: ${colors.inverse.foreground};
+        color: ${colors.inverse.foregroundActive};
       }
 
       #workspaces button.urgent {

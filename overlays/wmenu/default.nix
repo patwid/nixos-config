@@ -17,7 +17,7 @@ self: super: {
         --add-flags "-N ${lib.colors.withoutPrefix colors.background}" \
         --add-flags "-n ${lib.colors.withoutPrefix colors.foreground}" \
         --add-flags "-S ${lib.colors.withoutPrefix colors.backgroundActive}" \
-        --add-flags "-s ${lib.colors.withoutPrefix colors.foreground}" \
+        --add-flags "-s ${lib.colors.withoutPrefix colors.foregroundActive}" \
         --add-flags "-i"
     '';
   });

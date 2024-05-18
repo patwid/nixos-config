@@ -22,6 +22,8 @@ let
     backgroundInactive = lightestGrey;
     backgroundActive = lighterGrey;
     foreground = darkerGrey;
+    foregroundInactive = darkGrey;
+    foregroundActive = darkestGrey;
   };
 
   dark = {
@@ -29,6 +31,8 @@ let
     backgroundInactive = darkestGrey;
     backgroundActive = darkerGrey;
     foreground = lighterGrey;
+    foregroundInactive = lightGrey;
+    foregroundActive = lightestGrey;
   };
 
   variant = if cfg.variant == "light" then light else dark;
@@ -53,6 +57,12 @@ in
     foreground = lib.mkOption {
       type = lib.types.str;
     };
+    foregroundInactive = lib.mkOption {
+      type = lib.types.str;
+    };
+    foregroundActive = lib.mkOption {
+      type = lib.types.str;
+    };
 
     inverse = {
       background = lib.mkOption {
@@ -65,6 +75,12 @@ in
         type = lib.types.str;
       };
       foreground = lib.mkOption {
+        type = lib.types.str;
+      };
+      foregroundInactive = lib.mkOption {
+        type = lib.types.str;
+      };
+      foregroundActive = lib.mkOption {
         type = lib.types.str;
       };
     };
@@ -118,7 +134,9 @@ in
       background
       backgroundInactive
       backgroundActive
-      foreground;
+      foreground
+      foregroundInactive
+      foregroundActive;
 
     inherit
       inverse
