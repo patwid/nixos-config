@@ -20,6 +20,7 @@ in
       set hidden
       set laststatus=1
       set shortmess+=I
+      set notermguicolors
 
       augroup default_override
         autocmd!
