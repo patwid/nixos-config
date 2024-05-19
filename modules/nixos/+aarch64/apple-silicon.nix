@@ -1,6 +1,7 @@
-{ config, lib, nixos-apple-silicon, ... }:
+{ config, lib, nixos-apple-silicon, hostname, ... }:
 let
   inherit (config) appleSilicon;
+  inherit (config.nixpkgs) hostPlatform;
 in
 {
   options.appleSilicon.enable = lib.mkEnableOption { };
@@ -14,7 +15,7 @@ in
   ];
 
   config = lib.mkIf (appleSilicon.enable) {
-    hardware.asahi.peripheralFirmwareDirectory = ../../../firmware;
+    hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostname}/firmware;
     hardware.asahi.useExperimentalGPUDriver = true;
 
     nixpkgs.overlays = [
