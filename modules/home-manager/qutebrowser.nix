@@ -86,7 +86,7 @@ in
         };
         hints.bg = colors.yellow;
         hints.fg = colors.darkerGrey;
-        hints.match.fg = colors.yellow;
+        hints.match.fg = colors.foregroundInactive;
         keyhint.bg = colors.background;
         keyhint.fg = colors.foreground;
         keyhint.suffix.fg = colors.foreground;
