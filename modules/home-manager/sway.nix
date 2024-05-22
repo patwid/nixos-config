@@ -51,7 +51,7 @@ in
         focused = {
           border = colors.backgroundActive;
           background = colors.backgroundActive;
-          text = colors.foregroundActive;
+          text = colors.foreground;
           indicator = colors.backgroundActive;
           childBorder = colors.backgroundActive;
         };

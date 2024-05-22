@@ -68,8 +68,8 @@ in
           item.selected.bg = colors.backgroundActive;
           item.selected.border.bottom = colors.backgroundActive;
           item.selected.border.top = colors.backgroundActive;
-          item.selected.fg = colors.foregroundActive;
-          item.selected.match.fg = colors.foregroundActive;
+          item.selected.fg = colors.foreground;
+          item.selected.match.fg = colors.foreground;
           match.fg = colors.foreground;
           odd.bg = colors.background;
           scrollbar.bg = colors.background;
@@ -147,13 +147,13 @@ in
           pinned.odd.bg = colors.backgroundInactive;
           pinned.odd.fg = colors.foregroundInactive;
           pinned.selected.even.bg = colors.backgroundActive;
-          pinned.selected.even.fg = colors.foregroundActive;
+          pinned.selected.even.fg = colors.foreground;
           pinned.selected.odd.bg = colors.backgroundActive;
-          pinned.selected.odd.fg = colors.foregroundActive;
+          pinned.selected.odd.fg = colors.foreground;
           selected.even.bg = colors.backgroundActive;
-          selected.even.fg = colors.foregroundActive;
+          selected.even.fg = colors.foreground;
           selected.odd.bg = colors.backgroundActive;
-          selected.odd.fg = colors.foregroundActive;
+          selected.odd.fg = colors.foreground;
         };
         webpage.bg = colors.background;
         webpage.preferred_color_scheme = colors.variant;

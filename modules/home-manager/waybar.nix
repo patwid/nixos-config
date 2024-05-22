@@ -94,7 +94,7 @@ in
 
       #workspaces button.focused {
         background: ${colors.inverse.backgroundActive};
-        color: ${colors.inverse.foregroundActive};
+        color: ${colors.inverse.foreground};
       }
 
       #workspaces button.urgent {
