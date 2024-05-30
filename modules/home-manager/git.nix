@@ -16,6 +16,7 @@ in
     extraConfig = {
       init.defaultBranch = "master";
       core.editor = "nvim";
+      rebase.autoStash = true;
       rerere.enabled = true;
     };
   };
