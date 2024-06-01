@@ -6,7 +6,7 @@ in
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
-    desktop = null;
+    desktop = "/home/${user.name}/tmp";
     documents = "/home/${user.name}/documents";
     download = "/home/${user.name}/downloads";
     music = "/home/${user.name}/music";
