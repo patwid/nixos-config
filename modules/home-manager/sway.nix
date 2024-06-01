@@ -33,12 +33,11 @@ in
           repeat_delay = builtins.toString keyboard.repeat.delay;
           repeat_rate = builtins.toString keyboard.repeat.rate;
         };
-        "type:mouse" = {
-          pointer_accel = "0";
-          scroll_factor = "2";
+        "type:pointer" = {
+          scroll_factor = "3";
         };
         "type:touchpad" = {
-          natural_scroll = "disabled";
+          scroll_factor = "3";
         };
       };
       seat."*" = {
