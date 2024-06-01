@@ -32,7 +32,7 @@ in
       dd = "https://app.datadoghq.eu/";
     };
     searchEngines = {
-      DEFAULT = "https://duckduckgo.com/?q={}&kae=${if colors.variant == "light" then "b" else "d"}&kz=-1&kau=-1&kao=-1&kap=-1&kaq=-1&kax=-1&kak=-1&k1=-1";
+      DEFAULT = "https://duckduckgo.com/?q={}";
       a = "https://jira.ergon.ch/browse/AXONLAB-{}";
       aw = "https://intern.achilles-online.ch/jira/browse/AW-{}";
       g = "https://www.google.com/search?q={}";
