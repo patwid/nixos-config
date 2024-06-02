@@ -32,7 +32,8 @@ in
       dd = "https://app.datadoghq.eu/";
     };
     searchEngines = {
-      DEFAULT = "https://duckduckgo.com/?q={}";
+      # URL parameters documentation: https://duckduckgo.com/duckduckgo-help-pages/settings/params/
+      DEFAULT = "https://duckduckgo.com/?kf=-1&k1=-1&ka=h&kt=h&kx=g&q={}";
       a = "https://jira.ergon.ch/browse/AXONLAB-{}";
       aw = "https://intern.achilles-online.ch/jira/browse/AW-{}";
       g = "https://www.google.com/search?q={}";
