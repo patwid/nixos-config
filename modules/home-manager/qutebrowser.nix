@@ -50,10 +50,16 @@ in
       fonts.default_family = [ "sans-serif" ];
       url.start_pages = [ "about:blank" ];
       url.default_page = "about:blank";
-      tabs.mousewheel_switching = false;
-      tabs.favicons.show = "pinned";
-      tabs.indicator.width = 0;
-      statusbar.widgets = [ "url" "progress" ];
+      tabs = {
+        show = "switching";
+        mousewheel_switching = false;
+        favicons.show = "pinned";
+        indicator.width = 0;
+      };
+      statusbar = {
+        show = "never";
+        widgets = [ "url" "progress" ];
+      };
       scrolling.smooth = true;
       content.cookies.store = false;
       completion.open_categories = [ "quickmarks" "history" "filesystem" ];
