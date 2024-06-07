@@ -52,7 +52,6 @@ in
       url.start_pages = [ "about:blank" ];
       url.default_page = "about:blank";
       tabs = {
-        show = "switching";
         mousewheel_switching = false;
         favicons.show = "pinned";
         indicator.width = 0;
