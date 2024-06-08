@@ -117,6 +117,8 @@ in
           file = "\"$XDG_SCREENSHOTS_DIR\"/$(${date} +%Y%m%d_%H%M%S_%3N).png";
         in
         lib.mkOptionDefault {
+          "${modifier}+Tab" = "workspace next";
+          "${modifier}+Shift+Tab" = "workspace prev";
           "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
           "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
           "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
@@ -126,9 +128,11 @@ in
           "--release Print" = "exec ${grimshot} --notify save output ${file}";
           "--release Shift+Print" = "exec ${grimshot} --notify save area ${file}";
           "--release Ctrl+Print" = "exec ${grimshot} --notify save active ${file}";
+
           # Disable vertical scrolling (windows)
           "button4" = "nop";
           "button5" = "nop";
+
           # Disable horizontal scrolling (windows)
           "button6" = "nop";
           "button7" = "nop";
