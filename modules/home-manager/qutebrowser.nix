@@ -30,6 +30,7 @@ in
       c = "https://confluence.ergon.ch/";
       ac = "https://confluence.axonlab.com/";
       dd = "https://app.datadoghq.eu/";
+      1p = "https://ergon.1password.eu/";
     };
     searchEngines = {
       # URL parameters documentation: https://duckduckgo.com/duckduckgo-help-pages/settings/params/
