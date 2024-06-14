@@ -88,6 +88,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-jbr21": {
+      "locked": {
+        "lastModified": 1718226233,
+        "narHash": "sha256-UKYNFBcyOxL9Y53q8GE0SgKqD9UhbShbQ5y/PBUOiUU=",
+        "owner": "herberteuler",
+        "repo": "nixpkgs",
+        "rev": "807913cea738695729f0bcdd5809acf23267fdf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "herberteuler",
+        "ref": "fix/jbr-21",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1717696253,
@@ -125,6 +141,7 @@
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-jbr21": "nixpkgs-jbr21",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur"
       }

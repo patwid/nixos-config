@@ -1,10 +1,17 @@
-{ ... }:
+{ nixpkgs-jbr21, ... }:
 self: super:
 let
-  inherit (super) jetbrains;
+
+  pkgs = import nixpkgs-jbr21 {
+    inherit (super) system;
+    config.allowUnfree = super.config.allowUnfree;
+  };
+
+  inherit (pkgs) jetbrains;
 
   idea-ultimate = jetbrains.idea-ultimate.override {
     vmopts = ''
+      -Dawt.toolkit.name=WLToolkit
       -Xms4g
       -Xmx4g
     '';
