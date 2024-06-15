@@ -1,13 +1,7 @@
-{ nixpkgs-jbr21, ... }:
+{ ... }:
 self: super:
 let
-
-  pkgs = import nixpkgs-jbr21 {
-    inherit (super) system;
-    config.allowUnfree = super.config.allowUnfree;
-  };
-
-  inherit (pkgs) jetbrains;
+  inherit (super) jetbrains;
 
   idea-ultimate = jetbrains.idea-ultimate.override {
     vmopts = ''
