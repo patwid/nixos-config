@@ -1,7 +1,0 @@
-# Execute the following command once:
-# git config --local include.path ../.gitconfig
-
-[core]
-	hooksPath = .githooks
-[hooks]
-	nixfmt = true

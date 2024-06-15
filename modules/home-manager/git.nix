@@ -12,6 +12,9 @@ in
       else
         "patrick.widmer@tbwnet.ch";
 
+    hooks = {
+      pre-commit = ./pre-commit;
+    };
     lfs.enable = true;
     extraConfig = {
       init.defaultBranch = "master";
