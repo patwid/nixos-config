@@ -9,6 +9,9 @@ tasks:
 - check: |
     cd nixos-config
     nix flake check
+- format: |
+    cd nixos-config
+    ./fmt.sh
 triggers:
 - action: email
   condition: failure
