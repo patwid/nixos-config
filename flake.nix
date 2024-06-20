@@ -5,9 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
 
-    # TODO remove once https://github.com/NixOS/nixpkgs/pull/318036 is merged
-    nixpkgs-jbr21.url = "github:herberteuler/nixpkgs/fix/jbr-21";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
