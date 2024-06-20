@@ -9,8 +9,10 @@
   home.enable = true;
   terminal.fontsize = 13;
 
-  outputScales = {
-    HDMI-A-1 = "2";
+  output = {
+    HDMI-A-1 = {
+      scale = "2";
+    };
   };
 
   boot.tmp.useTmpfs = false;

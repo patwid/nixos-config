@@ -10,8 +10,10 @@
   work.enable = true;
   work.remote = true;
 
-  outputScales = {
-    eDP-1 = "1.5";
+  output = {
+    eDP-1 = {
+      scale = "1.5";
+    };
   };
 
   boot.tmp.useTmpfs = false;

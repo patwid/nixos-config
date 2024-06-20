@@ -1,6 +1,6 @@
 { osConfig, lib, pkgs, ... }:
 let
-  inherit (osConfig) colors keyboard outputScales;
+  inherit (osConfig) colors keyboard output;
   modifier = "Mod4";
 in
 {
@@ -38,7 +38,7 @@ in
         hide_cursor = "when-typing enable";
         xcursor_theme = "Adwaita";
       };
-      output = lib.mapAttrs' (o: s: lib.nameValuePair o { scale = s; }) outputScales;
+      inherit output;
       colors = {
         background = colors.white; # TODO: usage?
         focused = {

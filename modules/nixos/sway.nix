@@ -3,8 +3,8 @@ let
   inherit (config) user;
 in
 {
-  options.outputScales = lib.mkOption {
-    type = lib.types.attrsOf lib.types.str;
+  options.output = lib.mkOption {
+    type = with lib; types.attrsOf (types.attrsOf types.str);
     default = { };
   };
 
