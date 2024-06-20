@@ -24,7 +24,6 @@ in
 
         "sway/workspaces" = {
           disable-scroll = true;
-          all-outputs = true;
         };
 
         cpu = {
