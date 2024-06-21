@@ -16,7 +16,6 @@
     slurp
     sway-contrib.grimshot
     swaybg
-    swaylock
     unzip
     whatsapp
     wl-clipboard
