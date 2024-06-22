@@ -180,6 +180,10 @@ in
           ",u" = "spawn ${umpv} {url}";
           ",U" = "hint links spawn ${umpv} {hint-url}";
           ";U" = "hint --rapid links spawn ${umpv} {hint-url}";
+
+          # Saving quickmarks is not supported on NixOS due to the nix store
+          # being read-only
+          "m" = null;
         };
       };
   };
