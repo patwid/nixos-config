@@ -163,7 +163,7 @@ in
           selected.odd.bg = colors.backgroundActive;
           selected.odd.fg = colors.foreground;
         };
-        webpage.bg = colors.background;
+        webpage.bg = colors.white;
         webpage.preferred_color_scheme = colors.variant;
       };
     };
