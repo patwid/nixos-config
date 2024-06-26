@@ -37,6 +37,6 @@ in
     users.users.${user.name}.extraGroups = [ "input" "video" "audio" ];
 
     security.polkit.enable = true;
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
   };
 }
