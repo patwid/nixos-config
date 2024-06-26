@@ -1,6 +1,6 @@
 { osConfig, lib, pkgs, ... }:
 let
-  inherit (osConfig) colors keyboard output workspaceOutputAssign;
+  inherit (osConfig) colors keyboard output workspaceOutputAssign extraConfig;
   modifier = "Mod4";
 in
 {
@@ -135,7 +135,7 @@ in
     extraConfig = ''
       titlebar_border_thickness 0
       titlebar_padding 8 2
-    '';
+    '' + extraConfig;
     extraSessionCommands = ''
       export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1

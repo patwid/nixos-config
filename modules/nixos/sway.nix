@@ -26,6 +26,11 @@ in
       });
       default = [ ];
     };
+
+    extraConfig = lib.mkOption {
+      type = with lib; types.str;
+      default = "";
+    };
   };
 
   config = {
