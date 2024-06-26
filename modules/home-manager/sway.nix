@@ -1,6 +1,6 @@
 { osConfig, lib, pkgs, ... }:
 let
-  inherit (osConfig) colors keyboard output;
+  inherit (osConfig) colors keyboard output workspaceOutputAssign;
   modifier = "Mod4";
 in
 {
@@ -38,7 +38,7 @@ in
         hide_cursor = "when-typing enable";
         xcursor_theme = "Adwaita";
       };
-      inherit output;
+      inherit output workspaceOutputAssign;
       colors = {
         background = colors.white; # TODO: usage?
         focused = {
