@@ -19,11 +19,6 @@ let
     teams = callPackage ./webapp { name = "teams"; url = "https://teams.microsoft.com/"; };
     whatsapp = callPackage ./webapp { name = "whatsapp"; url = "https://web.whatsapp.com/"; };
     xdg-open = callPackage ./xdg-open { };
-
-    vimPlugins = {
-      vim-paige = callPackage ./vim-paige { };
-      vim-simple = callPackage ./vim-simple { };
-    };
   };
 in
 lib.filterAttrs (n: _: n != "menu") localPkgs
