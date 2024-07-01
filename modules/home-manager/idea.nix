@@ -7,5 +7,6 @@ lib.mkIf (work.enable) {
 
   xdg.configFile."ideavim/ideavimrc".text = ''
     set clipboard+=unnamedplus,ideaput
+    set ideajoin
   '';
 }
