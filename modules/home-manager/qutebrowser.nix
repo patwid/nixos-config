@@ -14,8 +14,7 @@ in
     enable = true;
     quickmarks = {
       b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=2544";
-      ab = "https://jira.axonlab.com/secure/RapidBoard.jspa?rapidView=73&view=planning.nodetail&quickFilter=527&issueLimit=100";
-      gb = "https://jira.axonlab.com/secure/RapidBoard.jspa?rapidView=88&view=planning.nodetail&issueLimit=100";
+      ab = "https://axonlab.atlassian.net/";
       g = "https://grafana.axenita.dev/";
       i3 = "https://i3wm.org/docs/userguide.html";
       ls = "https://logsearch.axenita.dev/";
@@ -30,7 +29,7 @@ in
       yt = "https://youtube.com";
       mt = "https://webmail.flashcable.ch/";
       c = "https://confluence.ergon.ch/";
-      ac = "https://confluence.axonlab.com/";
+      ac = "https://axonlab.atlassian.net/wiki/home";
       dd = "https://app.datadoghq.eu/";
       "1p" = "https://ergon.1password.eu/";
     };
@@ -38,7 +37,7 @@ in
       # URL parameters documentation: https://duckduckgo.com/duckduckgo-help-pages/settings/params/
       DEFAULT = "https://duckduckgo.com/?q={}";
       a = "https://jira.ergon.ch/browse/AXONLAB-{}";
-      aw = "https://intern.achilles-online.ch/jira/browse/AW-{}";
+      aw = "https://axonlab.atlassian.net/browse/AW-{}";
       g = "https://www.google.com/search?q={}";
       no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
