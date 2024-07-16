@@ -41,6 +41,9 @@ writeShellApplication {
             mailto)
                     exec aerc "$targ"
                     ;;
+            file)
+                    targ=''${targ##*://}
+                    ;&
             *)
                     mt=$(file --mime-type "$targ")
                     mt=''${mt##* }
