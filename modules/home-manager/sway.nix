@@ -109,6 +109,7 @@ in
           grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
           date = "${pkgs.coreutils}/bin/coreutils --coreutils-prog=date";
           file = "\"$XDG_SCREENSHOTS_DIR\"/$(${date} +%Y%m%d_%H%M%S_%3N).png";
+          wlcopy = "${pkgs.wl-clipboard}/bin/wl-copy";
         in
         lib.mkOptionDefault {
           "${modifier}+Tab" = "workspace next";
@@ -119,9 +120,9 @@ in
           "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
           "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
           "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_SINK@ toggle";
-          "--release Print" = "exec ${grimshot} --notify save output ${file}";
-          "--release Shift+Print" = "exec ${grimshot} --notify save area ${file}";
-          "--release Ctrl+Print" = "exec ${grimshot} --notify save active ${file}";
+          "--release Print" = "exec ${wlcopy} < $(${grimshot} --notify save output ${file})";
+          "--release Shift+Print" = "exec ${wlcopy} < $(${grimshot} --notify save area ${file})";
+          "--release Ctrl+Print" = "exec ${wlcopy} < $(${grimshot} --notify save active ${file})";
 
           # Disable vertical scrolling (windows)
           "button4" = "nop";
