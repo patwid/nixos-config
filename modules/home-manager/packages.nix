@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    adwaita-icon-theme
     cage
     curl
-    gnome.adwaita-icon-theme
     grim
     imagemagick
     imv
