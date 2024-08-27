@@ -21,6 +21,7 @@ in
       nt = "https://nixpk.gs/pr-tracker.html";
       nc = "https://git.sr.ht/~patwid/nixos-config";
       s = "http://stash.ergon.ch/";
+      saa = "https://post.sa-portal.ch/";
       st = "http://localhost:8384/";
       stn = "http://syncthing.local:8384/";
       t = "https://tower.axenita.dev/";
