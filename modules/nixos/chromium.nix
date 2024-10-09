@@ -15,6 +15,7 @@ let inherit (config) colors; in
     defaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
     extensions = [
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
+      # "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
     ];
     # https://chromeenterprise.google/policies/
     extraOpts = {
