@@ -25,6 +25,8 @@ in
     boot.loader.efi.canTouchEfiVariables = false;
     boot.loader.efi.efiSysMountPoint = "/boot";
 
+    boot.kernelParams = [ "apple_dcp.show_notch=1" ];
+
     boot.extraModprobeConfig = ''
       options hid_apple fnmode=2
       options hid_apple swap_opt_cmd=1
