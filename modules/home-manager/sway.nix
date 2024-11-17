@@ -38,7 +38,10 @@ in
         hide_cursor = "when-typing enable";
         xcursor_theme = "Adwaita";
       };
-      inherit output workspaceOutputAssign;
+      inherit workspaceOutputAssign;
+      output = output // {
+        "*" = { bg = "${colors.blue} solid_color"; };
+      };
       colors = {
         background = colors.white; # TODO: usage?
         focused = {
