@@ -14,9 +14,13 @@
         max_line_length = 80;
       };
 
-      "*.{java,kt,py}" = {
+      "*.{java,kt,py,sql}" = {
         indent_style = "space";
         indent_size = 4;
+      };
+
+      "*.{java,kt,sql}" = {
+        max_line_length = 120;
       };
 
       "*.{c,go,ha}" = {
