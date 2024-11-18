@@ -27,7 +27,7 @@ in
       default = [ ];
     };
 
-    extraConfig = lib.mkOption {
+    swayExtraConfig = lib.mkOption {
       type = with lib; types.str;
       default = "";
     };

@@ -23,7 +23,7 @@
     { output = "DP-2"; workspace = "10"; }
   ];
 
-  extraConfig = ''
+  swayExtraConfig = ''
     focus output DP-3
   '';
 
