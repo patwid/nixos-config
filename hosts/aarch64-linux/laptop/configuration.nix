@@ -10,11 +10,6 @@
   work.enable = true;
   work.remote = true;
 
-  ideaExtraVmopts = ''
-    -Xmx4g
-    -Xms4g
-  '';
-
   output = {
     eDP-1 = {
       scale = "1.5";

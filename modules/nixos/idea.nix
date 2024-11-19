@@ -1,4 +1,7 @@
-{ lib, ... }:
+{ config, lib, ... }:
+let
+  inherit (config) laptop;
+in
 {
   options = {
     ideaExtraVmopts = lib.mkOption {
@@ -8,5 +11,12 @@
         -Xms8g
       '';
     };
+  };
+
+  config = lib.mkIf (laptop) {
+    ideaExtraVmopts = ''
+      -Xmx4g
+      -Xms4g
+    '';
   };
 }
