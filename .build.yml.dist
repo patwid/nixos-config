@@ -4,7 +4,7 @@ secrets:
 sources:
 - git@git.sr.ht/~patwid/nixos-config
 environment:
-  NIX_CONFIG: experimental-features = nix-command flakes
+  NIX_CONFIG: experimental-features = nix-command flakes pipe-operators
 tasks:
 - check: |
     cd nixos-config

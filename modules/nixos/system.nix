@@ -5,7 +5,7 @@ in
 {
   networking.hostName = hostname;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
   nix.settings.auto-optimise-store = true;
 
   nix.gc.automatic = true;
