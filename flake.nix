@@ -19,25 +19,26 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let
       lib = nixpkgs.lib.extend (import ./lib);
-      systems = lib.attrNames (builtins.readDir ./hosts);
-      forEachSystem = fn: lib.genAttrs systems (system: fn nixpkgs.legacyPackages.${system});
+      systems = builtins.readDir ./hosts |> lib.attrNames;
+      forEachSystem = f: lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
     in
     {
-      nixosConfigurations = lib.listToAttrs (lib.concatMap
-        (system: map
-          (hostname: {
+      nixosConfigurations =
+        systems
+        |> lib.concatMap (system:
+          builtins.readDir ./hosts/${system}
+          |> lib.mapAttrsToList(hostname: _: {
             name = hostname;
             value =
               lib.nixosSystem {
                 inherit system lib;
                 specialArgs = inputs // { inherit hostname; };
                 modules =
-                  let modulesIn = lib.modulesIn system; in
-                  modulesIn ./hosts/${system}/${hostname} ++ modulesIn ./modules/nixos;
+                  lib.modulesIn system ./hosts/${system}/${hostname} ++
+                  lib.modulesIn system ./modules/nixos;
               };
-          })
-          (lib.attrNames (builtins.readDir ./hosts/${system})))
-        systems);
+            }))
+        |> lib.listToAttrs;
 
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };

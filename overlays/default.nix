@@ -1,3 +1,9 @@
 { nur, lib, ... }@inputs:
-[ nur.overlay ]
-++ map (p: import ./${p} inputs) (lib.filter (n: n != "default.nix") (lib.attrNames (builtins.readDir ./.)))
+let
+  overlays =
+    builtins.readDir ./.
+    |> lib.attrNames
+    |> lib.filter (n: n != "default.nix")
+    |> map (p: import ./${p} inputs);
+in
+[ nur.overlay ] ++ overlays

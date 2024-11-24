@@ -10,6 +10,7 @@ let
   isImportable = { path, arch }@args: hasSuffix ".nix" path && (!isOptional path || isArch args);
 in
 {
-  modulesIn = system: path: filter (p: isImportable { arch = archOf system; path = (toString p); })
-    (listFilesRecursive path);
+  modulesIn = system: path:
+    listFilesRecursive path
+    |> filter (p: isImportable { arch = archOf system; path = toString p; });
 }
