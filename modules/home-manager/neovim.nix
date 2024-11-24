@@ -26,7 +26,6 @@ in
       command! Inspect echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
     '';
     plugins = with pkgs.vimPlugins; [
-      editorconfig-vim # TODO: switch to buildin editorconfig
       fugitive
       vim-nix
       fzf-vim
