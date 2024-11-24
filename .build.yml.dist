@@ -11,7 +11,7 @@ tasks:
     nix flake check
 # - format: |
 #     cd nixos-config
-#     ./fmt.sh
+#     ./format.sh
 triggers:
 - action: email
   condition: failure
