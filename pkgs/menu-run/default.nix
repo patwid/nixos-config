@@ -10,6 +10,6 @@ writeShellApplication {
     sway
   ];
   text = ''
-    exec dmenu_path | menu | xargs --no-run-if-empty swaymsg exec --
+    exec swaymsg exec -- "$(dmenu_path | menu)"
   '';
 }
