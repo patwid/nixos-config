@@ -25,20 +25,17 @@
     {
       nixosConfigurations =
         systems
-        |> lib.concatMap (system:
+        |> map (system:
           builtins.readDir ./hosts/${system}
-          |> lib.mapAttrsToList(hostname: _: {
-            name = hostname;
-            value =
-              lib.nixosSystem {
-                inherit system lib;
-                specialArgs = inputs // { inherit hostname; };
-                modules =
-                  lib.modulesIn system ./hosts/${system}/${hostname} ++
-                  lib.modulesIn system ./modules/nixos;
-              };
+          |> lib.mapAttrs (hostname: _:
+            lib.nixosSystem {
+              inherit system lib;
+              specialArgs = inputs // { inherit hostname; };
+              modules =
+                lib.modulesIn system ./hosts/${system}/${hostname} ++
+                lib.modulesIn system ./modules/nixos;
             }))
-        |> lib.listToAttrs;
+        |> lib.foldr lib.mergeAttrs {};
 
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };
