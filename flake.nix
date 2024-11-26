@@ -35,7 +35,7 @@
                 lib.modulesIn system ./hosts/${system}/${hostname} ++
                 lib.modulesIn system ./modules/nixos;
             }))
-        |> lib.foldr lib.mergeAttrs {};
+        |> lib.mergeAttrsList;
 
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };
