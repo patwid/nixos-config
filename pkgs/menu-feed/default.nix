@@ -11,8 +11,8 @@ writeShellApplication {
       | wmenu -l 35 \
       | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')"
 
-    if [ -n "''${url}" ]; then
-      exec ${opener} "''${url}"
+    if [ -n "$url" ]; then
+      exec ${opener} "$url"
     fi
   '';
 }
