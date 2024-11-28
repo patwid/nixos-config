@@ -6,10 +6,10 @@ writeShellApplication {
   text = ''
     cfg=$HOME/.config/sfeed/${name}
     sfeed_update "$cfg/sfeedrc" || true
-    url="$(sfeed_plain "$cfg/feeds/"* \
+    url=$(sfeed_plain "$cfg/feeds/"* \
       | sort --reverse \
       | wmenu -l 35 \
-      | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')"
+      | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
 
     if [ -n "$url" ]; then
       exec ${opener} "$url"
