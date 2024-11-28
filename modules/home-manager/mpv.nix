@@ -8,7 +8,7 @@ in
     yt-dlp.enable = true;
   };
 
-  home.packages = with pkgs; [ ffmpeg ] ++
+  home.packages = with pkgs; [ ffmpeg ytm ] ++
     lib.optionals (home.enable) [
       menu-movies
       menu-music

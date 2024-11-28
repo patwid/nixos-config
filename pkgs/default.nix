@@ -21,6 +21,7 @@ let
     smartaz = callPackage ./webapp { name = "smartaz"; url = "https://smartaz.ergon.ch/"; };
     teams = callPackage ./webapp { name = "teams"; url = "https://teams.microsoft.com/"; };
     whatsapp = callPackage ./webapp { name = "whatsapp"; url = "https://web.whatsapp.com/"; };
+    ytm = callPackage ./ytm { };
     xdg-open = callPackage ./xdg-open { };
   };
 in
