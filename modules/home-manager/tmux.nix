@@ -8,6 +8,7 @@
       set -g default-terminal "screen-256color"
       set -g status-style bg=default
       set -g status-right ""
+      set -g mouse on
     '';
   };
 }
