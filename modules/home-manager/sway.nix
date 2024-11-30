@@ -121,8 +121,8 @@ in
           "${modifier}+p" = "[app_id=\"menu\"] kill; exec ${pkgs.menu-pass}/bin/menu-pass";
           "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
           "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
-          "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
-          "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
+          "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
+          "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && [ \"$(${wpctl} get-volume @DEFAULT_SINK@ | awk '{print $2}' | tr -d '.')\" -gt \"10\" ] && ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
           "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_SINK@ toggle";
           "--release Print" = "exec ${wlcopy} < $(${grimshot} --notify save output ${file})";
           "--release Shift+Print" = "exec ${wlcopy} < $(${grimshot} --notify save area ${file})";
