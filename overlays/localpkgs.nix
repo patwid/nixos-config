@@ -1,6 +1,3 @@
 inputs:
-let
-  localPkgs = import ../pkgs inputs;
-in
-_: _:
-localPkgs
+_final: _prev:
+import ../pkgs inputs
