@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, hostname, ... }@inputs:
+{ config, pkgs, nixpkgs, nur, hostname, ... }@inputs:
 let
   inherit (config) user;
 in
@@ -15,7 +15,7 @@ in
   nix.registry.nixpkgs.flake = nixpkgs;
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = import ../../overlays inputs;
+  nixpkgs.overlays = [ nur.overlay ] ++ import ../../overlays inputs;
 
   system.autoUpgrade = {
     enable = false;
