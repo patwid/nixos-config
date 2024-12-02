@@ -8,7 +8,7 @@ lib.mkIf (work.enable) {
     mattermost
     outlook
     smartaz
-    teleport
+    teleport_16
     teams
   ];
 
