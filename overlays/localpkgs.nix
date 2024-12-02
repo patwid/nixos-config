@@ -1,3 +1,3 @@
-inputs:
-_final: _prev:
+{ ... }@inputs:
+final: prev:
 import ../pkgs inputs
