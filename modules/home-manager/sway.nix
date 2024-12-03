@@ -23,7 +23,7 @@ in
         names = [ "sans-serif" ];
         size = 9.0;
       };
-      # menu = "swaymsg [app_id=\"menu*\"] kill; exec ${pkgs.menu-run}/bin/menu-run";
+      menu = "${pkgs.menu-run}/bin/menu-run";
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
@@ -121,8 +121,7 @@ in
         lib.mkOptionDefault {
           "${modifier}+Tab" = "workspace next";
           "${modifier}+Shift+Tab" = "workspace prev";
-          "${modifier}+d" = "[app_id=\"menu*\"] kill; exec ${pkgs.menu-run}/bin/menu-run";
-          "${modifier}+p" = "[app_id=\"menu*\"] kill; exec ${pkgs.menu-pass}/bin/menu-pass";
+          "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
           "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
           "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
           "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";

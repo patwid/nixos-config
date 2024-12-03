@@ -4,6 +4,8 @@ writeShellApplication {
   name = "menu-${name}";
   runtimeInputs = [ coreutils sfeed menu ];
   text = ''
+    swaymsg -q [app_id='menu*'] kill || true
+
     cfg=$HOME/.config/sfeed/${name}
     sfeed_update "$cfg/sfeedrc" || true
     url=$(sfeed_plain "$cfg/feeds/"* \

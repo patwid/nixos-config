@@ -1,4 +1,4 @@
-{ writeShellApplication, coreutils, dmenu, findutils, menu, sway }:
+{ writeShellApplication, coreutils, dmenu, findutils, menu }:
 
 writeShellApplication {
   name = "menu-run";
@@ -7,9 +7,14 @@ writeShellApplication {
     dmenu
     findutils
     menu
-    sway
   ];
   text = ''
-    exec swaymsg exec -- "$(dmenu_path | menu --app-id=menu)"
+    swaymsg -q [app_id='menu*'] kill || true
+
+    bin=$(dmenu_path | menu --app-id=menu)
+
+    if [ -n "$bin" ]; then
+      exec swaymsg exec -- "$bin"
+    fi
   '';
 }
