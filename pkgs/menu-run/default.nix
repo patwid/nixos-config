@@ -10,6 +10,6 @@ writeShellApplication {
     sway
   ];
   text = ''
-    exec swaymsg exec -- "$(dmenu_path | menu)"
+    exec swaymsg exec -- "$(dmenu_path | menu --app-id=menu)"
   '';
 }

@@ -25,4 +25,4 @@ let
     xdg-open = callPackage ./xdg-open { };
   };
 in
-lib.filterAttrs (n: _: n != "menu") localPkgs
+lib.filterAttrs (n: _: ! builtins.elem n [ "menu" ]) localPkgs

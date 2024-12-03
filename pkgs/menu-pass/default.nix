@@ -15,7 +15,7 @@ writeShellApplication {
     entry=$(find "$prefix" -name '*.gpg' \
       | sed "s,^$prefix/\(.*\)\.gpg$,\1," \
       | sort \
-      | menu)
+      | menu --app-id=menu)
     exec pass show --clip -- "$entry"
   '';
 }

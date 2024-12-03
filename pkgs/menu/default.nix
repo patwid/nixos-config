@@ -11,7 +11,7 @@ writeShellApplication {
     trap 'rm -f $in_pipe $out_pipe' EXIT
 
     export FZF_DEFAULT_OPTS="--reverse --no-info"
-    foot --app-id=menu sh -x -c "fzf <$in_pipe >$out_pipe" &
+    foot "$@" sh -x -c "fzf <$in_pipe >$out_pipe" &
 
     cat >"$in_pipe"
     cat <"$out_pipe"

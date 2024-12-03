@@ -1,10 +1,10 @@
-{ writeShellApplication, findutils, wmenu, mpv, name, dir, depth ? 1 }:
+{ writeShellApplication, findutils, menu, mpv, name, dir, depth ? 1 }:
 
 writeShellApplication {
   name = "menu-${name}";
-  runtimeInputs = [ findutils wmenu mpv ];
+  runtimeInputs = [ findutils menu mpv ];
   text = ''
-    path=$(find ${dir} -maxdepth ${builtins.toString depth} -mindepth ${builtins.toString depth} -type d -printf '%P\n' | wmenu -l 35)
+    path=$(find ${dir} -maxdepth ${builtins.toString depth} -mindepth ${builtins.toString depth} -type d -printf '%P\n' | menu --app-id=menu-fullscreen)
 
     if [ -n "$path" ]; then
       exec mpv ${dir}/"$path"

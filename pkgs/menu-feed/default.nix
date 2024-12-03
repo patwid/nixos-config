@@ -1,14 +1,14 @@
-{ writeShellApplication, coreutils, sfeed, wmenu, name, opener }:
+{ writeShellApplication, coreutils, sfeed, menu, name, opener }:
 
 writeShellApplication {
   name = "menu-${name}";
-  runtimeInputs = [ coreutils sfeed wmenu ];
+  runtimeInputs = [ coreutils sfeed menu ];
   text = ''
     cfg=$HOME/.config/sfeed/${name}
     sfeed_update "$cfg/sfeedrc" || true
     url=$(sfeed_plain "$cfg/feeds/"* \
       | sort --reverse \
-      | wmenu -l 35 \
+      | menu --app-id=menu-fullscreen \
       | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
 
     if [ -n "$url" ]; then
