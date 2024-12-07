@@ -20,7 +20,7 @@ in
       modifier = "${modifier}";
       defaultWorkspace = "workspace number 1";
       fonts = {
-        names = [ "sans-serif" ];
+        names = [ "monospace" ];
         size = 9.0;
       };
       menu = "${pkgs.menu-run}/bin/menu-run";

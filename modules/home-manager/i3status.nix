@@ -19,7 +19,7 @@ lib.mkMerge [
           position = 1;
           settings = {
             format = "";
-            format_above_threshold = "CPU  %1min";
+            format_above_threshold = "CPU %1min";
             max_threshold = 16;
           };
         };
@@ -28,7 +28,7 @@ lib.mkMerge [
           settings = {
             format = "";
             threshold_critical = "5G";
-            format_degraded = "MEM  < %available";
+            format_degraded = "MEM < %available";
           };
         };
         "path_exists VPN" = {
@@ -56,7 +56,7 @@ lib.mkMerge [
       "battery 0" = {
         position = 4;
         settings = {
-          format = "%status  %percentage";
+          format = "%status %percentage";
           format_down = "No battery";
           integer_battery_capacity = true;
           status_chr = "CHR";

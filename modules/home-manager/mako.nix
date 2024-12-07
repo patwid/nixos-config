@@ -7,7 +7,7 @@ in
 
   services.mako = {
     enable = true;
-    font = "sans-serif 10";
+    font = "monospace 10";
     icons = false;
     padding = "12";
     anchor = "bottom-right";

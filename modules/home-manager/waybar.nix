@@ -28,7 +28,7 @@ in
 
         cpu = {
           format = "";
-          format-warning = "CPU  {load}";
+          format-warning = "CPU {load}";
           states = {
             warning = 75;
           };
@@ -36,7 +36,7 @@ in
 
         memory = {
           format = "";
-          format-warning = "MEM  {avail}G";
+          format-warning = "MEM {avail}G";
           states = {
             warning = 75;
           };
@@ -50,7 +50,7 @@ in
         };
 
         battery = {
-          format = "BAT  {capacity}%";
+          format = "BAT {capacity}%";
           design-capacity = true;
           states = {
             warning = 30;
@@ -67,6 +67,7 @@ in
       * {
         border-radius: 0;
         border: none;
+        font-family: 'monospace';
         font-size: 12px;
         min-height: 0;
       }

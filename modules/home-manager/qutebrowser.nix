@@ -51,7 +51,7 @@ in
       ytm = "https://music.youtube.com/search?q={}";
     };
     settings = {
-      fonts.default_family = [ "sans-serif" ];
+      fonts.default_family = [ "monospace" ];
       url.start_pages = [ "about:blank" ];
       url.default_page = "about:blank";
       tabs = {
