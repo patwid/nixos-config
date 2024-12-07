@@ -76,12 +76,12 @@ in
 
     home.packages = with pkgs; [ sfeed menu-news menu-videos menu-podcasts ];
 
-    xdg.configFile = lib.mapAttrs'
+    xdg.dataFile = lib.mapAttrs'
       (type: feed: lib.nameValuePair
         "sfeed/${type}/sfeedrc"
         {
           text = ''
-            sfeedpath="$HOME/.config/sfeed/${type}/feeds"
+            sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
 
             feeds() {
             ''\t# feed <name> <feedurl> [basesiteurl] [encoding]

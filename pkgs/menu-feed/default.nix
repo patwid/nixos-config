@@ -6,7 +6,7 @@ writeShellApplication {
   text = ''
     swaymsg -q [app_id='menu*'] kill || true
 
-    cfg=$HOME/.config/sfeed/${name}
+    cfg=$HOME/.local/share/sfeed/${name}
     sfeed_update "$cfg/sfeedrc" || true
     url=$(sfeed_plain "$cfg/feeds/"* \
       | sort --reverse \
