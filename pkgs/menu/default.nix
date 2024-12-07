@@ -8,7 +8,7 @@ writeShellApplication {
     out_pipe="$XDG_RUNTIME_DIR/menu-out.$$.pipe"
 
     mkfifo "$in_pipe" "$out_pipe"
-    trap 'rm -f $in_pipe $out_pipe' EXIT
+    trap 'rm -f $in_pipe $out_pipe' EXIT INT TERM QUIT
 
     export FZF_DEFAULT_OPTS="--reverse --no-info"
     foot "$@" sh -x -c "fzf <$in_pipe >$out_pipe" &
