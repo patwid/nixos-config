@@ -35,6 +35,7 @@ stdenv.mkDerivation {
       --add-flags "--no-update" \
       --add-flags "--enable-remotecontrol" \
       --add-flags "--database=ergon" \
-      --add-flags "--server=sslsocket://ttshost.ergon.ch:5101"
+      --add-flags "--server=sslsocket://ttshost.ergon.ch:5101" \
+      --add-flags "--username=\"ERGON\patwid\""
   '';
 }
