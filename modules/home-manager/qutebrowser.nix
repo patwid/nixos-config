@@ -22,7 +22,7 @@ in
       st = "http://localhost:8384/";
       stn = "http://syncthing.local:8384/";
       t = "https://tower.axenita.dev/";
-      td = "https://tower-dev.axenita.dev/";
+      td = "https://tower.axlab.ch/";
       tm = "http://transmission.local:9091/transmission/web/";
       yt = "https://youtube.com";
       mt = "https://webmail.flashcable.ch/";
