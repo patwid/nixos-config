@@ -9,14 +9,13 @@ lib.mkIf (work.enable) (lib.mkMerge [
       "registry-mirrors" = [ "https://docker-mirror.ergon.ch" ];
     };
 
-    users.users.${user.name}.extraGroups = [ "docker" ];
+    users.users.${user.name} = {
+      extraGroups = [ "docker" ];
+      packages = [ pkgs.docker-compose ];
+    };
 
     # Required for elasticsearch container
     boot.kernel.sysctl = { "vm.max_map_count" = 262144; };
-
-    home-manager.users.${user.name} = {
-      home.packages = [ pkgs.docker-compose ];
-    };
   }
 
   # Default address pool settings are documented here:

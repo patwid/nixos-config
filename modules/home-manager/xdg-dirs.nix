@@ -1,22 +1,23 @@
-{ osConfig, ... }:
+{ config, osConfig, ... }:
 let
+  inherit (config) home;
   inherit (osConfig) user;
 in
 {
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
-    desktop = "/home/${user.name}/tmp";
-    documents = "/home/${user.name}/documents";
-    download = "/home/${user.name}/downloads";
-    music = "/home/${user.name}/music";
-    pictures = "/home/${user.name}/pictures";
+    desktop = "${home.homeDirectory}/tmp";
+    documents = "${home.homeDirectory}/documents";
+    download = "${home.homeDirectory}/downloads";
+    music = "${home.homeDirectory}/music";
+    pictures = "${home.homeDirectory}/pictures";
     publicShare = null;
     templates = null;
-    videos = "/home/${user.name}/videos";
+    videos = "${home.homeDirectory}/videos";
   };
 
   home.sessionVariables = {
-    XDG_SCREENSHOTS_DIR = "/home/${user.name}/pictures/screenshots";
+    XDG_SCREENSHOTS_DIR = "${home.homeDirectory}/pictures/screenshots";
   };
 }

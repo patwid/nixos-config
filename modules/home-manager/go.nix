@@ -1,10 +1,11 @@
-{ osConfig, ... }:
+{ config, osConfig, ... }:
 let
+  inherit (config) xdg;
   inherit (osConfig) user;
 in
 {
   home.sessionVariables = {
-    GOPATH = "/home/${user.name}/.local/share/go";
+    GOPATH = "${xdg.dataHome}/go";
 
     GOPROXY = "direct";
     GOSUMDB = "off";
