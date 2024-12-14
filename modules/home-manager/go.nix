@@ -4,7 +4,7 @@ let
 in
 {
   home.sessionVariables = {
-    GOPATH = "/home/patwid/${user.name}/.local/share/go";
+    GOPATH = "/home/${user.name}/.local/share/go";
 
     GOPROXY = "direct";
     GOSUMDB = "off";
