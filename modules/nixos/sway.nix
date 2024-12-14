@@ -36,7 +36,10 @@ in
   config = {
     users.users.${user.name}.extraGroups = [ "input" "video" "audio" ];
 
-    security.polkit.enable = true;
-    hardware.graphics.enable = true;
+    programs = {
+      sway = {
+        enable = true;
+      };
+    };
   };
 }
