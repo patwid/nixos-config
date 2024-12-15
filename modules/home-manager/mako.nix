@@ -7,11 +7,8 @@ in
 
   services.mako = {
     enable = true;
-    font = "monospace 10";
     icons = false;
-    padding = "12";
-    anchor = "bottom-right";
-    width = 320;
+    padding = "8";
     borderSize = 2;
     backgroundColor = colors.inverse.background;
     borderColor = colors.inverse.background;
