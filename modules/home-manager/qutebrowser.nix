@@ -73,6 +73,7 @@ in
       };
       scrolling.smooth = true;
       content.cookies.store = false;
+      content.private_browsing = true;
       completion.open_categories = [ "quickmarks" "history" "filesystem" ];
       colors = {
         completion = {
