@@ -7,6 +7,11 @@ lib.mkIf (work.enable) {
     enable = true;
 
     extraConfig = ''
+      Host qs-auto-test
+        ProxyJump ergon
+        HostName 192.168.70.5
+        User testing-user
+
       Host hildegard
         ProxyJump ergon
         HostName 192.168.70.10
