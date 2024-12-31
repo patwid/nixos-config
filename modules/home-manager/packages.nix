@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ lib, osConfig, pkgs, ... }:
+let
+  inherit (osConfig.nixpkgs) hostPlatform;
+in
 {
   home.packages = with pkgs; [
     adwaita-icon-theme
@@ -8,7 +11,6 @@
     imagemagick
     imv
     jq
-    libreoffice-fresh
     menu-pass
     menu-run
     pavucontrol
@@ -21,5 +23,8 @@
     wl-clipboard
     xdg-open
     zip
+  ] ++ lib.optionals (!lib.hasPrefix "aarch64" hostPlatform.system) [
+    # Build failure on aarch64, see https://github.com/NixOS/nixpkgs/issues/339942
+    libreoffice-fresh
   ];
 }
