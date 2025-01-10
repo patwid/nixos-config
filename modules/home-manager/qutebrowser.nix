@@ -11,6 +11,7 @@ in
     enable = true;
     quickmarks = {
       b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=2544";
+      bl = "https://axonlab.atlassian.net/jira/software/c/projects/AW/boards/13/backlog?label=omega";
       ab = "https://axonlab.atlassian.net/";
       g = "https://grafana.axenita.dev/";
       i3 = "https://i3wm.org/docs/userguide.html";
