@@ -19,7 +19,7 @@ in
     hardware.asahi.useExperimentalGPUDriver = true;
 
     nixpkgs.overlays = [
-      nixos-apple-silicon.overlays.apple-silicon-overlay
+      nixos-apple-silicon.overlays.default
     ];
 
     boot.loader.efi.canTouchEfiVariables = false;
