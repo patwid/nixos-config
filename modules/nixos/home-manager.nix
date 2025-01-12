@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    home-manager.nixosModule
+    home-manager.nixosModules.default
   ];
 
   home-manager.useUserPackages = true;
