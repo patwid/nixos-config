@@ -29,7 +29,7 @@
           builtins.readDir ./hosts/${system}
           |> lib.mapAttrs (hostname: _:
             lib.nixosSystem {
-              inherit system lib;
+              inherit lib;
               specialArgs = inputs // { inherit hostname; };
               modules =
                 lib.modulesIn system ./hosts/${system}/${hostname} ++
