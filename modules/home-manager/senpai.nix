@@ -1,8 +1,8 @@
-{ osConfig, pkgs, ... }:
+{ lib, osConfig, pkgs, ... }:
 let
   inherit (osConfig) user;
 
-  pass = "${pkgs.pass}/bin/pass";
+  pass = lib.getExe pkgs.pass;
 in
 {
   programs.senpai = {

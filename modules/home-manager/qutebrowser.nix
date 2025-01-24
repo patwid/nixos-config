@@ -1,4 +1,4 @@
-{ osConfig, pkgs, ... }:
+{ lib, osConfig, pkgs, ... }:
 let
   inherit (osConfig) colors;
 in
@@ -180,8 +180,8 @@ in
     };
     keyBindings =
       let
-        mpv = "${pkgs.mpv}/bin/mpv";
-        umpv = "${pkgs.mpv}/bin/umpv";
+        mpv = lib.getExe pkgs.mpv;
+        umpv = lib.getExe pkgs.mpv;
       in
       {
         normal = {

@@ -11,7 +11,7 @@
       WantedBy = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.hiprompt-gtk-py}/bin/himitsud";
+      ExecStart = lib.getExe' pkgs.himitsu "himitsud";
     };
   };
 

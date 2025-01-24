@@ -1,4 +1,4 @@
-{ stdenv, requireFile, gradle, jdk17, makeWrapper }:
+{ lib, stdenv, requireFile, gradle, jdk17, makeWrapper }:
 
 let
   name = "jtt";
@@ -25,7 +25,7 @@ stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    makeWrapper ${jdk}/bin/java $out/bin/${name} \
+    makeWrapper ${lib.getExe jdk} $out/bin/${name} \
       --add-flags "--add-exports=javafx.base/com.sun.javafx.event=ALL-UNNAMED" \
       --add-flags "--add-exports=javafx.controls/com.sun.javafx.scene.control=ALL-UNNAMED" \
       --add-flags "--add-exports=javafx.base/com.sun.javafx.collections=ALL-UNNAMED" \

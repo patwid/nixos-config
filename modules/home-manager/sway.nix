@@ -23,7 +23,7 @@ in
         names = [ "monospace" ];
         size = 9.0;
       };
-      menu = "${pkgs.menu-run}/bin/menu-run";
+      menu = lib.getExe pkgs.menu-run;
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
@@ -82,7 +82,7 @@ in
       };
       bars = [
         {
-          command = "${pkgs.waybar}/bin/waybar";
+          command = lib.getExe pkgs.waybar;
           position = "top";
           mode = "hide";
         }
@@ -111,17 +111,17 @@ in
       ];
       keybindings =
         let
-          brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-          wpctl = "${pkgs.wireplumber}/bin/wpctl";
-          grimshot = "${pkgs.sway-contrib.grimshot}/bin/grimshot";
-          date = "${pkgs.coreutils}/bin/coreutils --coreutils-prog=date";
+          brightnessctl = lib.getExe pkgs.brightnessctl;
+          wpctl = lib.getExe' pkgs.wireplumber "wpctl";
+          grimshot = lib.getExe pkgs.sway-contrib.grimshot;
+          date = lib.getExe' pkgs.coreutils "coreutils" + " --coreutils-prog=date";
           file = "\"$XDG_SCREENSHOTS_DIR\"/$(${date} +%Y%m%d_%H%M%S_%3N).png";
-          wlcopy = "${pkgs.wl-clipboard}/bin/wl-copy";
+          wlcopy = lib.getExe' pkgs.wl-clipboard "wl-copy";
         in
         lib.mkOptionDefault {
           "${modifier}+Tab" = "workspace next";
           "${modifier}+Shift+Tab" = "workspace prev";
-          "${modifier}+p" = "exec ${pkgs.menu-pass}/bin/menu-pass";
+          "${modifier}+p" = "exec ${lib.getExe pkgs.menu-pass}";
           "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
           "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
           "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";

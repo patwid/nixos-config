@@ -35,8 +35,8 @@ lib.mkIf (work.enable) (lib.mkMerge [
       environment.etc."request-key.conf" = lib.mkForce {
         text =
           let
-            upcall = "${pkgs.cifs-utils}/bin/cifs.upcall";
-            keyctl = "${pkgs.keyutils}/bin/keyctl";
+            upcall = lib.getExe' pkgs.cifs-utils "cifs.upcall";
+            keyctl = lib.getExe' pkgs.keyutils "keyctl";
           in
           ''
             #OP     TYPE          DESCRIPTION  CALLOUT_INFO  PROGRAM
@@ -50,7 +50,7 @@ lib.mkIf (work.enable) (lib.mkMerge [
             create  user          debug:*      rejected      ${keyctl} reject %k 30 %c %S
             create  user          debug:*      expired       ${keyctl} reject %k 30 %c %S
             create  user          debug:*      revoked       ${keyctl} reject %k 30 %c %S
-            create  user          debug:loop:* *             |${pkgs.coreutils}/bin/cat
+            create  user          debug:loop:* *             |${lib.getExe' pkgs.coreutils "cat"}
             create  user          debug:*      *             ${pkgs.keyutils}/share/keyutils/request-key-debug.sh %k %d %c %S
             negate  *             *            *             ${keyctl} negate %k 30 %S
           '';

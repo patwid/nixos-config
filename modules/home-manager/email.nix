@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
-  pass = "${pkgs.pass}/bin/pass";
-  head = "${pkgs.coreutils}/bin/head";
+  pass = lib.getExe pkgs.pass;
+  head = lib.getExe' pkgs.coreutils "head";
 in
 {
   accounts.email.accounts.Personal = {
