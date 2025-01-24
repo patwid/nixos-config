@@ -1,4 +1,4 @@
-{ writeShellApplication, coreutils, sfeed, menu, name, opener }:
+{ writeShellApplication, coreutils, sfeed, menu, name ? "", opener ? "" }:
 
 writeShellApplication {
   name = "menu-${name}";

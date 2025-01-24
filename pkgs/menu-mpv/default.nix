@@ -1,4 +1,4 @@
-{ writeShellApplication, findutils, menu, mpv, name, dir, depth ? 1 }:
+{ writeShellApplication, findutils, menu, mpv, name ? "", dir ? "", depth ? 1 }:
 
 writeShellApplication {
   name = "menu-${name}";

@@ -1,4 +1,4 @@
-{ writeShellApplication, chromium, name, url }:
+{ writeShellApplication, chromium, name ? "", url ? "" }:
 
 writeShellApplication {
   inherit name;
