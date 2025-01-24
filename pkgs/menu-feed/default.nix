@@ -1,4 +1,4 @@
-{ writeShellApplication, coreutils, sfeed, menu, name ? "", opener ? "" }:
+{ lib, writeShellApplication, coreutils, sfeed, menu, name ? "", opener ? null }:
 
 writeShellApplication {
   name = "menu-${name}";
@@ -14,7 +14,7 @@ writeShellApplication {
       | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
 
     if [ -n "$url" ]; then
-      exec ${opener} "$url"
+      exec ${lib.getExe opener} "$url"
     fi
   '';
 }

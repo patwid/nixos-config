@@ -1,4 +1,4 @@
 { ... }:
 final: prev: {
-  menu-videos = prev.menu-feed.override { name = "videos"; opener = "mpv"; };
+  menu-videos = prev.menu-feed.override { name = "videos"; opener = prev.mpv; };
 }
