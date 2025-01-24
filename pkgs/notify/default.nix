@@ -1,4 +1,4 @@
-{ writeShellApplication, libnotify, name, summary, body }:
+{ writeShellApplication, libnotify, name ? "", summary ? "", body ? "" }:
 
 writeShellApplication {
   inherit name;
