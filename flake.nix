@@ -7,7 +7,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    nixos-apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    nixos-apple-silicon.url = "sourcehut:~patwid/nixos-apple-silicon";
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
