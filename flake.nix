@@ -20,10 +20,7 @@
     let
       lib = nixpkgs.lib.extend (import ./lib);
       systems = builtins.readDir ./hosts |> lib.attrNames;
-      forEachSystem = f: lib.genAttrs systems (system: f (import nixpkgs {
-        inherit system;
-        overlays = [ self.overlays.default ];
-      }));
+      forEachSystem = f: lib.genAttrs systems (system: f (import nixpkgs { inherit system; }));
     in
     {
       nixosConfigurations =
@@ -40,11 +37,6 @@
             }))
         |> lib.mergeAttrsList;
 
-      overlays = {
-        default = import ./overlays (inputs // { inherit lib; });
-      };
-
-      packages = forEachSystem (pkgs: pkgs.localpkgs);
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };
 }
