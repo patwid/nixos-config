@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 let
   inherit (config) colors;
 in
@@ -9,7 +9,7 @@ self: super: {
     ];
 
     buildInputs = (old.buildInputs or [ ]) ++ [
-      pkgs.makeWrapper
+      super.makeWrapper
     ];
 
     postInstall = (old.postInstall or "") + ''

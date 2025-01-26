@@ -37,6 +37,10 @@
             }))
         |> lib.mergeAttrsList;
 
+      overlays = {
+        default = import ./overlays (inputs // { inherit lib; });
+      };
+
       packages = forEachSystem (pkgs: import ./pkgs pkgs);
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };

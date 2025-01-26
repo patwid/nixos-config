@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 final: prev: {
   dwl = prev.dwl
     .override { configH = ./config.h; }
