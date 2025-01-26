@@ -37,6 +37,7 @@
             }))
         |> lib.mergeAttrsList;
 
+      packages = forEachSystem (pkgs: import ./pkgs pkgs);
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
     };
 }
