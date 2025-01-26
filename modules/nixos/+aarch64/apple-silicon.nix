@@ -32,5 +32,7 @@ in
       options hid_apple swap_opt_cmd=1
       options hid_apple swap_fn_leftctrl=1
     '';
+
+    boot.m1n1CustomLogo = ./empty.png;
   };
 }
