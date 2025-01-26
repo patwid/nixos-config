@@ -41,7 +41,7 @@
         |> lib.mergeAttrsList;
 
       overlays = {
-        default = lib.composeManyExtensions (import ./overlays (inputs // { inherit lib; }));
+        default = import ./overlays (inputs // { inherit lib; });
       };
 
       packages = forEachSystem (pkgs: pkgs.localpkgs);
