@@ -1,3 +1,6 @@
 { ... }@inputs:
 final: prev:
-import ../pkgs inputs
+let
+  localpkgs = import ../pkgs (inputs // { pkgs = prev; });
+in
+localpkgs // { inherit localpkgs; }
