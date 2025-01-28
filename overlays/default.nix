@@ -1,6 +1,7 @@
-{ nixpkgs-stable, ... }@inputs:
+{ nixpkgs-stable, config, ... }@inputs:
 final: prev:
 let
+  inherit (config) ideaExtraVmopts;
   localpkgs = import ../pkgs (inputs // { pkgs = prev; });
 in
 localpkgs //
@@ -19,4 +20,11 @@ localpkgs //
   stable = import nixpkgs-stable { inherit (prev) config system; };
   teams = final.webapp.override { name = "teams"; url = "https://teams.microsoft.com"; };
   whatsapp = final.webapp.override { name = "whatsapp"; url = "https://web.whatsapp.com"; };
+
+  jetbrains = with prev; jetbrains // { idea-ultimate = (jetbrains.plugins.addPlugins (jetbrains.idea-ultimate.override {
+      vmopts = ''
+        -Dawt.toolkit.name=WLToolkit
+      '' + ideaExtraVmopts;
+    }) [ "ideavim" ]);
+  };
 }
