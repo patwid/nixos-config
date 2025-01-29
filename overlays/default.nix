@@ -6,6 +6,8 @@ let
 in
 localpkgs //
 {
+  stable = import nixpkgs-stable { inherit (prev) config system; };
+
   mattermost = final.webapp.override { name = "mattermost"; url = "https://mattermost.ergon.ch"; };
   menu-movies = final.menu-mpv.override { name = "movies"; path = "~/videos/movies"; };
   menu-music = final.menu-mpv.override { name = "music"; path = "~/music"; };
@@ -17,7 +19,6 @@ localpkgs //
   outlook = final.webapp.override { name = "outlook"; url = "https://outlook.office.com/mail"; };
   pass = prev.pass.override { dmenuSupport = false; };
   smartaz = final.webapp.override { name = "smartaz"; url = "https://smartaz.ergon.ch"; };
-  stable = import nixpkgs-stable { inherit (prev) config system; };
   teams = final.webapp.override { name = "teams"; url = "https://teams.microsoft.com"; };
   whatsapp = final.webapp.override { name = "whatsapp"; url = "https://web.whatsapp.com"; };
 
