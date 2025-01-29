@@ -18,8 +18,16 @@ in
     hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostname}/firmware;
     hardware.asahi.useExperimentalGPUDriver = true;
 
-    nixpkgs.overlays = [
+    hardware.asahi.overlay = lib.composeManyExtensions [
       nixos-apple-silicon.overlays.default
+
+      (final: prev: {
+        uboot-asahi = prev.uboot-asahi.overrideAttrs (oldAttrs: {
+          extraConfig = oldAttrs.extraConfig + ''
+            CONFIG_VIDEO_LOGO=n
+          '';
+        });
+      })
     ];
 
     boot.loader.efi.canTouchEfiVariables = false;
