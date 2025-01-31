@@ -5,6 +5,6 @@ let
   localPkgs =
     builtins.readDir ./.
     |> lib.filterAttrs (n: _: n != "default.nix")
-    |> lib.mapAttrs' (p: _: lib.nameValuePair (lib.removeSuffix ".nix" p) (callPackage ./${p} { }));
+    |> builtins.mapAttrs (p: _: callPackage ./${p} { });
 in
 localPkgs
