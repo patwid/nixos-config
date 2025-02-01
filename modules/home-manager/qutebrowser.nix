@@ -181,7 +181,7 @@ in
     keyBindings =
       let
         mpv = lib.getExe pkgs.mpv;
-        umpv = lib.getExe pkgs.mpv;
+        umpv = lib.getExe' pkgs.mpv "umpv";
       in
       {
         normal = {
