@@ -22,13 +22,22 @@ localpkgs //
   teams = final.webapp.override { name = "teams"; url = "https://teams.microsoft.com"; };
   whatsapp = final.webapp.override { name = "whatsapp"; url = "https://web.whatsapp.com"; };
 
-  notify-low-battery = final.notify.override { name = "notify-low-battery"; summary = "Warning"; body = "Low Battery"; };
+  notify-low-battery = final.notify.override {
+    name = "notify-low-battery";
+    summary = "Warning";
+    body = "Low Battery";
+  };
+
   pass = prev.pass.override { dmenuSupport = false; };
 
-  jetbrains = with prev; jetbrains // { idea-ultimate = (jetbrains.plugins.addPlugins (jetbrains.idea-ultimate.override {
-      vmopts = ''
-        -Dawt.toolkit.name=WLToolkit
-      '' + ideaExtraVmopts;
-    }) [ "ideavim" ]);
-  };
+  jetbrains =
+    let
+      inherit (prev) jetbrains;
+      idea-ultimate = jetbrains.idea-ultimate.override {
+        vmopts = ''
+          -Dawt.toolkit.name=WLToolkit
+        '' + ideaExtraVmopts;
+      };
+    in
+    jetbrains // { idea-ultimate = jetbrains.plugins.addPlugins idea-ultimate [ "ideavim" ]; };
 }
