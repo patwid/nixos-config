@@ -14,5 +14,31 @@
       sansSerif = [ "Noto Sans" ];
       serif = [ "Noto Serif" ];
     };
+
+    localConf = ''
+      <selectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>Liberation Sans</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>Liberation Serif</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>Liberation Mono</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+      </selectfont>
+    '';
   };
 }
