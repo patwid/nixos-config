@@ -1,7 +1,6 @@
 { nixpkgs-stable, config, ... }@inputs:
 final: prev:
 let
-  inherit (config) ideaExtraVmopts;
   localpkgs = import ../pkgs (inputs // { pkgs = prev; });
 in
 localpkgs //
@@ -32,6 +31,7 @@ localpkgs //
 
   jetbrains =
     let
+      inherit (config) ideaExtraVmopts;
       inherit (prev) jetbrains;
       idea-ultimate = jetbrains.idea-ultimate.override {
         vmopts = ''
