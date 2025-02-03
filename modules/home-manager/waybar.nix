@@ -102,12 +102,12 @@ in
         color: ${colors.lighterGrey};
       }
 
-      .modules-right {
+      .modules-right, #mode {
         background: ${colors.inverse.backgroundInactive};
         color: ${colors.inverse.foreground};
       }
 
-      .modules-right, .modules-right * {
+      .modules-right, .modules-right *, #mode {
         padding: 0 8px;
       }
 
