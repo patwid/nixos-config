@@ -11,6 +11,8 @@ in
     imagemagick
     imv
     jq
+    man-pages
+    man-pages-posix
     menu-pass
     menu-run
     pavucontrol
