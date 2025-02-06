@@ -1,4 +1,10 @@
-{ writeShellApplication, coreutils, dmenu, findutils, menu }:
+{
+  writeShellApplication,
+  coreutils,
+  dmenu,
+  findutils,
+  menu,
+}:
 
 writeShellApplication {
   name = "menu-run";

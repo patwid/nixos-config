@@ -16,7 +16,8 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       lib = nixpkgs.lib.extend (import ./lib);
       systems = builtins.readDir ./hosts |> lib.attrNames;
@@ -25,16 +26,22 @@
     {
       nixosConfigurations =
         systems
-        |> map (system:
+        |> map (
+          system:
           builtins.readDir ./hosts/${system}
-          |> lib.mapAttrs (hostname: _:
+          |> lib.mapAttrs (
+            hostname: _:
             lib.nixosSystem {
               inherit lib;
-              specialArgs = inputs // { inherit hostname; };
+              specialArgs = inputs // {
+                inherit hostname;
+              };
               modules =
-                lib.modulesIn system ./hosts/${system}/${hostname} ++
-                lib.modulesIn system ./modules/nixos;
-            }))
+                lib.modulesIn system ./hosts/${system}/${hostname}
+                ++ lib.modulesIn system ./modules/nixos;
+            }
+          )
+        )
         |> lib.mergeAttrsList;
 
       formatter = forEachSystem (pkgs: pkgs.nixfmt-rfc-style);

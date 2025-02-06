@@ -1,6 +1,17 @@
-{ osConfig, lib, pkgs, ... }:
+{
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  inherit (osConfig) colors keyboard output workspaceOutputAssign swayExtraConfig;
+  inherit (osConfig)
+    colors
+    keyboard
+    output
+    workspaceOutputAssign
+    swayExtraConfig
+    ;
   modifier = "Mod4";
 in
 {
@@ -40,7 +51,9 @@ in
       };
       inherit workspaceOutputAssign;
       output = output // {
-        "*" = { bg = "${colors.blue} solid_color"; };
+        "*" = {
+          bg = "${colors.blue} solid_color";
+        };
       };
       colors = {
         background = colors.white; # TODO: usage?
@@ -124,8 +137,10 @@ in
           "${modifier}+p" = "exec ${lib.getExe pkgs.menu-pass}";
           "--locked XF86MonBrightnessUp" = "exec ${brightnessctl} set 20%+";
           "--locked XF86MonBrightnessDown" = "exec ${brightnessctl} set 20%-";
-          "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
-          "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && [ \"$(${wpctl} get-volume @DEFAULT_SINK@ | awk '{print $2}' | tr -d '.')\" -gt \"10\" ] && ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
+          "--locked XF86AudioRaiseVolume" =
+            "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && ${wpctl} set-volume @DEFAULT_SINK@ 10%+ --limit 1.0";
+          "--locked XF86AudioLowerVolume" =
+            "exec ${wpctl} set-mute @DEFAULT_SINK@ 0 && [ \"$(${wpctl} get-volume @DEFAULT_SINK@ | awk '{print $2}' | tr -d '.')\" -gt \"10\" ] && ${wpctl} set-volume @DEFAULT_SINK@ 10%-";
           "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_SINK@ toggle";
           "--release Print" = "exec ${wlcopy} < $(${grimshot} --notify save output ${file})";
           "--release Shift+Print" = "exec ${wlcopy} < $(${grimshot} --notify save area ${file})";
@@ -140,10 +155,12 @@ in
           "button7" = "nop";
         };
     };
-    extraConfig = ''
-      titlebar_border_thickness 0
-      titlebar_padding 8 2
-    '' + swayExtraConfig;
+    extraConfig =
+      ''
+        titlebar_border_thickness 0
+        titlebar_padding 8 2
+      ''
+      + swayExtraConfig;
     extraSessionCommands = ''
       export QT_QPA_PLATFORM=wayland
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1

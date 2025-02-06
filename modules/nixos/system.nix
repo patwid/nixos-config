@@ -1,11 +1,23 @@
-{ self, config, pkgs, nixpkgs, nur, hostname, ... }@inputs:
+{
+  self,
+  config,
+  pkgs,
+  nixpkgs,
+  nur,
+  hostname,
+  ...
+}@inputs:
 let
   inherit (config) user;
 in
 {
   networking.hostName = hostname;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+    "pipe-operators"
+  ];
   nix.settings.auto-optimise-store = true;
 
   nix.gc.automatic = true;

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config) user;
 in
@@ -10,20 +15,24 @@ in
     };
 
     workspaceOutputAssign = lib.mkOption {
-      type = with lib; types.listOf (types.submodule {
-        options = {
-          workspace = lib.mkOption {
-            type = types.str;
-            default = "";
-          };
+      type =
+        with lib;
+        types.listOf (
+          types.submodule {
+            options = {
+              workspace = lib.mkOption {
+                type = types.str;
+                default = "";
+              };
 
-          output = lib.mkOption {
-            type = types.either types.str (types.listOf types.str);
-            default = "";
-            # apply = types.lists.toList;
-          };
-        };
-      });
+              output = lib.mkOption {
+                type = types.either types.str (types.listOf types.str);
+                default = "";
+                # apply = types.lists.toList;
+              };
+            };
+          }
+        );
       default = [ ];
     };
 
@@ -34,7 +43,11 @@ in
   };
 
   config = {
-    users.users.${user.name}.extraGroups = [ "input" "video" "audio" ];
+    users.users.${user.name}.extraGroups = [
+      "input"
+      "video"
+      "audio"
+    ];
 
     programs = {
       sway = {

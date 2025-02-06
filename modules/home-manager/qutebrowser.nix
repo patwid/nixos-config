@@ -1,4 +1,9 @@
-{ lib, osConfig, pkgs, ... }:
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 let
   inherit (osConfig) colors;
 in
@@ -70,12 +75,19 @@ in
         indicator.width = 0;
       };
       statusbar = {
-        widgets = [ "url" "progress" ];
+        widgets = [
+          "url"
+          "progress"
+        ];
       };
       scrolling.smooth = true;
       content.cookies.store = false;
       content.private_browsing = true;
-      completion.open_categories = [ "quickmarks" "history" "filesystem" ];
+      completion.open_categories = [
+        "quickmarks"
+        "history"
+        "filesystem"
+      ];
       colors = {
         completion = {
           category.bg = colors.background;

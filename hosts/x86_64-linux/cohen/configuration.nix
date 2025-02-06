@@ -19,8 +19,14 @@
   };
 
   workspaceOutputAssign = [
-    { output = "DP-3"; workspace = "1"; }
-    { output = "DP-2"; workspace = "10"; }
+    {
+      output = "DP-3";
+      workspace = "1";
+    }
+    {
+      output = "DP-2";
+      workspace = "10";
+    }
   ];
 
   swayExtraConfig = ''

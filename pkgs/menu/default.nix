@@ -1,8 +1,17 @@
-{ writeShellApplication, coreutils, foot, fzf }:
+{
+  writeShellApplication,
+  coreutils,
+  foot,
+  fzf,
+}:
 
 writeShellApplication {
   name = "menu";
-  runtimeInputs = [ coreutils foot fzf ];
+  runtimeInputs = [
+    coreutils
+    foot
+    fzf
+  ];
   text = ''
     in_pipe="$XDG_RUNTIME_DIR/menu-in.$$.pipe"
     out_pipe="$XDG_RUNTIME_DIR/menu-out.$$.pipe"

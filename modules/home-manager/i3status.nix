@@ -1,4 +1,9 @@
-{ osConfig, lib, pkgs, ... }:
+{
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (osConfig) colors laptop;
 in

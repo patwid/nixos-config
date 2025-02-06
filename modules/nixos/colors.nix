@@ -39,7 +39,10 @@ in
 {
   options.colors = {
     variant = lib.mkOption {
-      type = lib.types.enum [ "light" "dark" ];
+      type = lib.types.enum [
+        "light"
+        "dark"
+      ];
       default = "light";
     };
 
@@ -127,7 +130,8 @@ in
       backgroundInactive
       backgroundActive
       foreground
-      foregroundInactive;
+      foregroundInactive
+      ;
 
     inherit
       inverse
@@ -144,6 +148,7 @@ in
       yellow
       blue
       magenta
-      cyan;
+      cyan
+      ;
   };
 }

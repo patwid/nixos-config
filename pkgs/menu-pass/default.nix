@@ -1,15 +1,23 @@
-{ writeShellApplication
-, coreutils
-, findutils
-, gnused
-, menu
-, pass
-, wl-clipboard
+{
+  writeShellApplication,
+  coreutils,
+  findutils,
+  gnused,
+  menu,
+  pass,
+  wl-clipboard,
 }:
 
 writeShellApplication {
   name = "menu-pass";
-  runtimeInputs = [ coreutils findutils gnused menu pass wl-clipboard ];
+  runtimeInputs = [
+    coreutils
+    findutils
+    gnused
+    menu
+    pass
+    wl-clipboard
+  ];
   text = ''
     swaymsg -q [app_id='menu*'] kill || true
 

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config) user group;
 in
@@ -28,7 +33,6 @@ in
       };
     };
   };
-
 
   config = lib.mkMerge [
     {

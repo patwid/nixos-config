@@ -1,4 +1,9 @@
-{ lib, osConfig, pkgs, ... }:
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 let
   inherit (osConfig) user;
 
@@ -10,7 +15,10 @@ in
     config = {
       address = "chat.sr.ht";
       nickname = user.name;
-      password-cmd = [ pass "srht/chat" ];
+      password-cmd = [
+        pass
+        "srht/chat"
+      ];
     };
   };
 }

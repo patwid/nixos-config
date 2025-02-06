@@ -1,8 +1,20 @@
-{ lib, writeShellApplication, coreutils, sfeed, menu, name ? "", opener ? null }:
+{
+  lib,
+  writeShellApplication,
+  coreutils,
+  sfeed,
+  menu,
+  name ? "",
+  opener ? null,
+}:
 
 writeShellApplication {
   name = "menu-${name}";
-  runtimeInputs = [ coreutils sfeed menu ];
+  runtimeInputs = [
+    coreutils
+    sfeed
+    menu
+  ];
   text = ''
     swaymsg -q [app_id='menu*'] kill || true
 

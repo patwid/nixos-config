@@ -1,5 +1,7 @@
 { config, ... }:
-let inherit (config) colors; in
+let
+  inherit (config) colors;
+in
 {
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";

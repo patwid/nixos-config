@@ -1,4 +1,11 @@
-{ lib, stdenv, requireFile, gradle, jdk17, makeWrapper }:
+{
+  lib,
+  stdenv,
+  requireFile,
+  gradle,
+  jdk17,
+  makeWrapper,
+}:
 
 let
   name = "jtt";
@@ -16,7 +23,11 @@ stdenv.mkDerivation {
     message = ''nix-prefetch-url file://\$PWD/${src}'';
   };
 
-  nativeBuildInputs = [ gradle jdk makeWrapper ];
+  nativeBuildInputs = [
+    gradle
+    jdk
+    makeWrapper
+  ];
 
   buildPhase = ''
     mkdir -p $out/lib

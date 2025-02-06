@@ -12,7 +12,10 @@ in
         ipc = true;
         margin = "10";
 
-        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+        ];
         modules-right = [
           "cpu"
           "memory"

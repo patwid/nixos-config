@@ -1,4 +1,9 @@
-{ config, lib, home-manager, ... }@inputs:
+{
+  config,
+  lib,
+  home-manager,
+  ...
+}@inputs:
 let
   inherit (config) user system hostPlatform;
 in

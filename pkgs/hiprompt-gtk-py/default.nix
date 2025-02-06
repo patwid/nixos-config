@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, fetchFromSourcehut
-, desktop-file-utils
-, glib
-, gobject-introspection
-, gtk3
-, gtk-layer-shell
-, meson
-, ninja
-, pkg-config
-, python3
-, wrapGAppsHook
+{
+  lib,
+  stdenv,
+  fetchFromSourcehut,
+  desktop-file-utils,
+  glib,
+  gobject-introspection,
+  gtk3,
+  gtk-layer-shell,
+  meson,
+  ninja,
+  pkg-config,
+  python3,
+  wrapGAppsHook,
 }:
 
 let
@@ -42,9 +43,11 @@ stdenv.mkDerivation rec {
     gobject-introspection
     gtk3
     gtk-layer-shell
-    (python3.withPackages (pp: with pp; [
-      pygobject3
-    ]))
+    (python3.withPackages (
+      pp: with pp; [
+        pygobject3
+      ]
+    ))
   ];
 
   meta = {

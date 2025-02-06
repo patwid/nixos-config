@@ -1,8 +1,20 @@
-{ writeShellApplication, findutils, menu, mpv, name ? "", path ? "", depth ? 1 }:
+{
+  writeShellApplication,
+  findutils,
+  menu,
+  mpv,
+  name ? "",
+  path ? "",
+  depth ? 1,
+}:
 
 writeShellApplication {
   name = "menu-${name}";
-  runtimeInputs = [ findutils menu mpv ];
+  runtimeInputs = [
+    findutils
+    menu
+    mpv
+  ];
   text = ''
     swaymsg -q [app_id='menu*'] kill || true
 

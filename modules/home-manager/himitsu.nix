@@ -1,6 +1,9 @@
 { lib, pkgs, ... }:
 {
-  home.packages = with pkgs; [ himitsu hiprompt-gtk-py ];
+  home.packages = with pkgs; [
+    himitsu
+    hiprompt-gtk-py
+  ];
 
   systemd.user.services.himitsu = {
     Unit = {

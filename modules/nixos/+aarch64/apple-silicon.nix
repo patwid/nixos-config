@@ -1,4 +1,10 @@
-{ config, lib, nixos-apple-silicon, hostname, ... }:
+{
+  config,
+  lib,
+  nixos-apple-silicon,
+  hostname,
+  ...
+}:
 let
   inherit (config) appleSilicon;
   inherit (config.nixpkgs) hostPlatform;
@@ -23,9 +29,11 @@ in
 
       (final: prev: {
         uboot-asahi = prev.uboot-asahi.overrideAttrs (oldAttrs: {
-          extraConfig = oldAttrs.extraConfig + ''
-            CONFIG_VIDEO_LOGO=n
-          '';
+          extraConfig =
+            oldAttrs.extraConfig
+            + ''
+              CONFIG_VIDEO_LOGO=n
+            '';
         });
       })
     ];

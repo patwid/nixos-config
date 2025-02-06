@@ -2,9 +2,10 @@
 {
   programs.gpg = {
     enable = true;
-    publicKeys =
-      map (k: { source = ../../keys/${k}; trust = "ultimate"; })
-        (lib.attrNames (builtins.readDir ../../keys));
+    publicKeys = map (k: {
+      source = ../../keys/${k};
+      trust = "ultimate";
+    }) (lib.attrNames (builtins.readDir ../../keys));
   };
 
   services.gpg-agent = {

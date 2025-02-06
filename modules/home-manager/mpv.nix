@@ -1,4 +1,9 @@
-{ osConfig, lib, pkgs, ... }:
+{
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (osConfig) home;
 in
@@ -8,8 +13,13 @@ in
     yt-dlp.enable = true;
   };
 
-  home.packages = with pkgs; [ ffmpeg ytm ] ++
-    lib.optionals (home.enable) [
+  home.packages =
+    with pkgs;
+    [
+      ffmpeg
+      ytm
+    ]
+    ++ lib.optionals (home.enable) [
       menu-movies
       menu-music
       menu-shows

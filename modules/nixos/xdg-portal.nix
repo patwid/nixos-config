@@ -3,6 +3,9 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    config.common.default = [ "wlr" "gtk" ];
+    config.common.default = [
+      "wlr"
+      "gtk"
+    ];
   };
 }
