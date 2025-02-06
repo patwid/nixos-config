@@ -37,6 +37,6 @@
             }))
         |> lib.mergeAttrsList;
 
-      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
+      formatter = forEachSystem (pkgs: pkgs.nixfmt-rfc-style);
     };
 }
