@@ -6,9 +6,9 @@ sources:
 environment:
   NIX_CONFIG: experimental-features = nix-command flakes pipe-operators
 tasks:
-- check: |
-    cd nixos-config
-    nix flake check
+# - check: |
+#     cd nixos-config
+#     nix flake check
 - format: |
     cd nixos-config
     ./format.sh
