@@ -6,6 +6,8 @@ in
   programs.waybar = {
     enable = true;
 
+    systemd.enable = true;
+
     settings = {
       mainBar = {
         mode = "overlay";
