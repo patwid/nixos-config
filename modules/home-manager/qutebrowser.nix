@@ -110,9 +110,9 @@ in
           bar.bg = colors.backgroundInactive;
           error.bg = colors.red;
           error.fg = colors.lighterGrey;
-          start.bg = colors.backgroundInactive;
+          start.bg = colors.backgroundActive;
           start.fg = colors.foreground;
-          stop.bg = colors.backgroundInactive;
+          stop.bg = colors.backgroundActive;
           stop.fg = colors.foreground;
         };
         hints.bg = colors.yellow;
