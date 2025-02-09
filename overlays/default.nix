@@ -75,4 +75,6 @@ localpkgs
       };
     in
     jetbrains // { idea-ultimate = jetbrains.plugins.addPlugins idea-ultimate [ "ideavim" ]; };
+
+  vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
 }
