@@ -38,6 +38,27 @@
             </patelt>
           </pattern>
         </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>DejaVu Sans</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>DejaVu Serif</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>DejaVu Sans Mono</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
       </selectfont>
     '';
   };
