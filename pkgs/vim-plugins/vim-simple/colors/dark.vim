@@ -78,7 +78,7 @@ call s:highlight('LineNr', s:text_fg_darkgrey)
 call s:highlight('LineNrAbove')
 call s:highlight('LineNrBelow')
 call s:highlight('MatchParen', s:text_bg_active)
-call s:highlight('ModeMsg', s:text_fg_darkgrey)
+call s:highlight('ModeMsg')
 call s:highlight('MoreMsg')
 call s:highlight('MsgArea')
 call s:highlight('MsgSeparator')
@@ -157,6 +157,12 @@ highlight link vimString Normal
 " Nix
 highlight link nixString Normal
 highlight link nixSimpleString Normal
+
+" Sh
+highlight link shDoubleQuote Normal
+highlight link shEcho Normal
+highlight link shFunction Normal
+highlight link shSingleQuote Normal
 
 " Resources
 " - $VIMRUNTIME/colors/README.txt
