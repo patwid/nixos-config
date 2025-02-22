@@ -18,6 +18,7 @@ in
       imagemagick
       imv
       jq
+      libreoffice-fresh
       man-pages
       man-pages-posix
       menu-pass
@@ -32,9 +33,5 @@ in
       wl-clipboard
       xdg-open
       zip
-    ]
-    ++ lib.optionals (!lib.hasPrefix "aarch64" hostPlatform.system) [
-      # Build failure on aarch64, see https://github.com/NixOS/nixpkgs/issues/339942
-      libreoffice-fresh
     ];
 }
