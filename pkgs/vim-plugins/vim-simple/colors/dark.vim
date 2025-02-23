@@ -30,8 +30,8 @@ let s:light_background          = s:white
 let s:light_background_inactive = s:lightest_grey
 let s:light_background_active   = s:lighter_grey
 
-let s:text_bold      = { 'cterm': 'bold' }
-let s:text_inverse   = { 'cterm': 'inverse' }
+let s:text_bold    = { 'cterm': 'bold' }
+let s:text_inverse = { 'cterm': 'inverse' }
 
 let s:text_bg_red      = { 'ctermbg': s:red,               'ctermfg': s:foreground }
 let s:text_bg_yellow   = { 'ctermbg': s:yellow,            'ctermfg': s:light_foreground }
@@ -41,8 +41,8 @@ let s:text_bg_inactive = { 'ctermbg': s:background_inactive }
 let s:text_bg_active_bold   = extendnew(s:text_bg_active, s:text_bold)
 let s:text_bg_inactive_bold = extendnew(s:text_bg_inactive, s:text_bold)
 
-let s:text_fg_red      = { 'ctermfg': s:red }
-let s:text_fg_green    = { 'ctermfg': s:green }
+let s:text_fg_red   = { 'ctermfg': s:red }
+let s:text_fg_green = { 'ctermfg': s:green }
 
 fun! s:highlight(group, args = {})
        exec 'highlight ' . a:group . ' ' . ['ctermfg', 'ctermbg', 'cterm']
@@ -140,27 +140,27 @@ call s:highlight('diffAdded', s:text_fg_green)
 call s:highlight('diffRemoved', s:text_fg_red)
 
 " Term
-highlight link StatusLineTerm StatusLine
+highlight link StatusLineTerm   StatusLine
 highlight link StatusLineTermNC StatusLineNC
 
 " Vim
-highlight link vimFuncName Normal
-highlight link vimGroup Normal
-highlight link vimHiAttrib Normal
-highlight link vimHiCTerm Normal
+highlight link vimFuncName    Normal
+highlight link vimGroup       Normal
+highlight link vimHiAttrib    Normal
+highlight link vimHiCTerm     Normal
 highlight link vimHiCtermFgBg Normal
-highlight link vimHiGroup Normal
-highlight link vimOption Normal
-highlight link vimString Normal
+highlight link vimHiGroup     Normal
+highlight link vimOption      Normal
+highlight link vimString      Normal
 
 " Nix
-highlight link nixString Normal
+highlight link nixString       Normal
 highlight link nixSimpleString Normal
 
 " Sh
 highlight link shDoubleQuote Normal
-highlight link shEcho Normal
-highlight link shFunction Normal
+highlight link shEcho        Normal
+highlight link shFunction    Normal
 highlight link shSingleQuote Normal
 
 " Resources
