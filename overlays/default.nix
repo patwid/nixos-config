@@ -60,7 +60,7 @@ localpkgs
     body = "Low Battery";
   };
 
-  pass = prev.pass.override { dmenuSupport = false; };
+  pass = prev.pass-wayland;
 
   jetbrains =
     let
