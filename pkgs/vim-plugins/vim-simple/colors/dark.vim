@@ -21,6 +21,7 @@ let s:green  = 'green'
 let s:yellow = 'yellow'
 
 let s:foreground          = s:lighter_grey
+let s:foreground_inactive = s:light_grey
 let s:background          = s:black
 let s:background_inactive = s:darkest_grey
 let s:background_active   = s:darker_grey
@@ -41,8 +42,9 @@ let s:text_bg_inactive = { 'ctermbg': s:background_inactive }
 let s:text_bg_active_bold   = extendnew(s:text_bg_active, s:text_bold)
 let s:text_bg_inactive_bold = extendnew(s:text_bg_inactive, s:text_bold)
 
-let s:text_fg_red   = { 'ctermfg': s:red }
-let s:text_fg_green = { 'ctermfg': s:green }
+let s:text_fg_inactive = { 'ctermfg': s:foreground_inactive }
+let s:text_fg_red      = { 'ctermfg': s:red }
+let s:text_fg_green    = { 'ctermfg': s:green }
 
 fun! s:highlight(group, args = {})
        exec 'highlight ' . a:group . ' ' . ['ctermfg', 'ctermbg', 'cterm']
@@ -73,15 +75,15 @@ call s:highlight('FloatTitle')
 call s:highlight('FoldColumn')
 call s:highlight('Folded')
 call s:highlight('IncSearch', s:text_bg_yellow)
-call s:highlight('LineNr')
+call s:highlight('LineNr', s:text_fg_inactive)
 call s:highlight('LineNrAbove')
 call s:highlight('LineNrBelow')
 call s:highlight('MatchParen', s:text_bg_active)
-call s:highlight('ModeMsg')
+call s:highlight('ModeMsg', s:text_fg_inactive)
 call s:highlight('MoreMsg')
 call s:highlight('MsgArea')
 call s:highlight('MsgSeparator')
-call s:highlight('NonText')
+call s:highlight('NonText', s:text_fg_inactive)
 call s:highlight('Normal')
 call s:highlight('NormalFloat')
 call s:highlight('NormalNC')
@@ -123,7 +125,7 @@ call s:highlight('WinSeparator')
 call s:highlight('lCursor')
 
 " Syntax (:h syntax)
-call s:highlight('Comment')
+call s:highlight('Comment', s:text_fg_inactive)
 call s:highlight('Constant')
 call s:highlight('Identifier')
 call s:highlight('Statement', s:text_bold)
