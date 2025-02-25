@@ -27,7 +27,8 @@ in
         autocmd ColorScheme * highlight WinSeparator ctermbg=None
       augroup END
 
-      colorscheme ${colors.variant}
+      set background=${colors.variant}
+      colorscheme simple
 
       " https://github.com/vim/colorschemes/wiki/How-to-override-a-colorscheme%3F
       command! Inspect echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')

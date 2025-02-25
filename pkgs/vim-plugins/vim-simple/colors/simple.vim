@@ -3,6 +3,8 @@ if exists('syntax_on')
        syntax reset
 endif
 
+let g:colors_name = 'simple'
+
 let s:black         = 232 " black (0)
 let s:darkest_grey  = 235
 let s:darker_grey   = 238 " darkgrey (8)
