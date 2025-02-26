@@ -186,7 +186,7 @@ in
           selected.odd.bg = colors.backgroundActive;
           selected.odd.fg = colors.foreground;
         };
-        webpage.bg = colors.white;
+        webpage.bg = if colors.variant == "light" then colors.white else colors.black;
         webpage.preferred_color_scheme = colors.variant;
       };
     };
