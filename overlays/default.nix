@@ -63,7 +63,5 @@ localpkgs
     body = "Low Battery";
   };
 
-  pass = prev.pass-wayland;
-
   vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
 }

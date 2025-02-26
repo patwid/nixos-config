@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 let
-  pass = lib.getExe pkgs.pass;
+  pass = lib.getExe pkgs.pass-wayland;
   head = lib.getExe' pkgs.coreutils "head";
 in
 {

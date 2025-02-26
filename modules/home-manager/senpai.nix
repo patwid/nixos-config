@@ -7,7 +7,7 @@
 let
   inherit (osConfig) user;
 
-  pass = lib.getExe pkgs.pass;
+  pass = lib.getExe pkgs.pass-wayland;
 in
 {
   programs.senpai = {

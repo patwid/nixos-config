@@ -4,7 +4,7 @@
   findutils,
   gnused,
   menu,
-  pass,
+  pass-wayland,
   wl-clipboard,
 }:
 
@@ -15,7 +15,7 @@ writeShellApplication {
     findutils
     gnused
     menu
-    pass
+    pass-wayland
     wl-clipboard
   ];
   text = ''
