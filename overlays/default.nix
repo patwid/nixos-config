@@ -1,4 +1,4 @@
-{ nixpkgs-stable, config, ... }@inputs:
+{ nixpkgs-stable, ... }@inputs:
 final: prev:
 let
   localpkgs = import ../pkgs (inputs // { pkgs = prev; });
@@ -61,20 +61,6 @@ localpkgs
   };
 
   pass = prev.pass-wayland;
-
-  jetbrains =
-    let
-      inherit (config) ideaExtraVmopts;
-      inherit (prev) jetbrains;
-      idea-ultimate = jetbrains.idea-ultimate.override {
-        vmopts =
-          ''
-            -Dawt.toolkit.name=WLToolkit
-          ''
-          + ideaExtraVmopts;
-      };
-    in
-    jetbrains // { idea-ultimate = jetbrains.plugins.addPlugins idea-ultimate [ "ideavim" ]; };
 
   vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
 }
