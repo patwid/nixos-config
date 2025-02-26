@@ -6,8 +6,13 @@ let
   localPkgs =
     (
       builtins.readDir ./.
-      |> lib.filterAttrs (n: _: n != "default.nix")
-      |> lib.filterAttrs (n: _: n != "vim-plugins")
+      |> lib.filterAttrs (
+        n: _:
+        !builtins.elem n [
+          "default.nix"
+          "vim-plugins"
+        ]
+      )
       |> builtins.mapAttrs (p: _: callPackage ./${p} { })
     )
     // {
