@@ -7,7 +7,6 @@
 let
   inherit (osConfig)
     colors
-    keyboard
     output
     workspaceOutputAssign
     swayExtraConfig
@@ -41,8 +40,8 @@ in
           xkb_variant = "altgr-intl";
           xkb_options = "caps:swapescape";
           xkb_numlock = "enabled";
-          repeat_delay = builtins.toString keyboard.repeat.delay;
-          repeat_rate = builtins.toString keyboard.repeat.rate;
+          repeat_delay = "200";
+          repeat_rate = "30";
         };
       };
       seat."*" = {
