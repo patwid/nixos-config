@@ -14,16 +14,27 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
+
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      flake-utils,
+      ...
+    }@inputs:
     let
       lib = nixpkgs.lib.extend (import ./lib);
       systems = builtins.readDir ./hosts |> lib.attrNames;
-      forEachSystem = f: lib.genAttrs systems (system: f (import nixpkgs { inherit system; }));
     in
     {
+      overlays = {
+        default = import ./overlays { inherit nixpkgs-stable lib; };
+      };
+
       nixosConfigurations =
         systems
         |> map (
@@ -44,6 +55,18 @@
         )
         |> lib.mergeAttrsList;
 
-      formatter = forEachSystem (pkgs: pkgs.nixfmt-rfc-style);
-    };
+    }
+    // flake-utils.lib.eachSystem systems (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.default ];
+        };
+      in
+      {
+        packages = pkgs;
+        formatter = pkgs.nixfmt-rfc-style;
+      }
+    );
 }

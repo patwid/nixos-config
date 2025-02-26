@@ -3,9 +3,6 @@
 let
   callPackage = lib.callPackageWith (pkgs // localPkgs);
 
-  vimPlugins =
-    builtins.readDir ./vim-plugins |> builtins.mapAttrs (p: _: callPackage ./vim-plugins/${p} { });
-
   localPkgs =
     (
       builtins.readDir ./.
@@ -14,7 +11,8 @@ let
       |> builtins.mapAttrs (p: _: callPackage ./${p} { })
     )
     // {
-      inherit vimPlugins;
+      vimPlugins =
+        builtins.readDir ./vim-plugins |> builtins.mapAttrs (p: _: callPackage ./vim-plugins/${p} { });
     };
 in
 localPkgs

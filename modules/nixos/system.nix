@@ -29,7 +29,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     nur.overlays.default
-    (import ../../overlays inputs)
+    self.overlays.default
   ];
 
   system.autoUpgrade = {
