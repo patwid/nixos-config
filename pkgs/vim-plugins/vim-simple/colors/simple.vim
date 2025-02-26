@@ -35,9 +35,21 @@ endif
 let s:text_bold    = { 'cterm': 'bold' }
 let s:text_inverse = { 'cterm': 'inverse' }
 
-let s:text_bg_red      = { 'ctermbg': s:red,               'ctermfg': s:lighter_grey }
-let s:text_bg_yellow   = { 'ctermbg': s:yellow,            'ctermfg': s:darker_grey }
-let s:text_bg_active   = { 'ctermbg': s:background_active, 'ctermfg': s:foreground }
+let s:text_bg_red      = {
+	\ 'ctermbg': s:red,
+	\ 'ctermfg': s:lighter_grey
+	\ }
+
+let s:text_bg_yellow   = {
+	\ 'ctermbg': s:yellow,
+	\ 'ctermfg': s:darker_grey
+	\ }
+
+let s:text_bg_active   = {
+	\ 'ctermbg': s:background_active,
+	\ 'ctermfg': s:foreground
+	\ }
+
 let s:text_bg_inactive = { 'ctermbg': s:background_inactive }
 
 let s:text_bg_active_bold   = extendnew(s:text_bg_active,   s:text_bold)
