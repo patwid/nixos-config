@@ -57,11 +57,5 @@ localpkgs
     url = "https://web.whatsapp.com";
   };
 
-  notify-low-battery = final.notify.override {
-    name = "notify-low-battery";
-    summary = "Warning";
-    body = "Low Battery";
-  };
-
   vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
 }
