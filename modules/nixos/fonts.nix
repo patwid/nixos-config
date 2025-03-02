@@ -59,6 +59,13 @@
             </patelt>
           </pattern>
         </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>TeX Gyre Heros</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
       </selectfont>
     '';
   };
