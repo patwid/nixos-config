@@ -2,33 +2,33 @@
 let
   cfg = config.colors;
 
-  black = "#181818";
-  darkestGrey = "#282828";
-  darkerGrey = "#383838";
-  darkGrey = "#585858";
-  lightGrey = "#b8b8b8";
-  lighterGrey = "#d8d8d8";
-  lightestGrey = "#e8e8e8";
-  white = "#f8f8f8";
-  red = "#ab4642";
-  green = "#a1b56c";
-  yellow = "#f7ca88";
-  blue = "#7cafc2";
-  magenta = "#ba8baf";
-  cyan = "#86c1b9";
+  black = "#1E1E1E"; # #000000 (light)
+  darkestGrey = "#241F31";
+  darkerGrey = "#241F31";
+  darkGrey = "#5E5C64";
+  lightGrey = "#C0BFBC";
+  lighterGrey = "#F6F5F4";
+  lightestGrey = "#F6F5F4";
+  white = "#FFFFFF";
+  red = "#C01C28";
+  green = "#2EC27E";
+  yellow = "#F5C211";
+  blue = "#1E78E4";
+  magenta = "#9841BB";
+  cyan = "#0AB9DC";
 
   light = {
     background = white;
-    backgroundInactive = lightestGrey;
-    backgroundActive = lighterGrey;
+    backgroundInactive = lighterGrey;
+    backgroundActive = lightGrey;
     foreground = darkerGrey;
     foregroundInactive = darkGrey;
   };
 
   dark = {
     background = black;
-    backgroundInactive = darkestGrey;
-    backgroundActive = darkerGrey;
+    backgroundInactive = darkerGrey;
+    backgroundActive = darkGrey;
     foreground = lighterGrey;
     foregroundInactive = lightGrey;
   };
