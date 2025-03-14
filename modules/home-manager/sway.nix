@@ -51,7 +51,7 @@ in
       inherit workspaceOutputAssign;
       output = output // {
         "*" = {
-          bg = "${colors.cyan} solid_color";
+          bg = "${colors.blue} solid_color";
         };
       };
       colors = {
