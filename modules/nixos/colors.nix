@@ -10,12 +10,12 @@ let
   lighterGrey = "#d5d5d5";
   lightestGrey = "#e5e5e5";
   white = "#f5f5f5";
-  red = "#ab4642";
-  green = "#a1b56c";
-  yellow = "#f7ca88";
-  blue = "#7cafc2";
-  magenta = "#ba8baf";
-  cyan = "#86c1b9";
+  red = "#ac4142";
+  green = "#90a959";
+  yellow = "#f4bf75";
+  blue = "#6a9fb5";
+  magenta = "#aa759f";
+  cyan = "#75b5aa";
 
   light = {
     background = white;
