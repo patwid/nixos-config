@@ -4,13 +4,9 @@ let
   inherit (osConfig) colors;
 in
 {
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    # defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
