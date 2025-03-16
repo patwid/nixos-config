@@ -3,12 +3,12 @@ let
   cfg = config.colors;
 
   black = "#151515";
-  darkestGrey = "#252525";
-  darkerGrey = "#353535";
-  darkGrey = "#555555";
-  lightGrey = "#b8b8b8";
-  lighterGrey = "#d5d5d5";
-  lightestGrey = "#e5e5e5";
+  darkestGrey = "#202020";
+  darkerGrey = "#303030";
+  darkGrey = "#505050";
+  lightGrey = "#b0b0b0";
+  lighterGrey = "#d0d0d0";
+  lightestGrey = "#e0e0e0";
   white = "#f5f5f5";
   red = "#ac4142";
   green = "#90a959";
