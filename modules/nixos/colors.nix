@@ -2,14 +2,14 @@
 let
   cfg = config.colors;
 
-  black = "#151515";
+  black = "#101010";
   darkestGrey = "#202020";
   darkerGrey = "#303030";
   darkGrey = "#505050";
   lightGrey = "#b0b0b0";
   lighterGrey = "#d0d0d0";
   lightestGrey = "#e0e0e0";
-  white = "#f5f5f5";
+  white = "#f0f0f0";
   red = "#ac4142";
   green = "#90a959";
   yellow = "#f4bf75";
