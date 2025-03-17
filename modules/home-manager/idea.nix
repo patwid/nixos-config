@@ -17,7 +17,7 @@ let
 in
 lib.mkIf (work.enable) {
   home.packages = [
-    (pkgs.jetbrains.plugins.addPlugins idea-ultimate [ "ideavim"])
+    (pkgs.jetbrains.plugins.addPlugins idea-ultimate [ "ideavim" ])
   ];
 
   xdg.configFile."ideavim/ideavimrc".text = ''

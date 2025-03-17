@@ -8,30 +8,28 @@ let
   inherit (osConfig.nixpkgs) hostPlatform;
 in
 {
-  home.packages =
-    with pkgs;
-    [
-      adwaita-icon-theme
-      cage
-      curl
-      grim
-      imagemagick
-      imv
-      jq
-      libreoffice-fresh
-      man-pages
-      man-pages-posix
-      menu-pass
-      menu-run
-      pavucontrol
-      ripgrep
-      slurp
-      sway-contrib.grimshot
-      swaybg
-      unzip
-      whatsapp
-      wl-clipboard
-      xdg-open
-      zip
-    ];
+  home.packages = with pkgs; [
+    adwaita-icon-theme
+    cage
+    curl
+    grim
+    imagemagick
+    imv
+    jq
+    libreoffice-fresh
+    man-pages
+    man-pages-posix
+    menu-pass
+    menu-run
+    pavucontrol
+    ripgrep
+    slurp
+    sway-contrib.grimshot
+    swaybg
+    unzip
+    whatsapp
+    wl-clipboard
+    xdg-open
+    zip
+  ];
 }
