@@ -8,4 +8,9 @@
       "gtk"
     ];
   };
+
+  # TODO: necessary?
+  # environment.sessionVariables = {
+  #   ADW_DISABLE_PORTAL = 1;
+  # };
 }
