@@ -8,9 +8,9 @@ in
   services.mako = {
     enable = true;
     font = "sans-serif 10";
-    icons = false;
+    icons = "false";
     padding = "8";
-    borderSize = 2;
+    borderSize = "2";
     backgroundColor = colors.inverse.background;
     borderColor = colors.inverse.background;
     progressColor = "over ${colors.red}"; # TODO: usage?
