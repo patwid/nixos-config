@@ -43,7 +43,7 @@ in
         autoupdate = true;
       };
 
-      core.editor = "vis";
+      core.editor = "nvim";
       # core.excludesfile = "~/.gitignore"; # global gitignore
 
       rebase = {
