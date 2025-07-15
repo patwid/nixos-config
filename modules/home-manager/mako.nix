@@ -7,13 +7,15 @@ in
 
   services.mako = {
     enable = true;
-    font = "sans-serif 10";
-    icons = "false";
-    padding = "8";
-    borderSize = "2";
-    backgroundColor = colors.inverse.background;
-    borderColor = colors.inverse.background;
-    progressColor = "over ${colors.red}"; # TODO: usage?
-    textColor = colors.inverse.foreground;
+    settings = {
+      font = "sans-serif 10";
+      icons = "false";
+      padding = "8";
+      border-size = "2";
+      background-color = colors.inverse.background;
+      border-color = colors.inverse.background;
+      progress-color = "over ${colors.red}"; # TODO: usage?
+      text-color = colors.inverse.foreground;
+    };
   };
 }

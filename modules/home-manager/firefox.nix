@@ -19,14 +19,14 @@
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
       ];
-      search.default = "DuckDuckGo";
+      search.default = "ddg";
       search.force = true;
       search.engines = {
         "Amazon.de".metaData.hidden = true;
-        "Bing".metaData.hidden = true;
-        "eBay".metaData.hidden = true;
-        "Google".metaData.hidden = true;
-        "Wikipedia (en)".metaData.hidden = true;
+        "bing".metaData.hidden = true;
+        "ebay".metaData.hidden = true;
+        "google".metaData.hidden = true;
+        "wikipedia".metaData.hidden = true;
       };
       # about:config
       settings = {
