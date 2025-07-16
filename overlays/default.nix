@@ -5,10 +5,12 @@ let
     inherit lib;
     pkgs = prev;
   };
+
+  stable = import nixpkgs-stable { inherit (prev) config system; };
 in
 localpkgs
 // {
-  stable = import nixpkgs-stable { inherit (prev) config system; };
+  inherit stable;
 
   menu-news = final.menu-feed.override {
     name = "news";
@@ -55,6 +57,10 @@ localpkgs
   whatsapp = final.webapp.override {
     name = "whatsapp";
     url = "https://web.whatsapp.com";
+  };
+
+  jetbrains = prev.jetbrains // {
+    inherit (stable.jetbrains) idea-ultimate;
   };
 
   vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
