@@ -11,6 +11,7 @@ in
 localpkgs
 // {
   inherit stable;
+  inherit (stable) jetbrains;
 
   menu-news = final.menu-feed.override {
     name = "news";
@@ -57,10 +58,6 @@ localpkgs
   whatsapp = final.webapp.override {
     name = "whatsapp";
     url = "https://web.whatsapp.com";
-  };
-
-  jetbrains = prev.jetbrains // {
-    inherit (stable.jetbrains) idea-ultimate;
   };
 
   vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
