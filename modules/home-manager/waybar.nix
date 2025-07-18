@@ -10,18 +10,10 @@ in
 
     settings = {
       mainBar = {
-        layer = "top";
-        mode = "hide";
-        start_hidden = true;
-        modifier-reset = "release";
-        exclusive = false;
-        passthrough = true;
         ipc = true;
-        margin = "10";
 
         modules-left = [
-          "sway/workspaces"
-          "sway/mode"
+          "niri/workspaces"
         ];
         modules-right = [
           "cpu"
@@ -90,7 +82,7 @@ in
       }
 
       window#waybar {
-        background: transparent;
+        background: ${colors.inverse.backgroundInactive};
       }
 
       #workspaces button {

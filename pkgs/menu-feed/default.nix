@@ -6,6 +6,7 @@
   menu,
   name ? "",
   opener ? null,
+  jq,
 }:
 
 writeShellApplication {
@@ -14,9 +15,13 @@ writeShellApplication {
     coreutils
     sfeed
     menu
+    jq
   ];
   text = ''
-    swaymsg -q [app_id='menu*'] kill || true
+    id=$(niri msg --json windows | jq '.[] | select(.app_id | test("^menu*")) | .id')
+    if [ -n "$id" ]; then
+      niri msg action close-window --id="$id"
+    fi
 
     cfg=$HOME/.local/share/sfeed/${name}
     sfeed_update "$cfg/sfeedrc" || true

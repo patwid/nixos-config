@@ -12,7 +12,7 @@
 
   output = {
     eDP-1 = {
-      scale = "1.3";
+      scale = "1.4";
     };
   };
 
