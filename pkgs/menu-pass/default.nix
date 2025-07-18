@@ -6,6 +6,7 @@
   menu,
   pass-wayland,
   wl-clipboard,
+  jq,
 }:
 
 writeShellApplication {
@@ -17,9 +18,13 @@ writeShellApplication {
     menu
     pass-wayland
     wl-clipboard
+    jq
   ];
   text = ''
-    swaymsg -q [app_id='menu*'] kill || true
+    id=$(niri msg --json windows | jq '.[] | select(.app_id | test("^menu*")) | .id')
+    if [ -n "$id" ]; then
+      niri msg action close-window --id="$id"
+    fi
 
     prefix=''${PASSWORD_STORE_DIR:-~/.password-store}
     entry=$(find "$prefix" -name '*.gpg' \

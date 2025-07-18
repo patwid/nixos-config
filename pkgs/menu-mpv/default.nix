@@ -6,6 +6,7 @@
   name ? "",
   path ? "",
   depth ? 1,
+  jq,
 }:
 
 writeShellApplication {
@@ -14,9 +15,13 @@ writeShellApplication {
     findutils
     menu
     mpv
+    jq
   ];
   text = ''
-    swaymsg -q [app_id='menu*'] kill || true
+    id=$(niri msg --json windows | jq '.[] | select(.app_id | test("^menu*")) | .id')
+    if [ -n "$id" ]; then
+      niri msg action close-window --id="$id"
+    fi
 
     path=$(find ${path} -maxdepth ${builtins.toString depth} -mindepth ${builtins.toString depth} -type d -printf '%P\n' | menu --app-id=menu-fullscreen)
 

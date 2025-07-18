@@ -51,7 +51,7 @@ in
 
     programs = {
       sway = {
-        enable = true;
+        enable = false;
       };
     };
   };

@@ -2,11 +2,15 @@
 {
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     config.common.default = [
-      "wlr"
+      "gnome"
       "gtk"
     ];
+  };
+
+  # Required by gnome file-chooser
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs) nautilus;
   };
 
   # TODO: necessary?

@@ -14,16 +14,8 @@ let
   modifier = "Mod4";
 in
 {
-  programs.bash = {
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec sway >/dev/null 2>&1
-      fi
-    '';
-  };
-
   wayland.windowManager.sway = {
-    enable = true;
+    enable = false;
     wrapperFeatures.base = true;
     systemd.enable = true;
     config = {
