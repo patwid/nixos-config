@@ -10,7 +10,12 @@ in
 
     settings = {
       mainBar = {
-        mode = "overlay";
+        layer = "top";
+        mode = "hide";
+        start_hidden = true;
+        modifier-reset = "release";
+        exclusive = false;
+        passthrough = true;
         ipc = true;
         margin = "10";
 
