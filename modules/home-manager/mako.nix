@@ -12,10 +12,10 @@ in
       icons = "false";
       padding = "8";
       border-size = "2";
-      background-color = colors.inverse.background;
-      border-color = colors.inverse.background;
+      background-color = colors.backgroundInactive;
+      border-color = colors.backgroundInactive;
       progress-color = "over ${colors.red}"; # TODO: usage?
-      text-color = colors.inverse.foreground;
+      text-color = colors.foreground;
     };
   };
 }
