@@ -82,7 +82,7 @@ in
       }
 
       window#waybar {
-        background: ${colors.inverse.backgroundInactive};
+        background: ${colors.backgroundInactive};
       }
 
       #workspaces button {
@@ -90,13 +90,13 @@ in
       }
 
       #workspaces button {
-        background: ${colors.inverse.backgroundInactive};
-        color: ${colors.inverse.foregroundInactive};
+        background: ${colors.backgroundInactive};
+        color: ${colors.foregroundInactive};
       }
 
       #workspaces button.focused {
-        background: ${colors.inverse.backgroundActive};
-        color: ${colors.inverse.foreground};
+        background: ${colors.backgroundActive};
+        color: ${colors.foreground};
       }
 
       #workspaces button.urgent {
@@ -105,8 +105,8 @@ in
       }
 
       .modules-right, #mode {
-        background: ${colors.inverse.backgroundInactive};
-        color: ${colors.inverse.foreground};
+        background: ${colors.backgroundInactive};
+        color: ${colors.foreground};
       }
 
       .modules-right, .modules-right *, #mode {

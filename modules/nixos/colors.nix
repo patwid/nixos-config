@@ -34,7 +34,6 @@ let
   };
 
   variant = if cfg.variant == "light" then light else dark;
-  inverse = if cfg.variant == "light" then dark else light;
 in
 {
   options.colors = {
@@ -60,24 +59,6 @@ in
     };
     foregroundInactive = lib.mkOption {
       type = lib.types.str;
-    };
-
-    inverse = {
-      background = lib.mkOption {
-        type = lib.types.str;
-      };
-      backgroundInactive = lib.mkOption {
-        type = lib.types.str;
-      };
-      backgroundActive = lib.mkOption {
-        type = lib.types.str;
-      };
-      foreground = lib.mkOption {
-        type = lib.types.str;
-      };
-      foregroundInactive = lib.mkOption {
-        type = lib.types.str;
-      };
     };
 
     black = lib.mkOption {
@@ -134,7 +115,6 @@ in
       ;
 
     inherit
-      inverse
       black
       darkestGrey
       darkerGrey
