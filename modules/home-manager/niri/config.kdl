@@ -33,7 +33,7 @@ input {
 }
 
 layout {
-    gaps 8
+    gaps 0
 
     center-focused-column "never"
 
@@ -45,18 +45,27 @@ layout {
     default-column-width { proportion 1.0; }
 
     focus-ring {
+	off
         width 2
 
 	// TODO use pkgs.substituteAll
 	active-color "#6a9fb5"
         inactive-color "#555555"
     }
+
+    border {
+	width 1
+
+	// active-color "#6a9fb5"
+	active-color "#e5e5e5"
+        inactive-color "#e5e5e5"
+    }
 }
 
 prefer-no-csd
 
-// TODO: fix path use XDG SCREENSHOTDIR
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path "~/pictures/screenshots/%Y-%m-%d_%H-%M-%S.png"
+screenshot-path "$XDG_SCRENSHOTS_DIR/%Y-%m-%d_%H-%M-%S.png"
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
