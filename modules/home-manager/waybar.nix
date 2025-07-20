@@ -68,7 +68,7 @@ in
     style = ''
       * {
         border-radius: 0;
-        border: none;
+        border-bottom: 1px ${colors.backgroundInactive};
         font-family: 'monospace';
         font-size: 12px;
         min-height: 0;
