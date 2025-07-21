@@ -59,7 +59,7 @@ layout {
 
 prefer-no-csd
 
-screenshot-path "~/pictures/screenshots/%Y%m%d_%H%M%S.png"
+screenshot-path "~/pictures/screenshots/%Y%m%d_%H%M%S%s.png"
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
