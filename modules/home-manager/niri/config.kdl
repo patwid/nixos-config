@@ -45,12 +45,7 @@ layout {
     default-column-width { proportion 1.0; }
 
     focus-ring {
-	off
-        width 2
-
-	// TODO use pkgs.substituteAll
-	active-color "#6a9fb5"
-        inactive-color "#555555"
+        off
     }
 
     border {
@@ -64,8 +59,7 @@ layout {
 
 prefer-no-csd
 
-// screenshot-path "~/pictures/screenshots/%Y-%m-%d_%H-%M-%S.png"
-screenshot-path "$XDG_SCRENSHOTS_DIR/%Y-%m-%d_%H-%M-%S.png"
+screenshot-path "~/pictures/screenshots/%Y%m%d_%H%M%S.png"
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
