@@ -1,8 +1,8 @@
 { lib, osConfig, ... }:
 let
-  inherit (osConfig) appleSilicon output;
+  inherit (osConfig) output;
 
-  formatOutputs = builtins.attrNames output |> map formatOutput |> builtins.concatStringsSep "\n\n";
+  formatOutputs = builtins.attrNames output |> lib.concatMapStringsSep "\n\n" formatOutput;
 
   formatOutput = name: ''
     output "${name}" {
@@ -17,7 +17,7 @@ let
       let
         position = builtins.split " " output.position;
       in
-      "position x=${lib.head position} y=${lib.tail position}"
+      "position x=${lib.head position} y=${lib.last position}"
     );
 
   format = name: output: lib.optionalString (output ? ${name}) "${name} ${output.${name}}";
@@ -33,7 +33,7 @@ in
 
   xdg.configFile."niri/config.kdl".text =
     builtins.readFile ./niri/config.kdl
-    + lib.optionalString appleSilicon.enable ''
+    + lib.optionalString (osConfig ? appleSilicon && osConfig.appleSilicon.enable) ''
 
       // Asahi workaround: `ls -l /dev/dri`
       debug {
