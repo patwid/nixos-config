@@ -71,6 +71,14 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match is-floating=true
+    shadow {
+        on
+    }
+    exclude app-id=r#"^jetbrains-idea$"#
+}
+
 binds {
     // Mod+Super_L repeat=false { spawn "bash" "-c" "pkill --signal SIGUSR1 waybar"; }
     // Mod+Super_L release { spawn "bash" "-c" "pkill --signal SIGUSR1 waybar"; }
