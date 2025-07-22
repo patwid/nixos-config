@@ -83,7 +83,6 @@ in
 
       window#waybar {
         background: ${colors.backgroundInactive};
-        border-bottom: 1px solid ${colors.backgroundInactive};
       }
 
       #workspaces button {
