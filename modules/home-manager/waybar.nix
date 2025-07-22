@@ -68,7 +68,7 @@ in
     style = ''
       * {
         border-radius: 0;
-        border-bottom: 1px solid ${colors.backgroundInactive};
+        border: none;
         font-family: 'monospace';
         font-size: 12px;
         min-height: 0;
@@ -83,6 +83,7 @@ in
 
       window#waybar {
         background: ${colors.backgroundInactive};
+        border-bottom: 1px solid ${colors.backgroundInactive};
       }
 
       #workspaces button {
