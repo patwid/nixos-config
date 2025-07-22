@@ -1,6 +1,6 @@
 { lib, osConfig, ... }:
 let
-  inherit (osConfig) output;
+  inherit (osConfig) colors output;
 
   formatOutputs = builtins.attrNames output |> lib.concatMapStringsSep "\n\n" formatOutput;
 
@@ -81,9 +81,8 @@ in
         border {
             width 1
 
-            // active-color "#6a9fb5"
-            active-color "#e5e5e5"
-            inactive-color "#e5e5e5"
+            active-color "${colors.backgroundActive}"
+            inactive-color "${colors.backgroundInactive}"
         }
     }
 
