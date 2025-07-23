@@ -66,6 +66,27 @@
             </patelt>
           </pattern>
         </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>Free Sans</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>Free Serif</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
+        <rejectfont>
+          <pattern>
+            <patelt name="family">
+              <string>Free Mono</string>
+            </patelt>
+          </pattern>
+        </rejectfont>
       </selectfont>
     '';
   };
