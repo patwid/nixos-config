@@ -1,6 +1,7 @@
-{ lib, osConfig, ... }:
+{ lib, osConfig, config, ... }:
 let
   inherit (osConfig) colors output;
+  inherit (config) home;
 
   formatOutputs = builtins.attrNames output |> lib.concatMapStringsSep "\n\n" formatOutput;
 
@@ -88,7 +89,7 @@ in
 
     prefer-no-csd
 
-    screenshot-path "~/pictures/screenshots/%Y%m%d_%H%M%S%s.png"
+    screenshot-path "${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png"
 
     window-rule {
         match app-id=r#"firefox$"# title="^Picture-in-Picture$"
