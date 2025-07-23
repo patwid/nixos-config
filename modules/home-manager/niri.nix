@@ -87,6 +87,12 @@ in
         }
     }
 
+    gestures {
+        hot-corners {
+            off
+        }
+    }
+
     prefer-no-csd
 
     screenshot-path "${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png"
