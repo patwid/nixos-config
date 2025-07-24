@@ -80,10 +80,7 @@ in
         }
 
         border {
-            width 1
-
-            active-color "${colors.backgroundActive}"
-            inactive-color "${colors.backgroundInactive}"
+            off
         }
     }
 
@@ -113,6 +110,17 @@ in
             on
         }
         exclude app-id=r#"^jetbrains-idea$"#
+    }
+
+    window-rule {
+        match app-id=r#"^(foot|org.qutebrowser.qutebrowser)$"#
+        border {
+          on
+          width 1
+          active-color "${colors.backgroundActive}"
+          inactive-color "${colors.backgroundInactive}"
+          urgent-color "${colors.red}"
+        }
     }
 
     binds {
