@@ -59,8 +59,18 @@ in
             numlock
         }
 
+        touchpad {
+            natural-scroll
+        }
+
         warp-mouse-to-focus
         focus-follows-mouse max-scroll-amount="0%"
+    }
+
+    gestures {
+        hot-corners {
+            off
+        }
     }
 
     layout {
@@ -84,15 +94,14 @@ in
         }
     }
 
-    gestures {
-        hot-corners {
-            off
-        }
-    }
-
     prefer-no-csd
 
     screenshot-path "${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png"
+
+    layer-rule {
+        match namespace="^notifications$"
+        block_out_from "screen-capture"
+    }
 
     window-rule {
         match app-id=r#"^menu(.*)$"#
