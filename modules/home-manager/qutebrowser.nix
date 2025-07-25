@@ -40,7 +40,7 @@ in
       saa = "https://post.sa-portal.ch/";
       st = "http://localhost:8384/";
       stn = "http://syncthing.local:8384/";
-      t = "https://tower.axenita.dev/";
+      t = "https://tower.axenita.ch/";
       td = "https://tower.axlab.ch/";
       tm = "http://transmission.local:9091/transmission/web/";
       yt = "https://youtube.com";
@@ -55,6 +55,7 @@ in
       DEFAULT = "https://duckduckgo.com/?q={}";
       a = "https://jira.ergon.ch/browse/AXONLAB-{}";
       aw = "https://axonlab.atlassian.net/browse/AW-{}";
+      ax = "https://dev-latest-{}.axlab.ch/frame.html";
       g = "https://www.google.com/search?q={}";
       no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
@@ -62,6 +63,8 @@ in
       p = "https://perplexity.ai/search?q={}";
       s = "https://git.sr.ht/~{}";
       sp = "https://git.sr.ht/~patwid/{}";
+      t = "https://trouble{}.axlab.ch/api/login/axenita";
+      ta = "https://trouble{}.axlab.ch/api/login/admin";
       wa = "https://wiki.archlinux.org/?search={}";
       yt = "https://youtube.com/results?search_query={}";
       ytm = "https://music.youtube.com/search?q={}";
