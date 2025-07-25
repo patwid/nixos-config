@@ -100,13 +100,15 @@ in
 
     layer-rule {
         match namespace="^notifications$"
-        block_out_from "screen-capture"
+        block-out-from "screen-capture"
     }
 
     window-rule {
         match app-id=r#"^menu(.*)$"#
         match app-id="^jetbrains-idea$" title="^Welcome to IntelliJ IDEA$"
         match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+        match app-id="^org.pulseaudio.pavucontrol$"
+
         open-floating true
     }
 
@@ -114,6 +116,7 @@ in
         match app-id="^foot$"
         match app-id="^org.qutebrowser.qutebrowser$"
         match app-id=r#"^menu(.*)$"#
+        match app-id="^org.pulseaudio.pavucontrol$"
 
         border {
           on
