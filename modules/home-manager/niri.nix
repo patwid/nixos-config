@@ -95,17 +95,17 @@ in
     screenshot-path "${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png"
 
     window-rule {
+        match app-id=r#"^menu(.*)$"#
+        match app-id="^jetbrains-idea$" title="^Welcome to IntelliJ IDEA$"
         match app-id=r#"firefox$"# title="^Picture-in-Picture$"
         open-floating true
     }
 
     window-rule {
+        match app-id="^foot$"
+        match app-id="^org.qutebrowser.qutebrowser$"
         match app-id=r#"^menu(.*)$"#
-        open-floating true
-    }
 
-    window-rule {
-        match app-id=r#"^(foot|menu(.*)|org.qutebrowser.qutebrowser)$"#
         border {
           on
           width 1
