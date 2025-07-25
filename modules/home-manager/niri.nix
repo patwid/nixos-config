@@ -60,7 +60,7 @@ in
         }
 
         warp-mouse-to-focus
-        focus-follows-mouse
+        focus-follows-mouse max-scroll-amount="0%"
     }
 
     layout {
@@ -105,15 +105,7 @@ in
     }
 
     window-rule {
-        match is-floating=true
-        shadow {
-            on
-        }
-        exclude app-id=r#"^jetbrains-idea$"#
-    }
-
-    window-rule {
-        match app-id=r#"^(foot|org.qutebrowser.qutebrowser)$"#
+        match app-id=r#"^(foot|menu(.*)|org.qutebrowser.qutebrowser)$"#
         border {
           on
           width 1
