@@ -15,7 +15,7 @@ let
       };
 
       cursor = {
-        xcursor-theme = "\"Adwaita\"";
+        xcursor-theme = ''"Adwaita"'';
         xcursor-size = 24;
 
         hide-when-typing = null;
@@ -25,9 +25,9 @@ let
       input = {
         keyboard = {
           xkb = {
-            layout = "\"us\"";
-            variant = "\"altgr-intl\"";
-            options = "\"caps:swapescape\"";
+            layout = ''"us"'';
+            variant = ''"altgr-intl"'';
+            options = ''"caps:swapescape"'';
           };
 
           repeat-delay = 300;
@@ -41,7 +41,7 @@ let
         };
 
         warp-mouse-to-focus = null;
-        focus-follows-mouse = "max-scroll-amount=\"0%\"";
+        focus-follows-mouse = ''max-scroll-amount="0%"'';
       };
 
       gestures = {
@@ -53,7 +53,7 @@ let
       layout = {
         gaps = 0;
 
-        center-focused-column = "\"never\"";
+        center-focused-column = ''"never"'';
 
         preset-column-widths = {
           proportion = [
@@ -75,59 +75,59 @@ let
 
       prefer-no-csd = null;
 
-      screenshot-path = "\"${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png\"";
+      screenshot-path = ''"${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png"'';
 
       layer-rule = {
-        match = "namespace=\"^notifications$\"";
-        block-out-from = "\"screen-capture\"";
+        match = ''namespace="^notifications$"'';
+        block-out-from = ''"screen-capture"'';
       };
 
       window-rule = [
         {
           match = [
-            "app-id=r#\"^menu(.*)$\"#"
-            "app-id=\"^jetbrains-idea$\" title=\"^Welcome to IntelliJ IDEA$\""
-            "app-id=r#\"firefox$\"# title=\"^Picture-in-Picture$\""
-            "app-id=\"^org.pulseaudio.pavucontrol$\""
+            ''app-id=r#"^menu(.*)$"#''
+            ''app-id="^jetbrains-idea$" title="^Welcome to IntelliJ IDEA$"''
+            ''app-id=r#"firefox$"# title="^Picture-in-Picture$"''
+            ''app-id="^org.pulseaudio.pavucontrol$"''
           ];
 
           open-floating = true;
         }
         {
           match = [
-            "app-id=\"^foot$\""
-            "app-id=\"^org.qutebrowser.qutebrowser$\""
-            "app-id=r#\"^menu(.*)$\"#"
-            "app-id=\"^org.pulseaudio.pavucontrol$\""
+            ''app-id="^foot$"''
+            ''app-id="^org.qutebrowser.qutebrowser$"''
+            ''app-id=r#"^menu(.*)$"#''
+            ''app-id="^org.pulseaudio.pavucontrol$"''
           ];
 
           border = {
             on = null;
             width = 1;
-            active-color = "\"${colors.backgroundActive}\"";
-            inactive-color = "\"${colors.backgroundInactive}\"";
-            urgent-color = "\"${colors.red}\"";
+            active-color = ''"${colors.backgroundActive}"'';
+            inactive-color = ''"${colors.backgroundInactive}"'';
+            urgent-color = ''"${colors.red}"'';
           };
         }
       ];
 
       binds = {
-        "Mod+Return" = "{ spawn \"foot\"; }";
-        "Mod+D" = "{ spawn \"menu-run\"; }";
-        "Mod+P" = "{ spawn \"menu-pass\"; }";
-        "Super+Alt+L" = "{ spawn \"swaylock\"; }";
+        "Mod+Return" = ''{ spawn "foot"; }'';
+        "Mod+D" = ''{ spawn "menu-run"; }'';
+        "Mod+P" = ''{ spawn "menu-pass"; }'';
+        "Super+Alt+L" = ''{ spawn "swaylock"; }'';
 
         "XF86AudioRaiseVolume" =
-          "allow-when-locked=true { spawn \"sh\" \"-c\" \"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1.0\"; }";
+          ''allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1.0"; }'';
         "XF86AudioLowerVolume" =
-          "allow-when-locked=true { spawn \"sh\" \"-c\" \"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\"; }";
+          ''allow-when-locked=true { spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }'';
         "XF86AudioMute" =
-          "allow-when-locked=true { spawn \"wpctl\" \"set-mute\" \"@DEFAULT_AUDIO_SINK@\" \"toggle\"; }";
+          ''allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }'';
         "XF86AudioMicMute" =
-          "allow-when-locked=true { spawn \"wpctl\" \"set-mute\" \"@DEFAULT_AUDIO_SOURCE@\" \"toggle\"; }";
+          ''allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }'';
 
-        "XF86MonBrightnessUp" = "allow-when-locked=true { spawn \"brightnessctl\" \"set\" \"20%+\"; }";
-        "XF86MonBrightnessDown" = "allow-when-locked=true { spawn \"brightnessctl\" \"set\" \"20%-\"; }";
+        "XF86MonBrightnessUp" = ''allow-when-locked=true { spawn "brightnessctl" "set" "20%+"; }'';
+        "XF86MonBrightnessDown" = ''allow-when-locked=true { spawn "brightnessctl" "set" "20%-"; }'';
 
         "Mod+O" = "repeat=false { toggle-overview; }";
 
@@ -218,11 +218,11 @@ let
 
         "Mod+Ctrl+C" = "{ center-visible-columns; }";
 
-        "Mod+Minus" = "{ set-column-width \"-10%\"; }";
-        "Mod+Equal" = "{ set-column-width \"+10%\"; }";
+        "Mod+Minus" = ''{ set-column-width "-10%"; }'';
+        "Mod+Equal" = ''{ set-column-width "+10%"; }'';
 
-        "Mod+Shift+Minus" = "{ set-window-height \"-10%\"; }";
-        "Mod+Shift+Equal" = "{ set-window-height \"+10%\"; }";
+        "Mod+Shift+Minus" = ''{ set-window-height "-10%"; }'';
+        "Mod+Shift+Equal" = ''{ set-window-height "+10%"; }'';
 
         "Mod+Space" = "{ toggle-window-floating; }";
         "Mod+Shift+Space" = "{ switch-focus-between-floating-and-tiling; }";
@@ -245,7 +245,7 @@ let
     // lib.optionalAttrs (osConfig ? appleSilicon && osConfig.appleSilicon.enable) {
       # Asahi workaround: `ls -l /dev/dri`
       debug = {
-        render-drm-device = "\"/dev/dri/renderD128\"";
+        render-drm-device = ''"/dev/dri/renderD128"'';
       };
     };
 
