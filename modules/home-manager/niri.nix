@@ -11,7 +11,7 @@ let
   mapOutputs = lib.mapAttrs' (name: value: lib.nameValuePair ''output "${name}"'' (mapOutput value));
 
   mapOutput = builtins.mapAttrs (
-    name: value: if adapters ? ${name} then adapters.name (value) else value
+    name: value: if adapters ? ${name} then adapters.name value else value
   );
 
   adapters = {
