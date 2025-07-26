@@ -1,117 +1,130 @@
-{ lib, osConfig, config, ... }:
+{
+  lib,
+  osConfig,
+  config,
+  ...
+}:
 let
   inherit (osConfig) colors output;
   inherit (config) home;
 
-  cfg = {
-    hotkey-overlay = {
+  cfg =
+    {
+      hotkey-overlay = {
         skip-at-startup = null;
-    };
+      };
 
-    cursor = {
+      cursor = {
         xcursor-theme = "\"Adwaita\"";
         xcursor-size = 24;
 
         hide-when-typing = null;
         hide-after-inactive-ms = 3000;
-    };
+      };
 
-    input = {
+      input = {
         keyboard = {
-            xkb = {
-                layout = "\"us\"";
-                variant = "\"altgr-intl\"";
-                options = "\"caps:swapescape\"";
-            };
+          xkb = {
+            layout = "\"us\"";
+            variant = "\"altgr-intl\"";
+            options = "\"caps:swapescape\"";
+          };
 
-            repeat-delay = 300;
-            repeat-rate = 20;
+          repeat-delay = 300;
+          repeat-rate = 20;
 
-            numlock = null;
+          numlock = null;
         };
 
         touchpad = {
-            natural-scroll = null;
+          natural-scroll = null;
         };
 
         warp-mouse-to-focus = null;
         focus-follows-mouse = "max-scroll-amount=\"0%\"";
-    };
+      };
 
-    gestures = {
+      gestures = {
         hot-corners = {
-            off = null;
+          off = null;
         };
-    };
+      };
 
-    layout = {
+      layout = {
         gaps = 0;
 
         center-focused-column = "\"never\"";
 
         preset-column-widths = {
-            proportion = [ 0.5 1.0 ];
+          proportion = [
+            0.5
+            1.0
+          ];
         };
 
         default-column-width = "{ proportion 1.0; }";
 
         focus-ring = {
-            off = null;
+          off = null;
         };
 
         border = {
-            off = null;
+          off = null;
         };
-    };
+      };
 
-    prefer-no-csd = null;
+      prefer-no-csd = null;
 
-    screenshot-path = "\"${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png\"";
+      screenshot-path = "\"${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png\"";
 
-    layer-rule = {
+      layer-rule = {
         match = "namespace=\"^notifications$\"";
         block-out-from = "\"screen-capture\"";
-    };
+      };
 
-    window-rule = [
-      {
-        match = [
-          "app-id=r#\"^menu(.*)$\"#"
-          "app-id=\"^jetbrains-idea$\" title=\"^Welcome to IntelliJ IDEA$\""
-          "app-id=r#\"firefox$\"# title=\"^Picture-in-Picture$\""
-          "app-id=\"^org.pulseaudio.pavucontrol$\""
-        ];
+      window-rule = [
+        {
+          match = [
+            "app-id=r#\"^menu(.*)$\"#"
+            "app-id=\"^jetbrains-idea$\" title=\"^Welcome to IntelliJ IDEA$\""
+            "app-id=r#\"firefox$\"# title=\"^Picture-in-Picture$\""
+            "app-id=\"^org.pulseaudio.pavucontrol$\""
+          ];
 
-        open-floating = true;
-      }
-      {
-        match = [
-          "app-id=\"^foot$\""
-          "app-id=\"^org.qutebrowser.qutebrowser$\""
-          "app-id=r#\"^menu(.*)$\"#"
-          "app-id=\"^org.pulseaudio.pavucontrol$\""
-        ];
+          open-floating = true;
+        }
+        {
+          match = [
+            "app-id=\"^foot$\""
+            "app-id=\"^org.qutebrowser.qutebrowser$\""
+            "app-id=r#\"^menu(.*)$\"#"
+            "app-id=\"^org.pulseaudio.pavucontrol$\""
+          ];
 
-        border = {
-          on = null;
-          width = 1;
-          active-color = "\"${colors.backgroundActive}\"";
-          inactive-color = "\"${colors.backgroundInactive}\"";
-          urgent-color = "\"${colors.red}\"";
-        };
-      }
-    ];
+          border = {
+            on = null;
+            width = 1;
+            active-color = "\"${colors.backgroundActive}\"";
+            inactive-color = "\"${colors.backgroundInactive}\"";
+            urgent-color = "\"${colors.red}\"";
+          };
+        }
+      ];
 
-    binds = {
+      binds = {
         "Mod+Return" = "{ spawn \"foot\"; }";
         "Mod+D" = "{ spawn \"menu-run\"; }";
         "Mod+P" = "{ spawn \"menu-pass\"; }";
         "Super+Alt+L" = "{ spawn \"swaylock\"; }";
 
-        "XF86AudioRaiseVolume" = "allow-when-locked=true { spawn \"sh\" \"-c\" \"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1.0\"; }";
-        "XF86AudioLowerVolume" = "allow-when-locked=true { spawn \"sh\" \"-c\" \"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\"; }";
-        "XF86AudioMute" = "allow-when-locked=true { spawn \"wpctl\" \"set-mute\" \"@DEFAULT_AUDIO_SINK@\" \"toggle\"; }";
-        "XF86AudioMicMute" = "allow-when-locked=true { spawn \"wpctl\" \"set-mute\" \"@DEFAULT_AUDIO_SOURCE@\" \"toggle\"; }";
+        "XF86AudioRaiseVolume" =
+          "allow-when-locked=true { spawn \"sh\" \"-c\" \"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1.0\"; }";
+        "XF86AudioLowerVolume" =
+          "allow-when-locked=true { spawn \"sh\" \"-c\" \"wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\"; }";
+        "XF86AudioMute" =
+          "allow-when-locked=true { spawn \"wpctl\" \"set-mute\" \"@DEFAULT_AUDIO_SINK@\" \"toggle\"; }";
+        "XF86AudioMicMute" =
+          "allow-when-locked=true { spawn \"wpctl\" \"set-mute\" \"@DEFAULT_AUDIO_SOURCE@\" \"toggle\"; }";
 
         "XF86MonBrightnessUp" = "allow-when-locked=true { spawn \"brightnessctl\" \"set\" \"20%+\"; }";
         "XF86MonBrightnessDown" = "allow-when-locked=true { spawn \"brightnessctl\" \"set\" \"20%-\"; }";
@@ -226,37 +239,39 @@ let
         "Ctrl+Alt+Delete" = "{ quit; }";
 
         "Mod+Shift+P" = "{ power-off-monitors; }";
-    };
-  }
-    //
-    lib.optionalAttrs (osConfig ? outputs) (mapOutputs osConfig.outputs)
+      };
+    }
+    // lib.optionalAttrs (osConfig ? outputs) (mapOutputs osConfig.outputs)
     // lib.optionalAttrs (osConfig ? appleSilicon && osConfig.appleSilicon.enable) {
       # Asahi workaround: `ls -l /dev/dri`
       debug = {
-          render-drm-device = "\"/dev/dri/renderD128\"";
+        render-drm-device = "\"/dev/dri/renderD128\"";
       };
     };
 
   mapOutputs = builtins.mapAttrs' (name: value: { "ouput \"${name}\"" = mapOutput value; });
 
-  mapOutput = builtins.mapAttrs (name: value:
+  mapOutput = builtins.mapAttrs (
+    name: value:
     if name == "position" then
       let
         position = builtins.split " " value;
       in
-        "x=${lib.head position} y=${lib.last position}"
+      "x=${lib.head position} y=${lib.last position}"
     else
       value
   );
 
-  formatAttrs = attrs:
+  formatAttrs =
+    attrs:
     builtins.attrNames attrs |> lib.concatMapStringsSep "\n" (name: formatPair name attrs.${name});
 
-  formatPair = name: value:
+  formatPair =
+    name: value:
     if builtins.isAttrs value then
       "${name} {\n${formatAttrs value}\n}"
     else if builtins.isList value then
-       lib.concatMapStringsSep "\n" (formatPair name) value
+      lib.concatMapStringsSep "\n" (formatPair name) value
     else if lib.isBool value then
       "${name} ${if value then "true" else "false"}"
     else
