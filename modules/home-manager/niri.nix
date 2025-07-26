@@ -241,7 +241,7 @@ let
         "Mod+Shift+P" = "{ power-off-monitors; }";
       };
     }
-    // lib.optionalAttrs (osConfig ? outputs) (mapOutputs osConfig.outputs)
+    // mapOutputs output
     // lib.optionalAttrs (osConfig ? appleSilicon && osConfig.appleSilicon.enable) {
       # Asahi workaround: `ls -l /dev/dri`
       debug = {
@@ -249,7 +249,7 @@ let
       };
     };
 
-  mapOutputs = builtins.mapAttrs' (name: value: { "ouput \"${name}\"" = mapOutput value; });
+  mapOutputs = lib.mapAttrs' (name: value: lib.nameValuePair ''output "${name}"'' (mapOutput value));
 
   mapOutput = builtins.mapAttrs (
     name: value:
