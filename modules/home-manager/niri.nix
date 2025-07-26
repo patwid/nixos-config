@@ -2,6 +2,7 @@
   lib,
   osConfig,
   config,
+  pkgs,
   ...
 }:
 let
@@ -37,8 +38,6 @@ let
       "${name} ${if value then "true" else "false"}"
     else
       "${name} ${toString value}";
-
-  # TODO validate config (similar to i3)
 in
 {
   options = {
@@ -54,6 +53,12 @@ in
         if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
           exec niri-session -l >/dev/null 2>&1
         fi
+      '';
+    };
+
+    home.activation = {
+      niriConfigValidation = ''
+        run ${lib.getExe pkgs.niri} validate
       '';
     };
 
