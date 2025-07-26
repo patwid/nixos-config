@@ -253,14 +253,19 @@ let
 
   mapOutput = builtins.mapAttrs (
     name: value:
-    if name == "position" then
-      let
-        position = builtins.split " " value;
-      in
-      "x=${lib.head position} y=${lib.last position}"
+    if adapters ? ${name} then
+      adapters.name(value)
     else
       value
   );
+
+  adapters = {
+    position = value:
+      let
+        position = builtins.split " " value;
+      in
+      "x=${lib.head position} y=${lib.last position}";
+  };
 
   formatAttrs =
     attrs:
