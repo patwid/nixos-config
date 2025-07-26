@@ -79,7 +79,7 @@ let
 
       layer-rule = {
         match = ''namespace="^notifications$"'';
-        block-out-from = ''"screen-capture"'';
+        block-out-from = ''"screencast"'';
       };
 
       window-rule = [
