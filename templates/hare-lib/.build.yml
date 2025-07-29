@@ -1,0 +1,16 @@
+image: nixos/unstable
+environment:
+  NIX_CONFIG: experimental-features = nix-command flakes
+sources:
+- https://git.sr.ht/~patwid/REPO
+tasks:
+- check: |
+    cd REPO
+    nix develop -c gradle check
+- run: |
+    cd REPO
+    nix develop -c gradle run
+triggers:
+- action: email
+  condition: failure
+  to: Patrick Widmer <patrick.widmer@tbwnet.ch>
