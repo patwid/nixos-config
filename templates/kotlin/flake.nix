@@ -16,7 +16,7 @@
           jdk = prev.jdk21;
           gradle = prev.gradle.override { java = final.jdk; };
           kotlin = prev.kotlin.override { jre = final.jdk; };
-          hello = final.callPackage ./nix/pkgs/hello.nix { };
+          hello = final.callPackage ./nix/packages/hello.nix { };
         };
       };
     }
