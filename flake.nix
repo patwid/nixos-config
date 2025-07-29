@@ -25,9 +25,9 @@
       lib = nixpkgs.lib.extend (import ./lib);
       eachSystem =
         f:
-        lib.foldAttrs lib.mergeAttrs { } (
-          map (s: lib.mapAttrs (_: v: { ${s} = v; }) (f s)) lib.systems.flakeExposed
-        );
+        lib.systems.flakeExposed
+        |> map (s: lib.mapAttrs (_: v: { ${s} = v; }) (f s))
+        |> lib.foldAttrs lib.mergeAttrs { };
     in
     {
       overlays = {
