@@ -1,0 +1,7 @@
+*.html
+*.js
+
+elm-stuff/
+
+# Misc
+.direnv/

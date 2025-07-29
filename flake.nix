@@ -53,6 +53,17 @@
         )
         |> lib.mergeAttrsList;
 
+      templates =
+        {
+          default = self.templates.full;
+        }
+        // builtins.readDir ./templates
+        |> lib.mapAttrs (
+          name: _: {
+            description = name;
+            path = ./templates/${name};
+          }
+        );
     }
     // flake-utils.lib.eachSystem systems (
       system:
