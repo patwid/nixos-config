@@ -1,16 +1,22 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      flake-utils,
     }:
-    flake-utils.lib.eachDefaultSystem (
+    let
+      inherit (nixpkgs) lib;
+      eachDefaultSystem =
+        f:
+        lib.systems.flakeExposed
+        |> map (s: lib.mapAttrs (_: v: { ${s} = v; }) (f s))
+        |> lib.foldAttrs lib.mergeAttrs { };
+    in
+    eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs { inherit system; };
