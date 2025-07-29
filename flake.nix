@@ -12,8 +12,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
-
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -21,12 +19,16 @@
       self,
       nixpkgs,
       nixpkgs-stable,
-      flake-utils,
       ...
     }@inputs:
     let
       lib = nixpkgs.lib.extend (import ./lib);
       systems = builtins.readDir ./hosts |> lib.attrNames;
+      eachSystem =
+        f:
+        lib.foldAttrs lib.mergeAttrs { } (
+          map (s: lib.mapAttrs (_: v: { ${s} = v; }) (f s)) lib.systems.flakeExposed
+        );
     in
     {
       overlays = {
@@ -65,7 +67,7 @@
           }
         );
     }
-    // flake-utils.lib.eachSystem systems (
+    // eachSystem (
       system:
       let
         pkgs = import nixpkgs {
