@@ -23,7 +23,6 @@
     }@inputs:
     let
       lib = nixpkgs.lib.extend (import ./lib);
-      systems = builtins.readDir ./hosts |> lib.attrNames;
       eachSystem =
         f:
         lib.foldAttrs lib.mergeAttrs { } (
@@ -36,7 +35,8 @@
       };
 
       nixosConfigurations =
-        systems
+        builtins.readDir ./hosts
+        |> lib.attrNames
         |> map (
           system:
           builtins.readDir ./hosts/${system}
