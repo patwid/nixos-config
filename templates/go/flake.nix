@@ -13,7 +13,7 @@
     {
       overlays = {
         default = final: prev: {
-          hello = final.callPackage ./nix/pkgs/hello.nix { };
+          hello = final.callPackage ./nix/packages/hello.nix { };
         };
       };
     }
