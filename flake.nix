@@ -23,7 +23,7 @@
     }@inputs:
     let
       lib = nixpkgs.lib.extend (import ./lib);
-      eachSystem =
+      eachDefaultSystem =
         f:
         lib.systems.flakeExposed
         |> map (s: lib.mapAttrs (_: v: { ${s} = v; }) (f s))
@@ -67,7 +67,7 @@
           }
         );
     }
-    // eachSystem (
+    // eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs {
