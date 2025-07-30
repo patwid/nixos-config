@@ -1,9 +1,12 @@
-{ config, ... }:
+{ lib, pkgs, config, ... }:
 let
-  inherit (config) user;
+  inherit (config) user work;
 in
 {
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = lib.optionals (work.remote) [ pkgs.networkmanager-openvpn ];
+  };
 
   # Allow incoming traffic from axenita-onlyoffice.ergon.ch (nslookup <domain>)
   networking.firewall.extraCommands = ''
