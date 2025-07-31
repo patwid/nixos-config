@@ -3,6 +3,7 @@
   config,
   pkgs,
   nixpkgs,
+  nixpkgs-stable,
   nur,
   hostname,
   ...
@@ -24,7 +25,11 @@ in
   nix.gc.dates = "weekly";
   # nix.gc.options = "--delete-old";
 
-  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.registry = {
+    nixpkgs.flake = nixpkgs;
+    stable.flake = nixpkgs-stable;
+    self.flake = self;
+  };
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
