@@ -30,9 +30,14 @@
         |> lib.foldAttrs lib.mergeAttrs { };
     in
     {
-      overlays = {
-        default = import ./overlays { inherit nixpkgs-stable lib; };
-      };
+      overlays =
+        builtins.readDir ./overlays
+        |> lib.mapAttrs' (
+          name: _:
+          lib.nameValuePair (lib.removeSuffix ".nix" name) (
+            import ./overlays/${name} { inherit nixpkgs-stable lib; }
+          )
+        );
 
       nixosConfigurations =
         builtins.readDir ./hosts
