@@ -17,13 +17,14 @@
         |> lib.foldAttrs lib.mergeAttrs { };
     in
     {
-      overlays = {
-        default = final: prev: {
-          jdk = prev.jdk21;
-          gradle = prev.gradle.override { java = final.jdk; };
-          hello = final.callPackage ./nix/packages/hello.nix { };
-        };
-      };
+      overlays =
+        builtins.readDir ./nix/overlays
+        |> lib.mapAttrs' (
+          name: _:
+          lib.nameValuePair (lib.removeSuffix ".nix" name) (
+            import ./nix/overlays/${name} { inherit lib; }
+          )
+        );
     }
     // eachDefaultSystem (
       system:
@@ -34,28 +35,18 @@
         };
       in
       {
-        packages = with pkgs; {
-          inherit hello;
-          default = hello;
+        packages = pkgs // {
+          default = pkgs.hello;
         };
 
-        devShells = {
-          default = pkgs.mkShellNoCC {
-            buildInputs = with pkgs; [
-              gradle
-              jdk
-            ];
-
-            shellHook =
-            let
-              binDir = "~/.local/bin";
-            in
-            ''
-              mkdir -p ${binDir}
-              ln -sfT $JAVA_HOME ${binDir}/jdk21
-            '';
-          };
-        };
+        devShells =
+          builtins.readDir ./nix/shells
+          |> lib.mapAttrs' (
+            name: _:
+            lib.nameValuePair (lib.removeSuffix ".nix" name) (
+              import ./nix/shells/${name} { inherit pkgs; }
+            )
+          );
 
         formatter = pkgs.nixfmt-rfc-style;
       }
