@@ -9,6 +9,7 @@
     Unit = {
       Description = "Himitsu daemon";
       PartOf = "graphical-session.target";
+      After = "graphical-session.target";
     };
     Install = {
       WantedBy = [ "graphical-session.target" ];
