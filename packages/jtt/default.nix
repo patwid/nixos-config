@@ -3,7 +3,7 @@
   stdenv,
   requireFile,
   gradle,
-  jdk17,
+  jdk21,
   makeWrapper,
 }:
 
@@ -11,7 +11,7 @@ let
   name = "jtt";
   version = "4.3.14";
   src = "${name}-${version}.tar";
-  jdk = jdk17.override { enableJavaFX = true; };
+  jdk = jdk21.override { enableJavaFX = true; };
 in
 stdenv.mkDerivation {
   pname = name;
