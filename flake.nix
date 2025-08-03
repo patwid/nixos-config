@@ -61,16 +61,19 @@
         |> lib.mergeAttrsList;
 
       templates =
-        {
+        (
+          builtins.readDir ./templates
+          |> lib.mapAttrs (
+            name: _: {
+              description = name;
+              path = ./templates/${name};
+            }
+          )
+        )
+        // {
           default = self.templates.full;
-        }
-        // builtins.readDir ./templates
-        |> lib.mapAttrs (
-          name: _: {
-            description = name;
-            path = ./templates/${name};
-          }
-        );
+        };
+
     }
     // eachDefaultSystem (
       system:
