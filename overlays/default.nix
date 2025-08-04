@@ -11,7 +11,6 @@ in
 localpkgs
 // {
   inherit stable;
-  inherit (stable) jetbrains;
 
   menu-news = final.menu-feed.override {
     name = "news";
