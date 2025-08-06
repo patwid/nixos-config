@@ -11,7 +11,7 @@ in
     lfs.enable = true;
     extraConfig = {
       column.ui = "auto";
-      branch.sort = "-committeredate";
+      branch.sort = "-committerdate";
       tag.sort = "version:refname";
       init.defaultBranch = "master";
 
