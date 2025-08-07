@@ -11,7 +11,7 @@ pkgs.mkShellNoCC {
   in
   ''
     mkdir -p ${binDir}
-    ln -sfT $JAVA_HOME ${binDir}/jdk21
+    ln -sfT $JAVA_HOME ${binDir}/${pkgs.jdk.pname}${lib.versions.major pkgs.jdk.version}
   '';
 }
 
