@@ -38,6 +38,10 @@ localpkgs
     path = "~/videos/tv_shows";
   };
 
+  _1password = final.webapp.override {
+    name = "1password";
+    url = "https://ergon.1password.eu";
+  };
   mattermost = final.webapp.override {
     name = "mattermost";
     url = "https://mattermost.ergon.ch";
@@ -45,6 +49,10 @@ localpkgs
   outlook = final.webapp.override {
     name = "outlook";
     url = "https://outlook.office.com/mail";
+  };
+  rds = final.webapp.override {
+    name = "rds";
+    url = "https://rds.ergon.ch";
   };
   smartaz = final.webapp.override {
     name = "smartaz";
