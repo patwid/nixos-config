@@ -9,9 +9,11 @@ let
 in
 lib.mkIf (work.enable) {
   home.packages = with pkgs; [
+    _1password
     jtt
     mattermost
     outlook
+    rds
     smartaz
     teleport_16
     teams
