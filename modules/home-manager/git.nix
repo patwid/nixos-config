@@ -5,11 +5,12 @@ in
 {
   programs.git = {
     enable = true;
-    userName = "Patrick Widmer";
-    userEmail = if work.enable then "patrick.widmer@ergon.ch" else "patrick.widmer@tbwnet.ch";
-
     lfs.enable = true;
-    extraConfig = {
+
+    settings = {
+      user.name = "Patrick Widmer";
+      user.email = if work.enable then "patrick.widmer@ergon.ch" else "patrick.widmer@tbwnet.ch";
+
       column.ui = "auto";
       branch.sort = "-committerdate";
       tag.sort = "version:refname";

@@ -22,7 +22,6 @@ in
 
   config = lib.mkIf (appleSilicon.enable) {
     hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostname}/firmware;
-    hardware.asahi.useExperimentalGPUDriver = true;
 
     hardware.asahi.overlay = lib.composeManyExtensions [
       nixos-apple-silicon.overlays.default
