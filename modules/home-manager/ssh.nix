@@ -5,30 +5,48 @@ in
 lib.mkIf (work.enable) {
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
 
-    extraConfig = ''
-      Host qs-auto-test
-        ProxyJump ergon
-        HostName 192.168.70.5
-        User testing-user
+    # Default values (Host *):
+    # ForwardAgent no
+    # ServerAliveInterval 0
+    # ServerAliveCountMax 3
+    # Compression no
+    # AddKeysToAgent no
+    # HashKnownHosts no
+    # UserKnownHostsFile ~/.ssh/known_hosts
+    # ControlMaster no
+    # ControlPath ~/.ssh/master-%r@%n:%p
+    # ControlPersist no
 
-      Host hildegard
-        ProxyJump ergon
-        HostName 192.168.70.10
-        User testing-user
+    matchBlocks = {
+      qs-auto-test = {
+        proxyJump = "ergon";
+        hostname = "192.168.70.5";
+        user = "testing-user";
+      };
 
-      Host heidi
-        ProxyJump ergon
-        HostName 192.168.70.15
-        User testing-user
+      hildegard = {
+        proxyJump = "ergon";
+        hostname = "192.168.70.10";
+        user = "testing-user";
+      };
 
-      Host helena
-        ProxyJump ergon
-        HostName 192.168.70.20
-        User testing-user
+      heidi = {
+        proxyJump = "ergon";
+        hostname = "192.168.70.15";
+        user = "testing-user";
+      };
 
-      Host ergon
-        HostName linux.ergon.ch
-    '';
+      helena = {
+        proxyJump = "ergon";
+        hostname = "192.168.70.20";
+        user = "testing-user";
+      };
+
+      ergon = {
+        hostname = "linux.ergon.ch";
+      };
+    };
   };
 }
