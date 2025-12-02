@@ -1,6 +1,6 @@
-{ osConfig, lib, ... }:
+{ config, lib, ... }:
 let
-  inherit (osConfig) colors terminal;
+  inherit (config) colors terminal;
 in
 {
   programs.foot = {

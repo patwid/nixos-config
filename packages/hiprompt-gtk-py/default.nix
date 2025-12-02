@@ -11,7 +11,7 @@
   ninja,
   pkg-config,
   python3,
-  wrapGAppsHook,
+  wrapGAppsHook3,
 }:
 
 let
@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
     meson
     ninja
     pkg-config
-    wrapGAppsHook
+    wrapGAppsHook3
   ];
 
   buildInputs = [

@@ -6,11 +6,15 @@ let
     pkgs = prev;
   };
 
-  stable = import nixpkgs-stable { inherit (prev) config system; };
+  stable = import nixpkgs-stable {
+    inherit (prev) config;
+    inherit (prev.stdenv.hostPlatform) system;
+  };
 in
 localpkgs
 // {
   inherit stable;
+  inherit (stable) teleport_16;
 
   menu-news = final.menu-feed.override {
     name = "news";
