@@ -56,8 +56,7 @@
                 inherit hostname;
               };
               modules =
-                lib.modulesIn system ./hosts/${system}/${hostname}
-                ++ lib.modulesIn system ./modules/nixos;
+                lib.modulesIn system ./hosts/${system}/${hostname} ++ lib.modulesIn system ./modules/nixos;
             }
           )
         )
