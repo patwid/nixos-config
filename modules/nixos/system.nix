@@ -6,10 +6,14 @@
   nixpkgs-stable,
   nur,
   hostname,
+  wrappers,
+  lib,
   ...
 }@inputs:
 let
   inherit (config) user;
+
+  wrapperOverlay = import ../wrappers/overlay.nix { inherit config lib wrappers; };
 in
 {
   networking.hostName = hostname;
@@ -34,6 +38,7 @@ in
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     nur.overlays.default
+    wrapperOverlay
     self.overlays.default
   ];
 

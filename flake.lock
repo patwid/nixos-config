@@ -177,16 +177,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1764581374,
-        "narHash": "sha256-eKpYShb0WvFgjyAq1bh3tuQgHxMbroQ6eZiXj7LDd/g=",
-        "owner": "birdeehub",
-        "repo": "nix-wrapper-modules",
-        "rev": "dea5133ba5e4f3957e4a76776ab1e333b7f0e20a",
+        "lastModified": 1764326721,
+        "narHash": "sha256-JT6Nz/I4IpJNIbY5Oy+NpHTe4fqEsIuxIpIZAfEZWEc=",
+        "owner": "lassulus",
+        "repo": "wrappers",
+        "rev": "94d1131dd8c8a310f3e23c82ee75919cb401e716",
         "type": "github"
       },
       "original": {
-        "owner": "birdeehub",
-        "repo": "nix-wrapper-modules",
+        "owner": "lassulus",
+        "repo": "wrappers",
         "type": "github"
       }
     }
