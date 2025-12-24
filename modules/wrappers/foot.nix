@@ -2,7 +2,7 @@
 let
   inherit (config) colors terminal;
 in
-wrappers.wrapperModules.foot.wrap {
+wrappers.wrapperModules.foot.apply {
   inherit pkgs;
   settings = {
     main.font = "monospace:size=${toString terminal.fontsize}";
