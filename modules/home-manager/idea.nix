@@ -7,7 +7,7 @@
 let
   inherit (osConfig) colors work ideaExtraVmopts;
 
-  idea-ultimate = pkgs.jetbrains.idea-ultimate.override {
+  idea = pkgs.jetbrains.idea.override {
     vmopts =
       ''
         -Dawt.toolkit.name=WLToolkit
@@ -16,12 +16,12 @@ let
   };
 
   variant = if colors.variant == "light" then "Light" else "Dark";
-  version = lib.versions.majorMinor idea-ultimate.version;
+  version = lib.versions.majorMinor idea.version;
   options = "JetBrains/IntelliJIdea${version}/options";
 in
 lib.mkIf (work.enable) {
   home.packages = [
-    (pkgs.jetbrains.plugins.addPlugins idea-ultimate [ "ideavim" ])
+    (pkgs.jetbrains.plugins.addPlugins idea [ "ideavim" ])
   ];
 
   xdg.configFile."ideavim/ideavimrc".text = ''
