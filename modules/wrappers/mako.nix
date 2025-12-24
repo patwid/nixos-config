@@ -2,7 +2,7 @@
 let
   inherit (config) colors;
 in
-wrappers.wrapperModules.mako.apply {
+wrappers.wrapperModules.mako.wrap {
   inherit pkgs;
   settings = {
     font = "sans-serif 10";

@@ -11,4 +11,3 @@ final: prev:
       }
     )
   )
-  |> lib.mapAttrs (_: pkg: pkg.wrapper)
