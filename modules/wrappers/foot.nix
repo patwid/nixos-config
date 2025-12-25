@@ -2,8 +2,12 @@
 let
   inherit (config) colors terminal;
 in
-wrappers.wrapperModules.foot.apply {
+wrappers.wrapperModules.foot.wrap {
   inherit pkgs;
+
+  # TODO: temporary workaround for issue: https://github.com/BirdeeHub/nix-wrapper-modules/issues/109
+  drv.dontFixup = true;
+
   settings = {
     main.font = "monospace:size=${toString terminal.fontsize}";
     main.pad = "8x4";
