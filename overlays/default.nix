@@ -16,6 +16,10 @@ localpkgs
   inherit stable;
   inherit (stable) teleport_16;
 
+  chromium = prev.chromium.override {
+    enableWideVine = true;
+  };
+
   menu-news = final.menu-feed.override {
     name = "news";
     opener = final.xdg-open;
