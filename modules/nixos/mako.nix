@@ -3,8 +3,7 @@ let
   inherit (config) colors;
 in
 {
-  environment.systemPackages = [
-    pkgs.libnotify
-    pkgs.mako
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs) libnotify mako;
+  };
 }
