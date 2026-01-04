@@ -15,6 +15,9 @@
     wrappers.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
+
+    nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
+    nix-jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
