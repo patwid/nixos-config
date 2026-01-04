@@ -1,4 +1,5 @@
 {
+  nix-jetbrains-plugins,
   config,
   lib,
   home-manager,
@@ -14,6 +15,10 @@ in
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
+
+  home-manager.extraSpecialArgs = {
+    inherit nix-jetbrains-plugins;
+  };
 
   home-manager.users.${user.name} = {
     home.username = "${user.name}";
