@@ -1,11 +1,12 @@
 {
+  inputs,
   config,
   lib,
-  nixos-apple-silicon,
   hostname,
   ...
 }:
 let
+  inherit (inputs) nixos-apple-silicon;
   inherit (config) appleSilicon;
   inherit (config.nixpkgs) hostPlatform;
 in

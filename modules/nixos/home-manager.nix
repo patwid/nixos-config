@@ -1,11 +1,11 @@
 {
-  nix-jetbrains-plugins,
+  inputs,
   config,
   lib,
-  home-manager,
   ...
-}@inputs:
+}:
 let
+  inherit (inputs) home-manager;
   inherit (config) user system hostPlatform;
 in
 {
@@ -17,7 +17,7 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.extraSpecialArgs = {
-    inherit nix-jetbrains-plugins;
+    inherit inputs;
   };
 
   home-manager.users.${user.name} = {

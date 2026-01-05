@@ -1,4 +1,7 @@
-{ nixos-hardware, ... }:
+{ inputs, ... }:
+let
+  inherit (inputs) nixos-hardware;
+in
 {
   imports = [
     nixos-hardware.nixosModules.common-pc

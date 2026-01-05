@@ -1,19 +1,18 @@
 {
-  self,
+  inputs,
   config,
   pkgs,
-  nixpkgs,
-  nixpkgs-stable,
-  nur,
   hostname,
-  wrappers,
   lib,
   ...
-}@inputs:
+}:
 let
+  inherit (inputs) self nixpkgs nixpkgs-stable nur;
   inherit (config) user;
 
-  wrapperOverlay = import ../wrappers/overlay.nix { inherit config lib wrappers; };
+  wrapperOverlay = import ../wrappers/overlay.nix {
+    inherit inputs config lib;
+  };
 in
 {
   networking.hostName = hostname;
@@ -36,6 +35,7 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
+
   nixpkgs.overlays = [
     nur.overlays.default
     wrapperOverlay

@@ -24,7 +24,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-stable,
       ...
     }@inputs:
     let
@@ -41,7 +40,7 @@
         |> lib.mapAttrs' (
           name: _:
           lib.nameValuePair (lib.removeSuffix ".nix" name) (
-            import ./overlays/${name} { inherit nixpkgs-stable lib; }
+            import ./overlays/${name} { inherit inputs lib; }
           )
         );
 
@@ -55,8 +54,8 @@
             hostname: _:
             lib.nixosSystem {
               inherit lib;
-              specialArgs = inputs // {
-                inherit hostname;
+              specialArgs = {
+                inherit inputs hostname;
               };
               modules =
                 lib.modulesIn system ./hosts/${system}/${hostname} ++ lib.modulesIn system ./modules/nixos;

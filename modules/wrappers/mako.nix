@@ -1,5 +1,6 @@
-{ config, pkgs, wrappers, ... }:
+{ inputs, config, pkgs, ... }:
 let
+  inherit (inputs) wrappers;
   inherit (config) colors;
 in
 wrappers.wrapperModules.mako.wrap {

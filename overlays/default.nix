@@ -1,6 +1,8 @@
-{ nixpkgs-stable, lib, ... }:
+{ inputs, lib, ... }:
 final: prev:
 let
+  inherit (inputs) nixpkgs-stable;
+
   localpkgs = import ../packages {
     inherit lib;
     pkgs = prev;
