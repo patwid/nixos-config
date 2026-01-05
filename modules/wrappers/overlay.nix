@@ -1,4 +1,4 @@
-{ config, lib, wrappers }:
+{ inputs, config, lib }:
 final: prev:
   builtins.readDir ../wrappers
   |> lib.filterAttrs (name: _: name != "overlay.nix")
@@ -6,7 +6,7 @@ final: prev:
     name: _:
     lib.nameValuePair (lib.removeSuffix ".nix" name) (
       import ../wrappers/${name} {
-        inherit config lib wrappers;
+        inherit inputs config lib;
         pkgs = prev;
       }
     )

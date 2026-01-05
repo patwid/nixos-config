@@ -1,4 +1,7 @@
-{ nixos-hardware, ... }:
+{ inputs, pkgs, ... }:
+let
+  inherit (inputs) nixos-hardware;
+in
 {
   imports = with nixos-hardware.nixosModules; [
     common-cpu-intel

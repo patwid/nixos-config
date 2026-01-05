@@ -1,5 +1,5 @@
 {
-  nix-jetbrains-plugins,
+  inputs,
   osConfig,
   lib,
   pkgs,
@@ -8,7 +8,7 @@
 let
   inherit (osConfig) colors work ideaExtraVmopts;
   inherit (pkgs.stdenv.hostPlatform) system;
-  inherit (nix-jetbrains-plugins) plugins;
+  inherit (inputs.nix-jetbrains-plugins) plugins;
 
   idea = pkgs.jetbrains.idea.override {
     vmopts =

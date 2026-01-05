@@ -1,5 +1,6 @@
-{ config, lib, pkgs, wrappers, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
+  inherit (inputs) wrappers;
   inherit (config) colors terminal;
 in
 wrappers.wrapperModules.foot.wrap {
