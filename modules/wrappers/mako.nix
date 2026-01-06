@@ -5,12 +5,6 @@ let
 in
 wrappers.wrapperModules.mako.wrap {
   inherit pkgs;
-  # TODO: see https://github.com/BirdeeHub/nix-wrapper-modules/pull/112
-  filesToPatch = [
-    "share/dbus-1/services/fr.emersion.mako.service"
-    "share/systemd/user/mako.service"
-    "lib/systemd/user/mako.service"
-  ];
   settings = {
     font = "sans-serif 10";
     icons = "false";
