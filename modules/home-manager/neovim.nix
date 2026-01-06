@@ -1,8 +1,4 @@
-{ pkgs, osConfig, ... }:
-
-let
-  inherit (osConfig) colors;
-in
+{ pkgs, ... }:
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -27,7 +23,7 @@ in
         autocmd ColorScheme * highlight WinSeparator ctermbg=None
       augroup END
 
-      set background=${colors.variant}
+      set background=light
       colorscheme simple
 
       " https://github.com/vim/colorschemes/wiki/How-to-override-a-colorscheme%3F
