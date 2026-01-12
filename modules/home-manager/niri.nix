@@ -56,20 +56,6 @@ in
       '';
     };
 
-    systemd.user.services.xwayland-satellite = {
-      Unit = {
-        Description = "Xwayland satellite";
-        PartOf = "graphical-session.target";
-        After = "graphical-session.target";
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = lib.getExe pkgs.xwayland-satellite;
-      };
-    };
-
     home.packages = with pkgs; [ xwayland-satellite ];
 
     home.activation = {
@@ -82,10 +68,6 @@ in
       {
         hotkey-overlay = {
           skip-at-startup = null;
-        };
-
-        environment = {
-          DISPLAY = ''":0"'';
         };
 
         cursor = {
