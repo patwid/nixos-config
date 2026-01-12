@@ -21,21 +21,6 @@ in
     };
   };
 
-  workspaceOutputAssign = [
-    {
-      output = "DP-3";
-      workspace = "1";
-    }
-    {
-      output = "DP-2";
-      workspace = "10";
-    }
-  ];
-
-  swayExtraConfig = ''
-    focus output DP-3
-  '';
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

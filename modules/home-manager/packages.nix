@@ -24,7 +24,6 @@ in
     pavucontrol
     ripgrep
     slurp
-    sway-contrib.grimshot
     swaybg
     unzip
     whatsapp
