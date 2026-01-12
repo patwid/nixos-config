@@ -3,7 +3,7 @@ let
   inherit (inputs) wrappers;
   inherit (config) colors terminal;
 in
-wrappers.wrapperModules.foot.wrap {
+wrappers.wrappedModules.foot.wrap {
   inherit pkgs;
 
   settings = {

@@ -3,7 +3,7 @@ let
   inherit (inputs) wrappers;
   inherit (config) work;
 in
-wrappers.wrapperModules.git.wrap {
+wrappers.wrappedModules.git.wrap {
   inherit pkgs;
 
   settings = {
