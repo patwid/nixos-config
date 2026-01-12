@@ -22,10 +22,6 @@ wrappers.wrappedModules.waybar.wrap {
         "clock#time"
       ];
 
-      "sway/workspaces" = {
-        disable-scroll = true;
-      };
-
       cpu = {
         format = "";
         format-warning = "CPU {load}";
