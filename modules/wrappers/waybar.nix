@@ -7,55 +7,54 @@ wrappers.wrappedModules.waybar.wrap {
   inherit pkgs;
 
   settings = {
-    mainBar = {
-      ipc = true;
+    ipc = true;
 
-      modules-left = [
-        "niri/workspaces"
-      ];
-      modules-right = [
-        "cpu"
-        "memory"
-        "custom/vpn"
-        "battery"
-        "clock#date"
-        "clock#time"
-      ];
+    modules-left = [
+      "niri/workspaces"
+    ];
 
-      cpu = {
-        format = "";
-        format-warning = "CPU {load}";
-        states = {
-          warning = 75;
-        };
+    modules-right = [
+      "cpu"
+      "memory"
+      "custom/vpn"
+      "battery"
+      "clock#date"
+      "clock#time"
+    ];
+
+    cpu = {
+      format = "";
+      format-warning = "CPU {load}";
+      states = {
+        warning = 75;
       };
+    };
 
-      memory = {
-        format = "";
-        format-warning = "MEM {avail}G";
-        states = {
-          warning = 75;
-        };
+    memory = {
+      format = "";
+      format-warning = "MEM {avail}G";
+      states = {
+        warning = 75;
       };
+    };
 
-      "custom/vpn" = {
-        format = "{}";
-        exec = "echo 'VPN'";
-        exec-if = "test -d /proc/sys/net/ipv4/conf/tun0";
-        interval = 10;
-      };
+    "custom/vpn" = {
+      format = "{}";
+      exec = "echo 'VPN'";
+      exec-if = "test -d /proc/sys/net/ipv4/conf/tun0";
+      interval = 10;
+    };
 
-      battery = {
-        format = "BAT {capacity}%";
-        design-capacity = true;
-        states = {
-          warning = 30;
-        };
+    battery = {
+      format = "BAT {capacity}%";
+      design-capacity = true;
+      states = {
+        warning = 30;
       };
+    };
 
-      "clock#date" = {
-        format = "{:%a, %d %b}";
-      };
+    "clock#date" = {
+      format = "{:%a, %d %b}";
     };
   };
 
