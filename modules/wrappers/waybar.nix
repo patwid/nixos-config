@@ -7,8 +7,6 @@ wrappers.wrappedModules.waybar.wrap {
   inherit pkgs;
 
   settings = {
-    ipc = true;
-
     modules-left = [
       "niri/workspaces"
     ];
