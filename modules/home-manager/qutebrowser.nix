@@ -15,40 +15,44 @@ in
   programs.qutebrowser = {
     enable = true;
     quickmarks = {
+      "1p" = "https://ergon.1password.eu/";
+      ab = "https://axonlab.atlassian.net/";
+      ac = "https://axonlab.atlassian.net/wiki/home";
       b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=767";
       ba = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=2544";
       bl = "https://axonlab.atlassian.net/jira/software/c/projects/AW/boards/13/backlog?label=omega";
-      ab = "https://axonlab.atlassian.net/";
+      c = "https://confluence.ergon.ch/";
+      dd = "https://app.datadoghq.eu/";
       g = "https://grafana.axenita.dev/";
       i3 = "https://i3wm.org/docs/userguide.html";
       lb = "https://dev-latest-beta.axlab.ch/api/axonlab/login/axenita";
       lbb = "https://dev-latest-beta-axon-baden.axlab.ch/api/axonlab/login/axenita";
       lbt = "https://dev-latest-beta-axon-thun.axlab.ch/api/axonlab/login/axenita";
       lbz = "https://dev-latest-beta-axon-zuerich.axlab.ch/api/axonlab/login/axenita";
-      ls = "https://dev-latest-stable.axlab.ch/api/axonlab/login/axenita";
-      lsb = "https://dev-latest-stable-axon-baden.axlab.ch/api/axonlab/login/axenita";
-      lst = "https://dev-latest-stable-axon-thun.axlab.ch/api/axonlab/login/axenita";
-      lsz = "https://dev-latest-stable-axon-zuerich.axlab.ch/api/axonlab/login/axenita";
       lm = "https://dev-latest-master.axlab.ch/api/axonlab/login/axenita";
       lmb = "https://dev-latest-master-axon-baden.axlab.ch/api/axonlab/login/axenita";
       lmt = "https://dev-latest-master-axon-thun.axlab.ch/api/axonlab/login/axenita";
       lmz = "https://dev-latest-master-axon-zuerich.axlab.ch/api/axonlab/login/axenita";
       log = "https://logsearch.axenita.dev/";
-      nt = "https://nixpk.gs/pr-tracker.html";
+      ls = "https://dev-latest-stable.axlab.ch/api/axonlab/login/axenita";
+      lsb = "https://dev-latest-stable-axon-baden.axlab.ch/api/axonlab/login/axenita";
+      lst = "https://dev-latest-stable-axon-thun.axlab.ch/api/axonlab/login/axenita";
+      lsz = "https://dev-latest-stable-axon-zuerich.axlab.ch/api/axonlab/login/axenita";
+      mp = "https://post.sa-portal.ch/";
+      mt = "https://webmail.flashcable.ch/";
       nc = "https://git.sr.ht/~patwid/nixos-config";
+      nt = "https://nixpk.gs/pr-tracker.html";
+      ph = "https://plat-homepage.axlab.ch/";
       s = "http://stash.ergon.ch/";
-      saa = "https://post.sa-portal.ch/";
+      sc = "https://sanacare.cloud.com";
       st = "http://localhost:8384/";
       stn = "http://syncthing.local:8384/";
-      t = "https://tower.axenita.ch/";
+      t = "http://transmission.local:9091/transmission/web/";
       td = "https://tower.axlab.ch/";
-      tm = "http://transmission.local:9091/transmission/web/";
+      tl = "https://tower-latestmaster.axlab.ch/";
+      tp = "https://tower.axenita.ch/";
+      tt = "https://tower-test.axlab.ch/instances";
       yt = "https://youtube.com";
-      mt = "https://webmail.flashcable.ch/";
-      c = "https://confluence.ergon.ch/";
-      ac = "https://axonlab.atlassian.net/wiki/home";
-      dd = "https://app.datadoghq.eu/";
-      "1p" = "https://ergon.1password.eu/";
     };
     searchEngines = {
       # URL parameters documentation: https://duckduckgo.com/duckduckgo-help-pages/settings/params/

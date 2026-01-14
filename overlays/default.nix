@@ -52,6 +52,10 @@ localpkgs
     name = "mattermost";
     url = "https://mattermost.ergon.ch";
   };
+  medbase = final.webapp.override {
+    name = "medbase";
+    url = "https://post.sa-portal.ch";
+  };
   outlook = final.webapp.override {
     name = "outlook";
     url = "https://outlook.office.com/mail";
@@ -59,6 +63,10 @@ localpkgs
   rds = final.webapp.override {
     name = "rds";
     url = "https://rds.ergon.ch";
+  };
+  sanacare = final.webapp.override {
+    name = "sanacare";
+    url = "https://sanacare.cloud.com";
   };
   smartaz = final.webapp.override {
     name = "smartaz";
