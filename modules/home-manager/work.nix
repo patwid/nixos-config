@@ -11,10 +11,12 @@ lib.mkIf (work.enable) {
   home.packages = with pkgs; [
     _1password
     mattermost
+    medbase
     outlook
     rds
+    sanacare
     smartaz
-    teleport_16
     teams
+    teleport_16
   ];
 }
