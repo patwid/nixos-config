@@ -10,12 +10,15 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   inherit (inputs.nix-jetbrains-plugins) plugins;
 
+  vmopts =
+    ''
+      -Dawt.toolkit.name=WLToolkit
+    ''
+    + ideaExtraVmopts;
+
+  # Overriding vmopts of idea pkg does not seem to work
   idea = pkgs.jetbrains.idea.override {
-    vmopts =
-      ''
-        -Dawt.toolkit.name=WLToolkit
-      ''
-      + ideaExtraVmopts;
+    inherit vmopts;
   };
 
   ideaPlugins = builtins.attrValues {
@@ -23,6 +26,11 @@ let
   };
 in
 lib.mkIf (work.enable) {
+  # Workaround because overriding vmopts does not work
+  home.sessionVariables = {
+    IDEA_VM_OPTIONS = vmopts |> lib.splitString "\n" |> lib.concatStringsSep " ";
+  };
+
   home.packages = [
     (pkgs.jetbrains.plugins.addPlugins idea ideaPlugins)
   ];
