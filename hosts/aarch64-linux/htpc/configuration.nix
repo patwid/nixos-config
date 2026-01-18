@@ -12,9 +12,9 @@ in
   home.enable = true;
   terminal.fontsize = 13;
 
-  output = {
+  outputs = {
     HDMI-A-1 = {
-      scale = "2";
+      scale = 2;
     };
   };
 

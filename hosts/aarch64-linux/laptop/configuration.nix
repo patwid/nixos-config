@@ -13,9 +13,9 @@ in
   work.enable = true;
   work.remote = true;
 
-  output = {
+  outputs = {
     eDP-1 = {
-      scale = "1.4";
+      scale = 1.4;
     };
   };
 

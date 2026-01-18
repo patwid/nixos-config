@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   options = {
-    output = lib.mkOption {
-      type = with lib; types.attrsOf (types.attrsOf types.str);
+    outputs = lib.mkOption {
+      type = with lib; types.attrs;
       default = { };
     };
   };
@@ -11,6 +11,18 @@
       niri = {
         enable = true;
       };
+
+      bash = {
+        loginShellInit = ''
+          if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+            exec niri-session -l >/dev/null 2>&1
+          fi
+        '';
+      };
+    };
+
+    environment.systemPackages = builtins.attrValues {
+      inherit (pkgs) xwayland-satellite;
     };
   };
 }
