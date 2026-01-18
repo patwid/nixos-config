@@ -15,9 +15,13 @@ in
   group.gid = 1111;
   work.enable = true;
 
-  output = {
+  outputs = {
     DP-2 = {
-      position = "0 0";
+      position = {
+        _keys = true;
+        x = 0;
+        y = 0;
+      };
     };
   };
 
