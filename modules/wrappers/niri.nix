@@ -43,8 +43,9 @@ wrappers.wrappedModules.niri.wrap {
         warp-mouse-to-focus = null;
 
         focus-follows-mouse = {
-          _keys = true;
-          max-scroll-amount = "0%";
+          _attrs = {
+            max-scroll-amount = "0%";
+          };
         };
       };
 
@@ -123,18 +124,36 @@ wrappers.wrappedModules.niri.wrap {
         "Mod+P".spawn = "menu-pass";
         "Super+Alt+L".spawn = "swaylock";
 
-        # TODO: allow-when-locked=true
-        "XF86AudioRaiseVolume".spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1.0";
-        "XF86AudioLowerVolume".spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
-        "XF86AudioMute".spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
-        "XF86AudioMicMute".spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle" ];
+        "XF86AudioRaiseVolume" = {
+          _attrs = { allow-when-locked = true; };
+          spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ --limit 1.0";
+        };
+        "XF86AudioLowerVolume" = {
+          _attrs = { allow-when-locked = true; };
+          spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+        };
+        "XF86AudioMute" = {
+          _attrs = { allow-when-locked = true; };
+          spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle" ];
+        };
+        "XF86AudioMicMute" = {
+          _attrs = { allow-when-locked = true; };
+          spawn = [ "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle" ];
+        };
 
-        # TODO: allow-when-locked=true
-        "XF86MonBrightnessUp".spawn = [ "brightnessctl" "set" "20%+" ];
-        "XF86MonBrightnessDown".spawn = [ "brightnessctl" "set" "20%-" ];
+        "XF86MonBrightnessUp" = {
+          _attrs = { allow-when-locked = true; };
+          spawn = [ "brightnessctl" "set" "20%+" ];
+        };
+        "XF86MonBrightnessDown" = {
+          _attrs = { allow-when-locked = true; };
+          spawn = [ "brightnessctl" "set" "20%-" ];
+        };
 
-        # TODO: repeat=false
-        "Mod+O".toggle-overview = null;
+        "Mod+O" = {
+          _attrs = { repeat = false; };
+          toggle-overview = null;
+        };
 
         "Mod+Shift+Q".close-window = null;
 
@@ -171,11 +190,22 @@ wrappers.wrappedModules.niri.wrap {
         "Mod+Shift+U".move-workspace-down = null;
         "Mod+Shift+I".move-workspace-up = null;
 
-        # TODO: cooldown-ms=150
-        "Mod+WheelScrollDown".focus-workspace-down = null;
-        "Mod+WheelScrollUp".focus-workspace-up = null;
-        "Mod+Ctrl+WheelScrollDown".move-column-to-workspace-down = null;
-        "Mod+Ctrl+WheelScrollUp".move-column-to-workspace-up = null;
+        "Mod+WheelScrollDown" = {
+          _attrs = { cooldown-ms = 150; };
+          focus-workspace-down = null;
+        };
+        "Mod+WheelScrollUp" = {
+          _attrs = { cooldown-ms = 150; };
+          focus-workspace-up = null;
+        };
+        "Mod+Ctrl+WheelScrollDown" = {
+          _attrs = { cooldown-ms = 150; };
+          move-column-to-workspace-down = null;
+        };
+        "Mod+Ctrl+WheelScrollUp" = {
+          _attrs = { cooldown-ms = 150; };
+          move-column-to-workspace-up = null;
+        };
 
         "Mod+WheelScrollRight".focus-column-right = null;
         "Mod+WheelScrollLeft".focus-column-left = null;
@@ -239,8 +269,10 @@ wrappers.wrappedModules.niri.wrap {
         "Ctrl+Print".screenshot-screen = null;
         "Alt+Print".screenshot-window = null;
 
-        # TODO: allow-inhibiting = false;
-        "Mod+Escape".toggle-keyboard-shortcuts-inhibit = null;
+        "Mod+Escape" = {
+          _attrs = { allow-inhibiting = false; };
+          toggle-keyboard-shortcuts-inhibit = null;
+        };
 
         "Mod+Shift+E".quit = null;
         "Ctrl+Alt+Delete".quit = null;

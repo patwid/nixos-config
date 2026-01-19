@@ -18,9 +18,10 @@ in
   outputs = {
     DP-2 = {
       position = {
-        _keys = true;
-        x = 0;
-        y = 0;
+        _attrs = {
+          x = 0;
+          y = 0;
+        };
       };
     };
   };

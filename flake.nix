@@ -11,7 +11,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    wrappers.url = "github:birdeehub/nix-wrapper-modules";
+    # TODO: switch back to upstream
+    # wrappers.url = "github:birdeehub/nix-wrapper-modules";
+    wrappers.url = "github:patwid/nix-wrapper-modules/niri";
     wrappers.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
