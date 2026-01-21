@@ -7,7 +7,12 @@
   ...
 }:
 let
-  inherit (inputs) self nixpkgs nixpkgs-stable nur;
+  inherit (inputs)
+    self
+    nixpkgs
+    nixpkgs-stable
+    nur
+    ;
   inherit (config) user;
 
   wrapperOverlay = import ../wrappers/overlay.nix {

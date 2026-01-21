@@ -1,4 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (inputs) wrappers;
   inherit (config) colors terminal;

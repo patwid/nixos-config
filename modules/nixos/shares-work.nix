@@ -33,7 +33,7 @@ lib.mkIf (work.enable) (
         group = config.users.groups.${primary};
         uid = if user'.uid == null then "1000" else toString user'.uid;
         gid = if group.gid == null then "100" else toString group.gid;
-        options = [ ''noauto,user=${user.name},domain=ERGON,uid=${uid},gid=${gid}'' ];
+        options = [ "noauto,user=${user.name},domain=ERGON,uid=${uid},gid=${gid}" ];
       in
       lib.mkIf (work.remote) {
         # TODO: remove once https://github.com/NixOS/nixpkgs/issues/34638 is

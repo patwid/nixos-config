@@ -1,4 +1,10 @@
-{ config, lib, pkgs, wrappers, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  wrappers,
+  ...
+}:
 let
   inherit (config) colors;
 in

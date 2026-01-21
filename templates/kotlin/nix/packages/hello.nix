@@ -1,4 +1,8 @@
-{ lib, stdenv, gradle }:
+{
+  lib,
+  stdenv,
+  gradle,
+}:
 stdenv.mkDerivation (finalAttrs: {
   pname = "hello";
   version = "0-unstable-2025-01-01";

@@ -21,9 +21,7 @@
         builtins.readDir ./nix/overlays
         |> lib.mapAttrs' (
           name: _:
-          lib.nameValuePair (lib.removeSuffix ".nix" name) (
-            import ./nix/overlays/${name} { inherit lib; }
-          )
+          lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./nix/overlays/${name} { inherit lib; })
         );
     }
     // eachDefaultSystem (
@@ -43,9 +41,7 @@
           builtins.readDir ./nix/shells
           |> lib.mapAttrs' (
             name: _:
-            lib.nameValuePair (lib.removeSuffix ".nix" name) (
-              import ./nix/shells/${name} { inherit pkgs; }
-            )
+            lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./nix/shells/${name} { inherit pkgs; })
           );
 
         formatter = pkgs.nixfmt-rfc-style;
