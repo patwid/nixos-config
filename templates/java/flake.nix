@@ -44,7 +44,7 @@
             lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./nix/shells/${name} { inherit pkgs; })
           );
 
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs.nixfmt;
       }
     );
 }
