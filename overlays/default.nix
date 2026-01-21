@@ -76,6 +76,10 @@ localpkgs
     name = "teams";
     url = "https://teams.microsoft.com";
   };
+  telegram-web = final.webapp.override {
+    name = "telegram";
+    url = "https://web.telegram.org";
+  };
   whatsapp = final.webapp.override {
     name = "whatsapp";
     url = "https://web.whatsapp.com";

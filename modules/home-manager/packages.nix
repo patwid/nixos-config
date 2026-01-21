@@ -25,6 +25,7 @@ in
     ripgrep
     slurp
     swaybg
+    telegram-web
     unzip
     whatsapp
     wl-clipboard
