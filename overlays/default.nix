@@ -5,7 +5,7 @@ let
 
   localpkgs = import ../packages {
     inherit lib;
-    pkgs = prev;
+    pkgs = final;
   };
 
   stable = import nixpkgs-stable {

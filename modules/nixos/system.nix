@@ -43,8 +43,8 @@ in
 
   nixpkgs.overlays = [
     nur.overlays.default
-    wrapperOverlay
     self.overlays.default
+    wrapperOverlay
   ];
 
   system.autoUpgrade = {
