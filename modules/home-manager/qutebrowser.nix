@@ -16,15 +16,15 @@ in
     enable = true;
     quickmarks = {
       "1p" = "https://ergon.1password.eu/";
-      ab = "https://axonlab.atlassian.net/";
       ac = "https://axonlab.atlassian.net/wiki/home";
+      aj = "https://axonlab.atlassian.net/";
       b = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=767";
       ba = "https://jira.ergon.ch/secure/RapidBoard.jspa?rapidView=99&quickFilter=2544";
+      bb = "http://stash.ergon.ch/";
       bl = "https://axonlab.atlassian.net/jira/software/c/projects/AW/boards/13/backlog?label=omega";
       c = "https://confluence.ergon.ch/";
-      dd = "https://app.datadoghq.eu/";
-      g = "https://grafana.axenita.dev/";
-      i3 = "https://i3wm.org/docs/userguide.html";
+      g = "https://grafana.axlab.ch/";
+      gd = "https://grafana.axenita.dev/";
       lb = "https://dev-latest-beta.axlab.ch/api/axonlab/login/axenita";
       lbb = "https://dev-latest-beta-axon-baden.axlab.ch/api/axonlab/login/axenita";
       lbt = "https://dev-latest-beta-axon-thun.axlab.ch/api/axonlab/login/axenita";
@@ -43,7 +43,6 @@ in
       nc = "https://git.sr.ht/~patwid/nixos-config";
       nt = "https://nixpk.gs/pr-tracker.html";
       ph = "https://plat-homepage.axlab.ch/";
-      s = "http://stash.ergon.ch/";
       sc = "https://sanacare.cloud.com";
       st = "http://localhost:8384/";
       stn = "http://syncthing.local:8384/";
@@ -64,7 +63,9 @@ in
       no = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       np = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}";
       nt = "https://nixpk.gs/pr-tracker.html?pr={}";
-      p = "https://perplexity.ai/search?q={}";
+      p = "https://axonlab.atlassian.net/browse/PROB-{}";
+      pt = "https://axonlab.atlassian.net/browse/PLAT-{}";
+      px = "https://perplexity.ai/search?q={}";
       s = "https://git.sr.ht/~{}";
       sp = "https://git.sr.ht/~patwid/{}";
       t = "https://trouble{}.axlab.ch/api/login/axenita";
