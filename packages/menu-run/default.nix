@@ -29,4 +29,3 @@ writeShellApplication {
     fi
   '';
 }
-

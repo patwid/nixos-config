@@ -48,13 +48,13 @@
             ];
 
             shellHook =
-            let
-              binDir = "~/.local/bin"
-            in
-            ''
-              mkdir -p ${binDir}
-              ln -sfT $JAVA_HOME ${binDir}/jdk21
-            '';
+              let
+                binDir = "~/.local/bin";
+              in
+              ''
+                mkdir -p ${binDir}
+                ln -sfT $JAVA_HOME ${binDir}/jdk21
+              '';
           };
         };
 

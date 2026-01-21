@@ -10,11 +10,10 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
   inherit (inputs.nix-jetbrains-plugins) plugins;
 
-  vmopts =
-    ''
-      -Dawt.toolkit.name=WLToolkit
-    ''
-    + ideaExtraVmopts;
+  vmopts = ''
+    -Dawt.toolkit.name=WLToolkit
+  ''
+  + ideaExtraVmopts;
 
   # Overriding vmopts of idea pkg does not seem to work
   idea = pkgs.jetbrains.idea.override {
