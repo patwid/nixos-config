@@ -8,10 +8,6 @@ let
   inherit (osConfig) colors;
 in
 {
-  home.sessionVariables = {
-    BROWSER = "qutebrowser";
-  };
-
   programs.qutebrowser = {
     enable = true;
     quickmarks = {

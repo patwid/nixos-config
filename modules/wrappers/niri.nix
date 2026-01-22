@@ -8,6 +8,7 @@
 let
   inherit (inputs) wrappers;
   inherit (config) colors outputs;
+  inherit (config.environment.sessionVariables) XDG_SCREENSHOTS_DIR;
 in
 wrappers.wrappedModules.niri.wrap {
   inherit pkgs;
@@ -85,9 +86,7 @@ wrappers.wrappedModules.niri.wrap {
 
     prefer-no-csd = null;
 
-    # TODO: move xdg screenshots dir option to nixos config
-    # screenshot-path = "${home.sessionVariables.XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png";
-    screenshot-path = "~/pictures/screenshots/%Y%m%d_%H%M%S%s.png";
+    screenshot-path = "${XDG_SCREENSHOTS_DIR}/%Y%m%d_%H%M%S%s.png";
 
     layer-rules = [
       {
