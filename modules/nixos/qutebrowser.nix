@@ -1,0 +1,5 @@
+{
+  environment.sessionVariables = {
+    BROWSER = "qutebrowser";
+  };
+}

@@ -16,8 +16,4 @@ in
     templates = null;
     videos = "${home.homeDirectory}/videos";
   };
-
-  home.sessionVariables = {
-    XDG_SCREENSHOTS_DIR = "${home.homeDirectory}/pictures/screenshots";
-  };
 }
