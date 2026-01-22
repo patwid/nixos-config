@@ -59,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1769015285,
-        "narHash": "sha256-MlqzCJbckJsgwfkRs64H2xaX2Uxl4o6Z9XYfkYS1N/E=",
+        "lastModified": 1769102673,
+        "narHash": "sha256-/qvRFjn1s3bIJdSKG6IpaE6ML3j9anQKUqGhmt4Qe+E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ec0247a7a19f641595c24ac1ea4df6461d1cdb36",
+        "rev": "b0491fe55680bd19be8e74847969dad9d7784658",
         "type": "github"
       },
       "original": {
@@ -217,16 +217,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1769032327,
-        "narHash": "sha256-T/+aCIqkmZJXHxnzjec/JI3h7rPE3SIR0wXaLTEYsvk=",
-        "owner": "patwid",
+        "lastModified": 1769098082,
+        "narHash": "sha256-zORDnwTUDgIWDvuZHlaqadIcmP/ymyAaVNmFos952+Y=",
+        "owner": "birdeehub",
         "repo": "nix-wrapper-modules",
-        "rev": "a92735ce1ecd3ab2f68a756a6e3ff30213a44344",
+        "rev": "a92c9eab45d96134960d0c1877008eab785ca135",
         "type": "github"
       },
       "original": {
-        "owner": "patwid",
-        "ref": "niri",
+        "owner": "birdeehub",
         "repo": "nix-wrapper-modules",
         "type": "github"
       }
