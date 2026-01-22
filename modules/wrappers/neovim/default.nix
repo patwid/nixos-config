@@ -14,7 +14,7 @@ wrappers.wrappedModules.neovim.wrap {
       "vi"
       "vim"
     ];
-    config_directory = ./.;
+    config_directory = ./config;
   };
 
   specs.general = with pkgs.vimPlugins; [
