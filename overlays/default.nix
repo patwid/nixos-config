@@ -16,7 +16,10 @@ in
 localpkgs
 // {
   inherit stable;
-  inherit (stable) teleport_16;
+
+  teleport_16 = localpkgs.teleport_16.override {
+    withRdpClient = false;
+  };
 
   menu-news = final.menu-feed.override {
     name = "news";
