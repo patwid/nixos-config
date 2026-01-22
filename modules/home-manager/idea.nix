@@ -7,8 +7,8 @@
 }:
 let
   inherit (osConfig) work ideaExtraVmopts;
-  inherit (pkgs.stdenv.hostPlatform) system;
   inherit (inputs.nix-jetbrains-plugins) plugins;
+  inherit (inputs.nix-jetbrains-plugins.lib) pluginsForIde;
 
   vmopts = ''
     -Dawt.toolkit.name=WLToolkit
@@ -20,9 +20,11 @@ let
     inherit vmopts;
   };
 
-  ideaPlugins = builtins.attrValues {
-    inherit (plugins.${system}.idea.${idea.version}) IdeaVIM;
-  };
+  ideaPlugins =
+    pluginsForIde pkgs idea [
+      "IdeaVIM"
+    ]
+    |> builtins.attrValues;
 in
 lib.mkIf (work.enable) {
   # Workaround because overriding vmopts does not work
