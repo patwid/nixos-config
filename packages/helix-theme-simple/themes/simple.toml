@@ -1,0 +1,15 @@
+"ui.selection" = { bg = "light-gray" }
+"ui.cursor" = { bg = "default", modifiers = [ "reversed" ] }
+"ui.linenr" = { fg = "light-gray" }
+"ui.linenr.selected" = { fg = "default" }
+"ui.statusline" = { bg = "light-gray" }
+"ui.menu" = { bg = "light-gray" }
+"ui.menu.selected" = { modifiers = [ "bold" ] }
+"ui.text.focus" = { modifiers = [ "bold" ] }
+
+"comment" = { fg = "light-gray" }
+"keyword" = { modifiers = [ "bold" ] }
+"punctuation.special" = { modifiers = [ "bold" ] }
+"special" = { modifiers = [ "bold" ] }
+"type" = { modifiers = [ "bold" ] }
+"variable.builtin" = { modifiers = [ "bold" ] }
