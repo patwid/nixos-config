@@ -7,6 +7,7 @@
 let
   inherit (inputs) wrappers;
   inherit (config) work;
+  inherit (config.environment.sessionVariables) EDITOR;
 in
 wrappers.wrappedModules.git.wrap {
   inherit pkgs;
@@ -48,7 +49,7 @@ wrappers.wrappedModules.git.wrap {
       autoupdate = true;
     };
 
-    core.editor = "nvim";
+    core.editor = EDITOR;
     # core.excludesfile = "~/.gitignore"; # global gitignore
 
     rebase = {
