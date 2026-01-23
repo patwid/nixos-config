@@ -1,12 +1,6 @@
 { pkgs, ... }:
 {
-  environment = {
-    sessionVariables = {
-      EDITOR = "nvim";
-    };
-
-    systemPackages = builtins.attrValues {
-      inherit (pkgs) neovim;
-    };
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs) neovim;
   };
 }
