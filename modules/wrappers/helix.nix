@@ -1,6 +1,8 @@
 { inputs, pkgs, ... }:
 let
   inherit (inputs) wrappers;
+
+  toToml = (pkgs.formats.toml { }).generate;
 in
 wrappers.lib.wrapPackage [
   { inherit pkgs; }
@@ -8,22 +10,27 @@ wrappers.lib.wrapPackage [
     { pkgs, ... }:
     {
       package = pkgs.helix;
-      flags."--config" = pkgs.writeText "helix.toml" ''
-        theme = "simple"
 
-        [editor]
-        # Sync clipboard with system clipboard
-        default-yank-register = "+"
+      flags."--config" = toToml "helix.toml" {
+        theme = "simple";
 
-        [keys.normal]
-        # "#" = "toggle_comments"
-        # "^" = "goto_first_nonwhitespace"
-        # "$" = "goto_line_end"
+        editor = {
+          # Sync clipboard with system clipboard
+          default-yank-register = "+";
+        };
 
-        [keys.select]
-        "^" = "goto_first_nonwhitespace"
-        "$" = "goto_line_end"
-      '';
+        # keys.normal = {
+        #   "#" = "toggle_comments"
+        #   "^" = "goto_first_nonwhitespace"
+        #   "$" = "goto_line_end"
+        # };
+
+        keys.select = {
+          "^" = "goto_first_nonwhitespace";
+          "$" = "goto_line_end";
+        };
+      };
+
       suffixVar = [
         [
           "HELIX_RUNTIME"
