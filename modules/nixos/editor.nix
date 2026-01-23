@@ -1,7 +1,8 @@
+{ lib, pkgs, ... }:
 {
   environment = {
     sessionVariables = {
-      EDITOR = "nvim";
+      EDITOR = lib.getExe pkgs.helix;
     };
   };
 }
