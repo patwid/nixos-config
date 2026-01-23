@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (config) work;
 in
@@ -8,20 +13,19 @@ in
     remote = lib.mkEnableOption { };
   };
 
-  config =
-    lib.mkIf (work.enable) {
-      environment.systemPackages = builtins.attrValues {
-        inherit (pkgs)
-          _1password
-          mattermost
-          medbase
-          outlook
-          rds
-          sanacare
-          smartaz
-          teams
-          teleport_16
-          ;
+  config = lib.mkIf (work.enable) {
+    environment.systemPackages = builtins.attrValues {
+      inherit (pkgs)
+        _1password
+        mattermost
+        medbase
+        outlook
+        rds
+        sanacare
+        smartaz
+        teams
+        teleport_16
+        ;
     };
   };
 }
