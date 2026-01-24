@@ -81,15 +81,24 @@
     // eachDefaultSystem (
       system:
       let
+        overlays = [
+          self.overlays.localpkgs
+          self.overlays.default
+        ];
+
         pkgs = import nixpkgs {
-          inherit system;
+          inherit system overlays;
         };
       in
       {
-        packages = import ./packages {
-          inherit lib pkgs;
-        };
-
+        packages =
+          pkgs
+          |> lib.filterAttrs (
+            name: _:
+            builtins.elem name (
+              overlays |> map (overlay: overlay { } { }) |> map builtins.attrNames |> lib.lists.flatten
+            )
+          );
         formatter = pkgs.nixfmt;
       }
     );
