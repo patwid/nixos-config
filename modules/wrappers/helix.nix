@@ -12,7 +12,7 @@ wrappers.lib.wrapPackage [
       package = pkgs.helix;
 
       flags."--config" = toToml "helix.toml" {
-        theme = "simple";
+        theme = "focus";
 
         editor = {
           # Sync clipboard with system clipboard
@@ -35,7 +35,7 @@ wrappers.lib.wrapPackage [
         [
           "HELIX_RUNTIME"
           ":"
-          "${pkgs.helix-theme-simple}/lib/runtime"
+          "${pkgs.helix-theme-focus}/lib/runtime"
         ]
       ];
     }
