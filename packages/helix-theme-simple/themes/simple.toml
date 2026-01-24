@@ -6,8 +6,8 @@
 "ui.menu" = { bg = "light-gray" }
 "ui.menu.selected" = { modifiers = [ "bold" ] }
 "ui.text.focus" = { modifiers = [ "bold" ] }
+"diagnostic" = { underline = { style = "line" } }
 
-"comment" = { fg = "light-gray" }
 "keyword" = { modifiers = [ "bold" ] }
 "punctuation.special" = { modifiers = [ "bold" ] }
 "special" = { modifiers = [ "bold" ] }
