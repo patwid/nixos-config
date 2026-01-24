@@ -1,23 +1,5 @@
-{ inputs, lib, ... }:
-final: prev:
-let
-  inherit (inputs) nixpkgs-stable;
-
-  localpkgs = import ../packages {
-    inherit lib;
-    pkgs = final;
-  };
-
-  stable = import nixpkgs-stable {
-    inherit (prev) config;
-    inherit (prev.stdenv.hostPlatform) system;
-  };
-in
-localpkgs
-// {
-  inherit stable;
-
-  teleport_16 = localpkgs.teleport_16.override {
+_: final: prev: {
+  teleport_16 = prev.teleport_16.override {
     withRdpClient = false;
   };
 
