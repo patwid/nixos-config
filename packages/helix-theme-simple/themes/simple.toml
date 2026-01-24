@@ -8,6 +8,7 @@
 "ui.text.focus" = { modifiers = [ "bold" ] }
 "diagnostic" = { underline = { style = "line" } }
 
+"comment" = { modifiers = [ "italic" ] }
 "keyword" = { modifiers = [ "bold" ] }
 "punctuation.special" = { modifiers = [ "bold" ] }
 "special" = { modifiers = [ "bold" ] }
