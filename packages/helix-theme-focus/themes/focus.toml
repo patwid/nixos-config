@@ -5,7 +5,7 @@
 "ui.linenr.selected" = { fg = "default" }
 "ui.statusline" = { bg = "light-gray" }
 "ui.menu" = { bg = "light-gray" }
-"ui.menu.selected" = { modifiers = [ "bold" ] }
+"ui.menu.selected" = { modifiers = [ "reversed" ] }
 "ui.text.focus" = { modifiers = [ "bold" ] }
 "diagnostic" = { underline = { style = "line" } }
 
