@@ -87,7 +87,10 @@
         };
       in
       {
-        packages = pkgs;
+        packages = import ./packages {
+          inherit lib pkgs;
+        };
+
         formatter = pkgs.nixfmt;
       }
     );
