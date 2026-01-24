@@ -76,15 +76,17 @@ lib.mkIf (work.enable) (
         ];
       };
 
-      networking.firewall.extraCommands = ''
-        iptables -A INPUT -s 172.19.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.21.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.22.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.23.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.24.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.26.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.27.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.28.0.0/14 -j ACCEPT
+      networking.firewall.extraInputRules = ''
+        ip saddr {
+          172.19.0.0/16,
+          172.21.0.0/16,
+          172.22.0.0/16,
+          172.23.0.0/16,
+          172.24.0.0/16,
+          172.26.0.0/16,
+          172.27.0.0/16,
+          172.28.0.0/14
+        } accept
       '';
     })
 
@@ -118,12 +120,14 @@ lib.mkIf (work.enable) (
         ];
       };
 
-      networking.firewall.extraCommands = ''
-        iptables -A INPUT -s 172.18.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.19.0.0/16 -j ACCEPT
-        iptables -A INPUT -s 172.20.0.0/14 -j ACCEPT
-        iptables -A INPUT -s 172.24.0.0/14 -j ACCEPT
-        iptables -A INPUT -s 172.28.0.0/14 -j ACCEPT
+      networking.firewall.extraInputRules = ''
+        ip saddr {
+          172.18.0.0/16,
+          172.19.0.0/16,
+          172.20.0.0/14,
+          172.24.0.0/14,
+          172.28.0.0/14
+        } accept
       '';
     })
   ]

@@ -21,6 +21,7 @@ let
 in
 {
   networking.hostName = hostname;
+  networking.nftables.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
