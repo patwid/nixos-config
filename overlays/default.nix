@@ -87,6 +87,4 @@ localpkgs
     name = "whatsapp";
     url = "https://web.whatsapp.com";
   };
-
-  vimPlugins = prev.vimPlugins.extend (_: _: localpkgs.vimPlugins);
 }
