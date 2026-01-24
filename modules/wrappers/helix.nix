@@ -19,6 +19,10 @@ wrappers.lib.wrapPackage [
           default-yank-register = "+";
         };
 
+        editor.cursor-shape = {
+          insert = "bar";
+        };
+
         # keys.normal = {
         #   "#" = "toggle_comments"
         #   "^" = "goto_first_nonwhitespace"
