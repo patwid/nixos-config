@@ -100,6 +100,7 @@
               overlays |> map (overlay: overlay { } { }) |> builtins.foldl' (a: b: a // b) { } |> builtins.attrNames
             )
           );
+
         formatter = pkgs.nixfmt;
       }
     );
