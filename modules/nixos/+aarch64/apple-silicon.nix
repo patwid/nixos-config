@@ -39,7 +39,7 @@ in
     boot.loader.efi.canTouchEfiVariables = false;
     boot.loader.efi.efiSysMountPoint = "/boot";
 
-    boot.kernelParams = [ "apple_dcp.show_notch=1" ];
+    boot.kernelParams = [ "appledrm.show_notch=1" ];
 
     boot.extraModprobeConfig = ''
       options hid_apple fnmode=2
