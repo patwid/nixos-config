@@ -1,0 +1,34 @@
+name: Development pipeline
+on: [push]
+env:
+  NIX_CONFIG: experimental-features = nix-command flakes pipe-operators
+jobs:
+  dev-pipeline:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    container: nixos/nix:latest
+    steps:
+      - name: Clone repository
+        run: |
+          git clone --depth 1 ${{ github.server_url }}/${{ github.repository }} .
+          git config --global --add safe.directory $(pwd)
+          git checkout ${{ github.head_ref }}
+
+      - name: Check flake
+        run: |
+          nix flake check
+
+      - name: Autoformat
+        run: |
+          nix fmt **/*.nix
+          # if ! git diff --exit-code > /dev/null; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add .
+            git commit --allow-empty -m 'chore: autoformat'
+            # git commit -m 'chore: autoformat'
+            # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+            git push https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+          # fi
+
