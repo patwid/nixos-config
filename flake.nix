@@ -96,7 +96,7 @@
           |> lib.filterAttrs (
             name: _:
             builtins.elem name (
-              overlays |> map (overlay: overlay { } { }) |> map builtins.attrNames |> lib.lists.flatten
+              overlays |> map (overlay: overlay { } { }) |> builtins.foldl' (a: b: a // b) { } |> builtins.attrNames
             )
           );
         formatter = pkgs.nixfmt;
