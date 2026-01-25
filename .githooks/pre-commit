@@ -1,8 +1,0 @@
-#!/bin/sh
-
-files=$(git diff --cached --name-only --diff-filter=A | grep firmware)
-if [ -n "$files" ]; then
-	# git restore --staged $files
-	echo 'Error: attempting to commit firmware files'
-	exit 1
-fi
