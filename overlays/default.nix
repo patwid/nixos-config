@@ -3,69 +3,69 @@ _: final: prev: {
     withRdpClient = false;
   };
 
-  menu-news = final.menu-feed.override {
+  menu-news = prev.menu-feed.override {
     name = "news";
-    opener = final.xdg-open;
+    opener = prev.xdg-open;
   };
-  menu-podcasts = final.menu-feed.override {
+  menu-podcasts = prev.menu-feed.override {
     name = "podcasts";
     opener = prev.mpv;
   };
-  menu-videos = final.menu-feed.override {
+  menu-videos = prev.menu-feed.override {
     name = "videos";
     opener = prev.mpv;
   };
 
-  menu-movies = final.menu-mpv.override {
+  menu-movies = prev.menu-mpv.override {
     name = "movies";
     path = "~/videos/movies";
   };
-  menu-music = final.menu-mpv.override {
+  menu-music = prev.menu-mpv.override {
     name = "music";
     path = "~/music";
   };
-  menu-shows = final.menu-mpv.override {
+  menu-shows = prev.menu-mpv.override {
     name = "shows";
     path = "~/videos/tv_shows";
   };
 
-  _1password = final.webapp.override {
+  _1password = prev.webapp.override {
     name = "1password";
     url = "https://ergon.1password.eu";
   };
-  mattermost = final.webapp.override {
+  mattermost = prev.webapp.override {
     name = "mattermost";
     url = "https://mattermost.ergon.ch";
   };
-  medbase = final.webapp.override {
+  medbase = prev.webapp.override {
     name = "medbase";
     url = "https://post.sa-portal.ch";
   };
-  outlook = final.webapp.override {
+  outlook = prev.webapp.override {
     name = "outlook";
     url = "https://outlook.office.com/mail";
   };
-  rds = final.webapp.override {
+  rds = prev.webapp.override {
     name = "rds";
     url = "https://rds.ergon.ch";
   };
-  sanacare = final.webapp.override {
+  sanacare = prev.webapp.override {
     name = "sanacare";
     url = "https://sanacare.cloud.com";
   };
-  smartaz = final.webapp.override {
+  smartaz = prev.webapp.override {
     name = "smartaz";
     url = "https://smartaz.ergon.ch";
   };
-  teams = final.webapp.override {
+  teams = prev.webapp.override {
     name = "teams";
     url = "https://teams.microsoft.com";
   };
-  telegram-web = final.webapp.override {
+  telegram-web = prev.webapp.override {
     name = "telegram";
     url = "https://web.telegram.org";
   };
-  whatsapp = final.webapp.override {
+  whatsapp = prev.webapp.override {
     name = "whatsapp";
     url = "https://web.whatsapp.com";
   };
