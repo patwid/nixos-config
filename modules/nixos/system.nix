@@ -29,6 +29,7 @@ in
     "pipe-operators"
   ];
   nix.settings.auto-optimise-store = true;
+  nix.settings.trusted-users = [ "@wheel" ];
 
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
