@@ -82,6 +82,7 @@
       system:
       let
         overlays = [
+          self.overlays.stable
           self.overlays.localpkgs
           self.overlays.default
         ];

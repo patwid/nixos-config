@@ -4,10 +4,8 @@ let
   inherit (inputs) nixpkgs-stable;
 
   stable = import nixpkgs-stable {
-    inherit (prev) config;
-    inherit (prev.stdenv.hostPlatform) system;
+    inherit (final) config;
+    inherit (final.stdenv.hostPlatform) system;
   };
 in
-{
-  inherit stable;
-}
+{ }
