@@ -35,7 +35,7 @@ in
       lst = "https://dev-latest-stable-axon-thun.axlab.ch/api/axonlab/login/axenita";
       lsz = "https://dev-latest-stable-axon-zuerich.axlab.ch/api/axonlab/login/axenita";
       mp = "https://post.sa-portal.ch/";
-      mt = "https://webmail.flashcable.ch/";
+      mt = "https://webmail.tbwnet.ch/";
       nc = "https://git.sr.ht/~patwid/nixos-config";
       nt = "https://nixpk.gs/pr-tracker.html";
       ph = "https://plat-homepage.axlab.ch/";
