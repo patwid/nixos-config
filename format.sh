@@ -12,5 +12,6 @@ if [ -n "$files" ]; then
 	files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.nix$')
 	if [ -n "$files" ]; then
 		git commit -m 'chore: autoformat' -- $files
+		git push origin $GIT_REF
 	fi
 fi
