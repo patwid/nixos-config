@@ -97,7 +97,10 @@
           |> lib.filterAttrs (
             name: _:
             builtins.elem name (
-              overlays |> map (overlay: overlay { } { }) |> builtins.foldl' (a: b: a // b) { } |> builtins.attrNames
+              overlays
+              |> map (overlay: overlay { } { })
+              |> builtins.foldl' (a: b: a // b) { }
+              |> builtins.attrNames
             )
           );
 
