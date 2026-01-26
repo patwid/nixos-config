@@ -11,7 +11,12 @@ tasks:
     nix flake check
 - format: |
     cd nixos-config
-    ./format.sh
+    nix fmt **/*.nix
+    if ! git diff --exit-code >/dev/null; then
+      git add .
+      git commit -m 'chore: autoformat'
+      git push
+    fi
 triggers:
 - action: email
   condition: failure
