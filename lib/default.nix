@@ -1,4 +1,4 @@
-(final: prev: {
+final: prev: {
   colors = import ./colors.nix { lib = prev; };
-  inherit (import ./filesystem.nix { lib = prev; }) modulesIn;
-})
+  filesystem = prev.filesystem // (import ./filesystem.nix { lib = prev; });
+}

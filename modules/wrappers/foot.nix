@@ -8,6 +8,8 @@
 let
   inherit (inputs) wrappers;
   inherit (config) colors terminal;
+
+  colors' = colors |> builtins.mapAttrs (_: color: lib.colors.withoutPrefix color);
 in
 wrappers.wrappedModules.foot.wrap {
   inherit pkgs;
@@ -17,53 +19,53 @@ wrappers.wrappedModules.foot.wrap {
     main.pad = "8x4";
     main.term = "xterm-256color";
     cursor.blink = "yes";
-    colors = with lib.colors; {
-      foreground = withoutPrefix colors.foreground;
-      background = withoutPrefix colors.background;
+    colors = {
+      foreground = colors'.foreground;
+      background = colors'.background;
 
-      regular0 = withoutPrefix colors.black;
-      regular1 = withoutPrefix colors.red;
-      regular2 = withoutPrefix colors.green;
-      regular3 = withoutPrefix colors.yellow;
-      regular4 = withoutPrefix colors.blue;
-      regular5 = withoutPrefix colors.magenta;
-      regular6 = withoutPrefix colors.cyan;
-      regular7 = withoutPrefix colors.lighterGrey;
+      regular0 = colors'.black;
+      regular1 = colors'.red;
+      regular2 = colors'.green;
+      regular3 = colors'.yellow;
+      regular4 = colors'.blue;
+      regular5 = colors'.magenta;
+      regular6 = colors'.cyan;
+      regular7 = colors'.lighterGrey;
 
-      bright0 = withoutPrefix colors.darkerGrey;
-      bright1 = withoutPrefix colors.red;
-      bright2 = withoutPrefix colors.green;
-      bright3 = withoutPrefix colors.yellow;
-      bright4 = withoutPrefix colors.blue;
-      bright5 = withoutPrefix colors.magenta;
-      bright6 = withoutPrefix colors.cyan;
-      bright7 = withoutPrefix colors.white;
+      bright0 = colors'.darkerGrey;
+      bright1 = colors'.red;
+      bright2 = colors'.green;
+      bright3 = colors'.yellow;
+      bright4 = colors'.blue;
+      bright5 = colors'.magenta;
+      bright6 = colors'.cyan;
+      bright7 = colors'.white;
 
       # Greyscale colors (from dark to light)
-      "232" = withoutPrefix colors.black;
-      "233" = withoutPrefix colors.black;
-      "234" = withoutPrefix colors.black;
-      "235" = withoutPrefix colors.darkestGrey;
-      "236" = withoutPrefix colors.darkestGrey;
-      "237" = withoutPrefix colors.darkestGrey;
-      "238" = withoutPrefix colors.darkerGrey;
-      "239" = withoutPrefix colors.darkerGrey;
-      "240" = withoutPrefix colors.darkerGrey;
-      "241" = withoutPrefix colors.darkGrey;
-      "242" = withoutPrefix colors.darkGrey;
-      "243" = withoutPrefix colors.darkGrey;
-      "244" = withoutPrefix colors.lightGrey;
-      "245" = withoutPrefix colors.lightGrey;
-      "246" = withoutPrefix colors.lightGrey;
-      "247" = withoutPrefix colors.lighterGrey;
-      "248" = withoutPrefix colors.lighterGrey;
-      "249" = withoutPrefix colors.lighterGrey;
-      "250" = withoutPrefix colors.lightestGrey;
-      "251" = withoutPrefix colors.lightestGrey;
-      "252" = withoutPrefix colors.lightestGrey;
-      "253" = withoutPrefix colors.white;
-      "254" = withoutPrefix colors.white;
-      "255" = withoutPrefix colors.white;
+      "232" = colors'.black;
+      "233" = colors'.black;
+      "234" = colors'.black;
+      "235" = colors'.darkestGrey;
+      "236" = colors'.darkestGrey;
+      "237" = colors'.darkestGrey;
+      "238" = colors'.darkerGrey;
+      "239" = colors'.darkerGrey;
+      "240" = colors'.darkerGrey;
+      "241" = colors'.darkGrey;
+      "242" = colors'.darkGrey;
+      "243" = colors'.darkGrey;
+      "244" = colors'.lightGrey;
+      "245" = colors'.lightGrey;
+      "246" = colors'.lightGrey;
+      "247" = colors'.lighterGrey;
+      "248" = colors'.lighterGrey;
+      "249" = colors'.lighterGrey;
+      "250" = colors'.lightestGrey;
+      "251" = colors'.lightestGrey;
+      "252" = colors'.lightestGrey;
+      "253" = colors'.white;
+      "254" = colors'.white;
+      "255" = colors'.white;
     };
   };
 }

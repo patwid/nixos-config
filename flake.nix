@@ -59,8 +59,8 @@
               modules = [
                 { networking.hostName = hostname; }
               ]
-              ++ lib.modulesIn system ./hosts/${system}/${hostname}
-              ++ lib.modulesIn system ./modules/nixos;
+              ++ lib.filesystem.modulesIn system ./hosts/${system}/${hostname}
+              ++ lib.filesystem.modulesIn system ./modules/nixos;
             }
           )
         )

@@ -1,29 +1,15 @@
 { lib }:
-let
-  inherit (builtins) toString;
-  inherit (lib)
-    filter
-    hasInfix
-    hasSuffix
-    head
-    splitString
-    ;
-  inherit (lib.filesystem) listFilesRecursive;
-
-  archOf = system: head (splitString "-" system);
-  isOptional = path: hasInfix "+" path;
-  isArch = { path, arch }: hasInfix "+${arch}" path;
-  isImportable = { path, arch }@args: hasSuffix ".nix" path && (!isOptional path || isArch args);
-in
 {
   modulesIn =
-    system: path:
-    listFilesRecursive path
-    |> filter (
-      p:
-      isImportable {
-        arch = archOf system;
-        path = toString p;
-      }
+    system: modulesPath:
+    modulesPath
+    |> lib.filesystem.listFilesRecursive
+    |> lib.filter (lib.hasSuffix ".nix")
+    |> lib.filter (
+      path:
+      path
+      |> lib.path.removePrefix modulesPath
+      |> lib.path.subpath.components
+      |> lib.all (component: !(lib.hasPrefix "+" component) || lib.hasPrefix component "+${system}")
     );
 }
