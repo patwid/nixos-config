@@ -54,10 +54,13 @@
             lib.nixosSystem {
               inherit lib;
               specialArgs = {
-                inherit inputs hostname;
+                inherit inputs;
               };
-              modules =
-                lib.modulesIn system ./hosts/${system}/${hostname} ++ lib.modulesIn system ./modules/nixos;
+              modules = [
+                { networking.hostName = hostname; }
+              ]
+              ++ lib.modulesIn system ./hosts/${system}/${hostname}
+              ++ lib.modulesIn system ./modules/nixos;
             }
           )
         )

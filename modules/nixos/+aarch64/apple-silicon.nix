@@ -2,13 +2,13 @@
   inputs,
   config,
   lib,
-  hostname,
   ...
 }:
 let
   inherit (inputs) nixos-apple-silicon;
   inherit (config) appleSilicon;
   inherit (config.nixpkgs) hostPlatform;
+  inherit (config.networking) hostName;
 in
 {
   options.appleSilicon.enable = lib.mkEnableOption { };
@@ -22,7 +22,7 @@ in
   ];
 
   config = lib.mkIf (appleSilicon.enable) {
-    hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostname}/firmware;
+    hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostName}/firmware;
 
     hardware.asahi.overlay = lib.composeManyExtensions [
       nixos-apple-silicon.overlays.default
