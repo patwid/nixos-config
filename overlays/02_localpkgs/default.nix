@@ -1,7 +1,7 @@
 { lib, ... }:
 final: prev:
 let
-  localpkgs = import ../packages {
+  localpkgs = import ../../packages {
     inherit lib;
     pkgs = final;
   };

@@ -42,9 +42,9 @@ in
 
   nixpkgs.overlays = [
     nur.overlays.default
-    self.overlays.stable
-    self.overlays.localpkgs
-    self.overlays.default
+  ]
+  ++ builtins.attrValues self.overlays
+  ++ [
     wrapperOverlay
   ];
 

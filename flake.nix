@@ -84,11 +84,7 @@
     // eachDefaultSystem (
       system:
       let
-        overlays = [
-          self.overlays.stable
-          self.overlays.localpkgs
-          self.overlays.default
-        ];
+        overlays = builtins.attrValues self.overlays;
 
         pkgs = import nixpkgs {
           inherit system overlays;
