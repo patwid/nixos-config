@@ -13,10 +13,6 @@ in
 {
   options.appleSilicon.enable = lib.mkEnableOption { };
 
-  # XXX: conditional import causes infite recursion error
-  # imports = lib.optionals (apple-silicon) [
-  #   nixos-apple-silicon.nixosModules.apple-silicon-support
-  # ];
   imports = [
     nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
