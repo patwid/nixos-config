@@ -2,8 +2,7 @@
 {
   modulesIn =
     system: modulesPath:
-    modulesPath
-    |> lib.filesystem.listFilesRecursive
+    lib.filesystem.listFilesRecursive modulesPath
     |> lib.filter (lib.hasSuffix ".nix")
     |> lib.filter (
       path:
