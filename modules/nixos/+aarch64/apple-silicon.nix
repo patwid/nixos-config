@@ -18,7 +18,7 @@ in
   ];
 
   config = lib.mkIf (appleSilicon.enable) {
-    hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostName}/firmware;
+    hardware.asahi.peripheralFirmwareDirectory = ../../hosts/${hostPlatform.system}/${hostName}/firmware;
 
     hardware.asahi.overlay = self.overlays.apple-silicon;
 

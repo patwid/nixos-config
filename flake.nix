@@ -45,11 +45,11 @@
         );
 
       nixosConfigurations =
-        builtins.readDir ./hosts
+        builtins.readDir ./modules/hosts
         |> lib.attrNames
         |> map (
           system:
-          builtins.readDir ./hosts/${system}
+          builtins.readDir ./modules/hosts/${system}
           |> lib.mapAttrs (
             hostname: _:
             lib.nixosSystem {
@@ -60,7 +60,7 @@
               modules = [
                 { networking.hostName = hostname; }
               ]
-              ++ lib.filesystem.modulesIn system ./hosts/${system}/${hostname}
+              ++ lib.filesystem.modulesIn system ./modules/hosts/${system}/${hostname}
               ++ lib.filesystem.modulesIn system ./modules/nixos;
             }
           )
