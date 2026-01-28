@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs) nixos-apple-silicon;
+  inherit (inputs) self nixos-apple-silicon;
   inherit (config) appleSilicon;
   inherit (config.nixpkgs) hostPlatform;
   inherit (config.networking) hostName;
@@ -26,14 +26,7 @@ in
 
     hardware.asahi.overlay = lib.composeManyExtensions [
       nixos-apple-silicon.overlays.default
-
-      (final: prev: {
-        uboot-asahi = prev.uboot-asahi.overrideAttrs (oldAttrs: {
-          extraConfig = oldAttrs.extraConfig + ''
-            CONFIG_VIDEO_LOGO=n
-          '';
-        });
-      })
+      self.overlays.apple-silicon
     ];
 
     boot.loader.efi.canTouchEfiVariables = false;
