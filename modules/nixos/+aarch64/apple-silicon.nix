@@ -24,10 +24,7 @@ in
   config = lib.mkIf (appleSilicon.enable) {
     hardware.asahi.peripheralFirmwareDirectory = ../../../hosts/${hostPlatform.system}/${hostName}/firmware;
 
-    hardware.asahi.overlay = lib.composeManyExtensions [
-      nixos-apple-silicon.overlays.default
-      self.overlays.apple-silicon
-    ];
+    hardware.asahi.overlay = self.overlays.apple-silicon;
 
     boot.loader.efi.canTouchEfiVariables = false;
     boot.loader.efi.efiSysMountPoint = "/boot";
