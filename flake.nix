@@ -38,7 +38,7 @@
     {
       overlays =
         builtins.readDir ./overlays
-        |> lib.filterAttrs (name: _: lib.hasSuffix ".nix" name)
+        |> lib.filterAttrs (name: _: !lib.hasPrefix "_" name)
         |> lib.mapAttrs' (
           name: _:
           lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./overlays/${name} { inherit inputs lib; })
