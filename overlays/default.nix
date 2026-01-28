@@ -1,7 +1,7 @@
 { inputs, lib }:
 ./.
 |> builtins.readDir
-|> lib.filterAttrs (name: _: name != "default.nix")
 |> builtins.attrNames
+|> lib.filter (name: name != "default.nix")
 |> map (name: import ./${name} { inherit inputs lib; })
 |> lib.composeManyExtensions
