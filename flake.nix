@@ -85,10 +85,9 @@
     // eachDefaultSystem (
       system:
       let
-        overlays = builtins.attrValues self.overlays;
-
         pkgs = import nixpkgs {
-          inherit system overlays;
+          inherit system;
+          overlays = builtins.attrValues self.overlays;
         };
       in
       {
@@ -99,8 +98,7 @@
             builtins.elem name (
               self.overlays
               |> lib.filterAttrs (name: _: name != "apple-silicon")
-              |> builtins.attrValues
-              |> map (overlay: overlay { } { })
+              |> lib.mapAttrsToList (_: overlay: overlay { } { })
               |> builtins.foldl' (a: b: a // b) { }
               |> builtins.attrNames
             )
