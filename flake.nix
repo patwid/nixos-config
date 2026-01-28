@@ -97,7 +97,9 @@
           |> lib.filterAttrs (
             name: _:
             builtins.elem name (
-              overlays
+              self.overlays
+              |> lib.filterAttrs (name: _: name != "apple-silicon")
+              |> builtins.attrValues
               |> map (overlay: overlay { } { })
               |> builtins.foldl' (a: b: a // b) { }
               |> builtins.attrNames
