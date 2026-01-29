@@ -11,6 +11,6 @@ let
         "default.nix"
       ]
     )
-    |> builtins.mapAttrs (p: _: callPackage ./${p} { });
+    |> lib.mapAttrs' (p: _: lib.nameValuePair (lib.removeSuffix ".nix" p) (callPackage ./${p} { }));
 in
 localPkgs
