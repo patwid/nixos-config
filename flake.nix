@@ -50,6 +50,7 @@
         |> map (
           system:
           builtins.readDir ./modules/hosts/${system}
+          |> lib.mapAttrs' (hostname: v: lib.nameValuePair (lib.removePrefix "+" hostname) v)
           |> lib.mapAttrs (
             hostname: _:
             lib.nixosSystem {
@@ -60,12 +61,36 @@
               modules = [
                 { networking.hostName = hostname; }
               ]
-              ++ lib.filesystem.modulesIn system ./modules/hosts/${system}/${hostname}
-              ++ lib.filesystem.modulesIn system ./modules/nixos;
+              ++ (
+                self.nixosModules
+                |> lib.filterAttrs (
+                  name: _:
+                  lib.path.subpath.components name
+                  |> lib.all (
+                    component:
+                    !lib.hasPrefix "+" component || lib.hasPrefix component "+${system}" || component == "+${hostname}"
+                  )
+                )
+                |> builtins.attrValues
+              );
             }
           )
         )
         |> lib.mergeAttrsList;
+
+      nixosModules =
+        (
+          lib.filesystem.listFilesRecursive ./modules/nixos
+          ++ lib.filesystem.listFilesRecursive ./modules/hosts
+        )
+        |> lib.filter (lib.hasSuffix ".nix")
+        |> map (path: lib.path.removePrefix ./modules path)
+        # TODO: lib.genAttrs
+        |> map (name: {
+          name = lib.removeSuffix ".nix" name;
+          value = ./modules/${name};
+        })
+        |> lib.listToAttrs;
 
       templates =
         (
