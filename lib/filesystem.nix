@@ -1,5 +1,4 @@
-lib:
-{
+lib: {
   modulesIn =
     system: modulesPath:
     lib.filesystem.listFilesRecursive modulesPath

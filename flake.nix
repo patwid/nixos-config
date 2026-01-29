@@ -37,7 +37,11 @@
         |> lib.foldAttrs lib.mergeAttrs { };
     in
     {
-      lib = import ./lib lib;
+      lib =
+        builtins.readDir ./lib
+        |> lib.mapAttrs' (
+          name: _: lib.nameValuePair (lib.removeSuffix ".nix" name) (import ./lib/${name} lib)
+        );
 
       overlays =
         builtins.readDir ./overlays
