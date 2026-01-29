@@ -14,7 +14,7 @@ let
     ;
   inherit (config) user;
 
-  wrapperOverlay = import ../wrappers/overlay.nix {
+  wrapperOverlay = import ../_wrappers/overlay.nix {
     inherit inputs config lib;
   };
 in

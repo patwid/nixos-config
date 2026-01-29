@@ -26,6 +26,6 @@ in
 
     home.stateVersion = system.stateVersion;
 
-    imports = lib.filesystem.modulesIn hostPlatform ../home-manager;
+    imports = lib.filesystem.modulesIn hostPlatform ../_home-manager;
   };
 }

@@ -79,13 +79,12 @@
         |> lib.mergeAttrsList;
 
       nixosModules =
-        (
-          lib.filesystem.listFilesRecursive ./modules/nixos
-          ++ lib.filesystem.listFilesRecursive ./modules/hosts
-        )
+        lib.filesystem.listFilesRecursive ./modules
         |> lib.filter (lib.hasSuffix ".nix")
         |> map (path: lib.path.removePrefix ./modules path)
-        # TODO: lib.genAttrs
+        |> lib.filter (
+          path: lib.path.subpath.components path |> lib.all (component: !lib.hasPrefix "_" component)
+        )
         |> map (name: {
           name = lib.removeSuffix ".nix" name;
           value = ./modules/${name};

@@ -3,7 +3,7 @@
   config,
   lib,
 }:
-builtins.readDir ../wrappers
+builtins.readDir ../_wrappers
 |> builtins.attrNames
 |> lib.filter (name: name != "overlay.nix")
 |> map (
@@ -14,7 +14,7 @@ builtins.readDir ../wrappers
     pname' = if pname == "git" then "${pname}'" else pname;
   in
   final: prev: {
-    ${pname'} = import ../wrappers/${name} {
+    ${pname'} = import ../_wrappers/${name} {
       inherit inputs config lib;
       pkgs = prev;
     };
