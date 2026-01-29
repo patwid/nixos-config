@@ -1,4 +1,4 @@
-final: prev: {
-  colors = import ./colors.nix { lib = prev; };
-  filesystem = prev.filesystem // (import ./filesystem.nix { lib = prev; });
+lib: {
+  colors = import ./colors.nix lib;
+  filesystem = import ./filesystem.nix lib;
 }

@@ -28,7 +28,8 @@
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib.extend (import ./lib);
+      inherit (nixpkgs) lib;
+
       eachDefaultSystem =
         f:
         lib.systems.flakeExposed
@@ -36,6 +37,8 @@
         |> lib.foldAttrs lib.mergeAttrs { };
     in
     {
+      lib = import ./lib lib;
+
       overlays =
         builtins.readDir ./overlays
         |> lib.filterAttrs (name: _: !lib.hasPrefix "_" name)
@@ -54,7 +57,6 @@
           |> lib.mapAttrs (
             hostname: _:
             lib.nixosSystem {
-              inherit lib;
               specialArgs = {
                 inherit inputs;
               };
