@@ -6,7 +6,7 @@
 }:
 let
   inherit (inputs) self home-manager;
-  inherit (config) user system hostPlatform;
+  inherit (config) user system;
 in
 {
   imports = [
@@ -26,6 +26,6 @@ in
 
     home.stateVersion = system.stateVersion;
 
-    imports = self.lib.filesystem.modulesIn hostPlatform ../_home-manager;
+    imports = builtins.attrValues self.homeModules;
   };
 }
