@@ -26,6 +26,6 @@ in
 
     home.stateVersion = system.stateVersion;
 
-    imports = builtins.attrValues self.homeModules;
+    imports = builtins.attrValues self.homeManagerModules;
   };
 }

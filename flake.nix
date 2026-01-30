@@ -101,7 +101,7 @@
         })
         |> lib.listToAttrs;
 
-      homeModules =
+      homeManagerModules =
         lib.filesystem.listFilesRecursive ./modules/_home-manager
         |> lib.filter (lib.hasSuffix ".nix")
         |> map (path: lib.path.removePrefix ./modules/_home-manager path)
