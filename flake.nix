@@ -110,7 +110,6 @@
       templates =
         (
           builtins.readDir ./templates
-          |> lib.filterAttrs (name: _: name != ".gitignore")
           |> lib.mapAttrs (
             name: _: {
               description = name;
