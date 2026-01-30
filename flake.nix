@@ -74,7 +74,11 @@
                   lib.path.subpath.components name
                   |> lib.all (
                     component:
-                    !lib.hasPrefix "+" component || lib.hasPrefix component "+${system}" || component == "+${hostname}"
+                    !lib.hasPrefix "+" component
+                    || lib.any (s: lib.hasPrefix component s) [
+                      "+${system}"
+                      "+${hostname}"
+                    ]
                   )
                 )
                 |> builtins.attrValues
