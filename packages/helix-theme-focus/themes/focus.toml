@@ -12,7 +12,7 @@
 "ui.popup.info" = { bg = "default" }
 "diagnostic" = { underline = { style = "line" } }
 
-"comment" = { fg = "lightest-gray", modifiers = [ "italic" ] }
+"comment" = { fg = "light-gray-0", modifiers = [ "italic" ] }
 "keyword" = { modifiers = [ "bold" ] }
 "punctuation.special" = { modifiers = [ "bold" ] }
 "special" = { modifiers = [ "bold" ] }
@@ -20,5 +20,5 @@
 "variable.builtin" = { modifiers = [ "bold" ] }
 
 [palette]
-lightest-gray = "#b5b5b5"
+light-gray-0 = "#b5b5b5"
 blue-0 = "#d3e4f9"
