@@ -1,4 +1,4 @@
-"ui.selection" = { bg = "blue_0" }
+"ui.selection" = { bg = "blue-0" }
 "ui.cursor" = { bg = "default", modifiers = [ "reversed" ] }
 "ui.cursor.match" = { bg = "light-gray" }
 "ui.linenr" = { fg = "light-gray" }
@@ -12,7 +12,7 @@
 "ui.popup.info" = { bg = "default" }
 "diagnostic" = { underline = { style = "line" } }
 
-"comment" = { fg = "light-gray", modifiers = [ "italic" ] }
+"comment" = { fg = "lightest-gray", modifiers = [ "italic" ] }
 "keyword" = { modifiers = [ "bold" ] }
 "punctuation.special" = { modifiers = [ "bold" ] }
 "special" = { modifiers = [ "bold" ] }
@@ -20,4 +20,5 @@
 "variable.builtin" = { modifiers = [ "bold" ] }
 
 [palette]
-blue_0 = "#d3e4f9"
+lightest-gray = "#b5b5b5"
+blue-0 = "#d3e4f9"
