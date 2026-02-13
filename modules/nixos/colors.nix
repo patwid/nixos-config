@@ -34,76 +34,41 @@ let
   };
 
   variant = if cfg.variant == "light" then light else dark;
+
+  colorOption = _: lib.mkOption { type = lib.types.str; };
 in
 {
-  options.colors = {
-    variant = lib.mkOption {
-      type = lib.types.enum [
-        "light"
-        "dark"
-      ];
-      default = "light";
+  options.colors =
+    lib.genAttrs [
+      "background"
+      "backgroundInactive"
+      "backgroundActive"
+      "foreground"
+      "foregroundInactive"
+      "black"
+      "darkestGrey"
+      "darkerGrey"
+      "darkGrey"
+      "lightGrey"
+      "lighterGrey"
+      "lightestGrey"
+      "white"
+      "red"
+      "green"
+      "yellow"
+      "blue"
+      "magenta"
+      "cyan"
+    ] colorOption
+    // {
+      variant = lib.mkOption {
+        type = lib.types.enum [
+          "light"
+          "dark"
+        ];
+        default = "light";
+      };
     };
-
-    background = lib.mkOption {
-      type = lib.types.str;
-    };
-    backgroundInactive = lib.mkOption {
-      type = lib.types.str;
-    };
-    backgroundActive = lib.mkOption {
-      type = lib.types.str;
-    };
-    foreground = lib.mkOption {
-      type = lib.types.str;
-    };
-    foregroundInactive = lib.mkOption {
-      type = lib.types.str;
-    };
-
-    black = lib.mkOption {
-      type = lib.types.str;
-    };
-    darkestGrey = lib.mkOption {
-      type = lib.types.str;
-    };
-    darkerGrey = lib.mkOption {
-      type = lib.types.str;
-    };
-    darkGrey = lib.mkOption {
-      type = lib.types.str;
-    };
-    lightGrey = lib.mkOption {
-      type = lib.types.str;
-    };
-    lighterGrey = lib.mkOption {
-      type = lib.types.str;
-    };
-    lightestGrey = lib.mkOption {
-      type = lib.types.str;
-    };
-    white = lib.mkOption {
-      type = lib.types.str;
-    };
-    red = lib.mkOption {
-      type = lib.types.str;
-    };
-    green = lib.mkOption {
-      type = lib.types.str;
-    };
-    yellow = lib.mkOption {
-      type = lib.types.str;
-    };
-    blue = lib.mkOption {
-      type = lib.types.str;
-    };
-    magenta = lib.mkOption {
-      type = lib.types.str;
-    };
-    cyan = lib.mkOption {
-      type = lib.types.str;
-    };
-  };
 
   config.colors = {
     inherit (variant)
