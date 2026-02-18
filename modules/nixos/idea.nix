@@ -8,16 +8,17 @@
 let
   inherit (inputs.nix-jetbrains-plugins) plugins;
   inherit (inputs.nix-jetbrains-plugins.lib) pluginsForIde;
-  inherit (config) laptop work ideaExtraVmopts;
+  inherit (config) laptop work ideaVmopts;
 
   vmopts = ''
     -Dawt.toolkit.name=WLToolkit
-  ''
-  + ideaExtraVmopts;
+  '' + ideaVmopts;
 
-  # Overriding vmopts of idea pkg does not seem to work
+  # Overriding vmopts and forceWaylang flag of idea pkg
+  # does not seem to work properly
   idea = pkgs.jetbrains.idea.override {
     inherit vmopts;
+    forceWayland = true;
   };
 
   ideaPlugins =
@@ -28,7 +29,7 @@ let
 in
 {
   options = {
-    ideaExtraVmopts = lib.mkOption {
+    ideaVmopts = lib.mkOption {
       type = lib.types.str;
       default = ''
         -Xmx8g
@@ -46,7 +47,7 @@ in
     }
 
     (lib.mkIf laptop {
-      ideaExtraVmopts = ''
+      ideaVmopts = ''
         -Xmx4g
         -Xms4g
       '';
