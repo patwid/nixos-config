@@ -19,9 +19,6 @@
 
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
     nix-jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs";
-
-    claude-code.url = "github:sadjow/claude-code-nix";
-    claude-code.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
