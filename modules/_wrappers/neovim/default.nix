@@ -6,7 +6,7 @@
 let
   inherit (inputs) wrappers;
 in
-wrappers.wrappedModules.neovim.wrap {
+wrappers.wrappers.neovim.wrap {
   inherit pkgs;
 
   settings = {

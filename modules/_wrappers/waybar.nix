@@ -8,7 +8,7 @@ let
   inherit (inputs) wrappers;
   inherit (config) colors;
 in
-wrappers.wrappedModules.waybar.wrap {
+wrappers.wrappers.waybar.wrap {
   inherit pkgs;
 
   settings = {

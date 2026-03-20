@@ -10,7 +10,7 @@ let
   inherit (config) colors outputs;
   inherit (config.environment.sessionVariables) XDG_SCREENSHOTS_DIR;
 in
-wrappers.wrappedModules.niri.wrap {
+wrappers.wrappers.niri.wrap {
   inherit pkgs;
 
   settings = {

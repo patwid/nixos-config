@@ -17,7 +17,6 @@ in
     environment.systemPackages = builtins.attrValues {
       inherit (pkgs)
         _1password
-        claude-code
         mattermost
         medbase
         outlook

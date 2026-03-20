@@ -9,7 +9,7 @@ let
   inherit (config) work;
   inherit (config.environment.sessionVariables) EDITOR;
 in
-wrappers.wrappedModules.git.wrap {
+wrappers.wrappers.git.wrap {
   inherit pkgs;
 
   settings = {

@@ -12,7 +12,7 @@ wrappers.lib.wrapPackage [
       package = pkgs.helix;
 
       flags."--config" = toToml "helix.toml" {
-        theme = "focus";
+        theme = "term16_light";
 
         editor = {
           # Sync clipboard with system clipboard

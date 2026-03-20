@@ -11,15 +11,16 @@ let
 
   colors' = colors |> builtins.mapAttrs (_: color: self.lib.colors.withoutPrefix color);
 in
-wrappers.wrappedModules.foot.wrap {
+wrappers.wrappers.foot.wrap {
   inherit pkgs;
 
   settings = {
     main.font = "monospace:size=${toString terminal.fontsize}";
     main.pad = "8x4";
     main.term = "xterm-256color";
+    main.initial-color-theme = "light";
     cursor.blink = "yes";
-    colors = {
+    colors-light = {
       foreground = colors'.foreground;
       background = colors'.background;
 
