@@ -6,11 +6,11 @@
   ...
 }:
 let
-  inherit (inputs) wrappers;
+  inherit (inputs.wrappers.wrappers) niri;
   inherit (config) colors outputs;
   inherit (config.environment.sessionVariables) XDG_SCREENSHOTS_DIR;
 in
-wrappers.wrappers.niri.wrap {
+niri.wrap {
   inherit pkgs;
 
   settings = {

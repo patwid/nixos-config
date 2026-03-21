@@ -6,12 +6,13 @@
   ...
 }:
 let
-  inherit (inputs) self wrappers;
+  inherit (inputs) self;
+  inherit (inputs.wrappers.wrappers) foot;
   inherit (config) colors terminal;
 
   colors' = colors |> builtins.mapAttrs (_: color: self.lib.colors.withoutPrefix color);
 in
-wrappers.wrappers.foot.wrap {
+foot.wrap {
   inherit pkgs;
 
   settings = {

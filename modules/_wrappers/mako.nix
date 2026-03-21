@@ -5,10 +5,10 @@
   ...
 }:
 let
-  inherit (inputs) wrappers;
+  inherit (inputs.wrappers.wrappers) mako;
   inherit (config) colors;
 in
-wrappers.wrappers.mako.wrap {
+mako.wrap {
   inherit pkgs;
   settings = {
     font = "sans-serif 10";

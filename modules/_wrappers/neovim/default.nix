@@ -4,9 +4,9 @@
   ...
 }:
 let
-  inherit (inputs) wrappers;
+  inherit (inputs.wrappers.wrappers) neovim;
 in
-wrappers.wrappers.neovim.wrap {
+neovim.wrap {
   inherit pkgs;
 
   settings = {

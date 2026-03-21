@@ -5,10 +5,10 @@
   ...
 }:
 let
-  inherit (inputs) wrappers;
+  inherit (inputs.wrappers.wrappers) waybar;
   inherit (config) colors;
 in
-wrappers.wrappers.waybar.wrap {
+waybar.wrap {
   inherit pkgs;
 
   settings = {

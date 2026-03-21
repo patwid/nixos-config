@@ -5,11 +5,11 @@
   ...
 }:
 let
-  inherit (inputs) wrappers;
+  inherit (inputs.wrappers.wrappers) git;
   inherit (config) work;
   inherit (config.environment.sessionVariables) EDITOR;
 in
-wrappers.wrappers.git.wrap {
+git.wrap {
   inherit pkgs;
 
   settings = {
