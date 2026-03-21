@@ -72,15 +72,7 @@
                 |> lib.filterAttrs (
                   name: _:
                   lib.path.subpath.components name
-                  |> lib.all (
-                    component:
-                    !lib.hasPrefix "+" component
-                    # For system, prefix match is used to allow arch matching independent of
-                    # platform (e.g. component "+aarch64" matches both systems "aarch64-linux"
-                    # or "aarch64-darwin")
-                    # For hotsname, exact matches are required.
-                    || (lib.hasPrefix component "+${system}" || component == "+${hostname}")
-                  )
+                  |> lib.all (component: !lib.hasPrefix "+" component || component == "+${hostname}")
                 )
                 |> builtins.attrValues
               );
