@@ -1,6 +1,7 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 let
   inherit (inputs.wrappers.wrappers) helix;
+  inherit (config) colors;
 in
 helix.wrap {
   inherit pkgs;
@@ -32,7 +33,7 @@ helix.wrap {
   themes = {
     focus = ''
       "ui.selection" = { bg = "blue-0" }
-      "ui.cursor" = { bg = "default", modifiers = [ "reversed" ] }
+      "ui.cursor" = { fg = "white", bg = "black" }
       "ui.cursor.match" = { bg = "light-gray" }
       "ui.linenr" = { fg = "light-gray" }
       "ui.linenr.selected" = { fg = "default" }
@@ -53,7 +54,7 @@ helix.wrap {
       "variable.builtin" = { modifiers = [ "bold" ] }
 
       [palette]
-      light-gray-0 = "#b5b5b5"
+      light-gray-0 = "${colors.lightGrey}"
       blue-0 = "#d3e4f9"
     '';
   };
