@@ -94,6 +94,26 @@
         "type": "github"
       }
     },
+    "nix-wrapper-modules": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1774228760,
+        "narHash": "sha256-nDoBIe5Y9Rfc1sJT0odFgN502ZNtOrcWoqnDyM8jBAU=",
+        "owner": "birdeehub",
+        "repo": "nix-wrapper-modules",
+        "rev": "ded9a992dc4142b8269cebbcdadd56fe3886c899",
+        "type": "github"
+      },
+      "original": {
+        "owner": "birdeehub",
+        "repo": "nix-wrapper-modules",
+        "type": "github"
+      }
+    },
     "nixos-apple-silicon": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -187,12 +207,12 @@
       "inputs": {
         "home-manager": "home-manager",
         "nix-jetbrains-plugins": "nix-jetbrains-plugins",
+        "nix-wrapper-modules": "nix-wrapper-modules",
         "nixos-apple-silicon": "nixos-apple-silicon",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nur": "nur",
-        "wrappers": "wrappers"
+        "nur": "nur"
       }
     },
     "systems": {
@@ -207,26 +227,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "wrappers": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774098174,
-        "narHash": "sha256-KTrndetKnmtUcFyDj0UGR3H8aSyeI2ERS8MMvqR90ms=",
-        "owner": "birdeehub",
-        "repo": "nix-wrapper-modules",
-        "rev": "7857357e2cd7c3bfd6e1d1fa6b9db2a373cea420",
-        "type": "github"
-      },
-      "original": {
-        "owner": "birdeehub",
-        "repo": "nix-wrapper-modules",
         "type": "github"
       }
     }

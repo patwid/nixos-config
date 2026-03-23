@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (inputs.wrappers.wrappers) niri;
+  inherit (inputs.nix-wrapper-modules.wrappers) niri;
   inherit (config) colors outputs;
   inherit (config.environment.sessionVariables) XDG_SCREENSHOTS_DIR;
 in

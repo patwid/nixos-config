@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs.wrappers.wrappers) waybar;
+  inherit (inputs.nix-wrapper-modules.wrappers) waybar;
   inherit (config) colors;
 in
 waybar.wrap {

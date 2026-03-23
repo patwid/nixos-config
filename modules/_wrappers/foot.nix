@@ -7,7 +7,7 @@
 }:
 let
   inherit (inputs) self;
-  inherit (inputs.wrappers.wrappers) foot;
+  inherit (inputs.nix-wrapper-modules.wrappers) foot;
   inherit (config) colors terminal;
 
   colors' = colors |> builtins.mapAttrs (_: color: self.lib.colors.withoutPrefix color);

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs.wrappers.wrappers) mako;
+  inherit (inputs.nix-wrapper-modules.wrappers) mako;
   inherit (config) colors;
 in
 mako.wrap {

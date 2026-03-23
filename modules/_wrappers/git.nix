@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs.wrappers.wrappers) git;
+  inherit (inputs.nix-wrapper-modules.wrappers) git;
   inherit (config) work;
   inherit (config.environment.sessionVariables) EDITOR;
 in

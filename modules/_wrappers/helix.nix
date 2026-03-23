@@ -1,6 +1,6 @@
 { inputs, pkgs, config, ... }:
 let
-  inherit (inputs.wrappers.wrappers) helix;
+  inherit (inputs.nix-wrapper-modules.wrappers) helix;
   inherit (config) colors;
 in
 helix.wrap {

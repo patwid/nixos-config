@@ -11,8 +11,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    wrappers.url = "github:birdeehub/nix-wrapper-modules";
-    wrappers.inputs.nixpkgs.follows = "nixpkgs";
+    nix-wrapper-modules.url = "github:birdeehub/nix-wrapper-modules";
+    nix-wrapper-modules.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";

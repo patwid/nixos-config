@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (inputs.wrappers.wrappers) neovim;
+  inherit (inputs.nix-wrapper-modules.wrappers) neovim;
 in
 neovim.wrap {
   inherit pkgs;
