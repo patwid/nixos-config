@@ -13,10 +13,6 @@ let
     nur
     ;
   inherit (config) user;
-
-  wrapperOverlay = import ../_wrappers/overlay.nix {
-    inherit inputs config lib;
-  };
 in
 {
   networking.nftables.enable = true;
@@ -50,10 +46,7 @@ in
   nixpkgs.overlays = [
     nur.overlays.default
   ]
-  ++ builtins.attrValues self.overlays
-  ++ [
-    wrapperOverlay
-  ];
+  ++ builtins.attrValues self.overlays;
 
   system.autoUpgrade = {
     enable = false;
