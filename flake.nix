@@ -111,7 +111,10 @@
     // eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = builtins.attrValues self.overlays;
+        };
       in
       {
         packages =
