@@ -1,6 +1,10 @@
-{ config, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
-  inherit (config) colors;
+  inherit (config) colors user;
 in
 {
   # Required for screen sharing to work
@@ -50,5 +54,13 @@ in
       # Privacy and security > Send a "Do Not Track" request with your browser traffic
       # Appearance > Use system title bar and borders
     };
+  };
+
+  home-manager.users.${user.name} = {
+    programs.chromium.enable = true;
+
+    home.packages = with pkgs; [
+      google-chrome
+    ];
   };
 }

@@ -67,4 +67,14 @@ in
       ln -sfn /home/${user.name}/.config/nixos/flake.nix /etc/nixos/flake.nix
     '';
   };
+
+  home-manager.users.${user.name} = {
+    programs.direnv = {
+      enable = true;
+      config = {
+        warn_timeout = "1h";
+      };
+      nix-direnv.enable = true;
+    };
+  };
 }
