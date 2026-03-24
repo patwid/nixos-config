@@ -27,7 +27,13 @@ in
     "pipe-operators"
   ];
   nix.settings.auto-optimise-store = true;
-  nix.settings.trusted-users = [ "root" user.name "@wheel" ];
+  nix.settings.keep-outputs = true;
+  nix.settings.keep-derivations = true;
+  nix.settings.trusted-users = [
+    "root"
+    user.name
+    "@wheel"
+  ];
 
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
