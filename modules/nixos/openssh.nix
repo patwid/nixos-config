@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   ...
@@ -7,6 +8,13 @@ let
   inherit (config) user work;
 in
 {
+  imports = [
+    (inputs.nix-wrapper-modules.lib.mkInstallModule {
+      name = "openssh";
+      value = ./_wrappers/openssh.nix;
+    })
+  ];
+
   services.openssh = {
     enable = true;
     settings = {
@@ -23,60 +31,56 @@ in
     ];
   };
 
-  home-manager.users.${user.name} = lib.mkIf work.enable {
-    programs.ssh = {
-      enable = true;
-      enableDefaultConfig = false;
+  wrappers.openssh = lib.mkIf work.enable {
+    enable = true;
+    matchBlocks = {
+      qs-auto-test = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.5";
+        user = "testing-user";
+      };
 
-      matchBlocks = {
-        qs-auto-test = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.5";
-          user = "testing-user";
-        };
+      hildegard = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.10";
+        user = "testing-user";
+      };
 
-        hildegard = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.10";
-          user = "testing-user";
-        };
+      heidi = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.15";
+        user = "testing-user";
+      };
 
-        heidi = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.15";
-          user = "testing-user";
-        };
+      helena = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.20";
+        user = "testing-user";
+      };
 
-        helena = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.20";
-          user = "testing-user";
-        };
+      # Thomas/Aaron
+      axenita-tower-remote-vm-1 = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.203";
+        user = "testing-user";
+      };
 
-        # Thomas/Aaron
-        axenita-tower-remote-vm-1 = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.203";
-          user = "testing-user";
-        };
+      # Jan
+      axenita-tower-remote-vm-2 = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.204";
+        user = "testing-user";
+      };
 
-        # Jan
-        axenita-tower-remote-vm-2 = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.204";
-          user = "testing-user";
-        };
+      # Patrick
+      axenita-tower-remote-vm-3 = {
+        proxyJump = "ergon";
+        hostname = "10.139.70.205";
+        user = "testing-user";
+      };
 
-        # Patrick
-        axenita-tower-remote-vm-3 = {
-          proxyJump = "ergon";
-          hostname = "10.139.70.205";
-          user = "testing-user";
-        };
-
-        ergon = {
-          hostname = "linux.ergon.ch";
-        };
+      ergon = {
+        hostname = "linux.ergon.ch";
       };
     };
   };
