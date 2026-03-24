@@ -1,14 +1,30 @@
 {
+  inputs,
   config,
-  lib,
   pkgs,
   ...
 }:
 let
+  inherit (inputs.nix-wrapper-modules.wrappers) mako;
   inherit (config) colors;
+
+  wrappedMako = mako.wrap {
+    inherit pkgs;
+    settings = {
+      font = "sans-serif 10";
+      icons = "false";
+      padding = "8";
+      border-size = "1";
+      background-color = colors.backgroundInactive;
+      border-color = colors.backgroundActive;
+      progress-color = "over ${colors.red}"; # TODO: usage?
+      text-color = colors.foreground;
+    };
+  };
 in
 {
-  environment.systemPackages = builtins.attrValues {
-    inherit (pkgs) libnotify mako;
-  };
+  environment.systemPackages = [
+    pkgs.libnotify
+    wrappedMako
+  ];
 }
