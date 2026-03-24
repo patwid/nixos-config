@@ -63,5 +63,9 @@ in
     };
   };
 
-  programs.git.lfs.enable = true;
+  programs.git = {
+    enable = true;
+    package = config.wrappers.git.wrapper;
+    lfs.enable = true;
+  };
 }
