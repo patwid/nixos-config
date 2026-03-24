@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -9,17 +10,22 @@ let
   pass = lib.getExe pkgs.pass-wayland;
 in
 {
-  home-manager.users.${user.name} = {
-    programs.senpai = {
-      enable = true;
-      config = {
-        address = "chat.sr.ht";
-        nickname = user.name;
-        password-cmd = [
-          pass
-          "srht/chat"
-        ];
-      };
+  imports = [
+    (inputs.nix-wrapper-modules.lib.mkInstallModule {
+      name = "senpai";
+      value = ./_wrappers/senpai.nix;
+    })
+  ];
+
+  wrappers.senpai = {
+    enable = true;
+    settings = {
+      address = "chat.sr.ht";
+      nickname = user.name;
+      password-cmd = [
+        pass
+        "srht/chat"
+      ];
     };
   };
 }
