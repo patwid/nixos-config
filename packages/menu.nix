@@ -1,7 +1,6 @@
 {
   writeShellApplication,
   coreutils,
-  foot,
   fzf,
 }:
 
@@ -9,7 +8,6 @@ writeShellApplication {
   name = "menu";
   runtimeInputs = [
     coreutils
-    foot
     fzf
   ];
   text = ''
