@@ -1,4 +1,11 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
+let
+  inherit (config) user;
+in
 {
   environment.defaultPackages = [ ];
 
@@ -27,5 +34,13 @@
       xdg-open
       zip
       ;
+  };
+
+  home-manager.users.${user.name} = {
+    programs = {
+      fzf.enable = true;
+      htop.enable = true;
+      zathura.enable = true;
+    };
   };
 }

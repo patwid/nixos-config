@@ -5,6 +5,7 @@
   ...
 }:
 let
+  inherit (config) user;
   cfg = config.sfeed;
   optString = s: lib.optionalString (s != null) ''"${s}"'';
   feedToString =
@@ -185,25 +186,27 @@ in
       ];
     };
 
-    home.packages = with pkgs; [
-      sfeed
-      menu-news
-      menu-videos
-      menu-podcasts
-    ];
+    home-manager.users.${user.name} = {
+      home.packages = with pkgs; [
+        sfeed
+        menu-news
+        menu-videos
+        menu-podcasts
+      ];
 
-    xdg.dataFile = lib.mapAttrs' (
-      type: feed:
-      lib.nameValuePair "sfeed/${type}/sfeedrc" {
-        text = ''
-          sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
+      xdg.dataFile = lib.mapAttrs' (
+        type: feed:
+        lib.nameValuePair "sfeed/${type}/sfeedrc" {
+          text = ''
+            sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
 
-          feeds() {
-          ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
-          ''\t${lib.concatStringsSep "\n\t" (map feedToString feed)}
-          }
-        '';
-      }
-    ) cfg.feeds;
+            feeds() {
+            ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
+            ''\t${lib.concatStringsSep "\n\t" (map feedToString feed)}
+            }
+          '';
+        }
+      ) cfg.feeds;
+    };
   };
 }
