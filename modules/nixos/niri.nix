@@ -343,7 +343,7 @@ in
           "Mod+Shift+P".power-off-monitors = null;
         };
       }
-      // lib.optionalAttrs (config ? appleSilicon && config.appleSilicon.enable) {
+      // lib.optionalAttrs (config.appleSilicon.enable) {
         # Asahi workaround: `ls -l /dev/dri`
         debug = {
           render-drm-device = "/dev/dri/renderD128";
