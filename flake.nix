@@ -111,11 +111,7 @@
     // eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-          overlays = builtins.attrValues self.overlays;
-        };
+        pkgs = import nixpkgs { inherit system; };
       in
       {
         packages =
