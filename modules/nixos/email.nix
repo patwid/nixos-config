@@ -1,46 +1,37 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
   ...
 }:
 let
-  inherit (config) user;
   pass = lib.getExe pkgs.pass-wayland;
   head = lib.getExe' pkgs.coreutils "head";
 in
 {
-  home-manager.users.${user.name} = {
-    accounts.email.accounts.Personal = {
-      primary = true;
-      realName = "Patrick Widmer";
-      address = "patrick.widmer@tbwnet.ch";
-      userName = "patrick.widmer@tbwnet.ch";
-      imap.host = "imap.tbwnet.ch";
-      imap.port = 993;
-      smtp.host = "smtp.tbwnet.ch";
-      smtp.port = 465;
-      passwordCommand = "${pass} mail/tbwnet | ${head} -n 1";
-      aerc.enable = true;
+  imports = [
+    (inputs.nix-wrapper-modules.lib.mkInstallModule {
+      name = "aerc";
+      value = ./_wrappers/aerc.nix;
+    })
+  ];
+
+  wrappers.aerc = {
+    enable = true;
+
+    settings = {
+      general.unsafe-accounts-conf = true;
     };
 
-    accounts.email.accounts.Work = {
-      flavor = "outlook.office365.com";
-      realName = "Patrick Widmer";
-      address = "patrick.widmer@ergon.ch";
-      userName = "patrick.widmer@ergon.ch";
-      imap.host = "outlook.office365.com";
-      imap.port = 993;
-      smtp.host = "smtp.office365.com";
-      smtp.port = 587;
-      smtp.tls.useStartTls = true;
-      passwordCommand = "${pass} work/sso | ${head} -n 1";
-    };
-
-    programs.aerc = {
-      enable = true;
-      extraConfig = {
-        general.unsafe-accounts-conf = true;
+    accounts = {
+      Personal = {
+        source = "imaps://patrick.widmer%40tbwnet.ch@imap.tbwnet.ch:993";
+        outgoing = "smtps://patrick.widmer%40tbwnet.ch@smtp.tbwnet.ch:465";
+        default = "INBOX";
+        from = "Patrick Widmer <patrick.widmer@tbwnet.ch>";
+        source-cred-cmd = "${pass} mail/tbwnet | ${head} -n 1";
+        outgoing-cred-cmd = "${pass} mail/tbwnet | ${head} -n 1";
       };
     };
   };
