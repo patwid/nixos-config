@@ -35,52 +35,52 @@ in
     enable = true;
     matchBlocks = {
       qs-auto-test = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.5";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.5";
+        User = "testing-user";
       };
 
       hildegard = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.10";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.10";
+        User = "testing-user";
       };
 
       heidi = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.15";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.15";
+        User = "testing-user";
       };
 
       helena = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.20";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.20";
+        User = "testing-user";
       };
 
       # Thomas/Aaron
       axenita-tower-remote-vm-1 = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.203";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.203";
+        User = "testing-user";
       };
 
       # Jan
       axenita-tower-remote-vm-2 = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.204";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.204";
+        User = "testing-user";
       };
 
       # Patrick
       axenita-tower-remote-vm-3 = {
-        proxyJump = "ergon";
-        hostname = "10.139.70.205";
-        user = "testing-user";
+        ProxyJump = "ergon";
+        HostName = "10.139.70.205";
+        User = "testing-user";
       };
 
       ergon = {
-        hostname = "linux.ergon.ch";
+        HostName = "linux.ergon.ch";
       };
     };
   };
