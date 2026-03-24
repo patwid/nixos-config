@@ -118,4 +118,9 @@ in
       }
     '';
   };
-}
+
+  programs.waybar = {
+    enable = true;
+    package = config.wrappers.waybar.wrapper;
+  };
+  }
