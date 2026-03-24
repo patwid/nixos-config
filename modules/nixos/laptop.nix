@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (config) user laptop;
+  inherit (config) laptop;
 in
 {
   options.laptop = lib.mkEnableOption { };
@@ -16,9 +16,7 @@ in
       services.upower.enable = true;
       powerManagement.powertop.enable = true;
 
-      home-manager.users.${user.name} = {
-        home.packages = [ pkgs.brightnessctl ];
-      };
+      environment.systemPackages = [ pkgs.brightnessctl ];
     })
 
     (lib.mkIf (!laptop) {

@@ -14,6 +14,7 @@ in
       adwaita-icon-theme
       curl
       grim
+      htop
       imagemagick
       imv
       jq
@@ -32,6 +33,7 @@ in
       whatsapp
       wl-clipboard
       xdg-open
+      zathura
       zip
       ;
   };
@@ -39,8 +41,6 @@ in
   home-manager.users.${user.name} = {
     programs = {
       fzf.enable = true;
-      htop.enable = true;
-      zathura.enable = true;
     };
   };
 }

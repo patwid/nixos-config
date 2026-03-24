@@ -1,8 +1,6 @@
 {
   inputs,
   config,
-  pkgs,
-  lib,
   ...
 }:
 let
@@ -61,13 +59,9 @@ in
     '';
   };
 
-  home-manager.users.${user.name} = {
-    programs.direnv = {
-      enable = true;
-      config = {
-        warn_timeout = "1h";
-      };
-      nix-direnv.enable = true;
-    };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    settings.global.warn_timeout = "1h";
   };
 }

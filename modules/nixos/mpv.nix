@@ -4,26 +4,23 @@
   pkgs,
   ...
 }:
-let
-  inherit (config) user home;
-in
 {
-  home-manager.users.${user.name} = {
-    programs = {
-      mpv.enable = true;
-      yt-dlp.enable = true;
-    };
-
-    home.packages =
-      with pkgs;
-      [
+  environment.systemPackages =
+    builtins.attrValues {
+      inherit (pkgs)
         ffmpeg
+        mpv
+        yt-dlp
         ytm
-      ]
-      ++ lib.optionals (home.enable) [
-        menu-movies
-        menu-music
-        menu-shows
-      ];
-  };
+        ;
+    }
+    ++ lib.optionals (config.home.enable) (
+      builtins.attrValues {
+        inherit (pkgs)
+          menu-movies
+          menu-music
+          menu-shows
+          ;
+      }
+    );
 }

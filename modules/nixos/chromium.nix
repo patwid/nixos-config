@@ -1,11 +1,7 @@
 {
-  config,
   pkgs,
   ...
 }:
-let
-  inherit (config) colors user;
-in
 {
   # Required for screen sharing to work
   nixpkgs.config.chromium.commandLineArgs = "--enable-features=WebRTCPipeWireCapturer";
@@ -56,11 +52,5 @@ in
     };
   };
 
-  home-manager.users.${user.name} = {
-    programs.chromium.enable = true;
-
-    home.packages = with pkgs; [
-      google-chrome
-    ];
-  };
+  environment.systemPackages = [ pkgs.google-chrome ];
 }
