@@ -5,11 +5,13 @@
   ...
 }:
 let
-  inherit (inputs.nix-wrapper-modules.wrappers) mako;
   inherit (config) colors;
+in
+{
+  imports = [ inputs.nix-wrapper-modules.nixosModules.mako ];
 
-  wrappedMako = mako.wrap {
-    inherit pkgs;
+  wrappers.mako = {
+    enable = true;
     settings = {
       font = "sans-serif 10";
       icons = "false";
@@ -21,10 +23,6 @@ let
       text-color = colors.foreground;
     };
   };
-in
-{
-  environment.systemPackages = [
-    pkgs.libnotify
-    wrappedMako
-  ];
+
+  environment.systemPackages = [ pkgs.libnotify ];
 }

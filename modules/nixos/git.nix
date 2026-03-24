@@ -1,17 +1,17 @@
 {
   inputs,
   config,
-  pkgs,
   ...
 }:
 let
-  inherit (inputs.nix-wrapper-modules.wrappers) git;
   inherit (config) work;
   inherit (config.environment.sessionVariables) EDITOR;
+in
+{
+  imports = [ inputs.nix-wrapper-modules.nixosModules.git ];
 
-  wrappedGit = git.wrap {
-    inherit pkgs;
-
+  wrappers.git = {
+    enable = true;
     settings = {
       user.name = "Patrick Widmer";
       user.email = if work.enable then "patrick.widmer@ergon.ch" else "patrick.widmer@tbwnet.ch";
@@ -62,11 +62,6 @@ let
       # - https://blog.gitbutler.com/how-git-core-devs-configure-git/
     };
   };
-in
-{
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-    package = wrappedGit;
-  };
+
+  programs.git.lfs.enable = true;
 }

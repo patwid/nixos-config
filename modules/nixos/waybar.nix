@@ -1,16 +1,16 @@
 {
   inputs,
   config,
-  pkgs,
   ...
 }:
 let
-  inherit (inputs.nix-wrapper-modules.wrappers) waybar;
   inherit (config) colors;
+in
+{
+  imports = [ inputs.nix-wrapper-modules.nixosModules.waybar ];
 
-  wrappedWaybar = waybar.wrap {
-    inherit pkgs;
-
+  wrappers.waybar = {
+    enable = true;
     settings = {
       modules-left = [
         "niri/workspaces"
@@ -117,11 +117,5 @@ let
         color: ${colors.green};
       }
     '';
-  };
-in
-{
-  programs.waybar = {
-    enable = true;
-    package = wrappedWaybar;
   };
 }

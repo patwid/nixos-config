@@ -2,15 +2,16 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }:
 let
-  inherit (inputs.nix-wrapper-modules.wrappers) helix;
   inherit (config) colors;
+in
+{
+  imports = [ inputs.nix-wrapper-modules.nixosModules.helix ];
 
-  wrappedHelix = helix.wrap {
-    inherit pkgs;
+  wrappers.helix = {
+    enable = true;
 
     settings = {
       theme = "focus";
@@ -59,10 +60,6 @@ let
       '';
     };
   };
-in
-{
-  environment = {
-    systemPackages = [ wrappedHelix ];
-    sessionVariables.EDITOR = lib.getExe wrappedHelix;
-  };
+
+  environment.sessionVariables.EDITOR = lib.getExe config.wrappers.helix.wrapper;
 }
