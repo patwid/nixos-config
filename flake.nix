@@ -120,8 +120,7 @@
             packages =
               builtins.readDir ./packages
               |> lib.mapAttrs' (
-                p: _:
-                lib.nameValuePair (lib.removeSuffix ".nix" p) (callPackage ./packages/${p} { })
+                p: _: lib.nameValuePair (lib.removeSuffix ".nix" p) (callPackage ./packages/${p} { })
               );
           in
           packages;
