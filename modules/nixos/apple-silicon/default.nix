@@ -19,6 +19,7 @@ in
 
   config = lib.mkMerge [
     {
+      # TODO: remove once PR https://github.com/nix-community/nixos-apple-silicon/pull/434 is merged
       hardware.asahi.enable = lib.mkDefault false;
     }
 
