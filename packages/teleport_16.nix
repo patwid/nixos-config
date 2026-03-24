@@ -2,7 +2,7 @@
   buildTeleport,
   buildGoModule,
   wasm-bindgen-cli_0_2_95,
-  withRdpClient ? true,
+  withRdpClient ? false,
   extPatches ? [ ],
 }:
 buildTeleport {
