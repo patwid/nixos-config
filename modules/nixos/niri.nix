@@ -351,7 +351,10 @@ in
       };
     };
 
-    programs.niri.enable = true;
+    programs.niri = {
+      enable = true;
+      package = config.wrappers.niri.wrapper;
+    };
 
     programs.bash = {
       loginShellInit = ''
