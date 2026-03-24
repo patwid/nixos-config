@@ -44,13 +44,19 @@ let
   formatKeyBindings =
     mode: bindings: lib.concatStringsSep "\n" (lib.mapAttrsToList (formatKeyBinding mode) bindings);
 
-  quickmarksFile = lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n";
-
   configPy = lib.concatStringsSep "\n" (
     [ "config.load_autoconfig(False)" ]
     ++ map formatSetting (flattenSettings config.settings)
     ++ lib.mapAttrsToList formatSearchEngine config.searchEngines
     ++ lib.mapAttrsToList formatKeyBindings config.keyBindings
+    ++ lib.optional (config.quickmarks != { }) ''
+
+      # Write quickmarks
+      import os as _os
+      _qm_path = _os.path.join(config.configdir, 'quickmarks')
+      with open(_qm_path, 'w') as _f:
+          _f.write(${pythonize (lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n")})
+    ''
     ++ lib.optional (config.extraConfig != "") config.extraConfig
   );
 in
@@ -94,20 +100,12 @@ in
   config = {
     flagSeparator = "=";
     flags."--config-py" = config.constructFiles.configpy.path;
-    flags."--config-dir" = lib.mkIf (config.quickmarks != { }) (
-      builtins.dirOf config.constructFiles.quickmarks.path
-    );
 
     package = lib.mkDefault pkgs.qutebrowser;
 
     constructFiles.configpy = {
       relPath = "config.py";
       content = configPy;
-    };
-
-    constructFiles.quickmarks = lib.mkIf (config.quickmarks != { }) {
-      relPath = "config/quickmarks";
-      content = quickmarksFile;
     };
 
     meta.maintainers = [ ];
