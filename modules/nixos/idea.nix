@@ -8,11 +8,17 @@
 let
   inherit (inputs.nix-jetbrains-plugins) plugins;
   inherit (inputs.nix-jetbrains-plugins.lib) pluginsForIde;
-  inherit (config) laptop work ideaVmopts;
+  inherit (config)
+    laptop
+    work
+    user
+    ideaVmopts
+    ;
 
   vmopts = ''
     -Dawt.toolkit.name=WLToolkit
-  '' + ideaVmopts;
+  ''
+  + ideaVmopts;
 
   # Overriding vmopts and forceWaylang flag of idea pkg
   # does not seem to work properly
@@ -57,6 +63,13 @@ in
       environment.systemPackages = [
         (pkgs.jetbrains.plugins.addPlugins idea ideaPlugins)
       ];
+
+      home-manager.users.${user.name} = {
+        xdg.configFile."ideavim/ideavimrc".text = ''
+          set clipboard+=unnamedplus,ideaput
+          set ideajoin
+        '';
+      };
     })
   ];
 }
