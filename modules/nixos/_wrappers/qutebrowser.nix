@@ -13,7 +13,7 @@ let
     else if builtins.isBool v then
       (if v then "True" else "False")
     else if builtins.isString v then
-      ''"${v}"''
+      ''"${lib.escape [ "\\" ''"'' ] (builtins.replaceStrings [ "\n" ] [ "\\n" ] v)}"''
     else if builtins.isList v then
       "[${lib.concatStringsSep ", " (map pythonize v)}]"
     else
@@ -55,7 +55,7 @@ let
       import os as _os
       _qm_path = _os.path.join(config.configdir, 'quickmarks')
       with open(_qm_path, 'w') as _f:
-          _f.write(${pythonize (lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks))})
+          _f.write(${pythonize (lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n")})
     ''
     ++ lib.optional (config.extraConfig != "") config.extraConfig
   );
