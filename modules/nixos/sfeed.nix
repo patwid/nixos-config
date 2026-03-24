@@ -186,14 +186,16 @@ in
       ];
     };
 
-    home-manager.users.${user.name} = {
-      home.packages = with pkgs; [
+    environment.systemPackages = builtins.attrValues {
+      inherit (pkgs)
         sfeed
         menu-news
         menu-videos
         menu-podcasts
-      ];
+        ;
+    };
 
+    home-manager.users.${user.name} = {
       xdg.dataFile = lib.mapAttrs' (
         type: feed:
         lib.nameValuePair "sfeed/${type}/sfeedrc" {
