@@ -1,11 +1,10 @@
 {
   inputs,
   config,
-  lib,
   ...
 }:
 let
-  inherit (inputs) self home-manager;
+  inherit (inputs) home-manager;
   inherit (config) user system;
 in
 {
@@ -25,7 +24,5 @@ in
     home.homeDirectory = "/home/${user.name}";
 
     home.stateVersion = system.stateVersion;
-
-    imports = builtins.attrValues self.homeManagerModules;
   };
 }

@@ -94,16 +94,6 @@
         })
         |> lib.listToAttrs;
 
-      homeManagerModules =
-        lib.filesystem.listFilesRecursive ./modules/_home-manager
-        |> lib.filter (lib.hasSuffix ".nix")
-        |> map (path: lib.path.removePrefix ./modules/_home-manager path)
-        |> map (name: {
-          name = lib.removeSuffix ".nix" name;
-          value = ./modules/_home-manager/${name};
-        })
-        |> lib.listToAttrs;
-
       templates =
         (
           builtins.readDir ./templates
