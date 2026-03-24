@@ -1,9 +1,3 @@
-{ lib, ... }:
-final: prev:
-let
-  localpkgs = import ../../packages {
-    inherit lib;
-    pkgs = final;
-  };
-in
-localpkgs
+{ inputs, ... }:
+_final: prev:
+inputs.self.packages.${prev.stdenv.hostPlatform.system} or { }

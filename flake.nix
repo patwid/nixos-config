@@ -119,17 +119,16 @@
       in
       {
         packages =
-          pkgs
-          |> lib.filterAttrs (
-            name: _:
-            builtins.elem name (
-              self.overlays
-              |> lib.filterAttrs (name: _: name != "apple-silicon")
-              |> lib.mapAttrsToList (_: overlay: overlay { } { })
-              |> builtins.foldl' (a: b: a // b) { }
-              |> builtins.attrNames
-            )
-          );
+          let
+            callPackage = lib.callPackageWith (pkgs // packages);
+            packages =
+              builtins.readDir ./packages
+              |> lib.mapAttrs' (
+                p: _:
+                lib.nameValuePair (lib.removeSuffix ".nix" p) (callPackage ./packages/${p} { })
+              );
+          in
+          packages;
 
         formatter = pkgs.nixfmt;
       }
