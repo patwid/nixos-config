@@ -13,7 +13,7 @@ let
     else if builtins.isBool v then
       (if v then "True" else "False")
     else if builtins.isString v then
-      ''"${lib.escape [ "\\" ''"'' ] (builtins.replaceStrings [ "\n" ] [ "\\n" ] v)}"''
+      ''"${builtins.replaceStrings [ "\n" ] [ "\\n" ] (lib.escape [ "\\" ''"'' ] v)}"''
     else if builtins.isList v then
       "[${lib.concatStringsSep ", " (map pythonize v)}]"
     else
