@@ -20,6 +20,8 @@
           menu-movies
           menu-music
           menu-shows
+          menu-tv-hls
+          menu-tv-mc
           ;
       }
     );
