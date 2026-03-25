@@ -2,6 +2,7 @@
   writeShellApplication,
   coreutils,
   fzf,
+  fzfOpts ? "",
 }:
 
 writeShellApplication {
@@ -17,7 +18,7 @@ writeShellApplication {
     mkfifo "$in_pipe" "$out_pipe"
     trap 'rm -f $in_pipe $out_pipe' EXIT INT TERM QUIT
 
-    export FZF_DEFAULT_OPTS="--reverse --no-info"
+    export FZF_DEFAULT_OPTS="--reverse --no-info ${fzfOpts}"
     foot "$@" sh -x -c "fzf <$in_pipe >$out_pipe" &
 
     cat >"$in_pipe"

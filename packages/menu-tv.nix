@@ -8,10 +8,13 @@
   coreutils,
 }:
 
+let
+  menu' = menu.override { fzfOpts = "--with-nth=1 --delimiter='\t'"; };
+in
 writeShellApplication {
   name = "menu-${name}";
   runtimeInputs = [
-    menu
+    menu'
     mpv
     jq
     coreutils # cut
