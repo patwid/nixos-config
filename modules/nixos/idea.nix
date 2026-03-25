@@ -32,6 +32,11 @@ let
       "IdeaVIM"
     ]
     |> builtins.attrValues;
+
+  ideavimrc = pkgs.writeText "ideavimrc" ''
+    set clipboard+=unnamedplus,ideaput
+    set ideajoin
+  '';
 in
 {
   options = {
@@ -64,12 +69,9 @@ in
         (pkgs.jetbrains.plugins.addPlugins idea ideaPlugins)
       ];
 
-      home-manager.users.${user.name} = {
-        xdg.configFile."ideavim/ideavimrc".text = ''
-          set clipboard+=unnamedplus,ideaput
-          set ideajoin
-        '';
-      };
+      system.activationScripts.ideavimrc.text = ''
+        install -Dm644 -o ${user.name} -g users ${ideavimrc} /home/${user.name}/.config/ideavim/ideavimrc
+      '';
     })
   ];
 }

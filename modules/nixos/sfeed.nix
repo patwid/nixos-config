@@ -16,6 +16,18 @@ let
       encoding,
     }:
     ''feed "${name}" "${url}"${optString basesiteurl}${optString encoding}'';
+
+  sfeedrcFiles = lib.mapAttrs (
+    type: feed:
+    pkgs.writeText "sfeedrc-${type}" ''
+      sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
+
+      feeds() {
+      ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
+      ''\t${lib.concatStringsSep "\n\t" (map feedToString feed)}
+      }
+    ''
+  ) cfg.feeds;
 in
 {
   options = {
@@ -195,20 +207,14 @@ in
         ;
     };
 
-    home-manager.users.${user.name} = {
-      xdg.dataFile = lib.mapAttrs' (
-        type: feed:
-        lib.nameValuePair "sfeed/${type}/sfeedrc" {
-          text = ''
-            sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
-
-            feeds() {
-            ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
-            ''\t${lib.concatStringsSep "\n\t" (map feedToString feed)}
-            }
-          '';
-        }
-      ) cfg.feeds;
-    };
+    system.activationScripts.sfeedConfig.text =
+      let
+        installCmds = lib.concatStringsSep "\n" (
+          lib.mapAttrsToList (type: file: ''
+            install -Dm644 -o ${user.name} -g users ${file} /home/${user.name}/.local/share/sfeed/${type}/sfeedrc
+          '') sfeedrcFiles
+        );
+      in
+      installCmds;
   };
 }

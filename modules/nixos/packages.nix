@@ -1,11 +1,7 @@
 {
-  config,
   pkgs,
   ...
 }:
-let
-  inherit (config) user;
-in
 {
   environment.defaultPackages = [ ];
 
@@ -13,6 +9,7 @@ in
     inherit (pkgs)
       adwaita-icon-theme
       curl
+      fzf
       grim
       htop
       imagemagick
@@ -38,9 +35,7 @@ in
       ;
   };
 
-  home-manager.users.${user.name} = {
-    programs = {
-      fzf.enable = true;
-    };
-  };
+  programs.bash.interactiveShellInit = ''
+    eval "$(${pkgs.fzf}/bin/fzf --bash)"
+  '';
 }

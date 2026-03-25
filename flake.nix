@@ -8,9 +8,6 @@
     nixos-apple-silicon.url = "github:nix-community/nixos-apple-silicon";
     nixos-apple-silicon.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-wrapper-modules.url = "github:birdeehub/nix-wrapper-modules";
     nix-wrapper-modules.inputs.nixpkgs.follows = "nixpkgs";
 
