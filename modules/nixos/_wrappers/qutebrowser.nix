@@ -49,6 +49,14 @@ let
     ++ map formatSetting (flattenSettings config.settings)
     ++ lib.mapAttrsToList formatSearchEngine config.searchEngines
     ++ lib.mapAttrsToList formatKeyBindings config.keyBindings
+    ++ lib.optional (config.quickmarks != { }) ''
+
+      # Write quickmarks
+      import os as _os
+      _qm_path = _os.path.join(config.configdir, 'quickmarks')
+      with open(_qm_path, 'w') as _f:
+          _f.write(${pythonize (lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n")})
+    ''
     ++ lib.optional (config.extraConfig != "") config.extraConfig
   );
 in
@@ -91,18 +99,13 @@ in
 
   config = {
     flagSeparator = "=";
-    flags."--basedir" = builtins.dirOf (builtins.dirOf config.constructFiles.configpy.path);
+    flags."--config-py" = config.constructFiles.configpy.path;
 
     package = lib.mkDefault pkgs.qutebrowser;
 
     constructFiles.configpy = {
-      relPath = "config/config.py";
+      relPath = "config.py";
       content = configPy;
-    };
-
-    constructFiles.quickmarks = lib.mkIf (config.quickmarks != { }) {
-      relPath = "config/quickmarks";
-      content = lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n";
     };
 
     meta.maintainers = [ ];
