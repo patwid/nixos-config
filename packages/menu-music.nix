@@ -1,5 +1,5 @@
 { menu-mpv }:
 menu-mpv.override {
   name = "music";
-  path = "~/music";
+  path = "$HOME/music";
 }
