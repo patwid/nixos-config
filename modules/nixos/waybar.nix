@@ -123,4 +123,4 @@ in
     enable = true;
     package = config.wrappers.waybar.wrapper;
   };
-  }
+}

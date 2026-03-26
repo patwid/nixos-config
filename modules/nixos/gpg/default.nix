@@ -9,10 +9,7 @@ let
   homeDir = "/home/${user.name}";
   gnupgHome = "${homeDir}/.gnupg";
 
-  keyFiles =
-    builtins.readDir ./keys
-    |> lib.attrNames
-    |> map (k: ./keys/${k});
+  keyFiles = builtins.readDir ./keys |> lib.attrNames |> map (k: ./keys/${k});
 in
 {
   services.dbus.packages = [ pkgs.gcr ];

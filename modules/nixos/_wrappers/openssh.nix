@@ -22,9 +22,7 @@ let
     in
     "Host ${name}\n${lib.concatStringsSep "\n" lines}";
 
-  sshConfig = lib.concatStringsSep "\n\n" (
-    lib.mapAttrsToList formatMatchBlock config.matchBlocks
-  );
+  sshConfig = lib.concatStringsSep "\n\n" (lib.mapAttrsToList formatMatchBlock config.matchBlocks);
 in
 {
   imports = [ wlib.modules.default ];

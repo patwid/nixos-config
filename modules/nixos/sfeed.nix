@@ -195,15 +195,14 @@ in
       ];
     };
 
-    environment.systemPackages =
-      [
-        pkgs.sfeed
-      ]
-      ++ lib.mapAttrsToList (
-        type: feeds:
-        pkgs.${"menu-${type}"}.override {
-          sfeedrc = mkSfeedrc type feeds;
-        }
-      ) cfg.feeds;
+    environment.systemPackages = [
+      pkgs.sfeed
+    ]
+    ++ lib.mapAttrsToList (
+      type: feeds:
+      pkgs.${"menu-${type}"}.override {
+        sfeedrc = mkSfeedrc type feeds;
+      }
+    ) cfg.feeds;
   };
 }

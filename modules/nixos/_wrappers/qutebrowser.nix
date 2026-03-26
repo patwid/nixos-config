@@ -55,7 +55,9 @@ let
       import os as _os
       _qm_path = _os.path.join(config.configdir, 'quickmarks')
       with open(_qm_path, 'w') as _f:
-          _f.write(${pythonize (lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n")})
+          _f.write(${
+            pythonize (lib.concatStringsSep "\n" (lib.mapAttrsToList formatQuickmark config.quickmarks) + "\n")
+          })
     ''
     ++ lib.optional (config.extraConfig != "") config.extraConfig
   );
