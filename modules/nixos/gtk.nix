@@ -4,13 +4,10 @@
 }:
 let
   inherit (config) user;
+  homeDir = "/home/${user.name}";
 in
 {
-  home-manager.users.${user.name} = {
-    gtk.enable = true;
-
-    gtk.gtk3.bookmarks = [
-      "file:///tmp"
-    ];
-  };
+  environment.etc."xdg/gtk-3.0/bookmarks".text = ''
+    file:///tmp
+  '';
 }
