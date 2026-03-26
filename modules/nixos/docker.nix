@@ -78,6 +78,7 @@ lib.mkIf (work.enable) (
 
       networking.firewall.extraInputRules = ''
         ip saddr {
+          172.17.0.0/16,
           172.19.0.0/16,
           172.21.0.0/16,
           172.22.0.0/16,
@@ -122,6 +123,7 @@ lib.mkIf (work.enable) (
 
       networking.firewall.extraInputRules = ''
         ip saddr {
+          172.17.0.0/16,
           172.18.0.0/16,
           172.19.0.0/16,
           172.20.0.0/14,
