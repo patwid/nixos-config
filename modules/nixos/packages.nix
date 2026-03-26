@@ -1,11 +1,7 @@
 {
-  config,
   pkgs,
   ...
 }:
-let
-  inherit (config) user;
-in
 {
   environment.defaultPackages = [ ];
 
@@ -36,11 +32,5 @@ in
       zathura
       zip
       ;
-  };
-
-  home-manager.users.${user.name} = {
-    programs = {
-      fzf.enable = true;
-    };
   };
 }
