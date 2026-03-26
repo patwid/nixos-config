@@ -6,8 +6,6 @@
   ...
 }:
 let
-  inherit (inputs.nix-jetbrains-plugins) plugins;
-  inherit (inputs.nix-jetbrains-plugins.lib) pluginsForIde;
   inherit (config)
     laptop
     work
@@ -26,12 +24,6 @@ let
     inherit vmopts;
     forceWayland = true;
   };
-
-  ideaPlugins =
-    pluginsForIde pkgs idea [
-      "IdeaVIM"
-    ]
-    |> builtins.attrValues;
 in
 {
   options = {
@@ -61,7 +53,7 @@ in
 
     (lib.mkIf work.enable {
       environment.systemPackages = [
-        (pkgs.jetbrains.plugins.addPlugins idea ideaPlugins)
+        idea
       ];
 
       environment.etc."xdg/ideavim/ideavimrc".text = ''
