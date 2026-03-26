@@ -21,18 +21,17 @@ in
     enable = true;
     enableSSHSupport = true;
     pinentryPackage = pkgs.pinentry-gnome3;
+    settings = {
+      default-cache-ttl = 60480000;
+      max-cache-ttl = 60480000;
+    };
   };
-
-  environment.etc."gnupg/gpg-agent.conf".text = ''
-    default-cache-ttl 60480000
-    max-cache-ttl 60480000
-  '';
 
   system.activationScripts.gpg-import-keys.text = ''
     install -d -o ${user.name} -g users -m 700 ${gnupgHome}
     ${lib.concatMapStringsSep "\n" (key: ''
-      ${pkgs.gnupg}/bin/gpg --homedir ${gnupgHome} --import ${key}
-      ${pkgs.gnupg}/bin/gpg --homedir ${gnupgHome} --import-ownertrust <<< "$(${pkgs.gnupg}/bin/gpg --homedir ${gnupgHome} --with-colons --fingerprint ${key} | ${pkgs.gawk}/bin/awk -F: '/^fpr/{print $10 ":6:"}')"
+      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import ${key}
+      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import-ownertrust <<< "$(${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --with-colons --fingerprint ${key} | ${lib.getExe pkgs.gawk} -F: '/^fpr/{print $10 ":6:"}')"
     '') keyFiles}
     chown -R ${user.name}:users ${gnupgHome}
   '';
