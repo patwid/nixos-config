@@ -64,12 +64,10 @@ in
         (pkgs.jetbrains.plugins.addPlugins idea ideaPlugins)
       ];
 
-      home-manager.users.${user.name} = {
-        xdg.configFile."ideavim/ideavimrc".text = ''
-          set clipboard+=unnamedplus,ideaput
-          set ideajoin
-        '';
-      };
+      environment.etc."xdg/ideavim/ideavimrc".text = ''
+        set clipboard+=unnamedplus,ideaput
+        set ideajoin
+      '';
     })
   ];
 }
