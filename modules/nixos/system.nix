@@ -8,7 +8,6 @@ let
     self
     nixpkgs
     nixpkgs-stable
-    nur
     ;
   inherit (config) user;
 in
@@ -41,10 +40,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    nur.overlays.default
-  ]
-  ++ builtins.attrValues self.overlays;
+  nixpkgs.overlays = builtins.attrValues self.overlays;
 
   system.autoUpgrade = {
     enable = false;

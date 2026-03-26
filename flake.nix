@@ -11,9 +11,6 @@
     nix-wrapper-modules.url = "github:birdeehub/nix-wrapper-modules";
     nix-wrapper-modules.inputs.nixpkgs.follows = "nixpkgs";
 
-    nur.url = "github:nix-community/NUR";
-    nur.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-jetbrains-plugins.url = "github:nix-community/nix-jetbrains-plugins";
     nix-jetbrains-plugins.inputs.nixpkgs.follows = "nixpkgs";
   };
