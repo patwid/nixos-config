@@ -4,7 +4,7 @@
   mpv,
   socat,
   name ? "",
-  channels,
+  channels ? null,
   jq,
   coreutils,
 }:
