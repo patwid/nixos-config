@@ -143,7 +143,7 @@ in
           "Mod+Return".spawn = "foot";
           "Mod+D".spawn = "menu-run";
           "Mod+P".spawn = "menu-pass";
-          "Mod+T".spawn = "menu-tv-hls";
+          "Mod+T".spawn = "menu-tv-mc";
           "Super+Alt+L".spawn = "swaylock";
 
           "XF86AudioRaiseVolume" = {
