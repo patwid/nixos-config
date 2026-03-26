@@ -14,10 +14,10 @@ in
     programs.gpg = {
       enable = true;
       publicKeys =
-        builtins.readDir ../../keys
+        builtins.readDir ./keys
         |> lib.attrNames
         |> map (k: {
-          source = ../../keys/${k};
+          source = ./keys/${k};
           trust = "ultimate";
         });
     };

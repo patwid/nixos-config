@@ -11,7 +11,7 @@ in
   environment = {
     sessionVariables = {
       PASSWORD_STORE_DIR = "/home/${user.name}/.local/share/password-store";
-      PASSWORD_STORE_KEY = lib.concatStringsSep " " (lib.attrNames (builtins.readDir ../../keys));
+      PASSWORD_STORE_KEY = lib.concatStringsSep " " (lib.attrNames (builtins.readDir ./gpg/keys));
     };
 
     systemPackages = builtins.attrValues {
