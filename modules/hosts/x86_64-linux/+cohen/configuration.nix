@@ -1,5 +1,15 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+let
+  inherit (inputs) nixos-hardware;
+in
 {
+  imports = with nixos-hardware.nixosModules; [
+    common-cpu-intel
+    common-gpu-amd
+    common-pc
+    common-pc-ssd
+  ];
+
   user.uid = 1795;
   group.name = "ergon";
   group.gid = 1111;
