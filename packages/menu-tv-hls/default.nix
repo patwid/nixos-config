@@ -1,5 +1,5 @@
 { menu-tv }:
 menu-tv.override {
   name = "tv-hls";
-  path = ./channels.txt;
+  channels = builtins.path { name = "channels-tv-hls"; path = ./channels.txt; };
 }

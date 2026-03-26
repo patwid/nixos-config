@@ -3,7 +3,7 @@
   menu,
   mpv,
   name ? "",
-  path ? "",
+  channels,
   jq,
   coreutils,
 }:
@@ -25,7 +25,7 @@ writeShellApplication {
       niri msg action close-window --id="$id"
     fi
 
-    url=$(cat ${path} | menu --app-id=menu-fullscreen | cut -f2)
+    url=$(cat ${channels} | menu --app-id=menu-fullscreen | cut -f2)
 
     if [ -n "$url" ]; then
       exec mpv "$url"
