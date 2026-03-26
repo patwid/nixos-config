@@ -1,16 +1,18 @@
 {
-  config,
+  lib,
+  pkgs,
   ...
 }:
-let
-  inherit (config) user;
-in
 {
-  home-manager.users.${user.name} = {
-    services.wlsunset = {
-      enable = true;
-      latitude = "47.3";
-      longitude = "8.5";
+  systemd.user.services.wlsunset = {
+    enable = true;
+    description = "Day/night gamma adjustments";
+    partOf = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${lib.getExe pkgs.wlsunset} -l 47.3 -L 8.5";
+      Restart = "on-failure";
     };
   };
 }
