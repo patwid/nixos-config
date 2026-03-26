@@ -31,7 +31,7 @@ in
     install -d -o ${user.name} -g users -m 700 ${gnupgHome}
     ${lib.concatMapStringsSep "\n" (key: ''
       ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import ${key}
-      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import-ownertrust <<< "$(${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --with-colons --fingerprint ${key} | ${lib.getExe pkgs.gawk} -F: '/^fpr/{print $10 ":6:"}')"
+      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import-ownertrust <<< "$(${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --with-colons --fingerprint ${key} | ${lib.getExe' pkgs.gawk "awk"} -F: '/^fpr/{print $10 ":6:"}')"
     '') keyFiles}
     chown -R ${user.name}:users ${gnupgHome}
   '';
