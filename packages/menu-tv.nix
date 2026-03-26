@@ -2,6 +2,7 @@
   writeShellApplication,
   menu,
   mpv,
+  socat,
   name ? "",
   channels,
   jq,
@@ -10,12 +11,14 @@
 
 let
   menu' = menu.override { fzfOpts = "--with-nth=1 --delimiter='\t'"; };
+  socketPath = "/tmp/mpv-menu-tv.sock";
 in
 writeShellApplication {
   name = "menu-${name}";
   runtimeInputs = [
     menu'
     mpv
+    socat
     jq
     coreutils # cut
   ];
@@ -28,7 +31,12 @@ writeShellApplication {
     url=$(cat ${channels} | menu --app-id=menu-fullscreen | cut -f2)
 
     if [ -n "$url" ]; then
-      exec mpv "$url"
+      if [ -S "${socketPath}" ] && echo '{"command":["get_property","pid"]}' | socat - UNIX-CONNECT:${socketPath} >/dev/null 2>&1; then
+        echo "{\"command\":[\"loadfile\",\"$url\"]}" | socat - UNIX-CONNECT:${socketPath}
+      else
+        rm -f ${socketPath}
+        exec mpv --input-ipc-server=${socketPath} "$url"
+      fi
     fi
   '';
 }
