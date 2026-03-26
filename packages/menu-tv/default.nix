@@ -3,18 +3,17 @@
   menu,
   mpv,
   socat,
-  name ? "",
-  channels ? null,
   jq,
   coreutils,
 }:
 
 let
   menu' = menu.override { fzfOpts = "--with-nth=1 --delimiter='\t'"; };
+  channels = builtins.path { name = "channels-tv"; path = ./channels.txt; };
   socketPath = "/tmp/mpv-menu-tv.sock";
 in
 writeShellApplication {
-  name = "menu-${name}";
+  name = "menu-tv";
   runtimeInputs = [
     menu'
     mpv
