@@ -8,6 +8,8 @@
   };
 
   programs.bash.interactiveShellInit = ''
+    shopt -s globstar
+
     export GIT_PS1_SHOWDIRTYSTATE=true
 
     source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh
