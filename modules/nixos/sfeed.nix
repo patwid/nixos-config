@@ -5,7 +5,6 @@
   ...
 }:
 let
-  inherit (config) user;
   cfg = config.sfeed;
   optString = s: lib.optionalString (s != null) ''"${s}"'';
   feedToString =
@@ -16,6 +15,16 @@ let
       encoding,
     }:
     ''feed "${name}" "${url}"${optString basesiteurl}${optString encoding}'';
+  mkSfeedrc =
+    type: feeds:
+    pkgs.writeText "sfeedrc-${type}" ''
+      sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
+
+      feeds() {
+      ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
+      ''\t${lib.concatStringsSep "\n\t" (map feedToString feeds)}
+      }
+    '';
 in
 {
   options = {
@@ -186,29 +195,15 @@ in
       ];
     };
 
-    environment.systemPackages = builtins.attrValues {
-      inherit (pkgs)
-        sfeed
-        menu-news
-        menu-videos
-        menu-podcasts
-        ;
-    };
-
-    home-manager.users.${user.name} = {
-      xdg.dataFile = lib.mapAttrs' (
-        type: feed:
-        lib.nameValuePair "sfeed/${type}/sfeedrc" {
-          text = ''
-            sfeedpath="$HOME/.local/share/sfeed/${type}/feeds"
-
-            feeds() {
-            ''\t# feed <name> <feedurl> [basesiteurl] [encoding]
-            ''\t${lib.concatStringsSep "\n\t" (map feedToString feed)}
-            }
-          '';
+    environment.systemPackages =
+      [
+        pkgs.sfeed
+      ]
+      ++ lib.mapAttrsToList (
+        type: feeds:
+        pkgs.${"menu-${type}"}.override {
+          sfeedrc = mkSfeedrc type feeds;
         }
       ) cfg.feeds;
-    };
   };
 }

@@ -6,6 +6,7 @@
   menu,
   name ? "",
   opener ? null,
+  sfeedrc ? null,
   jq,
 }:
 
@@ -23,9 +24,9 @@ writeShellApplication {
       niri msg action close-window --id="$id"
     fi
 
-    cfg=$HOME/.local/share/sfeed/${name}
-    sfeed_update "$cfg/sfeedrc" || true
-    url=$(sfeed_plain "$cfg/feeds/"* \
+    feeddir=$HOME/.local/share/sfeed/${name}
+    sfeed_update ${sfeedrc} || true
+    url=$(sfeed_plain "$feeddir/feeds/"* \
       | sort --reverse \
       | menu --app-id=menu-fullscreen \
       | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
