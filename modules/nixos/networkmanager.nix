@@ -17,7 +17,7 @@ in
   networking.firewall.extraInputRules = ''
     ip saddr {
       87.239.210.194,
-      192.169.0.0/24
+      192.168.0.0/24
     } accept
   '';
 

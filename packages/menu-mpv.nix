@@ -23,10 +23,10 @@ writeShellApplication {
       niri msg action close-window --id="$id"
     fi
 
-    path=$(find ${path} -maxdepth ${builtins.toString depth} -mindepth ${builtins.toString depth} -type d -printf '%P\n' | menu --app-id=menu-fullscreen)
+    path=$(find "${path}" -maxdepth ${builtins.toString depth} -mindepth ${builtins.toString depth} -type d -printf '%P\n' | menu --app-id=menu-fullscreen)
 
     if [ -n "$path" ]; then
-      exec mpv ${path}/"$path"
+      exec mpv "${path}"/"$path"
     fi
   '';
 }

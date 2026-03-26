@@ -46,7 +46,7 @@ in
     enable = false;
     dates = "weekly";
     flake = "/home/${user.name}/.config/nixos";
-    flags = [ "--recreate-lock-file" ];
+    flags = [ "--refresh" ];
   };
 
   system.activationScripts = {
