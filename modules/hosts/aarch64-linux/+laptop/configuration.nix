@@ -1,12 +1,5 @@
-{ inputs, ... }:
-let
-  inherit (inputs) nixos-hardware;
-in
+{ ... }:
 {
-  imports = with nixos-hardware.nixosModules; [
-    common-pc-laptop-ssd
-  ];
-
   appleSilicon.enable = true;
   laptop = true;
   home.enable = true;
