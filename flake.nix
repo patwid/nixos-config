@@ -104,7 +104,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = builtins.attrValues self.overlays;
+          overlays = [ self.overlays.default ];
         };
       in
       {

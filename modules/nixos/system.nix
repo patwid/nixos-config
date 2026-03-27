@@ -40,7 +40,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = builtins.attrValues self.overlays;
+  nixpkgs.overlays = [ self.overlays.default ];
 
   system.autoUpgrade = {
     enable = false;
