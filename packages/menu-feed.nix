@@ -25,14 +25,14 @@ writeShellApplication {
     fi
 
     feeddir=$HOME/.local/share/sfeed/${name}
-    sfeed_update ${sfeedrc} || true
+    sfeed_update ${if sfeedrc != null then sfeedrc else ""} || true
     url=$(sfeed_plain "$feeddir/feeds/"* \
       | sort --reverse \
       | menu --app-id=menu-fullscreen \
       | sed -n 's@^.* \([a-zA-Z]*://\)\(.*\)$@\1\2@p')
 
     if [ -n "$url" ]; then
-      exec ${lib.getExe opener} "$url"
+      exec ${if opener != null then lib.getExe opener else "false"} "$url"
     fi
   '';
 }
