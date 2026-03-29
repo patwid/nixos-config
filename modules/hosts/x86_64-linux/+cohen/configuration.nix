@@ -17,8 +17,8 @@ in
 
   outputs = {
     DP-2 = {
-      position = {
-        _attrs = {
+      position = _: {
+        props = {
           x = 0;
           y = 0;
         };
