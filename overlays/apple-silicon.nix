@@ -1,8 +1,8 @@
-{ inputs, lib, ... }:
-let
-  inherit (inputs) nixos-apple-silicon;
-in
-lib.composeManyExtensions [
-  nixos-apple-silicon.overlays.default
-  (import ./_apple-silicon)
-]
+{ ... }:
+final: prev: {
+  uboot-asahi = prev.uboot-asahi.overrideAttrs (oldAttrs: {
+    extraConfig = oldAttrs.extraConfig + ''
+      CONFIG_VIDEO_LOGO=n
+    '';
+  });
+}
