@@ -51,5 +51,5 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.google-chrome ];
+  environment.systemPackages = with pkgs; [ chromium google-chrome ];
 }
