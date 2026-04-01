@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (inputs) self;
+  inherit (inputs) self nixos-apple-silicon;
   inherit (config) appleSilicon;
   inherit (config.nixpkgs) hostPlatform;
   inherit (config.networking) hostName;
@@ -14,7 +14,7 @@ in
   options.appleSilicon.enable = lib.mkEnableOption { };
 
   imports = [
-    inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
+    nixos-apple-silicon.nixosModules.apple-silicon-support
   ];
 
   config = lib.mkMerge [
@@ -26,10 +26,7 @@ in
     (lib.mkIf (appleSilicon.enable) {
       hardware.asahi.enable = true;
       hardware.asahi.peripheralFirmwareDirectory = ../../hosts/${hostPlatform.system}/+${hostName}/firmware;
-      hardware.asahi.overlay = lib.composeManyExtensions [
-        inputs.nixos-apple-silicon.overlays.default
-        self.overlays.apple-silicon
-      ];
+      hardware.asahi.overlay = self.overlays.apple-silicon;
 
       boot.loader.efi.canTouchEfiVariables = false;
       boot.loader.efi.efiSysMountPoint = "/boot";
