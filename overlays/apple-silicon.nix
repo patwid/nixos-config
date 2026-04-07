@@ -4,5 +4,5 @@ let
 in
 lib.composeManyExtensions [
   nixos-apple-silicon.overlays.default
-  (import ./_apple-silicon)
+  (import ./_apple-silicon.nix)
 ]
