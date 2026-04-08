@@ -27,8 +27,8 @@ in
   system.activationScripts.gpg-import-keys.text = ''
     install -d -o ${user.name} -g users -m 700 ${gnupgHome}
     ${lib.concatMapStringsSep "\n" (key: ''
-      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import ${key}
-      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import-ownertrust <<< "$(${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --with-colons --import-options import-show --dry-run --import ${key} 2>/dev/null | ${lib.getExe' pkgs.gawk "awk"} -F: '/^fpr/{print $10 ":6:"}')"
+      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import ${key} >/dev/null 2>&1
+      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import-ownertrust <<< "$(${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --with-colons --import-options import-show --dry-run --import ${key} 2>/dev/null | ${lib.getExe' pkgs.gawk "awk"} -F: '/^fpr/{print $10 ":6:"}')" >/dev/null 2>&1
     '') keyFiles}
     chown -R ${user.name}:users ${gnupgHome}
   '';
