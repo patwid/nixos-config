@@ -128,9 +128,6 @@ in
   };
 
   config = {
-    flagSeparator = "=";
-    flags."--config-py" = config.constructFiles.configpy.path;
-
     package = lib.mkDefault pkgs.qutebrowser;
 
     # qutebrowser reads from $XDG_CONFIG_HOME/qutebrowser/
