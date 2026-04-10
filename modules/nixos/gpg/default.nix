@@ -5,10 +5,6 @@
   ...
 }:
 let
-  inherit (config) user;
-  homeDir = "/home/${user.name}";
-  gnupgHome = "${homeDir}/.gnupg";
-
   gpg = lib.getExe pkgs.gnupg;
 
   keyFiles = builtins.readDir ./keys |> lib.attrNames |> map (k: ./keys/${k});
@@ -27,24 +23,28 @@ let
     cp $GNUPGHOME/pubring.kbx $out/
     cp $GNUPGHOME/trustdb.gpg $out/
   '';
+
+  wrappedGnupg = pkgs.gnupg.overrideAttrs (old: {
+    postInstall = (old.postInstall or "") + ''
+      wrapProgram $out/bin/gpg \
+        --add-flags "--keyring ${keyring}/pubring.kbx --trustdb-name ${keyring}/trustdb.gpg"
+    '';
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+  });
 in
 {
   services.dbus.packages = [ pkgs.gcr ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-gnome3;
-    settings = {
-      default-cache-ttl = 60480000;
-      max-cache-ttl = 60480000;
+  programs.gnupg = {
+    agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-gnome3;
+      settings = {
+        default-cache-ttl = 60480000;
+        max-cache-ttl = 60480000;
+      };
     };
+    package = wrappedGnupg;
   };
-
-  system.activationScripts.gpg-link-keyring.text = ''
-    install -d -o ${user.name} -g users -m 700 ${gnupgHome}
-    ln -sf ${keyring}/pubring.kbx ${gnupgHome}/pubring.kbx
-    ln -sf ${keyring}/trustdb.gpg ${gnupgHome}/trustdb.gpg
-    chown -h ${user.name}:users ${gnupgHome}/pubring.kbx ${gnupgHome}/trustdb.gpg
-  '';
 }
