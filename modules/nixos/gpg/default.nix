@@ -24,13 +24,16 @@ let
     cp $GNUPGHOME/trustdb.gpg $out/
   '';
 
-  wrappedGnupg = pkgs.gnupg.overrideAttrs (old: {
-    postInstall = (old.postInstall or "") + ''
+  wrappedGnupg = pkgs.symlinkJoin {
+    name = "gnupg-wrapped";
+    paths = [ pkgs.gnupg ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
       wrapProgram $out/bin/gpg \
-        --add-flags "--keyring ${keyring}/pubring.kbx --trustdb-name ${keyring}/trustdb.gpg"
+        --add-flags "--keyring ${keyring}/pubring.kbx" \
+        --add-flags "--trustdb-name ${keyring}/trustdb.gpg"
     '';
-    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
-  });
+  };
 in
 {
   services.dbus.packages = [ pkgs.gcr ];
