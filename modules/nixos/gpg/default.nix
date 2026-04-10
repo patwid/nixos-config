@@ -9,7 +9,24 @@ let
   homeDir = "/home/${user.name}";
   gnupgHome = "${homeDir}/.gnupg";
 
+  gpg = lib.getExe pkgs.gnupg;
+
   keyFiles = builtins.readDir ./keys |> lib.attrNames |> map (k: ./keys/${k});
+
+  keyring = pkgs.runCommand "gpg-keyring" { } ''
+    export GNUPGHOME=$(mktemp -d)
+
+    ${lib.concatMapStringsSep "\n" (key: ''
+      ${gpg} --import ${key}
+      ${gpg} --import-ownertrust <<< \
+        "$(${gpg} --with-colons --import-options import-show --dry-run --import ${key} \
+          | ${lib.getExe' pkgs.gawk "awk"} -F: '/^fpr/{print $10 ":6:"}')"
+    '') keyFiles}
+
+    mkdir $out
+    cp $GNUPGHOME/pubring.kbx $out/
+    cp $GNUPGHOME/trustdb.gpg $out/
+  '';
 in
 {
   services.dbus.packages = [ pkgs.gcr ];
@@ -24,12 +41,10 @@ in
     };
   };
 
-  system.activationScripts.gpg-import-keys.text = ''
+  system.activationScripts.gpg-link-keyring.text = ''
     install -d -o ${user.name} -g users -m 700 ${gnupgHome}
-    ${lib.concatMapStringsSep "\n" (key: ''
-      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import ${key} 2>/dev/null
-      ${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --import-ownertrust <<< "$(${lib.getExe pkgs.gnupg} --homedir ${gnupgHome} --with-colons --import-options import-show --dry-run --import ${key} 2>/dev/null | ${lib.getExe' pkgs.gawk "awk"} -F: '/^fpr/{print $10 ":6:"}')" 2>/dev/null
-    '') keyFiles}
-    chown -R ${user.name}:users ${gnupgHome}
+    ln -sf ${keyring}/pubring.kbx ${gnupgHome}/pubring.kbx
+    ln -sf ${keyring}/trustdb.gpg ${gnupgHome}/trustdb.gpg
+    chown -h ${user.name}:users ${gnupgHome}/pubring.kbx ${gnupgHome}/trustdb.gpg
   '';
 }
