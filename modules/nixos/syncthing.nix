@@ -1,12 +1,13 @@
 { config, ... }:
 let
   inherit (config) user;
+  inherit (config.users.users.${user.name}) group;
 in
 {
   services.syncthing = {
     enable = true;
     user = user.name;
-    group = "users";
+    inherit group;
     configDir = "/home/${user.name}/.config/syncthing";
     dataDir = "/home/${user.name}/.local/share/syncthing";
     overrideDevices = false;

@@ -4,6 +4,8 @@
 }:
 let
   inherit (config) user;
+  inherit (config.users.users.${user.name}) group;
+
   homeDir = "/home/${user.name}";
 in
 {
@@ -25,6 +27,6 @@ in
   '';
 
   system.activationScripts.xdg-dirs.text = ''
-    install -d -o ${user.name} -g users ${homeDir}/{tmp,documents,downloads,music,pictures,videos}
+    install -d -o ${user.name} -g ${group} ${homeDir}/{tmp,documents,downloads,music,pictures,videos}
   '';
 }
