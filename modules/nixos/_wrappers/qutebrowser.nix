@@ -44,21 +44,9 @@ let
   formatKeyBindings =
     mode: bindings: lib.concatStringsSep "\n" (lib.mapAttrsToList (formatKeyBinding mode) bindings);
 
-  fileselectSettings = lib.filterAttrs (_: v: v != null) (
-    {
-      "fileselect.handler" = config.fileselect.handler;
-      "fileselect.single_file.command" = config.fileselect.single_file.command;
-      "fileselect.multiple_files.command" = config.fileselect.multiple_files.command;
-      "fileselect.folder.command" = config.fileselect.folder.command;
-    }
-  );
-
-  formatFlatSetting = name: value: "c.${name} = ${pythonize value}";
-
   configPy = lib.concatStringsSep "\n" (
     [ "config.load_autoconfig(False)" ]
     ++ map formatSetting (flattenSettings config.settings)
-    ++ lib.mapAttrsToList formatFlatSetting fileselectSettings
     ++ lib.mapAttrsToList formatSearchEngine config.searchEngines
     ++ lib.mapAttrsToList formatKeyBindings config.keyBindings
     ++ lib.optional (config.extraConfig != "") config.extraConfig
@@ -92,32 +80,6 @@ in
       type = with lib.types; attrsOf (attrsOf (nullOr str));
       default = { };
       description = "Key bindings mapping modes to key-command pairs.";
-    };
-
-    fileselect = {
-      handler = lib.mkOption {
-        type = lib.types.nullOr lib.types.str;
-        default = null;
-        description = "Handler for file selection dialogs. Set to `external` to use external commands.";
-      };
-
-      single_file.command = lib.mkOption {
-        type = lib.types.nullOr (lib.types.listOf lib.types.str);
-        default = null;
-        description = "Command to use for selecting a single file.";
-      };
-
-      multiple_files.command = lib.mkOption {
-        type = lib.types.nullOr (lib.types.listOf lib.types.str);
-        default = null;
-        description = "Command to use for selecting multiple files.";
-      };
-
-      folder.command = lib.mkOption {
-        type = lib.types.nullOr (lib.types.listOf lib.types.str);
-        default = null;
-        description = "Command to use for selecting a folder.";
-      };
     };
 
     extraConfig = lib.mkOption {

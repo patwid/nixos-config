@@ -24,15 +24,6 @@ in
 
   wrappers.qutebrowser = {
     enable = true;
-    # Workaround custom filepicker:
-    # - https://github.com/qutebrowser/qutebrowser/discussions/8058
-    # - https://github.com/qutebrowser/qutebrowser/issues/1365
-    fileselect = {
-      handler = "external";
-      single_file.command = ["${lib.getExe pkgs.zenity}"  "--file-selection"  "--title=Select File"];
-      multiple_files.command = ["${lib.getExe pkgs.zenity}"  "--file-selection"  "--multiple" "--title=Select Files"];
-      folder.command = ["${lib.getExe pkgs.zenity}"  "--file-selection"  "--directory"  "--title=Select Folder"];
-    };
     quickmarks = {
       "1p" = "https://ergon.1password.eu/";
       ac = "https://axonlab.atlassian.net/wiki/home";
@@ -94,6 +85,15 @@ in
       ytm = "https://music.youtube.com/search?q={}";
     };
     settings = {
+      # Workaround custom filepicker:
+      # - https://github.com/qutebrowser/qutebrowser/discussions/8058
+      # - https://github.com/qutebrowser/qutebrowser/issues/1365
+      fileselect = {
+        handler = "external";
+        single_file.command = ["${lib.getExe pkgs.zenity}"  "--file-selection"  "--title=Select File"];
+        multiple_files.command = ["${lib.getExe pkgs.zenity}"  "--file-selection"  "--multiple" "--title=Select Files"];
+        folder.command = ["${lib.getExe pkgs.zenity}"  "--file-selection"  "--directory"  "--title=Select Folder"];
+      };
       fonts.default_family = [ "monospace" ];
       url.start_pages = [ "about:blank" ];
       url.default_page = "about:blank";
