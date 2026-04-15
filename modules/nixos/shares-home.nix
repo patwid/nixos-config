@@ -3,7 +3,7 @@ let
   inherit (config) user home;
 
   fsType = "nfs";
-  options = [ "nfsvers=3" ];
+  options = [ "nfsvers=3" "x-systemd.mount-timeout=10s" ];
   nas = "192.168.0.3";
   syncthing = "192.168.0.5";
   transmission = "192.168.0.6";
