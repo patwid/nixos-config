@@ -57,7 +57,7 @@ in
       };
 
       "clock#date" = {
-        format = "{:%a, %d %b}";
+        format = "{:%F}";
       };
     };
 
