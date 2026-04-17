@@ -57,7 +57,15 @@ in
 
   options = {
     settings = lib.mkOption {
-      type = lib.types.attrsOf lib.types.anything;
+      type = lib.types.submodule {
+        freeformType = lib.types.attrsOf lib.types.anything;
+
+        options.auto_save.interval = lib.mkOption {
+          type = lib.types.ints.between 0 2147483647;
+          default = 0;
+          description = "Auto-save interval in ms. 0 disables auto-saving.";
+        };
+      };
       default = { };
       description = ''
         Qutebrowser settings. See <https://qutebrowser.org/doc/help/settings.html>.
