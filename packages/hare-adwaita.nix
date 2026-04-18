@@ -12,7 +12,6 @@
   harfbuzz,
   atk,
   libadwaita,
-  hareHook,
 }:
 
 stdenv.mkDerivation {
@@ -56,6 +55,6 @@ stdenv.mkDerivation {
     description = "Hare bindings for libadwaita";
     license = lib.licenses.mpl20;
     maintainers = [ ];
-    inherit (hareHook.meta) platforms badPlatforms;
+    platforms = lib.platforms.linux;
   };
 }

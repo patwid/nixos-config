@@ -12,7 +12,6 @@
   harfbuzz,
   atk,
   gtk4-layer-shell,
-  hareHook,
 }:
 
 stdenv.mkDerivation {
@@ -56,6 +55,6 @@ stdenv.mkDerivation {
     description = "Hare bindings for gtk4-layer-shell";
     license = lib.licenses.mpl20;
     maintainers = [ ];
-    inherit (hareHook.meta) platforms badPlatforms;
+    platforms = lib.platforms.linux;
   };
 }

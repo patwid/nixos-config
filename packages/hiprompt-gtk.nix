@@ -41,14 +41,11 @@ stdenv.mkDerivation {
     gtk4-layer-shell
   ];
 
-  # Hare's QBE backend emits non-PIC code on aarch64. Both --export-dynamic
-  # and PIE require PIC-compatible relocations, which the rt module lacks.
-  # GCC defaults to PIE (--enable-default-pie), so we must explicitly pass
-  # -no-pie. --export-dynamic is also safe to remove since signals are
-  # connected programmatically, not via GModule symbol lookup.
+  # Hare's QBE backend emits non-PIC code on aarch64. GCC defaults to PIE
+  # (--enable-default-pie), which requires PIC-compatible relocations.
   postPatch = lib.optionalString stdenv.hostPlatform.isAarch64 ''
     substituteInPlace Makefile \
-      --replace-fail 'LDFLAGS="-Wl,--export-dynamic"' 'LDFLAGS="-no-pie"'
+      --replace-fail 'LDFLAGS="-Wl,--export-dynamic"' 'LDFLAGS="-no-pie -Wl,--export-dynamic"'
   '';
 
   installFlags = [
