@@ -57,7 +57,7 @@ in
   };
 
   systemd.user.services.hissh-agent = {
-    enable = true;
+    enable = false; # TODO: enable
     description = "Himitsu SSH agent";
     partOf = [ "graphical-session.target" ];
     after = [
