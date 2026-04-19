@@ -1,12 +1,33 @@
 {
+  inputs,
+  config,
   lib,
   pkgs,
   ...
 }:
+let
+  himitsu = config.wrappers.himitsu.wrapper;
+in
 {
-  environment.systemPackages = with pkgs; [
+  imports = [
+    (inputs.nix-wrapper-modules.lib.mkInstallModule {
+      name = "himitsu";
+      value = ./_wrappers/himitsu.nix;
+    })
+  ];
+
+  wrappers.himitsu = {
+    enable = true;
+    settings = {
+      himitsud = {
+        prompter = lib.getExe pkgs.hiprompt-gtk;
+      };
+    };
+  };
+
+  environment.systemPackages = [
     himitsu
-    hiprompt-gtk
+    pkgs.hiprompt-gtk
   ];
 
   systemd.user.services.himitsud = {
@@ -16,7 +37,7 @@
     after = [ "graphical-session.target" ];
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = "${lib.getExe' pkgs.himitsu "himitsud"}";
+      ExecStart = lib.getExe himitsu;
       Restart = "on-failure";
       Type = "simple";
     };
