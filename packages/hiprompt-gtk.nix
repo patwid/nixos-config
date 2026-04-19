@@ -49,7 +49,7 @@ stdenv.mkDerivation {
   '';
 
   installFlags = [
-    "PREFIX=$(out)"
+    "PREFIX=${builtins.placeholder "out"}"
     "DESTDIR="
   ];
 

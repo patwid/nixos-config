@@ -48,7 +48,7 @@ stdenv.mkDerivation {
         --replace-fail '/usr/share/gir-1.0' "$girDir"
     '';
 
-  installFlags = [ "PREFIX=$(out)" ];
+  installFlags = [ "PREFIX=${builtins.placeholder "out"}" ];
 
   meta = {
     homepage = "https://git.sr.ht/~sircmpwn/hare-gtk4-layer-shell";

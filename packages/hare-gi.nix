@@ -54,7 +54,7 @@ stdenv.mkDerivation {
     runHook postBuild
   '';
 
-  installFlags = [ "PREFIX=$(out)" ];
+  installFlags = [ "PREFIX=${builtins.placeholder "out"}" ];
   installTargets = [
     "install-core"
     "install-gtk-shared"
