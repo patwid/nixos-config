@@ -28,7 +28,10 @@ in
   environment.systemPackages = [
     himitsu
     pkgs.hiprompt-gtk
+    pkgs.himitsu-ssh
   ];
+
+  environment.sessionVariables.SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/hissh-agent";
 
   systemd.user.services.himitsud = {
     enable = true;
@@ -38,6 +41,23 @@ in
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
       ExecStart = lib.getExe himitsu;
+      Restart = "on-failure";
+      Type = "simple";
+    };
+  };
+
+  systemd.user.services.hissh-agent = {
+    enable = true;
+    description = "Himitsu SSH agent";
+    partOf = [ "graphical-session.target" ];
+    after = [
+      "graphical-session.target"
+      "himitsud.service"
+    ];
+    requires = [ "himitsud.service" ];
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = lib.getExe pkgs.himitsu-ssh;
       Restart = "on-failure";
       Type = "simple";
     };
