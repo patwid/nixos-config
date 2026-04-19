@@ -36,16 +36,16 @@ in
   config = {
     package = lib.mkDefault pkgs.aerc;
 
-    # aerc reads from $XDG_CONFIG_HOME/aerc/{aerc.conf,accounts.conf}
-    env.XDG_CONFIG_HOME = builtins.dirOf (builtins.dirOf config.constructFiles.config.path);
+    flags."-C" = config.constructFiles.config.path;
+    flags."-A" = config.constructFiles.accounts.path;
 
     constructFiles.config = {
-      relPath = "aerc/aerc.conf";
+      relPath = "aerc.conf";
       content = toINI config.settings;
     };
 
     constructFiles.accounts = {
-      relPath = "aerc/accounts.conf";
+      relPath = "accounts.conf";
       content = toINI config.accounts;
     };
 
