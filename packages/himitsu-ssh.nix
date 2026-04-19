@@ -16,8 +16,8 @@ stdenv.mkDerivation {
   src = fetchFromSourcehut {
     owner = "~sircmpwn";
     repo = "himitsu-ssh";
-    rev = "876d2b041c1146290e2198e6432eeb186236d677";
-    hash = "sha256-/TKs3WPVqc8uHhhf8IRzh1smxKSzFK2KAd/uZHTiGkk=";
+    rev = "71a8c151729842427eaeacc3d6793bb29cdb956e";
+    hash = "sha256-3/JMA6nDY8i2tmGJNQ+yJtFByVucx7BypUN9ydlxuGo=";
   };
 
   nativeBuildInputs = [
