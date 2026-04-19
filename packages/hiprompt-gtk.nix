@@ -43,10 +43,9 @@ stdenv.mkDerivation {
 
   # Hare's QBE backend emits non-PIC code on aarch64. GCC defaults to PIE
   # (--enable-default-pie), which requires PIC-compatible relocations.
-  postPatch = lib.optionalString stdenv.hostPlatform.isAarch64 ''
-    substituteInPlace Makefile \
-      --replace-fail 'LDFLAGS="-Wl,--export-dynamic"' 'LDFLAGS="-no-pie -Wl,--export-dynamic"'
-  '';
+  patches = lib.optionals stdenv.hostPlatform.isAarch64 [
+    ./hiprompt-gtk-no-pie.patch
+  ];
 
   installFlags = [
     "PREFIX=${builtins.placeholder "out"}"

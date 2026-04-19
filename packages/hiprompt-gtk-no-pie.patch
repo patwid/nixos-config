@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -27,7 +27,7 @@
+ 	res/window.o
+
+ hiprompt-gtk: $(RESOURCES_GLUE)
+-	LDFLAGS="-Wl,--export-dynamic" \
++	LDFLAGS="-no-pie -Wl,--export-dynamic" \
+ 	hare build $(LIBS) -o $@ cmd/hiprompt-gtk
+
+ res/res.c: $(RESOURCES)
