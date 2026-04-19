@@ -7,12 +7,17 @@
 }:
 let
   himitsu = config.wrappers.himitsu.wrapper;
+  hissh-agent = config.wrappers.himitsu-ssh.wrapper;
 in
 {
   imports = [
     (inputs.nix-wrapper-modules.lib.mkInstallModule {
       name = "himitsu";
       value = ./_wrappers/himitsu.nix;
+    })
+    (inputs.nix-wrapper-modules.lib.mkInstallModule {
+      name = "himitsu-ssh";
+      value = ./_wrappers/himitsu-ssh.nix;
     })
   ];
 
@@ -25,10 +30,15 @@ in
     };
   };
 
+  wrappers.himitsu-ssh = {
+    enable = true;
+    settings = { };
+  };
+
   environment.systemPackages = [
     himitsu
     pkgs.hiprompt-gtk
-    pkgs.himitsu-ssh
+    hissh-agent
   ];
 
   environment.sessionVariables.SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/hissh-agent";
@@ -57,7 +67,7 @@ in
     requires = [ "himitsud.service" ];
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
-      ExecStart = lib.getExe pkgs.himitsu-ssh;
+      ExecStart = lib.getExe hissh-agent;
       Restart = "on-failure";
       Type = "simple";
     };
