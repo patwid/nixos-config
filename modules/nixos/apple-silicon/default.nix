@@ -28,6 +28,9 @@ in
       hardware.asahi.peripheralFirmwareDirectory = ../../hosts/${hostPlatform.system}/+${hostName}/firmware;
       hardware.asahi.overlay = self.overlays.apple-silicon;
 
+      # TODO: remove once PR https://github.com/nix-community/nixos-apple-silicon/pull/416 is merged
+      boot.loader.systemd-boot.consoleMode = lib.mkForce "max";
+
       boot.loader.efi.canTouchEfiVariables = false;
       boot.loader.efi.efiSysMountPoint = "/boot";
 
