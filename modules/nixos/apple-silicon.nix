@@ -25,7 +25,7 @@ in
 
     (lib.mkIf (appleSilicon.enable) {
       hardware.asahi.enable = true;
-      hardware.asahi.peripheralFirmwareDirectory = ../../hosts/${hostPlatform.system}/+${hostName}/firmware;
+      hardware.asahi.peripheralFirmwareDirectory = ../hosts/${hostPlatform.system}/+${hostName}/firmware;
       hardware.asahi.overlay = self.overlays.apple-silicon;
 
       # TODO: remove once PR https://github.com/nix-community/nixos-apple-silicon/pull/416 is merged
@@ -41,8 +41,6 @@ in
         options hid_apple swap_opt_cmd=1
         options hid_apple swap_fn_leftctrl=1
       '';
-
-      boot.m1n1CustomLogo = ./empty.png;
 
       nix.settings = {
         extra-substituters = [
